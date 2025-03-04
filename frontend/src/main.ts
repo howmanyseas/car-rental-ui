@@ -27,12 +27,13 @@ bootstrapApplication(AppComponent, {
       MatFormFieldModule, 
       MatInputModule, 
       MatButtonModule,
+      MatIconModule
     ),
     provideHttpClient(withInterceptorsFromDi()),
     provideRouter(routes),
     provideStore(),
     provideEffects(),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
-    provideAnimationsAsync(), provideAnimationsAsync(),
+    provideAnimationsAsync(), provideAnimationsAsync(), provideAnimationsAsync(),
   ],
 }).catch((err) => console.error(err));
