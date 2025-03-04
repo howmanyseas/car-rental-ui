@@ -46,4 +46,12 @@ export class ForgotPasswordComponent {
   goToLogin(){
     this.router.navigate(['/login']);
   }
+  onClick() {
+    if (this.forgotPasswordForm.valid) {
+      console.log('Reset Link Sent to:', this.forgotPasswordForm.value.email);
+      
+      // ✅ Navigate to Reset Password page after submission
+      this.router.navigate(['/reset-password']);
+    }
+  }
 }
