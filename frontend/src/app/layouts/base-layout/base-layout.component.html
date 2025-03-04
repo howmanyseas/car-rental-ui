@@ -1,0 +1,43 @@
+<mat-sidenav-container class="container">
+    <!-- Sidebar -->
+    <mat-sidenav mode="side" opened class="sidebar">
+      <div class="logo">ATMAX</div>
+      <mat-nav-list class="menu">
+        <a mat-list-item routerLink="/dashboard" [class.active]="activePage === 'dashboard'">
+          <mat-icon>home</mat-icon> 
+        </a>
+        <a mat-list-item routerLink="/cars" [class.active]="activePage === 'cars'">
+          <mat-icon>directions_car</mat-icon> 
+        </a>
+        <a mat-list-item routerLink="/rentals" [class.active]="activePage === 'rentals'">
+          <mat-icon>assignment</mat-icon> 
+        </a>
+        <a mat-list-item routerLink="/customers" [class.active]="activePage === 'customers'">
+          <mat-icon>people</mat-icon> 
+        </a>
+        <a mat-list-item routerLink="/logout">
+          <mat-icon>logout</mat-icon> 
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+  
+    <!-- Main Content -->
+    <mat-sidenav-content class="content">
+      <!-- Header -->
+      <mat-toolbar color="primary">
+        <h1>{{ pageTitle }}</h1>
+        <span class="spacer"></span>
+        <mat-form-field class="search">
+          <mat-label>Search</mat-label>
+          <input matInput placeholder="Search a car, customer, rental..." />
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </mat-toolbar>
+  
+      <!-- Page Content -->
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
   standalone: true,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush, // ✅ Added ChangeDetectionStrategy
+  changeDetection: ChangeDetectionStrategy.OnPush, 
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -29,7 +29,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  hide = signal(true); // ✅ Moved from FormFieldPrefixSuffixExample
+  hide = signal(true); 
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.loginForm = this.fb.group({
@@ -41,11 +41,10 @@ export class LoginComponent {
   onLogin() {
     if (this.loginForm.valid) {
       console.log('Login Data:', this.loginForm.value);
-      // Implement authentication logic here
+      
     }
   }
 
-  // ✅ Toggle password visibility
   togglePassword(event: MouseEvent) {
     this.hide.set(!this.hide());
     event.stopPropagation();

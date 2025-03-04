@@ -29,7 +29,7 @@ import { Router } from '@angular/router';
 })
 export class ResetPasswordComponent {
   resetPasswordForm: FormGroup;
-  hide = signal(true); // ✅ Using Angular Signals
+  hide = signal(true); 
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.resetPasswordForm = this.fb.group({
@@ -41,11 +41,10 @@ export class ResetPasswordComponent {
   onSubmit() {
     if (this.resetPasswordForm.valid) {
       console.log('Reset Password Data:', this.resetPasswordForm.value);
-      // Implement API call for password reset here
+      // API call for password reset 
     }
   }
 
-    // ✅ Toggle password visibility
     togglePassword(event: MouseEvent) {
       this.hide.set(!this.hide());
       event.stopPropagation();
