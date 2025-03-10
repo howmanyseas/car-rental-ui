@@ -1,0 +1,79 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.custom-toolbar {
+  background-color: #212121;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  .company-logo {
+    height: 40px;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 0; 
+  max-width: 250px;
+  opacity: 0;
+  overflow: hidden;
+  transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  height: 100%; 
+}
+
+.search-container.expanded {
+  width: 250px;
+  opacity: 1;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+}
+
+
+.mat-form-field {
+height: 40px !important;
+display: flex;
+align-items: center;
+}
+
+
+
+
+
+
+
+.right-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .search-container {
+    max-width: 250px;
+  }
+
+  .right-icons {
+    gap: 8px;
+  }
+}

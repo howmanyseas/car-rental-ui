@@ -1,0 +1,23 @@
+<!-- Full-width header -->
+<app-default-header (sidebarToggle)="toggleSidenav()"></app-default-header>
+
+<mat-sidenav-container class="main-container">
+  <!-- Sidebar -->
+  <mat-sidenav #sidenav [mode]="'side'" [opened]="true" class="side-nav" [class.expanded]="isExpanded">
+    <div class="menu-container">
+      <ul class="menu-list">
+        <li *ngFor="let item of menuItems" (click)="navigate(item.route)">
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <span *ngIf="isExpanded">{{ item.label }}</span> <!-- Show text only when expanded -->
+        </li>
+      </ul>
+    </div>
+  </mat-sidenav>
+
+  <!-- Main Content -->
+  <mat-sidenav-content>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

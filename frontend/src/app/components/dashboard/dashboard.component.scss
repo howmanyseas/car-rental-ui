@@ -1,0 +1,53 @@
+.dashboard-container {
+    padding: 30px;
+    color: white;
+    min-height: 100vh;
+  }
+  
+  .search-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .dashboard-grid {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-card {
+    background: #333;
+    padding: 20px;
+    border-radius: 10px;
+    width: 48%;
+  }
+  
+  .car-count {
+    font-size: 24px;
+    font-weight: bold;
+    color: cyan;
+  }
+  
+  table {
+    width: 100%;
+    margin-top: 10px;
+    background: #222;
+    color: white;
+  }
+  
+  .status {
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  .completed {
+    background: #00cc66;
+    color: white;
+  }
+  
+  .active {
+    background: #ffcc00;
+    color: black;
+  }
+  
