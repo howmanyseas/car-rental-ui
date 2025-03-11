@@ -1,0 +1,28 @@
+.grid-container {
+  margin: 20px;
+}
+.mat-h1{
+  color:white;
+  font-family:'inter';
+}
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  background-color: #575757;
+  color: white;
+  font-family: 'Inter';
+
+  /* Add box shadow */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Soft shadow */
+  border-radius: 8px; /* Optional: Adds rounded corners */
+}
+
+
+
+
+.dashboard-card-content {
+  text-align: center;
+}
