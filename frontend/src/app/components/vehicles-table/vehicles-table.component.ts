@@ -38,5 +38,9 @@ export class VehiclesTableComponent implements AfterViewInit {
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
+  gotoNewCar(){
+    this.router.navigate(['/add-vehicle']);
+
+  }
 }
 

@@ -1,0 +1,151 @@
+/* General Form Layout */
+.form-container {
+    padding: 20px;
+    background: transparent;
+    border-radius: 8px;
+  }
+  :host {
+    display: block;
+    margin: 30px;
+  }
+  
+  .row {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  /* Full Width Inputs */
+  .full-width {
+    width: 100%;
+  }
+  /* Individual Form Groups */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  h2 {
+    color: white;
+    font-family: "Inter";
+  }
+  /* Full Width Inputs */
+  .full-width {
+    width: 100%;
+  }
+  
+  table {
+    background-color: transparent;
+  }
+  
+  th,
+  td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+    color: white;
+  }
+  
+  /* Action Buttons */
+  
+  .edit-vehicle-form {
+    margin-top: 30px;
+  }
+  
+  .buttons-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  
+  /* Fix input field colors */
+  mat-form-field {
+    width: 100%;
+  }
+  
+  /* Ensure text inside inputs is visible */
+  input {
+    color: white !important; /* Ensures input text is visible */
+  }
+  .cancel-btn {
+    color: #ec3838;
+  }
+  .add-damage-btn {
+    width: auto;
+    margin-top: 10px;
+    color: white !important;
+    background-color: #008dd2 !important;
+    border-radius: 10px;
+    margin-left: 10px;
+  }
+  .add-maint-btn {
+    width: auto;
+    margin-top: 10px;
+    color: white !important;
+    background-color: #5c6bc0 !important;
+    border-radius: 10px;
+    margin-left: 10px;
+  }
+  /* Damage History Table */
+  .damage-history {
+    background-color: transparent;
+    padding: 16px;
+    margin-top: 20px;
+    border: none;
+    width: 40%; /* Match two columns of the form */
+    box-shadow: none; /* Remove shadow if applied */
+  }
+  mat-card {
+    border: none;
+  }
+  /* Table Styling */
+  .damage-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  /* Table Header Style */
+  .damage-table th {
+    color: #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  /* Table Row Style */
+  .damage-table td {
+    padding: 8px;
+  }
+  
+  /* Delete Button Styling */
+  .delete-btn {
+    color: #f44336; /* Red color */
+  
+    cursor: pointer;
+    font-size: 18px;
+  }
+  .damage-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .damage-options button {
+    margin-left: 10px;
+  }
+  
+  .save-btn{
+   
+    color: white !important;
+    background-color: #008dd2 !important;
+  
+  }

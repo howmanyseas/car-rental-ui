@@ -7,6 +7,13 @@ import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.
 import { DashComponent } from './components/dash/dash.component';
 import { VehiclesTableComponent } from './components/vehicles-table/vehicles-table.component';
 import { EditVehicleComponent } from './components/edit-vehicle/edit-vehicle.component';
+import { AddVehicleComponent } from './components/add-vehicle/add-vehicle.component';
+import { DamageMarkerComponent } from './components/damage-marker/damage-marker.component';
+
+
+
+
+
 
 export const routes: Routes = [
   // Public Routes
@@ -15,7 +22,8 @@ export const routes: Routes = [
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'dashboard', component: DashComponent },
   { path: 'vehicles', component: VehiclesTableComponent },
-  { path: 'edit-vehicle/:id', component: EditVehicleComponent }, // Route with vehicle ID
+  { path: 'edit-vehicle/:id', component: EditVehicleComponent },
+  { path: 'add-vehicle', component: AddVehicleComponent },
 
 
   // Protected Routes (Inside Default Layout)
@@ -25,6 +33,7 @@ export const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashComponent },
       { path: 'vehicles', component: VehiclesTableComponent },
+      { path: 'add-vehicle', component: AddVehicleComponent }
 
       // Add more pages here
     ]
