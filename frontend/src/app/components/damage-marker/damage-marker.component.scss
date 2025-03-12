@@ -1,0 +1,73 @@
+.dialog-container {
+  width: 500px;
+  border-radius: 10px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styling for form rows */
+.form-row {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+.add-btn{
+ 
+  color:white !important;
+  background-color: #008DD2 !important;
+ 
+}
+/* Styling for the instruction text */
+.instructions {
+  font-size: 14px;
+  font-style: italic;
+  color: gray;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Container for the image */
+.image-container {
+  position: relative;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img {
+  max-width: 100%; /* Ensure the image resizes correctly */
+  height: auto;
+  display: block;
+  position: relative;
+}
+
+/* Markers for damage points */
+.marker {
+  width: 12px;
+  height: 12px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  user-select: none;
+}
+.delete-marker-btn {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 16px;
+  height: 16px;
+  background: white;
+  color: black;
+  border-radius: 50%;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  cursor: pointer;
+  border: none;
+}

@@ -1,0 +1,61 @@
+<mat-dialog-content class="dialog-container">
+  <h2 class="title">Add Damage</h2>
+
+  <!-- Damage Selection Inputs -->
+  <div class="form-row">
+    <mat-form-field appearance="outline">
+      <mat-label>Car Part</mat-label>
+      <mat-select>
+        <mat-option value="door">Door</mat-option>
+        <mat-option value="bumper">Bumper</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Damage</mat-label>
+      <mat-select>
+        <mat-option value="scratch">Scratch</mat-option>
+        <mat-option value="dent">Dent</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field appearance="outline">
+      <mat-label>Severity</mat-label>
+      <mat-select>
+        <mat-option value="low">Low</mat-option>
+        <mat-option value="high">High</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>State of Car</mat-label>
+      <mat-select>
+        <mat-option value="used">Used</mat-option>
+        <mat-option value="new">New</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-- Image where users can click to mark damage -->
+  <p class="instructions">Click anywhere on the image to mark the damage<br>Right click on the dot to DELETE!</p>
+  <div class="image-container">
+    <img src="assets/car-damage.png" alt="Car Image" (click)="addMarker($event)">
+    <!-- Display markers -->
+    <div *ngFor="let mark of damageMarks; let i = index" 
+       class="marker" 
+       [style.left.%]="mark.x" 
+       [style.top.%]="mark.y"
+       (contextmenu)="removeMarker(i); $event.preventDefault()">
+      </div>
+  </div>
+</mat-dialog-content>
+
+
+
+<!-- Buttons -->
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Cancel</button>
+  <button mat-raised-button class="add-btn"  (click)="save()">Add</button>
+</mat-dialog-actions>

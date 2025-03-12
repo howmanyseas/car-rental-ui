@@ -6,7 +6,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
 import { DashComponent } from './components/dash/dash.component';
 import { VehiclesTableComponent } from './components/vehicles-table/vehicles-table.component';
-import { EditVehicleComponent } from './edit-vehicle/edit-vehicle.component';
+import { EditVehicleComponent } from './components/edit-vehicle/edit-vehicle.component';
 
 export const routes: Routes = [
   // Public Routes

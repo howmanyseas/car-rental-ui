@@ -10,6 +10,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialog } from '@angular/material/dialog';
+import { DamageMarkerComponent } from '../damage-marker/damage-marker.component';
 
 
 interface DamageHistoryItem {
@@ -55,7 +57,7 @@ export class EditVehicleComponent implements OnInit {
   vehicle: Vehicle = {} as Vehicle;
   damageHistory: DamageHistoryItem[] = [];
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router, private dialog: MatDialog) {}
   displayedColumns = ['CarPart', 'Damage'];
 
   ngOnInit(): void {
@@ -64,10 +66,26 @@ export class EditVehicleComponent implements OnInit {
   cancelBtn(){
     this.router.navigate(['/vehicles'])
   }
-  addDamage() {
-    this.damageHistory.push({ part: '', damage: '' });
-  }
 
+  addDamage() {
+    const dialogRef = this.dialog.open(DamageMarkerComponent, {
+      width: '500px',
+      data: {}
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Damage coordinates:', result);
+        // TODO: Save to database later
+      }
+    });
+  }
+  
+  viewMaintenanceHistory() {
+    console.log("View Maintenance History clicked!");
+    // TODO: Open a dialog or navigate to maintenance history page
+  }
+  
   removeDamage(item: DamageHistoryItem) {
     this.damageHistory = this.damageHistory.filter(d => d !== item);
   }

@@ -55,7 +55,7 @@ td {
 /* Action Buttons */
 
 .edit-vehicle-form {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .buttons-container {
@@ -74,14 +74,22 @@ mat-form-field {
 input {
   color: white !important; /* Ensures input text is visible */
 }
-.cancel-btn{
+.cancel-btn {
   color: #ec3838;
 }
 .add-damage-btn {
   width: auto;
   margin-top: 10px;
-  color:white !important;
-  background-color: #008DD2 !important;
+  color: white !important;
+  background-color: #008dd2 !important;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+.add-maint-btn {
+  width: auto;
+  margin-top: 10px;
+  color: white !important;
+  background-color: #5c6bc0 !important;
   border-radius: 10px;
   margin-left: 10px;
 }
@@ -93,7 +101,6 @@ input {
   border: none;
   width: 40%; /* Match two columns of the form */
   box-shadow: none; /* Remove shadow if applied */
-
 }
 mat-card {
   border: none;
@@ -106,16 +113,13 @@ mat-card {
 
 /* Table Header Style */
 .damage-table th {
-  background-color: #ccc;
-  color: #444;
+  color: #ccc;
   padding: 8px;
   text-align: left;
-  border-bottom: 1px solid #444;
 }
 
 /* Table Row Style */
 .damage-table td {
-  border-bottom: 1px solid #ccc; /* Horizontal borders only */
   padding: 8px;
 }
 
@@ -125,4 +129,23 @@ mat-card {
 
   cursor: pointer;
   font-size: 18px;
+}
+.damage-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.damage-options button {
+  margin-left: 10px;
+}
+
+.save-btn{
+ 
+  color: white !important;
+  background-color: #008dd2 !important;
+
 }
