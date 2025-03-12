@@ -7,7 +7,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { DefaultLayoutComponent } from '../layouts/default-layout/default-layout.component';
+import { DefaultLayoutComponent } from '../../layouts/default-layout/default-layout.component';
 @Component({
   selector: 'app-dash',
   templateUrl: './dash.component.html',

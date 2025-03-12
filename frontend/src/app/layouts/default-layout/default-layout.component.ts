@@ -28,7 +28,7 @@ export class DefaultLayoutComponent {
 
   menuItems = [
     { label: 'Dashboard', icon: 'dashboard', route: '/dashboard' },
-    { label: 'Cars', icon: 'directions_car', route: '/cars' },
+    { label: 'Cars', icon: 'directions_car', route: '/vehicles' },
     { label: 'Check Out', route: '/checkout', icon: 'shopping_cart' }, // Checkout
     { label: 'Check In', route: '/checkin', icon: 'assignment_turned_in' }, // Check-in
     { label: 'Users', route: '/users', icon: 'group' }, // Users
