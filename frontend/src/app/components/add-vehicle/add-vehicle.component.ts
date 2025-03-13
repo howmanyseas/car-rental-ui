@@ -57,9 +57,8 @@ export class AddVehicleComponent {
   constructor(private router: Router) {}
 
   addVehicle() {
-    console.log('Adding Vehicle:', this.vehicle);
     // TODO: Implement backend API call to save the new vehicle
-    this.router.navigate(['/vehicles']); // Redirect back to vehicles page after adding
+    this.router.navigate(['/vehicle-registration']);
   }
 
   cancelBtn() {

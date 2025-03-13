@@ -1,0 +1,96 @@
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+:host {
+  display: block;
+  margin: 30px;
+}
+
+.table-container {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+h2,
+h3 {
+  color: white;
+  font-family: "Inter";
+}
+
+table {
+  width: 100%;
+  background: transparent;
+  color: white;
+}
+
+.ren hjngtal-table {
+  width: 100%;
+  color: white;
+}
+
+th {
+  color: white;
+  font-weight: bold;
+  font-family: "Inter";
+}
+
+td,
+th {
+  padding: 12px;
+  color: white;
+  
+}
+.mat-table {
+  width: 100%;
+  table-layout: fixed; /* Ensures all columns align properly */
+}
+.title,
+.subtitle {
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+/* Status Chips */
+.mat-chip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-weight: bold;
+  color: white !important;
+  text-align: center;
+}
+
+
+
+.completed {
+  background-color: #00e676 !important;
+  /* Green */
+}
+
+.active {
+  background-color: #ffca28 !important;
+  /* Yellow */
+}
+
+/* td.mat-column-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Ensures vertical alignment 
+} */
+
+.mat-icon-button {
+  color: white !important;
+}
+/* Define fixed widths for columns */
+
+/* Handle text overflow */

@@ -9,8 +9,8 @@ import { VehiclesTableComponent } from './components/vehicles-table/vehicles-tab
 import { EditVehicleComponent } from './components/edit-vehicle/edit-vehicle.component';
 import { AddVehicleComponent } from './components/add-vehicle/add-vehicle.component';
 import { DamageMarkerComponent } from './components/damage-marker/damage-marker.component';
-
-
+import { VehicleRegistrationComponent } from './components/vehicle-registration/vehicle-registration.component';
+import { VehicleRentalHistoryComponent } from './components/vehicle-rental-history/vehicle-rental-history.component';
 
 
 
@@ -24,6 +24,10 @@ export const routes: Routes = [
   { path: 'vehicles', component: VehiclesTableComponent },
   { path: 'edit-vehicle/:id', component: EditVehicleComponent },
   { path: 'add-vehicle', component: AddVehicleComponent },
+  { path: 'vehicle-registration', component: VehicleRegistrationComponent },
+  { path: 'vehicle-rental-history', component: VehicleRentalHistoryComponent },
+
+
 
 
   // Protected Routes (Inside Default Layout)
@@ -33,7 +37,10 @@ export const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashComponent },
       { path: 'vehicles', component: VehiclesTableComponent },
-      { path: 'add-vehicle', component: AddVehicleComponent }
+      { path: 'add-vehicle', component: AddVehicleComponent },
+      { path: 'vehicle-registration', component: VehicleRegistrationComponent },
+      { path: 'vehicle-rental-history', component: VehicleRentalHistoryComponent },
+
 
       // Add more pages here
     ]

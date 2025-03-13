@@ -1,0 +1,39 @@
+.form-container {
+    padding: 20px;
+    background: #333;
+    border-radius: 8px;
+  }
+  
+  .section-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  :host {
+    display: block;
+    margin: 30px;
+  }
+  h2,h3  {
+    color: white;
+    font-family: "Inter";
+  }
+  .row {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+  input {
+    color: white !important; /* Ensures input text is visible */
+  }
+  .full-width {
+    width: 100%;
+  }
+  
+  .buttons-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
