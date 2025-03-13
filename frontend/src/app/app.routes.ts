@@ -11,7 +11,7 @@ import { AddVehicleComponent } from './components/add-vehicle/add-vehicle.compon
 import { DamageMarkerComponent } from './components/damage-marker/damage-marker.component';
 import { VehicleRegistrationComponent } from './components/vehicle-registration/vehicle-registration.component';
 import { VehicleRentalHistoryComponent } from './components/vehicle-rental-history/vehicle-rental-history.component';
-
+import { VehicleMaintenanceHistoryComponent } from './components/vehicle-maintenance-history/vehicle-maintenance-history.component';
 
 
 
@@ -26,6 +26,8 @@ export const routes: Routes = [
   { path: 'add-vehicle', component: AddVehicleComponent },
   { path: 'vehicle-registration', component: VehicleRegistrationComponent },
   { path: 'vehicle-rental-history', component: VehicleRentalHistoryComponent },
+  { path: 'vehicle-maintenance-history', component: VehicleMaintenanceHistoryComponent },
+
 
 
 
@@ -40,6 +42,7 @@ export const routes: Routes = [
       { path: 'add-vehicle', component: AddVehicleComponent },
       { path: 'vehicle-registration', component: VehicleRegistrationComponent },
       { path: 'vehicle-rental-history', component: VehicleRentalHistoryComponent },
+      { path: 'vehicle-maintenance-history', component: VehicleMaintenanceHistoryComponent },
 
 
       // Add more pages here

@@ -57,13 +57,13 @@ export class EditVehicleComponent implements OnInit {
   vehicle: Vehicle = {} as Vehicle;
   damageHistory: DamageHistoryItem[] = [];
 
-  constructor(private route: ActivatedRoute, private router: Router, private dialog: MatDialog) {}
+  constructor(private route: ActivatedRoute, private router: Router, private dialog: MatDialog) { }
   displayedColumns = ['CarPart', 'Damage'];
 
   ngOnInit(): void {
     this.vehicle.carId = this.route.snapshot.paramMap.get('id') || '';
   }
-  cancelBtn(){
+  cancelBtn() {
     this.router.navigate(['/vehicles'])
   }
 
@@ -72,7 +72,7 @@ export class EditVehicleComponent implements OnInit {
       width: '500px',
       data: {}
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log('Damage coordinates:', result);
@@ -80,12 +80,13 @@ export class EditVehicleComponent implements OnInit {
       }
     });
   }
-  
+
   viewMaintenanceHistory() {
     console.log("View Maintenance History clicked!");
+    this.router.navigate(['/vehicle-maintenance-history'])
     // TODO: Open a dialog or navigate to maintenance history page
   }
-  
+
   removeDamage(item: DamageHistoryItem) {
     this.damageHistory = this.damageHistory.filter(d => d !== item);
   }

@@ -6,17 +6,20 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatSortModule, MatSort } from '@angular/material/sort';
 import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
-import { Router } from '@angular/router';
-import { VehicleRentalHistoryDataSource, VehicleRentalHistoryItem } from './vehicle-rental-history-datasource';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { VehicleMaintenanceHistoryDataSource, VehicleMaintenanceHistoryItem } from './vehicle-maintenance-history-datasource';
 
 @Component({
-  selector: 'app-vehicle-rental-history',
-  templateUrl: './vehicle-rental-history.component.html',
-  styleUrl: './vehicle-rental-history.component.scss',
+  selector: 'app-vehicle-maintenance-history',
+  templateUrl: './vehicle-maintenance-history.component.html',
+  styleUrl: './vehicle-maintenance-history.component.scss',
   standalone: true,
   imports: [
     CommonModule,
+    FormsModule,
     MatTableModule,
     MatCardModule,
     MatChipsModule,
@@ -24,19 +27,19 @@ import { VehicleRentalHistoryDataSource, VehicleRentalHistoryItem } from './vehi
     MatPaginatorModule,
     MatButtonModule,
     MatIconModule,
-    MatIcon
+    MatFormFieldModule,
+    MatInputModule
   ],
 })
-export class VehicleRentalHistoryComponent implements AfterViewInit {
-  constructor(private router: Router) {}
-
+export class VehicleMaintenanceHistoryComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatTable) table!: MatTable<VehicleRentalHistoryItem>;
+  @ViewChild(MatTable) table!: MatTable<VehicleMaintenanceHistoryItem>;
 
-  dataSource = new VehicleRentalHistoryDataSource();
+  dataSource = new VehicleMaintenanceHistoryDataSource();
+  displayedColumns = ['dateOfLeave', 'checkOut', 'checkIn', 'days', 'repairType', 'address', 'status'];
 
-  displayedColumns = ['name', 'lastName', 'carPlate', 'rentalId', 'checkOut', 'checkIn', 'status'];
+  mva: string = ''; // Store the MVA input value
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;

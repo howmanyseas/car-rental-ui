@@ -35,7 +35,6 @@ td {
   padding: 12px;
   color: white;
 }
-/* Title Styling */
 .title, .subtitle {
   color: white;
   font-size: 22px;
@@ -43,17 +42,15 @@ td {
   margin-bottom: 16px;
 }
 
-/* Ensuring full width for form fields */
 .full-width {
   width: 100%;
 }
 
-/* Grid Layout */
 mat-grid-list {
   width: 100%;
 }
 .mat-icon {
-  color: #ffca28; /* Yellow icon */
+  color: #ffca28; 
 }
 
 .buttons {
@@ -72,30 +69,27 @@ button {
 }
 
 
-/* Button container styling */
 .buttons-container {
   display: flex;
   justify-content: flex-end;
-  gap: 12px; /* Adds spacing between buttons */
-  margin-top: 30px; /* Adds spacing from the table */
+  gap: 12px; 
+  margin-top: 30px;
 }
 
-/* Button styling */
 button {
   font-weight: bold;
   text-transform: none;
 }
 
-/* 📱 Responsive adjustments for smaller screens */
 @media (max-width: 600px) {
   .buttons {
     flex-direction: column;
     align-items: center;
-    gap: 8px; /* Reduce space between stacked buttons */
+    gap: 8px; 
   }
 
   button {
-    width: 100%; /* Full width on small screens */
-    max-width: 300px; /* Prevent excessive width */
+    width: 100%; 
+    max-width: 300px; 
   }
 }

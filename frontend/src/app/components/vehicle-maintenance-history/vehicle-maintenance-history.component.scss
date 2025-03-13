@@ -1,30 +1,17 @@
-
 :host {
   display: block;
   margin: 30px;
 }
-
-.table-container {
-  max-width: 100%;
-  overflow-x: auto;
-  padding: 16px;
-  border-radius: 8px;
-}
-
 h2,
 h3 {
   color: white;
   font-family: "Inter";
 }
-
 table {
   width: 100%;
   background: transparent;
   color: white;
 }
-
-
-
 th {
   color: white;
   font-weight: bold;
@@ -41,21 +28,6 @@ th {
   width: 100%;
   table-layout: fixed; 
 }
-
-
-.mat-chip {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px 10px;
-  border-radius: 12px;
-  font-weight: bold;
-  color: white !important;
-  text-align: center;
-}
-
-
-
 .completed {
   background-color: #00e676 !important;
 }
@@ -63,9 +35,12 @@ th {
 .active {
   background-color: #ffca28 !important;
 }
-
-
-.mat-icon-button {
-  color: white !important;
+.mat-chip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-weight: bold;
+  text-align: center;
 }
-

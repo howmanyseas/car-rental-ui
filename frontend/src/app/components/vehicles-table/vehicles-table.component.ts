@@ -36,7 +36,6 @@ export class VehiclesTableComponent implements AfterViewInit {
 
   dataSource = new VehiclesTableDataSource();
 
-  /** Columns displayed in the table. */
   displayedColumns = ['carId', 'plate', 'model', 'color', 'year', 'actions'];
 
   ngAfterViewInit(): void {

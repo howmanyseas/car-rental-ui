@@ -3,44 +3,36 @@
 <div class="table-container">
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
-    <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
       <td mat-cell *matCellDef="let record"> {{ record.name }} </td>
     </ng-container>
 
-    <!-- Last Name Column -->
     <ng-container matColumnDef="lastName">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
       <td mat-cell *matCellDef="let record"> {{ record.lastName }} </td>
     </ng-container>
 
-    <!-- Car Plate Column -->
     <ng-container matColumnDef="carPlate">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Car Plate </th>
       <td mat-cell *matCellDef="let record"> {{ record.carPlate }} </td>
     </ng-container>
 
-    <!-- Rental ID Column -->
     <ng-container matColumnDef="rentalId">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Rental ID </th>
       <td mat-cell *matCellDef="let record"> {{ record.rentalId }} </td>
     </ng-container>
 
-    <!-- Check Out Column -->
     <ng-container matColumnDef="checkOut">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Check Out Date </th>
       <td mat-cell *matCellDef="let record"> {{ record.checkOut }} </td>
     </ng-container>
 
-    <!-- Check In Column -->
     <ng-container matColumnDef="checkIn">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Check In Date </th>
       <td mat-cell *matCellDef="let record"> {{ record.checkIn }} </td>
     </ng-container>
 
-    <!-- Status Column -->
-<!-- Status Column -->
 <ng-container matColumnDef="status">
   <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
   <td mat-cell *matCellDef="let record" class="mat-column-status">
@@ -61,10 +53,8 @@
 
 
 
-    <!-- Table Headers & Rows -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <!-- Pagination -->
 </div>
