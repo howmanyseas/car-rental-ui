@@ -40,11 +40,10 @@ export class DamageMarkerComponent {
 
   addMarker(event: MouseEvent) {
     const image = event.target as HTMLImageElement;
-    if (!image || image.tagName !== 'IMG') return; // Ensure only image clicks count
+    if (!image || image.tagName !== 'IMG') return; 
   
-    const rect = image.getBoundingClientRect(); // Get image position and size
+    const rect = image.getBoundingClientRect(); 
   
-    // Correct way to get position relative to the image
     const x = ((event.clientX - rect.left) / rect.width) * 100;
     const y = ((event.clientY - rect.top) / rect.height) * 100;
   
@@ -58,12 +57,10 @@ export class DamageMarkerComponent {
   }
   
   
-  /** Closes dialog and returns the markers */
   save() {
     this.dialogRef.close(this.damageMarks);
   }
 
-  /** Closes dialog without saving */
   close() {
     this.dialogRef.close();
   }

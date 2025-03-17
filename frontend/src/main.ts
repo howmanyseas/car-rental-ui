@@ -15,7 +15,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
-// ✅ Bootstrapping `AppComponent` instead of `DefaultLayoutComponent`
 import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent, {

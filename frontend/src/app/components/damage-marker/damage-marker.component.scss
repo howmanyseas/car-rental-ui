@@ -7,7 +7,6 @@
   align-items: center;
 }
 
-/* Styling for form rows */
 .form-row {
   display: flex;
   gap: 16px;
@@ -19,7 +18,6 @@
   background-color: #008DD2 !important;
  
 }
-/* Styling for the instruction text */
 .instructions {
   font-size: 14px;
   font-style: italic;
@@ -28,7 +26,6 @@
   margin-bottom: 10px;
 }
 
-/* Container for the image */
 .image-container {
   position: relative;
   display: inline-block;
@@ -37,13 +34,12 @@
 }
 
 .image-container img {
-  max-width: 100%; /* Ensure the image resizes correctly */
+  max-width: 100%; 
   height: auto;
   display: block;
   position: relative;
 }
 
-/* Markers for damage points */
 .marker {
   width: 12px;
   height: 12px;

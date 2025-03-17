@@ -9,18 +9,16 @@ import { DefaultLayoutComponent } from "./layouts/default-layout/default-layout.
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 
-// Import the child component (your header)
-//import { DefaultHeaderComponent } from './layouts/default-header/default-header.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  // Import all the modules and standalone components you need here
   imports: [
     RouterOutlet,
-    MatSidenavModule, // for <mat-sidenav>, <mat-sidenav-container>
+    MatSidenavModule, 
     MatListModule,
     //DefaultHeaderComponent,
     DefaultLayoutComponent,
@@ -32,7 +30,7 @@ export class AppComponent {
   constructor(private router: Router) {}
 
   shouldShowLayout(): boolean {
-    // Exclude these routes from the default layout
+    // exclude these routes from the default layout
     const excludedRoutes = ['/login', '/register', '/forgot-password'];
     return !excludedRoutes.includes(this.router.url);
   }

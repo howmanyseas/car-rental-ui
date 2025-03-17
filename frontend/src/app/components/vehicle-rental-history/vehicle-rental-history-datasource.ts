@@ -12,7 +12,6 @@ export interface VehicleRentalHistoryItem {
   status: string;
 }
 
-// Sample Data
 const rentalHistory: VehicleRentalHistoryItem[] = [
   {
     name: 'Ben',

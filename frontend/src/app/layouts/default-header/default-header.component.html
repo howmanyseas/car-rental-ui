@@ -1,5 +1,4 @@
 <mat-toolbar class="custom-toolbar">
-  <!-- Left Section: Sidebar Toggle & Logo -->
   <div class="left-section">
     <button mat-icon-button (click)="toggleSidebar()" aria-label="Toggle sidenav">
       <mat-icon>menu</mat-icon>
@@ -7,16 +6,13 @@
     <img src="assets/logo.png" alt="Company Logo" class="company-logo" />
   </div>
 
-  <!-- Right Section: Search + User Profile -->
   <div class="right-icons">
     
-    <!-- Search Icon (Hidden When Search is Active) -->
     <button mat-icon-button id="searchButton" (click)="toggleSearch()" aria-label="Search">
       <mat-icon>search</mat-icon>
     </button>
     
 
-    <!-- Expanding Search Bar (Should Stay Centered Now) -->
     <div class="search-container" [ngClass]="{ 'expanded': isSearchExpanded }">
       <mat-form-field appearance="outline" style="height: 40px;">
         <input matInput type="search" placeholder="Search..." #searchInput (blur)="closeSearch()">
@@ -26,7 +22,6 @@
       </mat-form-field>
     </div>
 
-    <!-- User Icon with Dropdown -->
     <button mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="User account">
       <mat-icon>account_circle</mat-icon>
     </button>

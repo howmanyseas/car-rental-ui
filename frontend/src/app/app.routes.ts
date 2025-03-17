@@ -16,7 +16,6 @@ import { VehicleMaintenanceHistoryComponent } from './components/vehicle-mainten
 
 
 export const routes: Routes = [
-  // Public Routes
   { path: 'login', component: LoginComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
@@ -32,7 +31,7 @@ export const routes: Routes = [
 
 
 
-  // Protected Routes (Inside Default Layout)
+  //inside Default Layout)
   {
     path: '',
     component: DefaultLayoutComponent,
@@ -45,11 +44,9 @@ export const routes: Routes = [
       { path: 'vehicle-maintenance-history', component: VehicleMaintenanceHistoryComponent },
 
 
-      // Add more pages here
     ]
   },
 
-  // Redirect any unknown route to login
   { path: '**', redirectTo: 'login' }
 ];
 

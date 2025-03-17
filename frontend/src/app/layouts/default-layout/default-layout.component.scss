@@ -13,19 +13,17 @@ body {
   flex-direction: column;
 }
 
-/* Header */
 app-default-header {
   width: 100%;
   height: 64px;
   background-color: #2d2d2d;
 }
 
-/* Sidebar */
 .side-nav {
-  width: 60px; /* ✅ Start collapsed with only icons */
+  width: 60px;
   transition: width 0.3s ease-in-out;
   overflow: hidden;
-  border-radius: 0; /* ✅ Removes roundness */
+  border-radius: 0;
   background-color: #212121;
   color: white;
   height: 100vh;
@@ -38,10 +36,9 @@ app-default-header {
 }
 
 .side-nav.expanded {
-  width: 200px; /* ✅ Expands when clicking the burger menu */
+  width: 200px;
 }
 
-/* Sidebar Menu */
 .menu-container {
   display: flex;
   flex-direction: column;
@@ -78,7 +75,6 @@ app-default-header {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Hide text when collapsed */
 .menu-list li span {
   display: none;
 }

@@ -61,12 +61,3 @@ export class DefaultHeaderComponent implements AfterViewInit {
     this.sidebarToggle.emit();
   }
 }
-
-/*   goToProfile() {
-    this.router.navigate(['/profile']);
-  }
-
-  logout() {
-    console.log('User logged out');
-    // Add logout logic here
-  } */

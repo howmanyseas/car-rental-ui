@@ -36,15 +36,14 @@ export class VehicleRegistrationComponent {
   constructor(private router: Router) { 
   }
 
-  /** Save data logic (TODO: connect to backend) */
   save() {
     console.log("Vehicle Registration Saved:");
-    // TODO: Implement backend API call
+    // backend API call
   }
 
-  /** Download logic (TODO: generate PDF) */
+  
   download() {
     console.log("Download button clicked");
-    // TODO: Implement download functionality
+    // download functionality
   }
 }

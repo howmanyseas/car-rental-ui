@@ -76,7 +76,7 @@ export class EditVehicleComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log('Damage coordinates:', result);
-        // TODO: Save to database later
+        //Save to database later
       }
     });
   }
@@ -84,7 +84,6 @@ export class EditVehicleComponent implements OnInit {
   viewMaintenanceHistory() {
     console.log("View Maintenance History clicked!");
     this.router.navigate(['/vehicle-maintenance-history'])
-    // TODO: Open a dialog or navigate to maintenance history page
   }
 
   removeDamage(item: DamageHistoryItem) {
