@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, ChangeDetectorRef } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -29,13 +29,17 @@ export class DefaultLayoutComponent {
   menuItems = [
     { label: 'Dashboard', icon: 'dashboard', route: '/dashboard' },
     { label: 'Cars', icon: 'directions_car', route: '/vehicles' },
-    { label: 'Check Out', route: '/checkout', icon: 'shopping_cart' }, // Checkout
-    { label: 'Check In', route: '/checkin', icon: 'assignment_turned_in' }, // Check-in
-    { label: 'Users', route: '/users', icon: 'group' }, // Users
-    { label: 'Help', route: '/help', icon: 'help_outline' } // Help
+    { label: 'Check Out', route: '/checkout', icon: 'shopping_cart' }, 
+    { label: 'Check In', route: '/checkin', icon: 'assignment_turned_in' },
+    { label: 'Users', route: '/users', icon: 'group' }, 
+    { label: 'Help', route: '/help', icon: 'help_outline' } 
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router , private cdr: ChangeDetectorRef) {
+   
+      console.log('✅ DefaultLayoutComponent Loaded');
+    
+  }
 
   toggleSidenav() {
     this.isExpanded = !this.isExpanded;

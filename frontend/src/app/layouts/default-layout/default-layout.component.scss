@@ -88,3 +88,7 @@ mat-sidenav-content {
 .side-nav.expanded .menu-list li span {
   display: inline-block;
 }
+.router-outlet {
+  flex-grow: 1;
+  overflow: auto; 
+}
