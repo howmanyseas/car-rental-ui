@@ -1,0 +1,211 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding-bottom: 20px;
+  align-items: flex-start;
+}
+.button-group {
+  display: inline;
+}
+.form-container {
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+}
+.grid-fields,
+.single-field-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.summary {
+  flex: 1;
+  height: fit-content;
+  font-family: "Inter";
+  background-color: #8f8f8f;
+}
+input {
+  color: white !important;
+}
+:host {
+  display: block;
+  margin: 30px;
+}
+mat-option {
+  color: #5d5d5d;
+}
+mat-card {
+  background-color: transparent;
+  box-shadow: none;
+}
+::ng-deep .mat-mdc-radio-button .mdc-label {
+  color: rgb(219, 218, 218) !important;
+}
+
+h2,
+h3 {
+  color: white;
+  font-family: "Inter";
+}
+mat-step {
+  background-color: transparent;
+}
+
+.inline-field {
+  margin: 0 10px;
+  width: 200px;
+  display: inline-block;
+}
+
+.button-group {
+  margin: 20px 0;
+  gap: 10px;
+  display: flex;
+}
+.fee-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.fee-row mat-form-field {
+  flex: 1;
+}
+
+button[mat-mini-fab] {
+  margin-top: 10px;
+}
+
+.buttons {
+  background-color: #008dd2 !important;
+  color: white !important;
+  border-radius: 10px;
+}
+
+::ng-deep .mat-step-header {
+  color: white !important;
+  border-radius: 8px;
+}
+
+::ng-deep .mat-step-header.cdk-keyboard-focused,
+::ng-deep .mat-step-header:hover {
+  color: white !important;
+}
+
+::ng-deep .mat-stepper-horizontal-line {
+  border-top-color: #666 !important;
+}
+
+::ng-deep .mat-step-icon-selected,
+::ng-deep .mat-step-icon-state-edit,
+::ng-deep .mat-step-icon-state-done {
+  background-color: #1976d2 !important;
+  color: white !important;
+}
+
+::ng-deep .mat-step-label,
+::ng-deep .mat-step-text-label {
+  color: white !important;
+}
+
+mat-horizontal-stepper {
+  background-color: transparent !important;
+  flex: 3;
+}
+mat-form-field {
+  flex: 1;
+}
+::ng-deep .mat-horizontal-stepper-content {
+  max-height: 75vh;
+  overflow-y: auto;
+  padding-right: 10px;
+  box-sizing: border-box;
+}
+
+::ng-deep .mat-horizontal-stepper-content::-webkit-scrollbar {
+  width: 6px;
+}
+::ng-deep .mat-horizontal-stepper-content::-webkit-scrollbar-track {
+  background: #333;
+}
+::ng-deep .mat-horizontal-stepper-content::-webkit-scrollbar-thumb {
+  background-color: #666;
+  border-radius: 3px;
+}
+.grid-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 15px;
+}
+.colorwhite {
+  color: white;
+}
+h4 {
+  color: white;
+  margin-top: 20px;
+  font-family: "Inter";
+}
+mat-button-toggle-group {
+  max-height: 40px;
+}
+.radio-group {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+::ng-deep .mat-radio-label-content {
+  color: white !important;
+}
+// mat-icon-stepper selected color change
+::ng-deep .mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+  background-color: gray !important;
+}
+
+::ng-deep
+  .mat-form-field-appearance-outline.mat-form-field-disabled
+  .mat-form-field-outline {
+  border-color: white !important;
+  opacity: 1 !important;
+}
+
+::ng-deep
+  .mat-form-field-appearance-outline.mat-form-field-disabled
+  .mat-form-field-flex {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 4px !important;
+  opacity: 1 !important;
+}
+
+::ng-deep .readonly-field .mat-form-field-outline {
+  border: 1px solid white !important;
+}
+
+::ng-deep .readonly-field .mat-form-field-flex {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 4px !important;
+}
+
+.buttons-group button {
+  background-color: #008dd2 !important;
+  color: white !important;
+  border-radius: 10px;
+}
+
+.buttons-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: flex-end;
+}
+
+mat-icon {
+  color: white;
+  width: auto;
+  height: auto;
+}
