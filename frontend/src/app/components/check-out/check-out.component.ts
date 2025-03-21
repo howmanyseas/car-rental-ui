@@ -15,9 +15,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatIcon } from '@angular/material/icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
-
 @Component({
-  selector: 'app-check-in',
+  selector: 'app-check-out',
   standalone: true,
   imports: [
     CommonModule,
@@ -34,7 +33,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MatOption,
     MatRadioModule,
     MatIcon,
-    MatButtonToggleModule
+    MatButtonToggleModule,
   ],
   templateUrl: './check-out.component.html',
   styleUrls: ['./check-out.component.scss'],
@@ -65,12 +64,12 @@ export class CheckOutComponent implements OnInit {
     { label: 'Insurance Lv.1', control: 'insuranceLv2', value: 100 },
   ];
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.pricingFormGroup = this.fb.group({
       pricingOption: ['daily'],
-      additionalFees: this.fb.array([]), // <-- Add this
+      additionalFees: this.fb.array([]),
       discount: this.fb.group({
         discountPercent: [''],
         reason: [''],
@@ -96,26 +95,24 @@ export class CheckOutComponent implements OnInit {
       licenseNumber: [''],
       licenseCountry: [''],
       licenseExpiry: [''],
-      customerNote: ['']
+      customerNote: [''],
     });
     this.carInformationFormGroup = this.fb.group({
       mva: [''],
-      carGroup: [{value: 'Group A', disabled: true}],
-      licensePlate: [{value: 'AB123CD', disabled: true}],
-      fuel: [{value: 'Diesel', disabled: true}],
-      carModel: [{value: 'Toyota Corolla', disabled: true}],
-      millage: [{value: '25000 km', disabled: true}],
-      color: [{value: 'Blue', disabled: true}],
-      status: [{value: 'Available', disabled: true}],
-      transmission: [{value: 'Manual', disabled: true}],
+      carGroup: [{ value: 'Group A', disabled: true }],
+      licensePlate: [{ value: 'AB123CD', disabled: true }],
+      fuel: [{ value: 'Diesel', disabled: true }],
+      carModel: [{ value: 'Toyota Corolla', disabled: true }],
+      millage: [{ value: '25000 km', disabled: true }],
+      color: [{ value: 'Blue', disabled: true }],
+      status: [{ value: 'Available', disabled: true }],
+      transmission: [{ value: 'Manual', disabled: true }],
     });
-
   }
   get additionalFees(): FormArray {
     return this.pricingFormGroup.get('additionalFees') as FormArray;
   }
 
-  // Add new fee row
   addAdditionalFee() {
     this.additionalFees.push(
       this.fb.group({
@@ -128,7 +125,7 @@ export class CheckOutComponent implements OnInit {
     const file: File = event.target.files[0];
     if (file) {
       this.selectedFile = file;
-      console.log("Selected file:", file.name);
+      console.log('Selected file:', file.name);
     }
   }
   removeAdditionalFee(index: number) {
@@ -137,7 +134,6 @@ export class CheckOutComponent implements OnInit {
   toggleAdditionalFees() {
     this.showAdditionalFees = !this.showAdditionalFees;
 
-    // Automatically add an initial row if toggled open and currently empty
     if (this.showAdditionalFees && this.additionalFees.length === 0) {
       this.addAdditionalFee();
     }
