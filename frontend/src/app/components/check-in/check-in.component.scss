@@ -1,33 +1,154 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding-bottom: 20px;
-  }
+  display: flex;
+  gap: 20px;
+  overflow-y: hidden !important; 
+}
+.form-container {
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+}
+.scrollable-container {
+  flex: 2;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding-right: 10px;
+  box-sizing: border-box;
+}
+.to-the-right{
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: flex-end;
+}
+.scrollable-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollable-container::-webkit-scrollbar-track {
+  background: #333;
+}
+
+.scrollable-container::-webkit-scrollbar-thumb {
+  background-color: #666;
+  border-radius: 3px;
+}
+.grid-fields {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.grid-two-columns {
+  display: flex;
+  gap: 40px;
+}
+.grid-two-columns > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+::ng-deep .mat-form-field-appearance-outline input[readonly] {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  opacity: 1 !important;
+  color: white !important;
+  border: 1px solid white !important;
+  border-radius: 5px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+
+.summary {
+  flex: 1;
+  height: fit-content;
+  font-family: "Inter";
+  background-color: #8f8f8f;
   
-  .form-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .grid-fields {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin-bottom: 20px;
-  }
-  
-  .button-group {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-  }
-  
-  h2, h3 {
-    color: white;
-  }
-  
-  mat-form-field {
-    width: 100%;
-  }
-  
+}
+:host {
+  display: block;
+  margin: 30px;
+}
+mat-card {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+mat-divider {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+h2, h3 {
+  color: white;
+  font-family: "Inter", sans-serif;
+}
+input {
+  color: white !important;
+}
+mat-option {
+  color: #5d5d5d;
+}
+
+::ng-deep .mat-radio-button .mat-radio-label {
+  color: white !important;
+}
+
+.additional-fees {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mat-icon-button {
+  color: white !important;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: white !important;
+}
+.bluebutton {
+  background-color: #008dd2 !important;
+  color: white !important;
+  border-radius: 10px;
+}
+
+.fee-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.fee-fields {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.fee-select, .fee-input {
+  flex: 1;
+}
+
+.delete-btn {
+  background-color: rgba(255, 0, 0, 0.2); 
+  border-radius: 5px;
+}
+
+.delete-btn mat-icon {
+  color: white; 
+}
+
+.add-fee-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+

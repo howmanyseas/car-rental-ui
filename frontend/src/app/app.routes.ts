@@ -18,8 +18,9 @@ export const routes: Routes = [
       { path: 'vehicle-registration', loadComponent: () => import('./components/vehicle-registration/vehicle-registration.component').then(m => m.VehicleRegistrationComponent), title: 'Vehicle Registration' },
       { path: 'vehicle-rental-history', loadComponent: () => import('./components/vehicle-rental-history/vehicle-rental-history.component').then(m => m.VehicleRentalHistoryComponent), title: 'Vehicle Rental History' },
       { path: 'vehicle-maintenance-history', loadComponent: () => import('./components/vehicle-maintenance-history/vehicle-maintenance-history.component').then(m => m.VehicleMaintenanceHistoryComponent), title: 'Vehicle Maintenance History' },
-      { path: 'check-in', loadComponent: () => import('./components/check-in/check-in.component').then(m => m.CheckInComponent), title: 'Check In' },
       { path: 'check-out', loadComponent: () => import('./components/check-out/check-out.component').then(m => m.CheckOutComponent), title: 'Check Out' },
+      { path: 'check-in', loadComponent: () => import('./components/check-in/check-in.component').then(m => m.CheckInComponent), title: 'Check In' },
+
 
     ]
   },
