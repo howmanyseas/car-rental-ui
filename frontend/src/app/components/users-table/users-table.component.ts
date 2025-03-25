@@ -35,7 +35,7 @@ export class UsersTableComponent implements AfterViewInit {
 
   displayedColumns = ['fname', 'lname', 'email', 'role', 'actions'];
   gotoNewUser() {
-    this.router.navigate(['/add-user']);
+    this.router.navigate(['/add-users']);
 
   }
   ngAfterViewInit(): void {

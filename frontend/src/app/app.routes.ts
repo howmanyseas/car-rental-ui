@@ -21,6 +21,8 @@ export const routes: Routes = [
       { path: 'check-out', loadComponent: () => import('./components/check-out/check-out.component').then(m => m.CheckOutComponent), title: 'Check Out' },
       { path: 'check-in', loadComponent: () => import('./components/check-in/check-in.component').then(m => m.CheckInComponent), title: 'Check In' },
       { path: 'users-table', loadComponent: () => import('./components/users-table/users-table.component').then(m => m.UsersTableComponent), title: 'Users' },
+      { path: 'add-users', loadComponent: () => import('./components/add-user/add-user.component').then(m => m.AddUserComponent), title: 'Add Users' },
+
 
 
     ]
