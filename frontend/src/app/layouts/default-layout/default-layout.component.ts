@@ -31,7 +31,7 @@ export class DefaultLayoutComponent {
     { label: 'Cars', icon: 'directions_car', route: '/vehicles' },
     { label: 'Check Out', route: '/check-out', icon: 'shopping_cart' }, 
     { label: 'Check In', route: '/check-in', icon: 'assignment_turned_in' },
-    { label: 'Users', route: '/users', icon: 'group' }, 
+    { label: 'Users', route: '/users-table', icon: 'group' }, 
     { label: 'Help', route: '/help', icon: 'help_outline' } 
   ];
 

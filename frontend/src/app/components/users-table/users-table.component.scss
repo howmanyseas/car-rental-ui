@@ -1,0 +1,98 @@
+.full-width-table {
+  width: 100%;
+}
+.table-container {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 16px;
+  border-radius: 8px;
+}
+:host {
+  display: block;
+  margin: 30px;
+
+}
+h2.title {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 50px;
+  font-family: 'Inter';
+}
+
+table {
+  width: 100%;
+  background: transparent;
+  color: white;
+
+}
+
+th {
+  background: #242323;
+  color: white;
+  font-weight: bold;
+  font-family: 'Inter';
+
+}
+
+td {
+  padding: 12px;
+  color: white;
+}
+.title, .subtitle {
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+mat-grid-list {
+  width: 100%;
+}
+.mat-icon {
+  color: #ffca28; 
+}
+
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+button {
+  color: white;
+}
+
+.mat-elevation-z8 {
+  box-shadow: none;
+}
+
+
+.buttons-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px; 
+  margin-top: 30px;
+}
+
+button {
+  font-weight: bold;
+  text-transform: none;
+}
+
+@media (max-width: 600px) {
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px; 
+  }
+
+  button {
+    width: 100%; 
+    max-width: 300px; 
+  }
+}
