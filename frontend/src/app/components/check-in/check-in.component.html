@@ -5,17 +5,17 @@
     <mat-card class="form-container">
       <mat-card-content>
         <form [formGroup]="checkInForm">
-          <div class="grid-two-column+s">
+          <div class="grid-two-columns">
             <div>
               <h3>Car Information</h3>
               <mat-divider></mat-divider><br />
               <mat-form-field appearance="outline">
-                <mat-label>Rental nr.</mat-label>
+                <mat-label>MVA</mat-label>
                 <input matInput formControlName="rentalNumber" />
               </mat-form-field>
 
               <mat-form-field appearance="outline">
-                <mat-label>MVA</mat-label>
+                <mat-label>Rental nr. </mat-label>
                 <input matInput formControlName="mva" />
               </mat-form-field>
             </div>
@@ -102,13 +102,25 @@
               </mat-form-field>
             </div>
           </div>
-          <h3>Net Amount</h3>
-          <mat-divider></mat-divider><br />
-          <div>
-            <mat-form-field appearance="outline">
-              <mat-label>Net Amount</mat-label>
-              <input matInput formControlName="netAmount" />
-            </mat-form-field>
+
+          <div class="grid-two-columns">
+            <div>
+              <h3>Net Amount</h3>
+              <mat-divider></mat-divider><br />
+
+              <mat-form-field appearance="outline">
+                <mat-label>Net Amount</mat-label>
+                <input matInput formControlName="netAmount" />
+              </mat-form-field>
+            </div>
+            <div>
+              <h3>Gross Amount</h3>
+              <mat-divider></mat-divider><br />
+              <mat-form-field appearance="outline">
+                <mat-label>Gross Amount</mat-label>
+                <input matInput formControlName="grossAmount" />
+              </mat-form-field>
+            </div>
           </div>
 
           <div class="button-group">
@@ -180,14 +192,7 @@
             </mat-card-content>
           </mat-card>
 
-          <h3>Gross Amount</h3>
-          <mat-divider></mat-divider><br />
-          <mat-form-field appearance="outline">
-            <mat-label>Gross Amount</mat-label>
-            <input matInput formControlName="grossAmount" />
-          </mat-form-field>
-
-          <div class="button-group">
+          <div class="buttons-group">
             <button mat-raised-button color="primary">Save</button>
             <button mat-raised-button color="primary">Download</button>
           </div>
@@ -202,9 +207,9 @@
     </mat-card-header>
     <mat-card-content>
       <p><strong>Rental ID:</strong> {{ summary.rentalId }}</p>
-      <p><strong>Net Amount:</strong> €{{ summary.netAmount }}</p>
-      <p><strong>Extras:</strong> €{{ summary.extras }}</p>
-      <p><strong>Gross Amount:</strong> €{{ summary.grossAmount }}</p>
+      <p><strong>MVA</strong> €{{ summary.netAmount }}</p>
+      <p><strong>Gross Amount:</strong> €{{ summary.extras }}</p>
+      <p><strong>Check In Date</strong> €{{ summary.grossAmount }}</p>
     </mat-card-content>
   </mat-card>
 </div>
