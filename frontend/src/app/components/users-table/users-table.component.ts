@@ -27,7 +27,7 @@ export class UsersTableComponent implements AfterViewInit {
   editUser(users: UsersTableItem) {
     this.router.navigate(['/edit-users', users.email]);
   }
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<UsersTableItem>;

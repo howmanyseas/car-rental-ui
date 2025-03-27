@@ -1,7 +1,10 @@
 .container {
   display: flex;
+  flex-direction: row;
+  align-items: flex-start;
   gap: 20px;
-  overflow-y: hidden !important; 
+  overflow-y: hidden !important;
+  padding-bottom: 20px;
 }
 .form-container {
   display: flex;
@@ -9,13 +12,13 @@
   flex-direction: column;
 }
 .scrollable-container {
-  flex: 2;
+  flex: 3;
   max-height: 80vh;
   overflow-y: auto;
   padding-right: 10px;
   box-sizing: border-box;
 }
-.to-the-right{
+.to-the-right {
   display: flex;
   gap: 10px;
   margin-top: 20px;
@@ -49,7 +52,6 @@
   gap: 15px;
 }
 
-
 ::ng-deep .mat-form-field-appearance-outline input[readonly] {
   background-color: rgba(255, 255, 255, 0.1) !important;
   opacity: 1 !important;
@@ -70,13 +72,11 @@
   margin-top: 20px;
 }
 
-
 .summary {
   flex: 1;
   height: fit-content;
   font-family: "Inter";
   background-color: #8f8f8f;
-  
 }
 :host {
   display: block;
@@ -91,9 +91,10 @@ mat-divider {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-h2, h3 {
+h2,
+h3 {
   color: white;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter";
 }
 input {
   color: white !important;
@@ -139,17 +140,18 @@ mat-option {
   width: 100%;
 }
 
-.fee-select, .fee-input {
+.fee-select,
+.fee-input {
   flex: 1;
 }
 
 .delete-btn {
-  background-color: rgba(255, 0, 0, 0.2); 
+  background-color: rgba(255, 0, 0, 0.2);
   border-radius: 5px;
 }
 
 .delete-btn mat-icon {
-  color: white; 
+  color: white;
 }
 
 .add-fee-container {
@@ -157,4 +159,3 @@ mat-option {
   justify-content: flex-start;
   margin-top: 10px;
 }
-

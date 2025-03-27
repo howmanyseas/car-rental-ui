@@ -384,7 +384,7 @@
         </mat-card-content>
       </mat-card>
     </mat-step>
-<!--put stepper with errors in the steps when conn with backnd-->
+    <!--put stepper with errors in the steps when conn with backnd-->
     <mat-step label="Car Information" state="phone">
       <mat-card class="form-container">
         <mat-card-header>
@@ -450,7 +450,79 @@
             </div>
 
             <div class="button-group">
-              <button mat-button matStepperPrevious> Back</button>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </mat-step>
+    <mat-step label="Payment" state="phone">
+      <mat-card class="form-container">
+        <mat-card-header>
+          <h3 class="title">Payment</h3>
+        </mat-card-header>
+
+        <mat-card-content>
+          <form [formGroup]="carInformationFormGroup">
+            <mat-divider></mat-divider><br />
+
+            <div class="grid-fields">
+              <mat-form-field appearance="outline" class="white-border">
+                <mat-label>MVA</mat-label>
+                <input matInput formControlName="mva" placeholder="Enter MVA" />
+              </mat-form-field>
+            </div>
+
+            <div class="grid-fields">
+              <mat-form-field appearance="outline">
+                <mat-label>Car Group</mat-label>
+                <input matInput />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="readonly-field">
+                <mat-label>License Plate</mat-label>
+                <input matInput />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Fuel</mat-label>
+                <input matInput />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Car Model</mat-label>
+                <input matInput />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Millage</mat-label>
+                <input matInput />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Color</mat-label>
+                <input matInput />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Status</mat-label>
+                <input matInput />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Transmission</mat-label>
+                <input matInput />
+              </mat-form-field>
+            </div>
+            <div class="buttons-group">
+              <button mat-raised-button color="primary">Save</button>
+              <button mat-raised-button color="primary">Download</button>
+              <button mat-raised-button color="primary">Invoice</button>
+            </div>
+
+            <div class="button-group">
+              <button mat-button matStepperPrevious>Back</button>
               <button mat-button matStepperNext>Next</button>
             </div>
           </form>

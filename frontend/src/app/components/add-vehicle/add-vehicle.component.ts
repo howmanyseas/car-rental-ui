@@ -57,7 +57,7 @@ export class AddVehicleComponent {
   constructor(private router: Router) {}
 
   addVehicle() {
-    // for  implementing backend API call to save the new vehicle
+    //  save the new vehicle
     this.router.navigate(['/vehicle-registration']);
   }
 

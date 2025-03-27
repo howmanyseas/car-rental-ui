@@ -66,16 +66,14 @@ export class CheckInComponent implements OnInit {
       cleaning: [''],
       damage: [''],
       grossAmount: [''],
-      additionalFees: this.fb.array([]), // ✅ FIXED: Initialize FormArray
+      additionalFees: this.fb.array([]), 
     });
   }
 
-  /** ✅ Get the Additional Fees as a FormArray */
   get additionalFees(): FormArray {
     return this.checkInForm.get('additionalFees') as FormArray;
   }
 
-  /** ✅ Toggle Additional Fees Section */
   toggleAdditionalFees() {
     this.showAdditionalFees = !this.showAdditionalFees;
     if (this.showAdditionalFees && this.additionalFees.length === 0) {
@@ -83,7 +81,6 @@ export class CheckInComponent implements OnInit {
     }
   }
 
-  /** ✅ Add a New Additional Fee */
   addAdditionalFees() {
     this.additionalFees.push(
       this.fb.group({
@@ -93,12 +90,10 @@ export class CheckInComponent implements OnInit {
     );
   }
 
-  /** ✅ Remove an Additional Fee */
   removeAdditionalFee(index: number) {
     this.additionalFees.removeAt(index);
   }
 
-  /** ✅ Open Damage Marker Dialog */
   addDamage() {
     const dialogRef = this.dialog.open(DamageMarkerComponent, {
       width: '500px',
