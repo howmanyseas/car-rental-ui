@@ -1,7 +1,11 @@
 <h2 class="title">Check Out</h2>
 
 <div class="container">
-  <mat-horizontal-stepper [linear]="true" #stepper headerPosition="bottom">
+  <mat-horizontal-stepper
+    [linear]="true"
+    #stepper
+    headerPosition="bottom"
+  >
     <mat-step label="Pricing" state="phone">
       <mat-card class="form-container">
         <mat-card-header>
@@ -410,7 +414,11 @@
 
               <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>License Plate</mat-label>
-                <input matInput formControlName="licensePlate" />
+                <input
+                  matInput
+                  formControlName="licensePlate"
+                  [readonly]="true"
+                />
               </mat-form-field>
 
               <mat-form-field appearance="outline">
@@ -443,11 +451,6 @@
                 <input matInput formControlName="transmission" />
               </mat-form-field>
             </div>
-            <div class="buttons-group">
-              <button mat-raised-button color="primary">Save</button>
-              <button mat-raised-button color="primary">Download</button>
-              <button mat-raised-button color="primary">Invoice</button>
-            </div>
 
             <div class="button-group">
               <button mat-button matStepperPrevious>Back</button>
@@ -464,55 +467,83 @@
         </mat-card-header>
 
         <mat-card-content>
-          <form [formGroup]="carInformationFormGroup">
+          <form [formGroup]="paymentFormGroup">
+            <h4>Card Information</h4>
             <mat-divider></mat-divider><br />
 
             <div class="grid-fields">
-              <mat-form-field appearance="outline" class="white-border">
-                <mat-label>MVA</mat-label>
-                <input matInput formControlName="mva" placeholder="Enter MVA" />
+              <mat-form-field appearance="outline">
+                <mat-label>Card Type</mat-label>
+                <input matInput formControlName="cardType" />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Card Number</mat-label>
+                <input matInput formControlName="cardNumber" />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Name on Card</mat-label>
+                <input matInput formControlName="nameOnCard" />
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Expiry Date</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="expDatePicker"
+                  formControlName="expiryDate"
+                  readonly
+                />
+                <mat-hint>MM/YYYY</mat-hint>
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="expDatePicker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker
+                  #expDatePicker
+                  startView="multi-year"
+                  (monthSelected)="setMonthAndYear($event, expDatePicker)"
+                  panelClass="month-picker"
+                ></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>CVV</mat-label>
+                <input matInput formControlName="cvv" />
               </mat-form-field>
             </div>
-
+            <h4>Payment Amount</h4>
+            <mat-divider></mat-divider><br />
             <div class="grid-fields">
               <mat-form-field appearance="outline">
-                <mat-label>Car Group</mat-label>
-                <input matInput />
+                <mat-label>Amount on Hold</mat-label>
+                <input matInput formControlName="amountOnHold" />
               </mat-form-field>
-
-              <mat-form-field appearance="outline" class="readonly-field">
-                <mat-label>License Plate</mat-label>
-                <input matInput />
+              <mat-form-field appearance="outline">
+                <mat-label>Check Out Gross Amount</mat-label>
+                <input matInput formControlName="checkoutGrossAmount" />
+              </mat-form-field>
+            </div>
+            <h4>More Information</h4>
+            <mat-divider></mat-divider><br />
+            <div class="grid-fields">
+              <mat-form-field appearance="outline">
+                <mat-label>Payment Date</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="paymentDatePicker"
+                  formControlName="paymentDate"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="paymentDatePicker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #paymentDatePicker></mat-datepicker>
               </mat-form-field>
 
               <mat-form-field appearance="outline">
-                <mat-label>Fuel</mat-label>
-                <input matInput />
-              </mat-form-field>
-
-              <mat-form-field appearance="outline">
-                <mat-label>Car Model</mat-label>
-                <input matInput />
-              </mat-form-field>
-
-              <mat-form-field appearance="outline">
-                <mat-label>Millage</mat-label>
-                <input matInput />
-              </mat-form-field>
-
-              <mat-form-field appearance="outline">
-                <mat-label>Color</mat-label>
-                <input matInput />
-              </mat-form-field>
-
-              <mat-form-field appearance="outline">
-                <mat-label>Status</mat-label>
-                <input matInput />
-              </mat-form-field>
-
-              <mat-form-field appearance="outline">
-                <mat-label>Transmission</mat-label>
-                <input matInput />
+                <mat-label>Payment Status</mat-label>
+                <input matInput formControlName="paymentStatus" />
               </mat-form-field>
             </div>
             <div class="buttons-group">

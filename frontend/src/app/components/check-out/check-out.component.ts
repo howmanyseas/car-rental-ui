@@ -1,20 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
-import { FormArray } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDivider } from '@angular/material/divider';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule, MatOption } from '@angular/material/core';
+import { MatDatepickerModule, MatDatepicker } from '@angular/material/datepicker';
 import { MatSelect } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatIcon } from '@angular/material/icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import {
+  MatNativeDateModule,
+  MatOption,
+  DateAdapter,
+  MAT_DATE_LOCALE,
+  MAT_DATE_FORMATS
+} from '@angular/material/core';
+import { default as _rollupMoment, Moment } from 'moment';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import * as _moment from 'moment';
 
+const moment = _rollupMoment || _moment;
+const MONTH_YEAR_FORMATS = {
+  parse: {
+    dateInput: 'MM/YYYY',
+  },
+  display: {
+    dateInput: 'MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 @Component({
   selector: 'app-check-out',
   standalone: true,
@@ -37,12 +57,28 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
   ],
   templateUrl: './check-out.component.html',
   styleUrls: ['./check-out.component.scss'],
+  providers: [
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE]
+    },
+    {
+      provide: MAT_DATE_FORMATS,
+      useValue: MONTH_YEAR_FORMATS
+    }
+  ]
 })
 export class CheckOutComponent implements OnInit {
   pricingFormGroup!: FormGroup;
   customerFormGroup!: FormGroup;
-  selectedFile: File | null = null;
   carInformationFormGroup!: FormGroup;
+  paymentFormGroup!: FormGroup;
+
+  selectedFile: File | null = null;
+
+  showAdditionalFees = false;
+  showDiscount = false;
 
   summary = {
     rentalId: '0000001',
@@ -52,30 +88,26 @@ export class CheckOutComponent implements OnInit {
     extras: 0,
     grossAmount: 0,
   };
-  showAdditionalFees = false;
-  showDiscount = false;
 
-  additionalFeeList = [
-    { label: 'Additional Drivers', control: 'additionalDrivers', value: 50 },
-    { label: 'Child Seat', control: 'childSeat', value: 30 },
-    { label: 'Cross Borders', control: 'crossBorders', value: 40 },
-    { label: 'Booster Seat', control: 'boosterSeat', value: 25 },
-    { label: 'Insurance Lv.1', control: 'insuranceLv1', value: 60 },
-    { label: 'Insurance Lv.1', control: 'insuranceLv2', value: 100 },
-  ];
-
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.pricingFormGroup = this.fb.group({
-      pricingOption: ['daily'],
+      carGroup: [''],
+      priceType: [''],
+      fixedPrice: [''],
+      duration: [''],
+      checkOutDate: [''],
+      checkInDate: [''],
+      tax: [''],
+      netAmount: [''],
+      grossAmount: [''],
       additionalFees: this.fb.array([]),
-      discount: this.fb.group({
-        discountPercent: [''],
-        reason: [''],
-        appliedBy: [''],
-      }),
+      discountPercentage: [''],
+      discountReason: [''],
+      discountAppliedBy: [''],
     });
+
     this.customerFormGroup = this.fb.group({
       academicTitle: [''],
       firstName: [''],
@@ -97,6 +129,7 @@ export class CheckOutComponent implements OnInit {
       licenseExpiry: [''],
       customerNote: [''],
     });
+
     this.carInformationFormGroup = this.fb.group({
       mva: [''],
       carGroup: [{ value: 'Group A', disabled: true }],
@@ -108,7 +141,20 @@ export class CheckOutComponent implements OnInit {
       status: [{ value: 'Available', disabled: true }],
       transmission: [{ value: 'Manual', disabled: true }],
     });
+
+    this.paymentFormGroup = this.fb.group({
+      cardType: [''],
+      cardNumber: [''],
+      nameOnCard: [''],
+      expiryDate: [''],
+      cvv: [''],
+      amountOnHold: [''],
+      checkoutGrossAmount: [''],
+      paymentDate: [''],
+      paymentStatus: [''],
+    });
   }
+
   get additionalFees(): FormArray {
     return this.pricingFormGroup.get('additionalFees') as FormArray;
   }
@@ -121,6 +167,11 @@ export class CheckOutComponent implements OnInit {
       })
     );
   }
+
+  removeAdditionalFee(index: number) {
+    this.additionalFees.removeAt(index);
+  }
+
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     if (file) {
@@ -128,12 +179,9 @@ export class CheckOutComponent implements OnInit {
       console.log('Selected file:', file.name);
     }
   }
-  removeAdditionalFee(index: number) {
-    this.additionalFees.removeAt(index);
-  }
+
   toggleAdditionalFees() {
     this.showAdditionalFees = !this.showAdditionalFees;
-
     if (this.showAdditionalFees && this.additionalFees.length === 0) {
       this.addAdditionalFee();
     }
@@ -141,5 +189,18 @@ export class CheckOutComponent implements OnInit {
 
   toggleDiscount() {
     this.showDiscount = !this.showDiscount;
+  }
+
+  
+  setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {
+    const ctrl = this.paymentFormGroup.get('expiryDate');
+    if (ctrl) {
+      // Create a moment object with only month and year
+      const selectedDate = moment().year(normalizedMonthAndYear.year())
+        .month(normalizedMonthAndYear.month())
+        .date(1); // Set to first of the month
+      ctrl.setValue(selectedDate);
+    }
+    datepicker.close();
   }
 }
