@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RentalListsComponent } from './components/rental-lists/rental-lists.component';
 
 export const routes: Routes = [
   { path: 'login', loadComponent: () => import('./components/login/login.component').then(m => m.LoginComponent), title: 'Login' },
@@ -22,6 +23,7 @@ export const routes: Routes = [
       { path: 'check-in', loadComponent: () => import('./components/check-in/check-in.component').then(m => m.CheckInComponent), title: 'Check In' },
       { path: 'users-table', loadComponent: () => import('./components/users-table/users-table.component').then(m => m.UsersTableComponent), title: 'Users' },
       { path: 'add-users', loadComponent: () => import('./components/add-user/add-user.component').then(m => m.AddUserComponent), title: 'Add Users' },
+      { path: 'rental-lists', loadComponent: () => import('./components/rental-lists/rental-lists.component').then(m => m.RentalListsComponent), title: 'Rental Lists' },
 
 
 

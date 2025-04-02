@@ -1,0 +1,67 @@
+.table-container {
+  padding: 20px;
+}
+
+h2.title {
+  font-family: 'Inter';
+  margin-bottom: 20px;
+  color: white;
+}
+:host {
+  display: block;
+  margin: 30px;
+
+}
+table {
+  width: 100%;
+  background-color: transparent;
+  color: white !important;
+  
+}
+
+.mat-header-cell {
+  font-weight: bold;
+  color: white !important;
+}
+
+.mat-cell {
+  color: white;
+}
+th {
+  color: white;
+  font-weight: bold;
+  font-family: 'Inter';
+
+}
+mat-icon{
+  color: white;
+}
+
+td {
+  padding: 12px;
+  color: white;
+}
+.status {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+.completed {
+  background-color: green;
+  border-radius: 10px;
+}
+
+.active {
+  background-color: yellow;
+  color: black;
+  border-radius: 10px;
+
+}
+
+.new-rental-btn {
+  margin-top: 20px;
+  float: right;
+  background-color: #008dd2;
+  color: white;
+}

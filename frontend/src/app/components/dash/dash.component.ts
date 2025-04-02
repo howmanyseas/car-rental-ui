@@ -1,30 +1,32 @@
 import { Component, inject } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgForOf } from '@angular/common'; // Import NgForOf
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { DefaultLayoutComponent } from '../../layouts/default-layout/default-layout.component';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-dash',
   templateUrl: './dash.component.html',
-  styleUrl: './dash.component.scss',
+  styleUrls: ['./dash.component.scss'],
   standalone: true,
   imports: [
     AsyncPipe,
+    NgForOf, // Add NgForOf here
     MatGridListModule,
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    //DefaultLayoutComponent
   ],
 })
 export class DashComponent {
   private breakpointObserver = inject(BreakpointObserver);
+  private router = inject(Router);
 
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
@@ -43,4 +45,10 @@ export class DashComponent {
       ];
     })
   );
+
+  navigateTo(title: string): void {
+    if (title === 'Recent Rentals') {
+      this.router.navigate(['/rental-lists']);
+    }
+  }
 }

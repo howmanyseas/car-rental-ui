@@ -1,27 +1,21 @@
 <div class="grid-container">
   <h2 class="mat-h1">Dashboard</h2>
   <mat-grid-list cols="2" rowHeight="350px">
-    @for (card of cards | async; track card) {
+    <ng-container *ngFor="let card of cards | async">
       <mat-grid-tile [colspan]="card.cols" [rowspan]="card.rows">
-        <mat-card class="dashboard-card">
+        <mat-card
+          class="dashboard-card"
+          (click)="navigateTo(card.title)"
+          style="cursor: pointer;"
+        >
           <mat-card-header>
             <mat-card-title>
-              {{card.title}} 
+              {{ card.title }}
             </mat-card-title>
           </mat-card-header>
-          <mat-card-content class="dashboard-card-content">
-
-
-
-
-
-
-
-
-            
-          </mat-card-content>
+          <mat-card-content class="dashboard-card-content"></mat-card-content>
         </mat-card>
       </mat-grid-tile>
-    }
+    </ng-container>
   </mat-grid-list>
 </div>
