@@ -24,10 +24,11 @@ import { UsersTableDataSource, UsersTableItem } from './users-table-datasource';
 export class UsersTableComponent implements AfterViewInit {
   constructor(private router: Router) { }
 
-  editUser(users: UsersTableItem) {
-    this.router.navigate(['/edit-users', users.email]);
+  editUser() {
+    this.router.navigate(['/edit-user']);
+
   }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<UsersTableItem>;
