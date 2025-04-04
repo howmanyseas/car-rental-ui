@@ -9,6 +9,8 @@ import {
   VehiclesTableItem,
 } from './vehicles-table-datasource';
 import { Router } from '@angular/router';
+import { MatCard, MatCardModule } from '@angular/material/card';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-vehicles-table',
@@ -21,6 +23,9 @@ import { Router } from '@angular/router';
     MatSortModule,
     MatButtonModule,
     MatIconModule,
+    //MatCard,
+    MatCardModule,
+    NgFor,
   ],
 })
 export class VehiclesTableComponent implements AfterViewInit {
@@ -46,7 +51,7 @@ export class VehiclesTableComponent implements AfterViewInit {
   gotoNewCar() {
     this.router.navigate(['/add-vehicle']);
   }
-  gotoHistory(){
-    this.router.navigate(['/vehicle-rental-history'])
+  gotoHistory() {
+    this.router.navigate(['/vehicle-rental-history']);
   }
 }

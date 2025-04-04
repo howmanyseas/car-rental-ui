@@ -1,27 +1,63 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; 
+}
+
 .grid-container {
-  margin: 30px;
+  box-sizing: border-box;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
-.mat-h1{
-  color:white;
-  font-family:'inter';
+
+.mat-h1 {
+  color: white;
+  font-family: 'Inter';
+  margin-bottom: 20px;
 }
+
+.card-container {
+  display: grid;
+  gap: 20px;
+  flex: 1;
+}
+
+@media (max-width: 800px) {
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 800px) {
+  .card-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .full-width {
+    grid-column: span 2;
+  }
+}
+
 .dashboard-card {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
   background-color: #575757;
   color: white;
   font-family: 'Inter';
-
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
-  border-radius: 8px; 
-}
-
-
-
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  }
 
 .dashboard-card-content {
   text-align: center;
+}
+
+.full-width {
+  height: calc((100vh - 80px) / 2); 
 }

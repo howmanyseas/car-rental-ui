@@ -107,13 +107,28 @@ html {
 
 @media screen and (max-width: 600px) {
   .logo {
-    height: 40px;
-  }
-  .left-gradient,
-  .right-gradient {
     height: 30px;
   }
+
+  .header {
+    height: 50px;
+  }
+
+  .right-gradient {
+    height: 10px;
+  }
+
   .login-container {
     width: 90%;
+    padding: 20px;
+    margin: 40px;
+  }
+
+  .login-btn {
+    font-size: 14px;
+  }
+
+  .forgot-password {
+    font-size: 12px;
   }
 }

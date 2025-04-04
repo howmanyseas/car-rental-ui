@@ -1,7 +1,8 @@
 <h2 class="title">Vehicles</h2>
 
 <div class="table-container">
-  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  <!-- Desktop Table -->
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 desktop-table">
 
     <ng-container matColumnDef="carId">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Car ID </th>
@@ -29,7 +30,7 @@
     </ng-container>
 
     <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef></th>
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let element">
         <button mat-icon-button color="accent" (click)="editVehicle(element)">
           <mat-icon>edit</mat-icon>
@@ -39,11 +40,25 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
   </table>
+
+  <!-- Mobile Card Layout -->
+  <div class="mobile-cards" *ngFor="let element of dataSource.data">
+    <div class="card">
+      <div class="card-header">
+        <h3>{{ element.model }} ({{ element.year }})</h3>
+        <p class="car-id">{{ element.carId }}</p>
+      </div>
+      <p>Plate: {{ element.plate }}</p>
+      <p>Color: {{ element.color }}</p>
+      <button mat-icon-button color="accent" (click)="editVehicle(element)" class="edit-btn">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+  </div>
 
   <div class="buttons-container">
     <button mat-stroked-button color="primary" (click)="gotoHistory()">Rental History</button>
     <button mat-raised-button color="accent" (click)="gotoNewCar()">New Car</button>
   </div>
-  
+</div>

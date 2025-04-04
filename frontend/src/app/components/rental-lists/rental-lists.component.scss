@@ -1,22 +1,25 @@
 .table-container {
-  padding: 20px;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 16px;
+  border-radius: 8px;
 }
 
 h2.title {
-  font-family: 'Inter';
+  font-family: "Inter";
   margin-bottom: 20px;
   color: white;
 }
+
 :host {
   display: block;
   margin: 30px;
-
 }
+
 table {
   width: 100%;
   background-color: transparent;
   color: white !important;
-  
 }
 
 .mat-header-cell {
@@ -27,13 +30,14 @@ table {
 .mat-cell {
   color: white;
 }
+
 th {
   color: white;
   font-weight: bold;
-  font-family: 'Inter';
-
+  font-family: "Inter";
 }
-mat-icon{
+
+mat-icon {
   color: white;
 }
 
@@ -41,6 +45,7 @@ td {
   padding: 12px;
   color: white;
 }
+
 .status {
   padding: 5px 10px;
   border-radius: 5px;
@@ -56,7 +61,6 @@ td {
   background-color: yellow;
   color: black;
   border-radius: 10px;
-
 }
 
 .new-rental-btn {
@@ -64,4 +68,93 @@ td {
   float: right;
   background-color: #008dd2;
   color: white;
+}
+
+.new-rental-btn-container {
+  text-align: right;
+}
+
+.mobile-cards {
+  display: none;
+}
+
+/* Mobile View: Card Style */
+@media (max-width: 768px) {
+  .desktop-table {
+    display: none;
+  }
+
+  .mobile-cards {
+    display: block;
+  }
+  :host {
+    margin: 10px;
+  }
+  .card {
+    background-color: #2d2d2d;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    color: white;
+    font-family: "Inter";
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .price {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  .status {
+    margin-top: 5px;
+    padding: 4px 8px;
+    border-radius: 5px;
+    display: inline-block;
+  }
+
+  .completed {
+    background-color: green;
+    color: white;
+  }
+
+  .active {
+    background-color: yellow;
+    color: black;
+  }
+
+  .edit-btn {
+    margin-top: 10px;
+  }
+  .new-rental-btn-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    margin: 0;
+  }
+
+  .new-rental-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%; /* Circular button */
+    background-color: #008dd2 !important;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+ 
+
+  .new-rental-btn span {
+    font-size: 16px;
+    line-height: 1;
+  }
 }

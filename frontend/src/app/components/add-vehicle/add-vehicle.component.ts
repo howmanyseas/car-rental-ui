@@ -9,6 +9,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
+import { DamageMarkerComponent } from '../damage-marker/damage-marker.component';
+import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 interface Vehicle {
   carId: string;
@@ -54,7 +57,7 @@ export class AddVehicleComponent {
   damageHistory: DamageHistoryItem[] = [];
   displayedColumns = ['CarPart', 'Damage'];
 
-  constructor(private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router, private dialog: MatDialog) { }
 
   addVehicle() {
     //  save the new vehicle
@@ -66,8 +69,18 @@ export class AddVehicleComponent {
   }
 
   addDamage() {
-    this.damageHistory.push({ part: '', damage: '' });
-  }
+     const dialogRef = this.dialog.open(DamageMarkerComponent, {
+       width: '500px',
+       data: {}
+     });
+ 
+     dialogRef.afterClosed().subscribe(result => {
+       if (result) {
+         console.log('Damage coordinates:', result);
+         //Save to database later
+       }
+     });
+   }
 
   removeDamage(index: number) {
     this.damageHistory.splice(index, 1);

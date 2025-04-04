@@ -219,3 +219,85 @@ mat-icon {
   width: auto;
   height: auto;
 }
+
+@media (max-width: 1000px) {
+  .container {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 10px;
+  }
+
+  .form-container, .summary {
+    width: 100%;
+  }
+
+  .grid-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .button-group, .buttons-group {
+    flex-direction: column;
+    justify-content: center;
+  }
+.summary{
+  display: none;
+}
+  .button-group button, .buttons-group button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  :host{
+    margin: 10px;
+  }
+  .container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  h2, h3, h4 {
+    font-size: 1.4em;
+  }
+
+  .button-group button, .buttons-group button {
+    font-size: 0.9em;
+  }
+
+  .fee-row {
+    flex-direction: column;
+  }
+
+  .fee-row mat-form-field {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  h2, h3, h4 {
+    font-size: 1.2em;
+  }
+
+  .grid-fields {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .button-group, .buttons-group {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .button-group button, .buttons-group button {
+    font-size: 0.8em;
+  }
+
+  .summary {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+}

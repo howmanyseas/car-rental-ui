@@ -134,3 +134,64 @@ mat-card {
   color: white !important;
   background-color: #008dd2 !important;
 }
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .column {
+    width: 100%;
+  }
+
+  .form-container {
+    padding: 15px;
+  }
+
+  h2.subtitle {
+    font-size: 1.4em;
+    text-align: center;
+  }
+
+  .damage-history {
+    width: 100%;
+  }
+
+  .buttons-container {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .add-damage-btn,
+  .save-btn,
+  .cancel-btn {
+    width: 100%;
+  }
+
+  .damage-table th,
+  .damage-table td {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.2em;
+  }
+
+  .column {
+    min-width: unset;
+  }
+
+  .add-damage-btn,
+  .save-btn,
+  .cancel-btn {
+    font-size: 1em;
+    padding: 8px;
+  }
+
+  .damage-table th,
+  .damage-table td {
+    font-size: 0.8em;
+    padding: 6px;
+  }
+}

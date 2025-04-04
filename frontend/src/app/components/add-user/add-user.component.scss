@@ -48,3 +48,42 @@ button {
   font-weight: bold;
   text-transform: none;
 }
+
+@media (max-width: 768px) {
+  .grid-two-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .form-container {
+    padding: 10px;
+  }
+
+  .title {
+    font-size: 1.5em;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.2em;
+  }
+:host{
+  margin: 10px;
+}
+  .grid-two-columns {
+    gap: 10px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  button {
+    width: 100%;
+  }
+}

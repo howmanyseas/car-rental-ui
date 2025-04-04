@@ -1,4 +1,8 @@
-<h2 class="title">Vehicle Registration Agreement</h2>
+<!-- Desktop Title -->
+<h2 class="title desktop-title">Vehicle Registration Agreement</h2>
+
+<!-- Mobile Title -->
+<h2 class="title mobile-title">Registration</h2>
 
 <mat-card class="form-container">
   <h3 class="section-title">Car Information</h3>
@@ -6,12 +10,12 @@
   <div class="row">
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>License Plate</mat-label>
-      <input matInput type="number">
+      <input matInput type="text" />
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Vehicle Identification nr.</mat-label>
-      <input matInput type="number">
+      <input matInput type="text" />
     </mat-form-field>
   </div>
 
@@ -20,46 +24,52 @@
   <div class="row">
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Monthly Lease Cost</mat-label>
-      <input matInput type="number">
+      <input matInput type="number" />
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Monthly Insurance Cost</mat-label>
-      <input matInput type="number">
+      <input matInput type="number" />
     </mat-form-field>
   </div>
 
-  <div class="row"> 
+  <div class="row">
     <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Begin of Lease</mat-label>
-        <input matInput [matDatepicker]="beginPicker">
-        <mat-datepicker-toggle matSuffix [for]="beginPicker"></mat-datepicker-toggle>
-        <mat-datepicker #beginPicker></mat-datepicker>
-      </mat-form-field>
+      <mat-label>Begin of Lease</mat-label>
+      <input matInput [matDatepicker]="beginPicker" />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="beginPicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #beginPicker></mat-datepicker>
+    </mat-form-field>
 
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>End of Lease</mat-label>
-        <input matInput [matDatepicker]="endPicker">
-        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
-        <mat-datepicker #endPicker></mat-datepicker>
-      </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>End of Lease</mat-label>
+      <input matInput [matDatepicker]="endPicker" />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="endPicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #endPicker></mat-datepicker>
+    </mat-form-field>
   </div>
 
   <div class="row">
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Insurance Compensation</mat-label>
-      <input matInput type="number">
+      <input matInput type="number" />
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Millage Allowance</mat-label>
-      <input matInput type="number">
+      <mat-label>Mileage Allowance</mat-label>
+      <input matInput type="number" />
     </mat-form-field>
   </div>
 
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>Excess Amount</mat-label>
-    <input matInput type="number">
+    <input matInput type="number" />
   </mat-form-field>
 </mat-card>
 

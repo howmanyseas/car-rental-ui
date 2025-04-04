@@ -11,11 +11,14 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDivider } from '@angular/material/divider';
+import { MatDatepicker, MatDatepickerToggle } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-vehicle-registration',
   templateUrl: './vehicle-registration.component.html',
-  styleUrl: './vehicle-registration.component.scss',
+  styleUrls: ['./vehicle-registration.component.scss'],
   standalone: true,
   imports: [
     CommonModule,
@@ -25,25 +28,27 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatDividerModule,
+    MatDividerModule,          
     MatCardModule,
-    MatDatepickerModule,
-    MatNativeDateModule
+    MatDatepickerModule,       
+    MatNativeDateModule,       
+    MatToolbarModule,
+    MatDivider,                
+    MatDatepicker,             
+    MatDatepickerToggle        
   ]
 })
 export class VehicleRegistrationComponent {
 
-  constructor(private router: Router) { 
-  }
+  constructor(private router: Router) {}
 
   save() {
-    console.log("Vehicle Registration Saved:");
-    // backend API call
+    console.log("Vehicle Registration Saved");
+    // Add backend API call or other save logic here
   }
 
-  
   download() {
     console.log("Download button clicked");
-    // download functionality
+    // Add download functionality here
   }
 }

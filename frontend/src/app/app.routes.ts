@@ -140,6 +140,14 @@ export const routes: Routes = [
           ),
         title: 'Edit User',
       },
+      {
+        path: 'help-page',
+        loadComponent: () =>
+          import('./components/help-page/help-page.component').then(
+            (m) => m.HelpPageComponent
+          ),
+        title: 'Help Page',
+      },
     ],
   },
 

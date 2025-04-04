@@ -1,21 +1,25 @@
 <div class="grid-container">
   <h2 class="mat-h1">Dashboard</h2>
-  <mat-grid-list cols="2" rowHeight="350px">
-    <ng-container *ngFor="let card of cards | async">
-      <mat-grid-tile [colspan]="card.cols" [rowspan]="card.rows">
-        <mat-card
-          class="dashboard-card"
-          (click)="navigateTo(card.title)"
-          style="cursor: pointer;"
-        >
-          <mat-card-header>
-            <mat-card-title>
-              {{ card.title }}
-            </mat-card-title>
-          </mat-card-header>
-          <mat-card-content class="dashboard-card-content"></mat-card-content>
-        </mat-card>
-      </mat-grid-tile>
-    </ng-container>
-  </mat-grid-list>
+  <div class="card-container">
+    <mat-card class="dashboard-card" (click)="navigateTo('Total Cars Available')">
+      <mat-card-header>
+        <mat-card-title>Total Cars Available</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>Total cars available: 50</mat-card-content>
+    </mat-card>
+
+    <mat-card class="dashboard-card" (click)="navigateTo('Total Revenue')">
+      <mat-card-header>
+        <mat-card-title>Total Revenue</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>Total revenue: $10,000</mat-card-content>
+    </mat-card>
+
+    <mat-card class="dashboard-card full-width" (click)="navigateTo('Recent Rentals')">
+      <mat-card-header>
+        <mat-card-title>Recent Rentals</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>Details about recent rentals...</mat-card-content>
+    </mat-card>
+  </div>
 </div>

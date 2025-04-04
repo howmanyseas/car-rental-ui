@@ -3,6 +3,13 @@
   margin: 30px;
 }
 
+/* Title Styling */
+h2, h3 {
+  color: white;
+  font-family: "Inter";
+}
+
+/* Table Container Styling */
 .table-container {
   max-width: 100%;
   overflow-x: auto;
@@ -10,42 +17,27 @@
   border-radius: 8px;
 }
 
-h2,
-h3 {
-  color: white;
-  font-family: "Inter";
-}
-
+/* Desktop Table Styling */
 table {
   width: 100%;
   background: transparent;
   color: white;
 }
 
-th {
-  color: white;
-  font-weight: bold;
-  font-family: "Inter";
-}
-
-td,
-th {
+th, td {
   padding: 12px;
   color: white;
-}
-.mat-table {
-  width: 100%;
-  table-layout: fixed;
+  font-weight: bold;
 }
 
+/* Chip Styling */
 .mat-chip {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   padding: 5px 10px;
   border-radius: 12px;
   font-weight: bold;
-  color: white !important;
   text-align: center;
 }
 
@@ -57,6 +49,46 @@ th {
   background-color: #ffca28 !important;
 }
 
-.mat-icon-button {
-  color: white !important;
+mat-icon {
+  color: #ffca28 !important;
+}
+
+/* Mobile View: Card Style */
+.mobile-cards {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-table {
+    display: none;
+  }
+
+  .mobile-cards {
+    display: block;
+  }
+
+  .card {
+    background-color: #2d2d2d;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    color: white;
+    font-family: 'Inter';
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .edit-btn {
+    margin-top: 10px;
+  }
+
+  .mat-chip {
+    margin-left: 10px;
+    font-size: 14px;
+  }
 }

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild,OnInit } from '@angular/core';
 import { MatTableModule, MatTable } from '@angular/material/table';
 import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 import { MatSortModule, MatSort } from '@angular/material/sort';
@@ -24,10 +24,9 @@ import { routes } from '../../app.routes';
 
   ]
 })
-export class RentalListsComponent implements AfterViewInit {
+export class RentalListsComponent implements OnInit {
   @ViewChild(MatTable) table!: MatTable<RentalListsItem>;
-  dataSource = new RentalListsDataSource();
-  constructor(private router: Router) { }
+  dataSource: RentalListsItem[] = [];
 
   displayedColumns: string[] = [
     'rentalId', 
@@ -41,12 +40,16 @@ export class RentalListsComponent implements AfterViewInit {
     'actions'
   ];
 
-  ngAfterViewInit(): void {
-  
-    this.table.dataSource = this.dataSource;
-  }
-  gotoCheckOut(){
-    this.router.navigate(['/check-out']);
+  constructor(private router: Router) {}
 
+  ngOnInit(): void {
+    const rentalDataSource = new RentalListsDataSource();
+    rentalDataSource.connect().subscribe((data: RentalListsItem[]) => {
+      this.dataSource = data;
+    });
+  }
+
+  gotoCheckOut() {
+    this.router.navigate(['/check-out']);
   }
 }

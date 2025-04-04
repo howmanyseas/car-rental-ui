@@ -29,10 +29,10 @@ export class DefaultLayoutComponent {
   menuItems = [
     { label: 'Dashboard', icon: 'dashboard', route: '/dashboard' },
     { label: 'Cars', icon: 'directions_car', route: '/vehicles' },
-    { label: 'Check Out', route: '/check-out', icon: 'shopping_cart' }, 
-    { label: 'Check In', route: '/check-in', icon: 'assignment_turned_in' },
+    { label: 'Check Out', route: '/check-out', icon: 'call_missed_outgoing' }, 
+    { label: 'Check In', route: '/check-in', icon: 'check_circle_outline' },
     { label: 'Users', route: '/users-table', icon: 'group' }, 
-    { label: 'Help', route: '/help', icon: 'help_outline' } 
+    { label: 'Help', route: '/help-page', icon: 'help_outline' } 
   ];
 
   constructor(private router: Router , private cdr: ChangeDetectorRef) {

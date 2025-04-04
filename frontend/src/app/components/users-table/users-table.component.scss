@@ -78,21 +78,67 @@ button {
   gap: 12px; 
   margin-top: 30px;
 }
+.new-user-btn {
+  margin-top: 20px;
+  background-color: #008dd2 !important;
+  color: white !important;
+  font-weight: bold;
+  border-radius: 8px;
+}
 
+
+.mobile-cards {
+  display: none;
+}
 button {
   font-weight: bold;
   text-transform: none;
 }
 
-@media (max-width: 600px) {
-  .buttons {
-    flex-direction: column;
-    align-items: center;
-    gap: 8px; 
+@media (max-width: 768px) {
+  .desktop-table {
+    display: none;
   }
 
-  button {
-    width: 100%; 
-    max-width: 300px; 
+  .mobile-cards {
+    display: block;
+  }
+
+  .card {
+    background-color: #2d2d2d;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    color: white;
+    font-family: 'Inter';
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .role {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: lightgray;
+  }
+
+  .edit-btn {
+    margin-top: 10px;
+  }
+
+  .buttons-container {
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .new-user-btn {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    border-radius: 8px;
   }
 }

@@ -1,46 +1,104 @@
 :host {
-  display: block;
-  margin: 30px;
-}
-h2,
-h3 {
-  color: white;
-  font-family: "Inter";
-}
-table {
-  width: 100%;
-  background: transparent;
-  color: white;
-}
-th {
-  color: white;
-  font-weight: bold;
-  font-family: "Inter";
-}
-
-td,
-th {
-  padding: 12px;
-  color: white;
+    display: block;
+    margin: 30px;
+  }
+  h2,
+  h3 {
+    color: white;
+    font-family: "Inter";
+  }
+  table {
+    width: 100%;
+    background: transparent;
+    color: white;
+  }
+  th {
+    color: white;
+    font-weight: bold;
+    font-family: "Inter";
+  }
   
-}
-.mat-table {
-  width: 100%;
-  table-layout: fixed; 
-}
-.completed {
-  background-color: #00e676 !important;
-}
-
-.active {
-  background-color: #ffca28 !important;
-}
-.mat-chip {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px 10px;
-  border-radius: 12px;
-  font-weight: bold;
-  text-align: center;
-}
+  td,
+  th {
+    padding: 12px;
+    color: white;
+  }
+  .mat-table {
+    width: 100%;
+    table-layout: fixed;
+  }
+  .completed {
+    background-color: #00e676 !important;
+  }
+  
+  .active {
+    background-color: #ffca28 !important;
+  }
+  .mat-chip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .mobile-cards {
+    display: none;
+  }
+  
+  .card {
+    background-color: #2d2d2d;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    color: white;
+    font-family: "Inter";
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .mobile-title {
+    display: none;
+  }
+  @media (max-width: 768px) {
+    .desktop-table {
+      display: none;
+    }
+    .title {
+      display: none;
+    }
+    .mobile-title {
+      display: block;
+      text-align: center;
+    }
+    .mobile-cards {
+      display: block;
+    }
+   
+    .card {
+      margin: 15px 0;
+      padding: 15px;
+      border-radius: 8px;
+    }
+  
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .mat-chip {
+      margin-left: 10px;
+      font-size: 14px;
+    }
+  
+    .mva-input {
+      width: 100%;
+    }
+  }
+  

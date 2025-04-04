@@ -1,12 +1,15 @@
 <h2 class="title">Vehicle Maintenance History</h2>
+<h2 class="title mobile-title">Maintenance</h2>
 
-<mat-form-field appearance="outline">
+<!-- MVA Input -->
+<mat-form-field appearance="outline" class="mva-input">
   <mat-label>MVA</mat-label>
   <input matInput [(ngModel)]="mva">
 </mat-form-field>
 
 <div class="table-container">
-  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  <!-- Desktop Table -->
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 desktop-table">
 
     <ng-container matColumnDef="dateOfLeave">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Date of Leave </th>
@@ -50,4 +53,21 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+
+  <!-- Mobile Card Layout -->
+  <div class="mobile-cards" *ngFor="let record of dataSource.data">
+    <div class="card">
+      <div class="card-header">
+        <h3>{{ record.dateOfLeave }}</h3>
+        <mat-chip [ngClass]="{'completed': record.status === 'Completed', 'active': record.status === 'Active'}">
+          {{ record.status }}
+        </mat-chip>
+      </div>
+      <p>Check Out: {{ record.checkOut }}</p>
+      <p>Check In: {{ record.checkIn }}</p>
+      <p>Days: {{ record.days }}</p>
+      <p>Repair Type: {{ record.repairType }}</p>
+      <p>Address: {{ record.address }}</p>
+    </div>
+  </div>
 </div>

@@ -15,8 +15,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./dash.component.scss'],
   standalone: true,
   imports: [
-    AsyncPipe,
-    NgForOf, // Add NgForOf here
+   
     MatGridListModule,
     MatMenuModule,
     MatIconModule,
@@ -25,30 +24,17 @@ import { Router } from '@angular/router';
   ],
 })
 export class DashComponent {
-  private breakpointObserver = inject(BreakpointObserver);
-  private router = inject(Router);
-
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
-        return [
-          { title: 'Recent Rentals', cols: 1, rows: 1 },
-          { title: 'Total Cars Available', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 },
-        ];
-      }
-
-      return [
-        { title: 'Total Cars Available', cols: 1, rows: 1 },
-        { title: 'Card 4', cols: 1, rows: 1 },
-        { title: 'Recent Rentals', cols: 2, rows: 1 },
-      ];
-    })
-  );
+  constructor(private router: Router) {}
 
   navigateTo(title: string): void {
     if (title === 'Recent Rentals') {
       this.router.navigate(['/rental-lists']);
+    }
+    if (title === 'Total Cars Available') {
+      this.router.navigate(['/vehicles']);
+    }
+    if (title === 'Total Revenue') {
+      this.router.navigate(['/revenue']);
     }
   }
 }

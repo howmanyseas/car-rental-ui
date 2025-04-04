@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { UsersTableDataSource, UsersTableItem } from './users-table-datasource';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-users-table',
@@ -18,7 +19,8 @@ import { UsersTableDataSource, UsersTableItem } from './users-table-datasource';
     MatSortModule,
     MatButtonModule,
     MatIconModule,
-    MatIcon
+    MatIcon,
+    CommonModule
   ],
 })
 export class UsersTableComponent implements AfterViewInit {
