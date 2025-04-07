@@ -247,6 +247,67 @@
               </mat-form-field>
             </div>
 
+            <h4>Driver Information</h4>
+            <mat-divider></mat-divider><br />
+            <div>
+              <p class="colorwhite">
+                Is the driver the same person as the renter?
+              </p>
+
+              <mat-radio-group
+                formControlName="driverSameAsRenter"
+                class="radio-group"
+              >
+                <mat-radio-button value="yes">Yes</mat-radio-button>
+                <mat-radio-button value="no">No</mat-radio-button>
+              </mat-radio-group>
+              <div
+              class="grid-fields"
+                *ngIf="
+                  customerFormGroup.get('driverSameAsRenter')?.value === 'no'
+                "
+              >
+                <mat-form-field appearance="outline">
+                  <mat-label>Academic Title</mat-label>
+                  <input matInput formControlName="academicTitle" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>First Name</mat-label>
+                  <input matInput formControlName="firstName" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput formControlName="lastName" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Date of Birth</mat-label>
+                  <input
+                    matInput
+                    [matDatepicker]="dobPicker"
+                    formControlName="dob"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="dobPicker"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #dobPicker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Phone nr.</mat-label>
+                  <input matInput formControlName="phone" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Email</mat-label>
+                  <input matInput type="email" formControlName="email" />
+                </mat-form-field>
+              </div>
+            </div>
+
             <h4>Address</h4>
             <mat-divider></mat-divider><br />
             <div class="grid-fields">
@@ -302,6 +363,7 @@
                 <input matInput formControlName="companyName" />
               </mat-form-field>
             </div>
+
             <h4>ID</h4>
             <mat-divider></mat-divider><br />
             <div class="grid-fields">

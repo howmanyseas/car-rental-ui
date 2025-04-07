@@ -110,7 +110,6 @@ export class CheckOutComponent implements OnInit {
       discountReason: [''],
       discountAppliedBy: [''],
     });
-
     this.customerFormGroup = this.fb.group({
       academicTitle: [''],
       firstName: [''],
@@ -131,6 +130,26 @@ export class CheckOutComponent implements OnInit {
       licenseCountry: [''],
       licenseExpiry: [''],
       customerNote: [''],
+      driverSameAsRenter: ['yes'],
+      driverDetails: this.fb.group({
+        academicTitle: [''],
+        firstName: [''],
+        lastName: [''],
+        dob: [''],
+        phone: [''],
+        email: [''],
+        street: [''],
+        zip: [''],
+        country: [''],
+        houseNr: [''],
+        city: [''],
+        licenseNumber: [''],
+        licenseCountry: [''],
+        licenseExpiry: [''],
+      })
+    });
+    this.customerFormGroup.get('driverSameAsRenter')?.valueChanges.subscribe(() => {
+      this.updateDriverDetails();
     });
 
     this.carInformationFormGroup = this.fb.group({
@@ -164,6 +183,31 @@ export class CheckOutComponent implements OnInit {
   }
   detectDevice() {
     this.isMobile = window.innerWidth <= 768;
+  }
+  updateDriverDetails() {
+    if (this.customerFormGroup.get('driverSameAsRenter')?.value === 'yes') {
+      const renterDetails = this.customerFormGroup.value;
+      this.customerFormGroup.patchValue({
+        driverDetails: {
+          academicTitle: renterDetails.academicTitle,
+          firstName: renterDetails.firstName,
+          lastName: renterDetails.lastName,
+          dob: renterDetails.dob,
+          phone: renterDetails.phone,
+          email: renterDetails.email,
+          street: renterDetails.street,
+          zip: renterDetails.zip,
+          country: renterDetails.country,
+          houseNr: renterDetails.houseNr,
+          city: renterDetails.city,
+          licenseNumber: renterDetails.licenseNumber,
+          licenseCountry: renterDetails.licenseCountry,
+          licenseExpiry: renterDetails.licenseExpiry,
+        }
+      });
+    } else {
+      this.customerFormGroup.get('driverDetails')?.reset();
+    }
   }
   
   get additionalFees(): FormArray {
@@ -202,7 +246,7 @@ export class CheckOutComponent implements OnInit {
     this.showDiscount = !this.showDiscount;
   }
 
-  
+
   setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {
     const ctrl = this.paymentFormGroup.get('expiryDate');
     if (ctrl) {
