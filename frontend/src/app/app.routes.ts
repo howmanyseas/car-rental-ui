@@ -148,6 +148,14 @@ export const routes: Routes = [
           ),
         title: 'Help Page',
       },
+      {
+        path: 'available-vehicles',
+        loadComponent: () =>
+          import('./components/available-vehicles/available-vehicles.component').then(
+            (m) => m.AvailableVehiclesComponent
+          ),
+        title: 'Available Vehicles',
+      },
     ],
   },
 

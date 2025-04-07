@@ -47,10 +47,10 @@
     </ng-container>
 
     <ng-container matColumnDef="status"
-      >c
+      >
       <th mat-header-cell *matHeaderCellDef>Status</th>
       <td mat-cell *matCellDef="let element">
-        <span class="status" [ngClass]="element.status.toLowerCase()">
+        <span class="active" [ngClass]="element.status.toLowerCase()">
           {{ element.status }}
         </span>
       </td>
@@ -74,7 +74,6 @@
     </button>
   </div>
 
-  <!-- Mobile Card Layout -->
   <div class="mobile-cards" *ngFor="let element of dataSource">
     <div class="card">
       <div class="card-header">

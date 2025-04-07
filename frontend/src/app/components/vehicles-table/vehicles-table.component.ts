@@ -29,14 +29,12 @@ import { NgFor } from '@angular/common';
   ],
 })
 export class VehiclesTableComponent implements AfterViewInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   editVehicle(vehicle: VehiclesTableItem) {
     this.router.navigate(['/edit-vehicle', vehicle.carId]);
   }
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<VehiclesTableItem>;
 
   dataSource = new VehiclesTableDataSource();
@@ -44,8 +42,7 @@ export class VehiclesTableComponent implements AfterViewInit {
   displayedColumns = ['carId', 'plate', 'model', 'color', 'year', 'actions'];
 
   ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+
     this.table.dataSource = this.dataSource;
   }
   gotoNewCar() {
