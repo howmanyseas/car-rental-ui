@@ -6,14 +6,16 @@
       <ul class="menu-list">
         <li *ngFor="let item of menuItems" (click)="navigate(item.route)">
           <mat-icon>{{ item.icon }}</mat-icon>
-          <span *ngIf="isExpanded">{{ item.label }}</span> <!-- Show text only when expanded -->
+          <span *ngIf="isExpanded">{{ item.label }}</span>
         </li>
       </ul>
     </div>
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="content">
-
+      <!-- Back Button at the top of the content area -->
+      <app-back-button></app-back-button>
+      <!-- Main content area -->
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>

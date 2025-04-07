@@ -7,6 +7,8 @@ import { MatListModule } from '@angular/material/list';
 import { CommonModule } from '@angular/common';
 import { DefaultHeaderComponent } from '../default-header/default-header.component';
 import { RouterModule } from '@angular/router';
+import { BackButtonComponent } from '../../components/back-button.component';
+
 
 @Component({
   selector: 'app-default-layout',
@@ -20,7 +22,8 @@ import { RouterModule } from '@angular/router';
     MatIconModule,
     MatButtonModule,
     MatListModule,
-    DefaultHeaderComponent
+    DefaultHeaderComponent,
+    BackButtonComponent
   ]
 })
 export class DefaultLayoutComponent {
