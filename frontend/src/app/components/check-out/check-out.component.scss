@@ -219,6 +219,11 @@ mat-icon {
   width: auto;
   height: auto;
 }
+.upload-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
 @media (max-width: 1000px) {
   .container {
@@ -250,6 +255,14 @@ mat-icon {
 @media (max-width: 768px) {
   :host{
     margin: 10px;
+  }
+  .upload-container {
+    justify-content: center;
+  }
+
+  .upload-button {
+    font-size: 0.9em;
+    padding: 5px 10px;
   }
   .container {
     flex-direction: column;

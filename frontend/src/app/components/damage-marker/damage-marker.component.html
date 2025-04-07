@@ -1,6 +1,9 @@
 <mat-dialog-content class="dialog-container">
   <div class="scrollable-content">
-    <h2 class="title">Add Damage</h2>
+    <div class="title-container">
+      <h2 class="title">Add Damage</h2>
+      <app-upload-options class="upload-icon-title"></app-upload-options>
+    </div>
 
     <div class="form-row">
       <mat-form-field appearance="outline">
@@ -37,7 +40,7 @@
         </mat-select>
       </mat-form-field>
     </div>
-
+  
     <p class="instructions">
       Tap or click anywhere on the image to mark the damage.<br />
       On mobile/tablet, double-tap to mark.<br />

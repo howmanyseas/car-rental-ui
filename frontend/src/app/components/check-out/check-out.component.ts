@@ -22,6 +22,7 @@ import {
 import { default as _rollupMoment, Moment } from 'moment';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import * as _moment from 'moment';
+import { UploadOptionsComponent } from '../upload-options.component';
 
 const moment = _rollupMoment || _moment;
 const MONTH_YEAR_FORMATS = {
@@ -54,6 +55,7 @@ const MONTH_YEAR_FORMATS = {
     MatRadioModule,
     MatIcon,
     MatButtonToggleModule,
+    UploadOptionsComponent
   ],
   templateUrl: './check-out.component.html',
   styleUrls: ['./check-out.component.scss'],
@@ -70,6 +72,7 @@ const MONTH_YEAR_FORMATS = {
   ]
 })
 export class CheckOutComponent implements OnInit {
+  isMobile = false;
   pricingFormGroup!: FormGroup;
   customerFormGroup!: FormGroup;
   carInformationFormGroup!: FormGroup;
@@ -153,8 +156,16 @@ export class CheckOutComponent implements OnInit {
       paymentDate: [''],
       paymentStatus: [''],
     });
-  }
 
+    this.detectDevice();
+    window.addEventListener('resize', this.detectDevice.bind(this));
+
+
+  }
+  detectDevice() {
+    this.isMobile = window.innerWidth <= 768;
+  }
+  
   get additionalFees(): FormArray {
     return this.pricingFormGroup.get('additionalFees') as FormArray;
   }

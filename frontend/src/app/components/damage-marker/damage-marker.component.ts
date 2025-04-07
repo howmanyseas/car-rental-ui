@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { UploadOptionsComponent } from '../upload-options.component';
 
 interface DamageMark {
   x: number;
@@ -28,6 +29,7 @@ interface DamageMark {
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
+    UploadOptionsComponent
   ],
 })
 export class DamageMarkerComponent {
