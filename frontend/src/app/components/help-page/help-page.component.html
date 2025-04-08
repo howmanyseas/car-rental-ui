@@ -1,1 +1,22 @@
-<p>help-page works!</p>
+<div class="help-container">
+    <h2>Help & Support</h2>
+    <p class="color-white">If you have any questions or encounter issues, you can find answers here or contact support.</p>
+  
+    <div class="faq-section">
+      <h3>Frequently Asked Questions</h3>
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let faq of faqs">
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{ faq.question }}</mat-panel-title>
+          </mat-expansion-panel-header>
+          <p>{{ faq.answer }}</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  
+    <div class="contact-support">
+      <h3>Need Further Assistance?</h3>
+      <button mat-raised-button color="primary" (click)="openEmail()">Contact Support</button>
+    </div>
+  </div>
+  

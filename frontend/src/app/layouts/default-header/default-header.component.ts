@@ -58,7 +58,9 @@ export class DefaultHeaderComponent implements AfterViewInit {
     }
     this.isSearchExpanded = false;
   }
-
+  gotoLogIn(){
+    this.router.navigate(['/login']);
+  }
   toggleSidebar() {
     this.sidebarToggle.emit();
   }

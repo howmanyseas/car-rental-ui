@@ -44,7 +44,9 @@ export class LoginComponent {
       
     }
   }
-
+login() {
+  this.router.navigate(['/dashboard']);
+}  
   togglePassword(event: MouseEvent) {
     this.hide.set(!this.hide());
     event.stopPropagation();
