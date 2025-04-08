@@ -141,6 +141,14 @@ export const routes: Routes = [
         title: 'Edit User',
       },
       {
+        path: 'user-profile',
+        loadComponent: () =>
+          import('./components/user-profile/user-profile.component').then(
+            (m) => m.UserProfileComponent
+          ),
+        title: 'User Profile',
+      },
+      {
         path: 'help-page',
         loadComponent: () =>
           import('./components/help-page/help-page.component').then(

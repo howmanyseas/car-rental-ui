@@ -46,9 +46,11 @@ export class DefaultHeaderComponent implements AfterViewInit {
   toggleSearch() {
     console.log('🔍 Search button clicked!');
     this.isSearchExpanded = !this.isSearchExpanded;
-    this.cdr.detectChanges(); // ✅ Fixes UI update issue
+    this.cdr.detectChanges(); 
   }
-
+  openUserProfile(){
+    this.router.navigate(['/user-profile']);
+  }
   closeSearch(event?: MouseEvent) {
     if (event) {
       const clickedInside = this.searchInput?.nativeElement.contains(event.target);
