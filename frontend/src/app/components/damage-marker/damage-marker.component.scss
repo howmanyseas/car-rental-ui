@@ -1,3 +1,4 @@
+
 .dialog-container {
   width: 500px;
   max-width: 90vw;
@@ -26,7 +27,7 @@
 }
 
 .scrollable-content {
-  max-height: calc(80vh - 120px); 
+  max-height: calc(80vh - 120px);
   overflow-y: auto;
   padding: 10px;
   width: 100%;
@@ -35,7 +36,7 @@ mat-icon {
   color: #272727 !important;
 }
 .upload-icon-title {
-  color: #4a4a4a; 
+  color: #4a4a4a;
 }
 .form-row {
   display: flex;
@@ -63,7 +64,7 @@ mat-icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%; 
+  width: 100%;
 }
 
 .image-container img {
@@ -192,11 +193,11 @@ mat-icon {
   }
 
   .image-container {
-    max-width: 100%; 
+    max-width: 100%;
   }
 
   .image-container img {
-    width: 100%; 
+    width: 100%;
   }
 
   .instructions {
@@ -209,4 +210,48 @@ mat-icon {
     font-size: 0.9em;
     margin-top: 5px;
   }
+}
+
+.dialog-container .mat-form-field-appearance-outline input.mat-input-element,
+.dialog-container .mat-select-value-text {
+  color: #4a4a4a !important; /* Gray text color */
+}
+
+.dialog-container .mat-form-field-appearance-outline .mat-select-arrow,
+.dialog-container .mat-form-field-appearance-outline .mat-form-field-label {
+  color: #4a4a4a !important;
+}
+
+.dialog-container
+  .mat-form-field-appearance-outline
+  .mat-form-field-outline-start,
+.dialog-container
+  .mat-form-field-appearance-outline
+  .mat-form-field-outline-gap,
+.dialog-container
+  .mat-form-field-appearance-outline
+  .mat-form-field-outline-end {
+  color: rgba(0, 0, 0, 0.3) !important;
+}
+
+.dialog-container
+  .mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-outline-start,
+.dialog-container
+  .mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-outline-gap,
+.dialog-container
+  .mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-outline-end {
+  color: #008dd2 !important;
+}
+
+.dialog-container
+  .mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-label {
+  color: #008dd2 !important;
+}
+
+::ng-deep .mat-select-panel .mat-option-text {
+  color: #4a4a4a !important;
 }

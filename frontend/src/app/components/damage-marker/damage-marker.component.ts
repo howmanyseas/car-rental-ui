@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -19,6 +19,7 @@ interface DamageMark {
   selector: 'app-damage-marker',
   templateUrl: './damage-marker.component.html',
   styleUrls: ['./damage-marker.component.scss'],
+  encapsulation: ViewEncapsulation.None, // This is the issue - it makes styles global
   standalone: true,
   imports: [
     CommonModule,
