@@ -99,7 +99,9 @@ button {
   .desktop-table {
     display: none;
   }
-
+:host{
+  margin: 10px;
+}
   .mobile-cards {
     display: block;
   }

@@ -31,7 +31,7 @@ export class DashComponent {
       this.router.navigate(['/rental-lists']);
     }
     if (title === 'Total Cars Available') {
-      this.router.navigate(['/vehicles']);
+      this.router.navigate(['/available-vehicles']);
     }
     if (title === 'Total Revenue') {
       this.router.navigate(['/revenue']);

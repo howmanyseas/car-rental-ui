@@ -49,18 +49,19 @@ td {
 .status {
   padding: 5px 10px;
   border-radius: 5px;
-  color: white;
 }
 
 .completed {
   background-color: green;
   border-radius: 10px;
+  padding: 5px 10px;
 }
 
 .active {
   background-color: yellow;
   color: black;
   border-radius: 10px;
+  padding: 5px 10px;
 }
 
 .new-rental-btn {
@@ -130,31 +131,17 @@ td {
 
   .edit-btn {
     margin-top: 10px;
+    display: flex;
+    justify-content: flex-start;
   }
-  .new-rental-btn-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    margin: 0;
+  .buttons-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
   }
 
   .new-rental-btn {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%; /* Circular button */
-    background-color: #008dd2 !important;
-    color: white;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-  }
-
- 
-
-  .new-rental-btn span {
-    font-size: 16px;
-    line-height: 1;
+    width: 100%;
   }
 }
