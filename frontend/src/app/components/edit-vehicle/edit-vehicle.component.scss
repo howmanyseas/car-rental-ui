@@ -1,16 +1,20 @@
 .form-container {
-  padding: 20px;
+  padding: 10px;
   background: transparent;
   border-radius: 8px;
+  max-height: 80vh;
+  overflow-y: hidden !important;
 }
 :host {
   display: block;
   margin: 30px;
+  
 }
 
 .row {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .column {
@@ -49,20 +53,32 @@ td {
 }
 
 .edit-vehicle-form {
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
 .buttons-container {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-  margin-top: 16px;
+  flex-wrap: wrap; 
 }
-
+::ng-deep ::-webkit-scrollbar {
+  width: 6px;
+}
+::ng-deep ::-webkit-scrollbar-track {
+  background: #333;
+}
+::ng-deep::-webkit-scrollbar-thumb {
+  background-color: #666;
+  border-radius: 3px;
+}
 mat-form-field {
   width: 100%;
+  margin: 0px;
 }
-
+* {
+  box-sizing: border-box;
+}
 input {
   color: white !important;
 }
@@ -81,13 +97,13 @@ input {
 .damage-history {
   background-color: transparent;
   padding: 16px;
-  margin-top: 20px;
   border: none;
   width: 40%;
   box-shadow: none;
 }
 mat-card {
   box-shadow: none;
+  margin: 0px;
 }
 .damage-table {
   width: 100%;
@@ -114,7 +130,6 @@ mat-card {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 16px;
   font-size: 16px;
   font-weight: bold;
 }
