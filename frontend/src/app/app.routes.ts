@@ -164,6 +164,14 @@ export const routes: Routes = [
           ),
         title: 'Available Vehicles',
       },
+      {
+        path: 'update-prices',
+        loadComponent: () =>
+          import('./components/update-prices/update-prices.component').then(
+            (m) => m.UpdatePricesComponent
+          ),
+        title: 'Update Prices',
+      },
     ],
   },
 

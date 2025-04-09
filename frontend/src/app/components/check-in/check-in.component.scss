@@ -55,6 +55,16 @@
   background-color: #666;
   border-radius: 3px;
 }
+::ng-deep ::-webkit-scrollbar {
+  width: 6px;
+}
+::ng-deep ::-webkit-scrollbar-track {
+  background: #333;
+}
+::ng-deep::-webkit-scrollbar-thumb {
+  background-color: #666;
+  border-radius: 3px;
+}
 .button-group {
   display: flex;
   gap: 10px;
@@ -65,8 +75,6 @@
   justify-content: flex-end;
   gap: 10px;
   margin-top: 20px;
-  /*   margin-bottom: 20px;
- */
 }
 
 .summary {
@@ -288,4 +296,3 @@ mat-option {
     display: none;
   }
 }
-

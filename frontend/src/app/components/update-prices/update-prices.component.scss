@@ -1,0 +1,145 @@
+.container {
+  gap: 20px;
+  overflow: hidden !important;
+}
+.form-container {
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+  overflow-y: hidden;
+  padding-right: 10px;
+}
+:host {
+  display: block;
+  margin: 30px;
+  overflow: hidden;
+}
+mat-card {
+  background-color: transparent;
+  box-shadow: none;
+  height: 70%;
+  overflow-y: hidden;
+  padding-right: 10px;
+  box-sizing: border-box;
+}
+
+h2,
+h3,
+h4 {
+  color: white;
+  font-family: "Inter";
+}
+::ng-deep::-webkit-scrollbar {
+  width: 6px;
+}
+::ng-deep ::-webkit-scrollbar-track {
+  background: #333;
+}
+::ng-deep ::-webkit-scrollbar-thumb {
+  background-color: #666;
+  border-radius: 3px;
+}
+.oneline-all {
+  display: flex;
+  gap: 10px;
+}
+.oneline-all > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.row-fields {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 15px;
+  justify-content: space-between;
+}
+
+.row-fields mat-form-field {
+  flex: 1;
+  min-width: 0;
+}
+.oneline-two {
+  display: flex;
+  gap: 40px;
+}
+.oneline-two > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+
+@media (max-width: 1350px) {
+  .container {
+    padding: 10px;
+  }
+
+  .form-container {
+    padding: 5px;
+  }
+
+  .oneline-all, .oneline-two {
+    flex-direction: column;
+  }
+
+  .oneline-all > div, .oneline-two > div {
+    gap: 10px;
+  }
+
+  .row-fields {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 5px;
+  }
+
+  .form-container {
+    padding: 5px;
+  }
+
+  .oneline-all, .oneline-two {
+    flex-direction: column;
+  }
+
+  .oneline-all > div, .oneline-two > div {
+    gap: 8px;
+  }
+
+  .row-fields {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  button {
+    width: 100%;
+    padding: 15px;
+  }
+}

@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDivider } from '@angular/material/divider';
 import { MatCard, MatCardContent } from '@angular/material/card';
+import { Router, RouterModule } from '@angular/router';
 
 
 @Component({
@@ -20,7 +21,8 @@ import { MatCard, MatCardContent } from '@angular/material/card';
     ReactiveFormsModule,
     MatDivider,
     MatCard,
-    MatCardContent
+    MatCardContent,
+    RouterModule
   ]
 
 })
@@ -28,7 +30,7 @@ export class UserProfileComponent {
 
   userForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.userForm = this.fb.group({
       fname: ['', Validators.required],
       lname: ['', Validators.required],
@@ -43,5 +45,8 @@ export class UserProfileComponent {
       console.log('User data:', this.userForm.value);
       //  API 
     }
+  }
+  gotoPrices(){
+    this.router.navigate(['/update-prices']);
   }
 }

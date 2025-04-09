@@ -10,14 +10,12 @@ h2, h3 {
 
 
 
-/* Mobile Title (hidden by default) */
 .mobile-title {
   font-size: 24px;
   display: none;
   text-align: center;
 }
 
-/* Show Mobile Title on Smaller Screens */
 @media (max-width: 768px) {
   .desktop-title {
     display: none;
@@ -61,7 +59,6 @@ input {
   margin-top: 20px;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
   .row {
     flex-direction: column;

@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
   standalone: true,
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush, // ✅ Added ChangeDetectionStrategy
+  changeDetection: ChangeDetectionStrategy.OnPush, 
   imports: [
     CommonModule,
     ReactiveFormsModule,

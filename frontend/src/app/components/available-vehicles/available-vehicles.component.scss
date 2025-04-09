@@ -27,6 +27,7 @@ th {
   background: #242323;
   color: white;
   font-weight: bold;
+  font-family: "Inter";
 }
 
 td {
@@ -52,9 +53,9 @@ td {
   .desktop-table {
     display: none;
   }
-:host{
-  margin: 10px;
-}
+  :host {
+    margin: 10px;
+  }
   .mobile-cards {
     display: block;
   }

@@ -69,15 +69,7 @@ input {
 .cancel-btn {
   color: #ec3838;
 }
-.add-damage-btn {
-  width: auto;
-  margin-top: 10px;
-  color: white !important;
-  background-color: #008dd2 !important;
-  border-radius: 10px;
-  margin-left: 10px;
-}
-.add-maint-btn {
+.side-btns {
   width: auto;
   margin-top: 10px;
   color: white !important;
@@ -85,6 +77,7 @@ input {
   border-radius: 10px;
   margin-left: 10px;
 }
+
 .damage-history {
   background-color: transparent;
   padding: 16px;
@@ -94,7 +87,7 @@ input {
   box-shadow: none;
 }
 mat-card {
-box-shadow: none;
+  box-shadow: none;
 }
 .damage-table {
   width: 100%;
@@ -162,10 +155,8 @@ box-shadow: none;
     gap: 5px;
   }
 
-  .add-damage-btn,
-  .save-btn,
-  .cancel-btn,
-  .add-maint-btn {
+  .side-btns .save-btn,
+  .cancel-btn {
     width: 100%;
   }
 
@@ -184,10 +175,9 @@ box-shadow: none;
     min-width: unset;
   }
 
-  .add-damage-btn,
   .save-btn,
   .cancel-btn,
-  .add-maint-btn {
+  .side-btns {
     font-size: 1em;
     padding: 8px;
   }

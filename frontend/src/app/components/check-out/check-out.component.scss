@@ -144,6 +144,16 @@ mat-form-field {
   background-color: #666;
   border-radius: 3px;
 }
+::ng-deep ::-webkit-scrollbar {
+  width: 6px;
+}
+::ng-deep ::-webkit-scrollbar-track {
+  background: #333;
+}
+::ng-deep::-webkit-scrollbar-thumb {
+  background-color: #666;
+  border-radius: 3px;
+}
 .grid-fields {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -177,7 +187,6 @@ mat-button-toggle-group {
   background-color: gray !important;
 }
 
-
 /* For MDC-based Angular Material */
 ::ng-deep .mat-mdc-form-field.readonly-field .mdc-notched-outline__leading,
 ::ng-deep .mat-mdc-form-field.readonly-field .mdc-notched-outline__notch,
@@ -190,7 +199,6 @@ mat-button-toggle-group {
 ::ng-deep .mat-mdc-form-field-disabled .mdc-notched-outline__trailing {
   border-color: white !important;
 }
-
 
 /* white color for input fields */
 ::ng-deep .mat-mdc-form-field input.mat-mdc-input-element {
@@ -205,8 +213,6 @@ mat-button-toggle-group {
 ::ng-deep .mat-mdc-form-field .mdc-floating-label--float-above {
   color: white !important;
 }
-
-
 
 .buttons-group button {
   background-color: #008dd2 !important;
@@ -239,7 +245,8 @@ mat-icon {
     padding: 0 10px;
   }
 
-  .form-container, .summary {
+  .form-container,
+  .summary {
     width: 100%;
   }
 
@@ -247,20 +254,22 @@ mat-icon {
     grid-template-columns: 1fr;
   }
 
-  .button-group, .buttons-group {
+  .button-group,
+  .buttons-group {
     flex-direction: column;
     justify-content: center;
   }
-.summary{
-  display: none;
-}
-  .button-group button, .buttons-group button {
+  .summary {
+    display: none;
+  }
+  .button-group button,
+  .buttons-group button {
     width: 100%;
   }
 }
 
 @media (max-width: 768px) {
-  :host{
+  :host {
     margin: 10px;
   }
   .upload-container {
@@ -275,15 +284,18 @@ mat-icon {
     flex-direction: column;
     align-items: stretch;
   }
-  .form-container{
+  .form-container {
     margin: 0px;
   }
 
-  h2, h3, h4 {
+  h2,
+  h3,
+  h4 {
     font-size: 1.4em;
   }
 
-  .button-group button, .buttons-group button {
+  .button-group button,
+  .buttons-group button {
     font-size: 0.9em;
   }
 
@@ -297,16 +309,18 @@ mat-icon {
 }
 
 @media (max-width: 400px) {
-  h2, h3, h4 {
+  h2,
+  h3,
+  h4 {
     font-size: 1.2em;
   }
-  mat-horizontal-stepper{
+  mat-horizontal-stepper {
     margin: 0px;
   }
-  .form-container{
+  .form-container {
     margin: 0px;
   }
-  :host{
+  :host {
     margin: 10px;
   }
   .grid-fields {
@@ -314,12 +328,14 @@ mat-icon {
     gap: 10px;
   }
 
-  .button-group, .buttons-group {
+  .button-group,
+  .buttons-group {
     flex-direction: column;
     gap: 5px;
   }
 
-  .button-group button, .buttons-group button {
+  .button-group button,
+  .buttons-group button {
     font-size: 0.8em;
   }
 

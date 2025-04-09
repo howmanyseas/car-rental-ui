@@ -48,7 +48,5 @@ export class VehiclesTableComponent implements AfterViewInit {
   gotoNewCar() {
     this.router.navigate(['/add-vehicle']);
   }
-  gotoHistory() {
-    this.router.navigate(['/vehicle-rental-history']);
-  }
+ 
 }

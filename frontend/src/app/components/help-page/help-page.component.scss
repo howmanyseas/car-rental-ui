@@ -23,10 +23,88 @@ p {
 .contact-support {
   margin-top: 20px;
 }
-mat-pannel-title{
-    color: white !important;
+mat-pannel-title {
+  color: white !important;
 }
 button {
   margin-top: 10px;
+}
+@media (max-width: 1024px) {
+  .help-container {
+    padding: 15px;
+  }
 
+  h2,
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .faq-section {
+    margin: 15px 0;
+  }
+
+  .contact-support {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .help-container {
+    padding: 10px;
+  }
+
+  h2,
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  .faq-section {
+    margin: 10px 0;
+  }
+
+  .contact-support {
+    margin-top: 10px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .help-container {
+    padding: 8px;
+  }
+
+  h2,
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  .faq-section {
+    margin: 5px 0;
+  }
+
+  .contact-support {
+    margin-top: 8px;
+  }
+
+  button {
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+  }
 }

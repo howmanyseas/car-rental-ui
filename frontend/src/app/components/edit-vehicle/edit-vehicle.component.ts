@@ -89,4 +89,7 @@ export class EditVehicleComponent implements OnInit {
   removeDamage(item: DamageHistoryItem) {
     this.damageHistory = this.damageHistory.filter(d => d !== item);
   }
+  gotoHistory() {
+    this.router.navigate(['/vehicle-rental-history']);
+  }
 }

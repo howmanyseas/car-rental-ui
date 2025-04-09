@@ -117,16 +117,15 @@
     ></tr>
   </table>
 </mat-card>
-<button mat-raised-button class="add-damage-btn" (click)="addDamage()">
+<button mat-raised-button class="side-btns" (click)="addDamage()">
   Add Damage
 </button>
 
-<button
-  mat-raised-button
-  class="add-maint-btn"
-  (click)="viewMaintenanceHistory()"
->
+<button mat-raised-button class="side-btns" (click)="viewMaintenanceHistory()">
   Maintenance History
+</button>
+<button mat-stroked-button class="side-btns" (click)="gotoHistory()">
+  Rental History
 </button>
 
 <div class="buttons-container">

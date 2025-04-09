@@ -44,7 +44,7 @@ export class DefaultHeaderComponent implements AfterViewInit {
   }
 
   toggleSearch() {
-    console.log('🔍 Search button clicked!');
+    console.log('Search button clicked!');
     this.isSearchExpanded = !this.isSearchExpanded;
     this.cdr.detectChanges(); 
   }

@@ -1,0 +1,185 @@
+<h2 class="title">Update Prices</h2>
+
+<div class="container">
+  <mat-card class="form-container">
+    <mat-card-content>
+      <form [formGroup]="updatePricesForm">
+        <div class="section">
+          <h3 (click)="toggleCheckOut()">
+            Check Out
+            <mat-icon>{{checkOutVisible ? 'expand_less' : 'expand_more'}}</mat-icon>
+          </h3>
+          <div *ngIf="checkOutVisible">
+            <div class="oneline-all">
+              <div>
+                <h4>Car Group Fee</h4>
+                <mat-divider></mat-divider>
+                <div class="row-fields">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Car Group</mat-label>
+                    <input matInput />
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Price Type</mat-label>
+                    <input matInput />
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Change From</mat-label>
+                    <input matInput />
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Change To</mat-label>
+                    <input matInput />
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <div class="oneline-two">
+              <div>
+                <h4>Tax</h4>
+                <mat-divider></mat-divider>
+                <div class="row-fields">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Tax From</mat-label>
+                    <input matInput />
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Tax To</mat-label>
+                    <input matInput />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div>
+                <h4>Additional Fees</h4>
+                <mat-divider></mat-divider>
+                <div class="row-fields">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Additional Fee</mat-label>
+                    <input matInput />
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Change From</mat-label>
+                    <input matInput />
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Change To</mat-label>
+                    <input matInput />
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3 (click)="toggleCheckIn()">
+              Check In
+              <mat-icon>{{checkInVisible ? 'expand_less' : 'expand_more'}}</mat-icon>
+            </h3>
+            <div *ngIf="checkInVisible">
+              <div class="oneline-two">
+                <div>
+                  <h4>Nr. of Days</h4>
+                  <mat-divider></mat-divider>
+                  <div class="row-fields">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Days Exceeded Fee</mat-label>
+                      <input matInput />
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Change To</mat-label>
+                      <input matInput />
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div>
+                  <h4>Additional Fees</h4>
+                  <mat-divider></mat-divider>
+                  <div class="row-fields">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Additional Fee</mat-label>
+                      <input matInput />
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Change From</mat-label>
+                      <input matInput />
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Change To</mat-label>
+                      <input matInput />
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+
+              <div class="oneline-two">
+                <div>
+                  <h4>Milleage</h4>
+                  <mat-divider></mat-divider>
+                  <div class="row-fields">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Milleage Fee</mat-label>
+                      <input matInput />
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Change To</mat-label>
+                      <input matInput />
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div>
+                  <h4>Fuel</h4>
+                  <mat-divider></mat-divider>
+                  <div class="row-fields">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Fuel Fee</mat-label>
+                      <input matInput />
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Change To</mat-label>
+                      <input matInput />
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+
+              <div class="oneline-all">
+                <div>
+                  <h4>Damage</h4>
+                  <mat-divider></mat-divider>
+                  <div class="row-fields">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Damage Type</mat-label>
+                      <input matInput />
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Damage Severity</mat-label>
+                      <input matInput />
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Car Part</mat-label>
+                      <input matInput />
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Damage Fee</mat-label>
+                      <input matInput />
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Change To</mat-label>
+                      <input matInput />
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button mat-raised-button color="primary">Save</button>
+          <button mat-raised-button color="warn" (click)="goback()">Cancel</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
