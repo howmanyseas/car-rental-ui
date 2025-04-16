@@ -47,22 +47,63 @@
             <div class="grid-fields">
               <mat-form-field appearance="outline">
                 <mat-label>Check Out Date</mat-label>
-                <input matInput [matDatepicker]="checkOutPicker" />
+                <input
+                  matInput
+                  [matDatepicker]="checkOutDatePicker"
+                  [formControl]="CheckOutDateControl"
+                  (dateChange)="updateActualCheckOut()"
+                />
                 <mat-datepicker-toggle
                   matSuffix
-                  [for]="checkOutPicker"
+                  [for]="checkOutDatePicker"
                 ></mat-datepicker-toggle>
-                <mat-datepicker #checkOutPicker></mat-datepicker>
+                <mat-datepicker
+                  #checkOutDatePicker
+                  [touchUi]="true"
+                ></mat-datepicker>
               </mat-form-field>
-
+              <mat-form-field appearance="outline">
+                <mat-label> Check Out Time</mat-label>
+                <input
+                  matInput
+                  [ngxTimepicker]="checkOutTimePicker"
+                  [formControl]="CheckOutTimeControl"
+                  [format]="24"
+                  (timeSet)="updateActualCheckOut()"
+                />
+                <ngx-material-timepicker
+                  #checkOutTimePicker
+                ></ngx-material-timepicker>
+              </mat-form-field>
               <mat-form-field appearance="outline">
                 <mat-label>Check In Date</mat-label>
-                <input matInput [matDatepicker]="checkInPicker" />
+                <input
+                  matInput
+                  [matDatepicker]="checkInDatePicker"
+                  [formControl]="CheckInDateControl"
+                  (dateChange)="updateActualCheckIn()"
+                />
                 <mat-datepicker-toggle
                   matSuffix
-                  [for]="checkInPicker"
+                  [for]="checkInDatePicker"
                 ></mat-datepicker-toggle>
-                <mat-datepicker #checkInPicker></mat-datepicker>
+                <mat-datepicker
+                  #checkInDatePicker
+                  [touchUi]="true"
+                ></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label> Check In Time</mat-label>
+                <input
+                  matInput
+                  [ngxTimepicker]="checkInTimePicker"
+                  [formControl]="CheckInTimeControl"
+                  [format]="24"
+                  (timeSet)="updateActualCheckIn()"
+                />
+                <ngx-material-timepicker
+                  #checkInTimePicker
+                ></ngx-material-timepicker>
               </mat-form-field>
             </div>
 
@@ -262,7 +303,7 @@
                 <mat-radio-button value="no">No</mat-radio-button>
               </mat-radio-group>
               <div
-              class="grid-fields"
+                class="grid-fields"
                 *ngIf="
                   customerFormGroup.get('driverSameAsRenter')?.value === 'no'
                 "
@@ -353,18 +394,47 @@
                 <mat-radio-button value="yes">Yes</mat-radio-button>
                 <mat-radio-button value="no">No</mat-radio-button>
               </mat-radio-group>
-              <mat-form-field
-                appearance="outline"
-                *ngIf="
-                  customerFormGroup.get('sameBillingAddress')?.value === 'no'
-                "
-              >
+            </div>
+            <div
+              class="grid-fields"
+              *ngIf="
+                customerFormGroup.get('sameBillingAddress')?.value === 'no'
+              "
+            >
+              <mat-form-field appearance="outline">
                 <mat-label>Company Name</mat-label>
                 <input matInput formControlName="companyName" />
               </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Street</mat-label>
+                <input matInput formControlName="street" />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>ZIP</mat-label>
+                <input matInput formControlName="zip" />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Country</mat-label>
+                <mat-select formControlName="country">
+                  <mat-option>Country 1</mat-option>
+                  <mat-option>Country 2</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>House nr.</mat-label>
+                <input matInput formControlName="houseNr" />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>City</mat-label>
+                <input matInput formControlName="city" />
+              </mat-form-field>
             </div>
 
-            <h4>ID</h4>
+            <h4>Identification Information</h4>
             <mat-divider></mat-divider><br />
             <div class="grid-fields">
               <mat-form-field appearance="outline">
@@ -455,6 +525,296 @@
         </mat-card-content>
       </mat-card>
     </mat-step>
+    <ng-container *ngFor="let form of additionalDriverForms; let i = index">
+      <mat-step [label]="'Additional Driver ' + (i + 1)">
+        <mat-card class="form-container">
+          <mat-card-header>
+            <h3 class="title">Additional Driver {{ i + 1 }}</h3>
+          </mat-card-header>
+          <mat-card-content>
+            <form [formGroup]="form">
+              <h4>Driver Details</h4>
+              <mat-divider></mat-divider><br />
+              <div class="grid-fields">
+                <mat-form-field appearance="outline">
+                  <mat-label>Academic Title</mat-label>
+                  <input matInput formControlName="academicTitle" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>First Name</mat-label>
+                  <input matInput formControlName="firstName" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput formControlName="lastName" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Date of Birth</mat-label>
+                  <input
+                    matInput
+                    [matDatepicker]="dobPicker"
+                    formControlName="dob"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="dobPicker"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #dobPicker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Phone nr.</mat-label>
+                  <input matInput formControlName="phone" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Email</mat-label>
+                  <input matInput type="email" formControlName="email" />
+                </mat-form-field>
+              </div>
+
+              <h4>Driver Information</h4>
+              <mat-divider></mat-divider><br />
+              <div>
+                <p class="colorwhite">
+                  Is the driver the same person as the renter?
+                </p>
+
+                <mat-radio-group
+                  formControlName="driverSameAsRenter"
+                  class="radio-group"
+                >
+                  <mat-radio-button value="yes">Yes</mat-radio-button>
+                  <mat-radio-button value="no">No</mat-radio-button>
+                </mat-radio-group>
+                <div
+                  class="grid-fields"
+                  *ngIf="
+                    customerFormGroup.get('driverSameAsRenter')?.value === 'no'
+                  "
+                >
+                  <mat-form-field appearance="outline">
+                    <mat-label>Academic Title</mat-label>
+                    <input matInput formControlName="academicTitle" />
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input matInput formControlName="firstName" />
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput formControlName="lastName" />
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Date of Birth</mat-label>
+                    <input
+                      matInput
+                      [matDatepicker]="dobPicker"
+                      formControlName="dob"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="dobPicker"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #dobPicker></mat-datepicker>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Phone nr.</mat-label>
+                    <input matInput formControlName="phone" />
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" formControlName="email" />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <h4>Address</h4>
+              <mat-divider></mat-divider><br />
+              <div class="grid-fields">
+                <mat-form-field appearance="outline">
+                  <mat-label>Street</mat-label>
+                  <input matInput formControlName="street" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>ZIP</mat-label>
+                  <input matInput formControlName="zip" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Country</mat-label>
+                  <mat-select formControlName="country">
+                    <mat-option>Country 1</mat-option>
+                    <mat-option>Country 2</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>House nr.</mat-label>
+                  <input matInput formControlName="houseNr" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>City</mat-label>
+                  <input matInput formControlName="city" />
+                </mat-form-field>
+              </div>
+
+              <h4>Billing Address</h4>
+              <mat-divider></mat-divider><br />
+              <div class="grid-fields">
+                <p class="colorwhite">
+                  Is your billing address the same as your home address?
+                </p>
+                <mat-radio-group
+                  formControlName="sameBillingAddress"
+                  class="radio-group"
+                >
+                  <mat-radio-button value="yes">Yes</mat-radio-button>
+                  <mat-radio-button value="no">No</mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <div
+                class="grid-fields"
+                *ngIf="
+                  customerFormGroup.get('sameBillingAddress')?.value === 'no'
+                "
+              >
+                <mat-form-field appearance="outline">
+                  <mat-label>Company Name</mat-label>
+                  <input matInput formControlName="companyName" />
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Street</mat-label>
+                  <input matInput formControlName="street" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>ZIP</mat-label>
+                  <input matInput formControlName="zip" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Country</mat-label>
+                  <mat-select formControlName="country">
+                    <mat-option>Country 1</mat-option>
+                    <mat-option>Country 2</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>House nr.</mat-label>
+                  <input matInput formControlName="houseNr" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>City</mat-label>
+                  <input matInput formControlName="city" />
+                </mat-form-field>
+              </div>
+
+              <h4>Identification Information</h4>
+              <mat-divider></mat-divider><br />
+              <div class="grid-fields">
+                <mat-form-field appearance="outline">
+                  <mat-label>Identification Type</mat-label>
+                  <mat-select formControlName="idType">
+                    <mat-option>ID Type 1</mat-option>
+                    <mat-option>ID Type 2</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Identification nr.</mat-label>
+                  <input matInput formControlName="idNumber" />
+                </mat-form-field>
+
+                <div class="upload-container">
+                  <app-upload-options *ngIf="isMobile"></app-upload-options>
+                  <div *ngIf="!isMobile">
+                    <button mat-icon-button (click)="fileInput.click()">
+                      <mat-icon>cloud_upload</mat-icon>
+                    </button>
+                    <input
+                      hidden
+                      type="file"
+                      #fileInput
+                      (change)="onFileSelected($event)"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <h4>License Information</h4>
+              <mat-divider></mat-divider><br />
+              <div class="grid-fields">
+                <mat-form-field appearance="outline">
+                  <mat-label>Driver's License nr.</mat-label>
+                  <input matInput formControlName="licenseNumber" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Country</mat-label>
+                  <input matInput formControlName="licenseCountry" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Date of Expiry</mat-label>
+                  <input
+                    matInput
+                    [matDatepicker]="expiryPicker"
+                    formControlName="licenseExpiry"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="expiryPicker"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #expiryPicker></mat-datepicker>
+                </mat-form-field>
+
+                <div class="upload-container">
+                  <app-upload-options *ngIf="isMobile"></app-upload-options>
+                  <div *ngIf="!isMobile">
+                    <button mat-icon-button (click)="fileInput.click()">
+                      <mat-icon>cloud_upload</mat-icon>
+                    </button>
+                    <input
+                      hidden
+                      type="file"
+                      #fileInput
+                      (change)="onFileSelected($event)"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <mat-form-field
+                appearance="outline"
+                style="width: 100%; margin-top: 15px"
+              >
+                <mat-label>Customer Note</mat-label>
+                <input matInput formControlName="customerNote" />
+              </mat-form-field>
+
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+       
+          </mat-card-content>
+        </mat-card>
+      </mat-step>
+    </ng-container>
     <!--put stepper with errors in the steps when conn with backnd-->
     <mat-step label="Car Information" state="phone">
       <mat-card class="form-container">
@@ -481,11 +841,7 @@
 
               <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>License Plate</mat-label>
-                <input
-                  matInput
-                  formControlName="licensePlate"
-                
-                />
+                <input matInput formControlName="licensePlate" />
               </mat-form-field>
 
               <mat-form-field appearance="outline" class="readonly-field">
@@ -527,6 +883,7 @@
         </mat-card-content>
       </mat-card>
     </mat-step>
+
     <mat-step label="Payment" state="phone">
       <mat-card class="form-container">
         <mat-card-header>
@@ -615,8 +972,7 @@
             </div>
             <div class="buttons-group">
               <button mat-raised-button color="primary">Save</button>
-              <button mat-raised-button color="primary">Download</button>
-              <button mat-raised-button color="primary">Invoice</button>
+              <button mat-raised-button color="primary">Print</button>
             </div>
 
             <div class="button-group">

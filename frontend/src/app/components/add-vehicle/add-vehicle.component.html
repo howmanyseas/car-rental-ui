@@ -1,110 +1,81 @@
 <h2 class="title">Add New Vehicle</h2>
 
 <form class="edit-vehicle-form">
-    <mat-card class="form-container">
-        <h2 class="subtitle">Car Information</h2>
+  <mat-card class="form-container">
+    <h2 class="subtitle">Car Information</h2>
 
-        <div class="row">
-            <div class="column">
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Car ID</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Model</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Color</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Fuel</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Millage</mat-label>
-                    <input matInput>
-                </mat-form-field>
-            </div>
+    <div class="row">
+      <div class="column">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Car ID</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Model</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Color</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Fuel</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Millage</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </div>
 
-            <div class="column">
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>MVA</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Transmission</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Tire Type</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Fuel Level</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>TUV Inspection</mat-label>
-                    <input matInput>
-                </mat-form-field>
-            </div>
+      <div class="column">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>MVA</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Transmission</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Tire Type</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Fuel Level</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>TUV Inspection</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </div>
 
-            <div class="column">
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Licence Plate</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Brand</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Equipment</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Status</mat-label>
-                    <input matInput>
-                </mat-form-field>
-            </div>
-        </div>
-    </mat-card>
+      <div class="column">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Licence Plate</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Brand</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Equipment</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Status</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card>
 </form>
 
-<mat-card class="damage-history">
-    <h2 class="subtitle">Damages</h2>
-
-    <table mat-table [dataSource]="damageHistory" matSort class="damage-table mat-elevation-z8">
-        <ng-container matColumnDef="part">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Car Part </th>
-            <td mat-cell *matCellDef="let element"> {{element.part}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="damage">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Damage </th>
-            <td mat-cell *matCellDef="let element"> {{element.damage}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
-            <td mat-cell *matCellDef="let element">
-                <button mat-icon-button class="delete-btn" (click)="removeDamage(element)">
-                    <mat-icon>delete</mat-icon>
-                </button>
-            </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="['part', 'damage', 'actions']"></tr>
-        <tr mat-row *matRowDef="let row; columns: ['part', 'damage', 'actions'];"></tr>
-    </table>
-
-
-</mat-card> <button mat-raised-button class="add-damage-btn" (click)="addDamage()">Add Damage</button>
-
-
 <div class="buttons-container">
-    <button mat-button style="color: white;" (click)="cancelBtn()">Cancel</button>
-    <button mat-raised-button class="save-btn" (click)="addVehicle()">Save</button>
+  <button mat-button style="color: white" (click)="cancelBtn()">Cancel</button>
+  <button mat-raised-button class="save-btn" (click)="addVehicle()">
+    Save
+  </button>
 </div>

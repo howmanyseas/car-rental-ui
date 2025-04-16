@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -22,6 +22,8 @@ import {
 import { default as _rollupMoment, Moment } from 'moment';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import * as _moment from 'moment';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+
 import { UploadOptionsComponent } from '../upload-options.component';
 
 const moment = _rollupMoment || _moment;
@@ -46,6 +48,7 @@ const MONTH_YEAR_FORMATS = {
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    NgxMaterialTimepickerModule,
     MatCardModule,
     MatDivider,
     MatDatepickerModule,
@@ -75,10 +78,17 @@ export class CheckOutComponent implements OnInit {
   isMobile = false;
   pricingFormGroup!: FormGroup;
   customerFormGroup!: FormGroup;
+  feeGroup: FormGroup = new FormGroup({});
   carInformationFormGroup!: FormGroup;
   paymentFormGroup!: FormGroup;
-
+  CheckOutTimeControl = new FormControl();
+  CheckInTimeControl = new FormControl();
+  CheckOutDateControl = new FormControl();
+  CheckInDateControl = new FormControl();
+  checkoutDatetime = new FormControl();
+  checkinDatetime = new FormControl();
   selectedFile: File | null = null;
+  additionalDriverForms: FormGroup[] = [];
 
   showAdditionalFees = false;
   showDiscount = false;
@@ -110,6 +120,11 @@ export class CheckOutComponent implements OnInit {
       discountReason: [''],
       discountAppliedBy: [''],
     });
+    this.feeGroup = this.fb.group({
+      feeType: [''],
+      price: [''],
+    });
+
     this.customerFormGroup = this.fb.group({
       academicTitle: [''],
       firstName: [''],
@@ -181,6 +196,30 @@ export class CheckOutComponent implements OnInit {
 
 
   }
+  updateActualCheckOut() {
+    const date = this.CheckOutDateControl.value;
+
+    const time = this.CheckOutTimeControl.value;
+    if (date && time) {
+      const [hours, minutes] = time.split(':');
+      const combined = new Date(date);
+      combined.setHours(+hours);
+      combined.setMinutes(+minutes);
+      this.checkoutDatetime.setValue(combined);
+    }
+  }
+
+  updateActualCheckIn() {
+    const date = this.CheckInDateControl.value;
+    const time = this.CheckInTimeControl.value;
+    if (date && time) {
+      const [hours, minutes] = time.split(':');
+      const combined = new Date(date);
+      combined.setHours(+hours);
+      combined.setMinutes(+minutes);
+      this.checkinDatetime.setValue(combined);
+    }
+  }
   detectDevice() {
     this.isMobile = window.innerWidth <= 768;
   }
@@ -209,19 +248,56 @@ export class CheckOutComponent implements OnInit {
       this.customerFormGroup.get('driverDetails')?.reset();
     }
   }
-  
+
   get additionalFees(): FormArray {
     return this.pricingFormGroup.get('additionalFees') as FormArray;
   }
 
-  addAdditionalFee() {
-    this.additionalFees.push(
-      this.fb.group({
-        feeType: [''],
-        price: [''],
-      })
-    );
+
+  addAdditionalDriverForm() {
+    const form = this.fb.group({
+      academicTitle: [''],
+      firstName: [''],
+      lastName: [''],
+      dob: [''],
+      phone: [''],
+      email: [''],
+      street: [''],
+      zip: [''],
+      country: [''],
+      houseNr: [''],
+      city: [''],
+      licenseNumber: [''],
+      licenseCountry: [''],
+      licenseExpiry: [''],
+    });
+
+    this.additionalDriverForms.push(form);
   }
+
+  addAdditionalFee() {
+    const feeGroup: FormGroup = this.fb.group({
+      feeType: [''],
+      price: [''],
+    });
+
+    feeGroup.get('feeType')?.valueChanges.subscribe((value: string) => {
+      if (value === 'Additional Drivers') {
+        const existingCount = this.additionalDriverForms.length;
+        if (existingCount < 3) {
+          this.addAdditionalDriverForm();
+        } else {
+          alert('Maximum of 3 additional drivers allowed.');
+          // Optionally reset the selection
+          feeGroup.get('feeType')?.reset();
+        }
+      }
+    });
+
+    this.additionalFees.push(feeGroup);
+  }
+
+
 
   removeAdditionalFee(index: number) {
     this.additionalFees.removeAt(index);

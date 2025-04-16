@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,6 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { DamageMarkerComponent } from '../damage-marker/damage-marker.component';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 @Component({
   selector: 'app-check-in',
@@ -33,12 +34,20 @@ import { DamageMarkerComponent } from '../damage-marker/damage-marker.component'
     MatSelectModule,
     MatIconModule,
     MatDialogModule,
+    NgxMaterialTimepickerModule,
   ],
 })
 export class CheckInComponent implements OnInit {
   checkInForm!: FormGroup;
   showAdditionalFees = false;
-
+  actualCheckOutDateControl = new FormControl();
+  actualCheckOutTimeControl = new FormControl();
+  
+  actualCheckInDateControl = new FormControl();
+  actualCheckInTimeControl = new FormControl();
+  
+  checkoutDatetime = new FormControl();
+  checkinDatetime = new FormControl();
   summary = {
     rentalId: '0000001',
     netAmount: 0,
@@ -54,8 +63,8 @@ export class CheckInComponent implements OnInit {
       mva: [''],
       checkOutPrice: [''],
       checkInPrice: [''],
-      actualCheckOut: [''],
-      actualCheckIn: [''],
+      actualCheckOut: [null],
+      actualCheckIn: [null],
       kmOut: [''],
       kmIn: [''],
       fuelOut: [''],
@@ -68,12 +77,35 @@ export class CheckInComponent implements OnInit {
       grossAmount: [''],
       additionalFees: this.fb.array([]), 
     });
+    
   }
 
   get additionalFees(): FormArray {
     return this.checkInForm.get('additionalFees') as FormArray;
   }
-
+  updateActualCheckOut() {
+    const date = this.actualCheckOutDateControl.value;
+    const time = this.actualCheckOutTimeControl.value;
+    if (date && time) {
+      const [hours, minutes] = time.split(':');
+      const combined = new Date(date);
+      combined.setHours(+hours);
+      combined.setMinutes(+minutes);
+      this.checkoutDatetime.setValue(combined);
+    }
+  }
+  
+  updateActualCheckIn() {
+    const date = this.actualCheckInDateControl.value;
+    const time = this.actualCheckInTimeControl.value;
+    if (date && time) {
+      const [hours, minutes] = time.split(':');
+      const combined = new Date(date);
+      combined.setHours(+hours);
+      combined.setMinutes(+minutes);
+      this.checkinDatetime.setValue(combined);
+    }
+  }
   toggleAdditionalFees() {
     this.showAdditionalFees = !this.showAdditionalFees;
     if (this.showAdditionalFees && this.additionalFees.length === 0) {
