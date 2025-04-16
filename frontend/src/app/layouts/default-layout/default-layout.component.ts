@@ -32,16 +32,18 @@ export class DefaultLayoutComponent {
   menuItems = [
     { label: 'Dashboard', icon: 'dashboard', route: '/dashboard' },
     { label: 'Cars', icon: 'directions_car', route: '/vehicles' },
-    { label: 'Check Out', route: '/check-out', icon: 'call_missed_outgoing' }, 
+    { label: 'Check Out', route: '/check-out', icon: 'call_missed_outgoing' },
     { label: 'Check In', route: '/check-in', icon: 'check_circle_outline' },
-    { label: 'Users', route: '/users-table', icon: 'group' }, 
-    { label: 'Help', route: '/help-page', icon: 'help_outline' } 
+    { label: 'Users', route: '/users-table', icon: 'group' },
+    { label: 'Update Prices', route: '/update-prices', icon: 'attach_money' },
+    { label: 'Help', route: '/help-page', icon: 'help_outline' }
+
   ];
 
-  constructor(private router: Router , private cdr: ChangeDetectorRef) {
-   
-      console.log('✅ DefaultLayoutComponent Loaded');
-    
+  constructor(private router: Router, private cdr: ChangeDetectorRef) {
+
+    console.log('✅ DefaultLayoutComponent Loaded');
+
   }
 
   toggleSidenav() {
