@@ -1,10 +1,9 @@
 <h2 class="title">Available Vehicles</h2>
 
 <div class="table-container">
-  <!-- Search input -->
   <input
     matInput
-    placeholder="Search vehicles"
+    placeholder="Search"
     (input)="applyFilter($event)"
     class="search-input"
   />
@@ -15,31 +14,26 @@
     matSort
     class="mat-elevation-z8 desktop-table"
   >
-    <!-- Car ID Column -->
     <ng-container matColumnDef="carId">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Car ID</th>
       <td mat-cell *matCellDef="let element">{{ element.carId }}</td>
     </ng-container>
 
-    <!-- Plate Column -->
     <ng-container matColumnDef="plate">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Plate</th>
       <td mat-cell *matCellDef="let element">{{ element.plate }}</td>
     </ng-container>
 
-    <!-- Model Column -->
     <ng-container matColumnDef="model">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Model</th>
       <td mat-cell *matCellDef="let element">{{ element.model }}</td>
     </ng-container>
 
-    <!-- Color Column -->
     <ng-container matColumnDef="color">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Color</th>
       <td mat-cell *matCellDef="let element">{{ element.color }}</td>
     </ng-container>
 
-    <!-- Status Column -->
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef>Status</th>
       <td mat-cell *matCellDef="let element">
@@ -49,12 +43,10 @@
       </td>
     </ng-container>
 
-    <!-- Header and Row Definitions -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
-  <!-- Mobile View -->
   <div class="mobile-cards" *ngFor="let element of dataSource.filteredData">
     <div class="card">
       <div class="card-header">

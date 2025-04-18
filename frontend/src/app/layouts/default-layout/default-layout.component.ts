@@ -34,6 +34,7 @@ export class DefaultLayoutComponent {
     { label: 'Cars', icon: 'directions_car', route: '/vehicles' },
     { label: 'Check Out', route: '/check-out', icon: 'call_missed_outgoing' },
     { label: 'Check In', route: '/check-in', icon: 'check_circle_outline' },
+    { label: 'Upcoming Rentals', route: '/upcoming-rentals', icon: 'schedule' },
     { label: 'Users', route: '/users-table', icon: 'group' },
     { label: 'Update Prices', route: '/update-prices', icon: 'attach_money' },
     { label: 'Help', route: '/help-page', icon: 'help_outline' }

@@ -172,6 +172,16 @@ export const routes: Routes = [
           ),
         title: 'Update Prices',
       },
+      {
+        path: 'upcoming-rentals',
+        loadComponent: () =>
+          import('./components/upcoming-rentals/upcoming-rentals.component').then(
+            (m) => m.UpcomingRentalsComponent
+          ),
+        title: 'Upcoming Rentals',
+      },
+
+
     ],
   },
 
