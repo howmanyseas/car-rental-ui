@@ -41,6 +41,11 @@ export class UsersTableComponent implements AfterViewInit {
     this.router.navigate(['/add-users']);
 
   }
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;

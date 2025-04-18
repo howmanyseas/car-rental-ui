@@ -45,6 +45,11 @@ export class VehiclesTableComponent implements AfterViewInit {
 
     this.table.dataSource = this.dataSource;
   }
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  
   gotoNewCar() {
     this.router.navigate(['/add-vehicle']);
   }

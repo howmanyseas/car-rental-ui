@@ -1,5 +1,13 @@
-<h2 class="title">Rentals</h2>
+<h2 class="title">Rental Lists</h2>
+
 <div class="table-container">
+  <input
+    matInput
+    placeholder="Search rentals"
+    (input)="applyFilter($event)"
+    class="search-input"
+  />
+
   <table
     mat-table
     [dataSource]="dataSource"
@@ -7,7 +15,7 @@
     class="mat-elevation-z8 desktop-table"
   >
     <ng-container matColumnDef="rentalId">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>RentalID</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Rental ID</th>
       <td mat-cell *matCellDef="let element">{{ element.rentalId }}</td>
     </ng-container>
 
@@ -28,7 +36,9 @@
 
     <ng-container matColumnDef="checkOutPrice">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Check Out Price</th>
-      <td mat-cell *matCellDef="let element">{{ element.checkOutPrice }}</td>
+      <td mat-cell *matCellDef="let element">
+        {{ element.checkOutPrice | currency : "USD" : "symbol" }}
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="checkOut">
@@ -48,7 +58,7 @@
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef>Status</th>
       <td mat-cell *matCellDef="let element">
-        <span class="active" [ngClass]="element.status.toLowerCase()">
+        <span class="status" [ngClass]="element.status.toLowerCase()">
           {{ element.status }}
         </span>
       </td>
@@ -67,7 +77,7 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
-  <div class="mobile-cards" *ngFor="let element of dataSource">
+  <div class="mobile-cards" *ngFor="let element of dataSource.filteredData">
     <div class="card">
       <div class="card-header">
         <h3>{{ element.rentalId }} - {{ element.customer }}</h3>
@@ -86,8 +96,9 @@
             completed: element.status === 'Completed',
             active: element.status === 'Active'
           }"
-          >{{ element.status }}</span
         >
+          {{ element.status }}
+        </span>
       </p>
       <button mat-icon-button color="primary" class="edit-btn">
         <mat-icon>edit</mat-icon>

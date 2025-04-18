@@ -7,7 +7,7 @@ h2.title {
   color: white;
   font-size: 24px;
   margin-bottom: 30px;
-  font-family: 'Inter';
+  font-family: "Inter";
 }
 
 .table-container {
@@ -22,12 +22,24 @@ table {
   background: transparent;
   color: white;
 }
+.search-input {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #444;
+  background-color: #1e1e1e;
+  color: white;
+  display: block;
+}
 
 th {
   background: #242323;
   color: white;
   font-weight: bold;
-  font-family: 'Inter';
+  font-family: "Inter";
 }
 
 td {
@@ -94,10 +106,10 @@ button {
   }
 
   .buttons-container {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
   }
 
   button {

@@ -1,49 +1,65 @@
 <h2 class="title">Vehicle Rental History</h2>
 
 <div class="table-container">
-  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 desktop-table">
+  <input
+    matInput
+    placeholder="Search rentals"
+    (input)="applyFilter($event)"
+    class="search-input"
+  />
 
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    matSort
+    class="mat-elevation-z8 desktop-table"
+  >
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-      <td mat-cell *matCellDef="let record"> {{ record.name }} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let record">{{ record.name }}</td>
     </ng-container>
 
     <ng-container matColumnDef="lastName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
-      <td mat-cell *matCellDef="let record"> {{ record.lastName }} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+      <td mat-cell *matCellDef="let record">{{ record.lastName }}</td>
     </ng-container>
 
     <ng-container matColumnDef="carPlate">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Car Plate </th>
-      <td mat-cell *matCellDef="let record"> {{ record.carPlate }} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Car Plate</th>
+      <td mat-cell *matCellDef="let record">{{ record.carPlate }}</td>
     </ng-container>
 
     <ng-container matColumnDef="rentalId">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Rental ID </th>
-      <td mat-cell *matCellDef="let record"> {{ record.rentalId }} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Rental ID</th>
+      <td mat-cell *matCellDef="let record">{{ record.rentalId }}</td>
     </ng-container>
 
     <ng-container matColumnDef="checkOut">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Check Out Date </th>
-      <td mat-cell *matCellDef="let record"> {{ record.checkOut }} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Check Out Date</th>
+      <td mat-cell *matCellDef="let record">{{ record.checkOut }}</td>
     </ng-container>
 
     <ng-container matColumnDef="checkIn">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Check In Date </th>
-      <td mat-cell *matCellDef="let record"> {{ record.checkIn }} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Check In Date</th>
+      <td mat-cell *matCellDef="let record">{{ record.checkIn }}</td>
     </ng-container>
 
     <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
       <td mat-cell *matCellDef="let record" class="mat-column-status">
-        <mat-chip [ngClass]="{'completed': record.status === 'Completed', 'active': record.status === 'Active'}">
+        <mat-chip
+          [ngClass]="{
+            completed: record.status === 'Completed',
+            active: record.status === 'Active'
+          }"
+        >
           {{ record.status }}
         </mat-chip>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="view">
-      <th mat-header-cell *matHeaderCellDef> View </th>
+      <th mat-header-cell *matHeaderCellDef>View</th>
       <td mat-cell *matCellDef="let record">
         <button mat-icon-button color="accent">
           <mat-icon>edit</mat-icon>
@@ -52,14 +68,19 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
-  <div class="mobile-cards" *ngFor="let record of dataSource.data">
+  <div class="mobile-cards" *ngFor="let record of dataSource.filteredData">
     <div class="card">
       <div class="card-header">
         <h3>{{ record.name }} {{ record.lastName }}</h3>
-        <mat-chip [ngClass]="{'completed': record.status === 'Completed', 'active': record.status === 'Active'}">
+        <mat-chip
+          [ngClass]="{
+            completed: record.status === 'Completed',
+            active: record.status === 'Active'
+          }"
+        >
           {{ record.status }}
         </mat-chip>
       </div>

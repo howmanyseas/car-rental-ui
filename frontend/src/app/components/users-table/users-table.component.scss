@@ -10,35 +10,33 @@
 :host {
   display: block;
   margin: 30px;
-
 }
 h2.title {
   color: white;
   font-size: 24px;
   margin-bottom: 50px;
-  font-family: 'Inter';
+  font-family: "Inter";
 }
 
 table {
   width: 100%;
   background: transparent;
   color: white;
-
 }
 
 th {
   background: #242323;
   color: white;
   font-weight: bold;
-  font-family: 'Inter';
-
+  font-family: "Inter";
 }
 
 td {
   padding: 12px;
   color: white;
 }
-.title, .subtitle {
+.title,
+.subtitle {
   color: white;
   font-size: 22px;
   font-weight: bold;
@@ -53,7 +51,7 @@ mat-grid-list {
   width: 100%;
 }
 .mat-icon {
-  color: #ffca28; 
+  color: #ffca28;
 }
 
 .buttons {
@@ -70,12 +68,23 @@ button {
 .mat-elevation-z8 {
   box-shadow: none;
 }
-
+.search-input {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #444;
+  background-color: #1e1e1e;
+  color: white;
+  display: block;
+}
 
 .buttons-container {
   display: flex;
   justify-content: flex-end;
-  gap: 12px; 
+  gap: 12px;
   margin-top: 30px;
 }
 .new-user-btn {
@@ -83,10 +92,9 @@ button {
   background-color: #008dd2 !important;
   color: white !important;
   font-weight: bold;
-  font-family: 'Inter';
+  font-family: "Inter";
   border-radius: 8px;
 }
-
 
 .mobile-cards {
   display: none;
@@ -100,9 +108,9 @@ button {
   .desktop-table {
     display: none;
   }
-:host{
-  margin: 10px;
-}
+  :host {
+    margin: 10px;
+  }
   .mobile-cards {
     display: block;
   }
@@ -114,7 +122,7 @@ button {
     border-radius: 8px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     color: white;
-    font-family: 'Inter';
+    font-family: "Inter";
   }
 
   .card-header {

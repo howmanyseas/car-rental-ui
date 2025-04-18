@@ -45,6 +45,19 @@ td {
   padding: 12px;
   color: white;
 }
+.search-input {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #444;
+  background-color: #1e1e1e;
+  color: white;
+  display: block;
+}
+
 
 .status {
   padding: 5px 10px;

@@ -9,6 +9,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { VehicleRentalHistoryDataSource, VehicleRentalHistoryItem } from './vehicle-rental-history-datasource';
+import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
+
 
 @Component({
   selector: 'app-vehicle-rental-history',
@@ -24,11 +26,12 @@ import { VehicleRentalHistoryDataSource, VehicleRentalHistoryItem } from './vehi
     MatPaginatorModule,
     MatButtonModule,
     MatIconModule,
-    MatIcon
+    MatIcon,
+    MatFormFieldModule
   ],
 })
 export class VehicleRentalHistoryComponent implements AfterViewInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -36,11 +39,16 @@ export class VehicleRentalHistoryComponent implements AfterViewInit {
 
   dataSource = new VehicleRentalHistoryDataSource();
 
-  displayedColumns = ['name', 'lastName', 'carPlate', 'rentalId', 'checkOut', 'checkIn', 'status'];
+  displayedColumns = ['name', 'lastName', 'carPlate', 'rentalId', 'checkOut', 'checkIn', 'status', 'view'];
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.table.dataSource = this.dataSource;
   }
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
 }

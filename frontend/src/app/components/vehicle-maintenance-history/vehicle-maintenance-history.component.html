@@ -3,7 +3,12 @@
 
 <mat-form-field appearance="outline" class="mva-input">
   <mat-label>MVA</mat-label>
-  <input matInput [(ngModel)]="mva">
+  <input matInput [(ngModel)]="mva" />
+</mat-form-field>
+
+<mat-form-field appearance="outline" class="search-input">
+  <mat-label>Search history</mat-label>
+  <input matInput (input)="applyFilter($event)" />
 </mat-form-field>
 
 <div class="table-container">
@@ -42,7 +47,7 @@
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
       <td mat-cell *matCellDef="let record" class="mat-column-status">
-        <mat-chip [ngClass]="{'completed': record.status === 'Completed', 'active': record.status === 'Active'}">
+        <mat-chip [ngClass]="{ 'completed': record.status === 'Completed', 'active': record.status === 'Active' }">
           {{ record.status }}
         </mat-chip>
       </td>
@@ -52,11 +57,11 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <div class="mobile-cards" *ngFor="let record of dataSource.data">
+  <div class="mobile-cards" *ngFor="let record of dataSource.filteredData">
     <div class="card">
       <div class="card-header">
         <h3>{{ record.dateOfLeave }}</h3>
-        <mat-chip [ngClass]="{'completed': record.status === 'Completed', 'active': record.status === 'Active'}">
+        <mat-chip [ngClass]="{ 'completed': record.status === 'Completed', 'active': record.status === 'Active' }">
           {{ record.status }}
         </mat-chip>
       </div>

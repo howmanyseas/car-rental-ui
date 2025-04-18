@@ -3,7 +3,8 @@
   margin: 30px;
 }
 
-h2, h3 {
+h2,
+h3 {
   color: white;
   font-family: "Inter";
 }
@@ -21,10 +22,23 @@ table {
   color: white;
 }
 
-th, td {
+th,
+td {
   padding: 12px;
   color: white;
   font-weight: semi-bold;
+}
+.search-input {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #444;
+  background-color: #1e1e1e;
+  color: white;
+  display: block;
 }
 
 .mat-chip {
@@ -69,7 +83,7 @@ mat-icon {
     border-radius: 8px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     color: white;
-    font-family: 'Inter';
+    font-family: "Inter";
   }
 
   .card-header {
