@@ -9,8 +9,8 @@
 }
 .form-container {
   display: flex;
-  flex: 3;
   flex-direction: column;
+  flex: 1;
   max-height: 73vh !important;
   overflow-y: auto;
   padding-right: 10px;
@@ -38,13 +38,6 @@
   gap: 15px;
 }
 
-::ng-deep .mat-form-field-appearance-outline input[readonly] {
-  background-color: rgba(255, 255, 255, 0.1) !important;
-  opacity: 1 !important;
-  color: white !important;
-  border: 1px solid white !important;
-  border-radius: 5px;
-}
 ::ng-deep .form-container::-webkit-scrollbar {
   width: 6px;
 }
@@ -77,12 +70,7 @@
   margin-top: 20px;
 }
 
-.summary {
-  flex: 1;
-  height: fit-content;
-  font-family: "Inter";
-  background-color: #8f8f8f;
-}
+
 
 :host {
   display: block;
@@ -199,10 +187,6 @@ mat-option {
     display: flex;
     gap: 20px;
     align-items: flex-start;
-  }
-  .form-container {
-    flex: 3;
-    max-width: 75%;
   }
 
 

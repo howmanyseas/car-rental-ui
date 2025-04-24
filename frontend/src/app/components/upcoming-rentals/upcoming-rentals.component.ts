@@ -7,6 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 export interface UpcomingRentalListsItem {
   rentalId: string;
@@ -33,8 +35,9 @@ export interface UpcomingRentalListsItem {
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatIconModule
-  ]
+    MatIconModule,
+    RouterModule,
+  ],
 })
 export class UpcomingRentalsComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [
@@ -47,14 +50,13 @@ export class UpcomingRentalsComponent implements OnInit, AfterViewInit {
     'checkOut',
     'checkIn',
     'status',
-    'actions'
+    'actions',
   ];
 
   dataSource = new MatTableDataSource<UpcomingRentalListsItem>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
   ngOnInit(): void {
     this.dataSource.data = [
       {
@@ -66,7 +68,7 @@ export class UpcomingRentalsComponent implements OnInit, AfterViewInit {
         checkOutPrice: 150,
         checkOut: new Date(),
         checkIn: new Date(),
-        status: 'Upcoming'
+        status: 'Upcoming',
       },
       {
         rentalId: '2',
@@ -77,8 +79,8 @@ export class UpcomingRentalsComponent implements OnInit, AfterViewInit {
         checkOutPrice: 200,
         checkOut: new Date(),
         checkIn: new Date(),
-        status: 'Active'
-      }
+        status: 'Active',
+      },
     ];
   }
 
@@ -95,8 +97,9 @@ export class UpcomingRentalsComponent implements OnInit, AfterViewInit {
   editRental(rental: UpcomingRentalListsItem): void {
     console.log('Edit rental:', rental);
   }
+  constructor(private router: Router) { }
 
   gotoNewUpRental(): void {
-    console.log('Navigate to new rental form');
+    this.router.navigate(['new-upcoming-rental']);
   }
 }

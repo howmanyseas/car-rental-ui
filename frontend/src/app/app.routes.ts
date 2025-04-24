@@ -180,6 +180,14 @@ export const routes: Routes = [
           ),
         title: 'Upcoming Rentals',
       },
+      {
+        path: 'new-upcoming-rental',
+        loadComponent: () =>
+          import('./components/new-upcoming-rental/new-upcoming-rental.component').then(
+            (m) => m.NewUpcomingRentalComponent
+          ),
+        title: 'New Upcoming Rental',
+      },
 
 
     ],
