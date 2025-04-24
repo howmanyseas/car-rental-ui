@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RentalListsComponent } from './components/rental-lists/rental-lists.component';
 
 export const routes: Routes = [
   {
@@ -188,6 +187,14 @@ export const routes: Routes = [
           ),
         title: 'New Upcoming Rental',
       },
+      {
+        path: 'internal-checkout',
+        loadComponent: () =>
+          import('./components/internal-checkout/internal-checkout.component').then(
+            (m) => m.InternalCheckoutComponent
+          ),
+        title: 'Internal Checkout',
+      }
 
 
     ],

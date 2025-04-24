@@ -37,6 +37,8 @@ export class DefaultLayoutComponent {
     { label: 'Upcoming Rentals', route: '/upcoming-rentals', icon: 'schedule' },
     { label: 'Users', route: '/users-table', icon: 'group' },
     { label: 'Update Prices', route: '/update-prices', icon: 'attach_money' },
+    { label: 'Internal Check Out', route: '/internal-checkout', icon: 'call_made' },
+
     { label: 'Help', route: '/help-page', icon: 'help_outline' }
 
   ];

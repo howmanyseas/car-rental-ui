@@ -1,0 +1,146 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.form-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+:host {
+  display: block;
+  margin: 30px;
+}
+.grid-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+mat-card.form-container {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 16px;
+}
+
+mat-card-content {
+  width: 100%;
+  box-sizing: border-box;
+}
+.car-date-row {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap; // 👈 key to stack on mobile
+    width: 100%;
+  }
+  
+  .car-date-row > div {
+    flex: 1 1 300px; // 👈 min width before stacking
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-sizing: border-box;
+  }
+  
+  .row-fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .row-fields mat-form-field {
+    flex: 1 1 200px;
+    min-width: 0;
+    width: 100%;
+  }
+  
+.grid-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.buttons-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+button {
+  background-color: #008dd2 !important;
+  color: white !important;
+  border-radius: 10px;
+}
+
+mat-card {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+h2,
+h3 {
+  color: white;
+  font-family: "Inter", sans-serif;
+}
+
+textarea {
+  color: white !important;
+}
+
+input,
+textarea {
+  color: white !important;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: white !important;
+}
+.employee-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.employee-row mat-form-field {
+  flex: 1 1 250px;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .grid-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .buttons-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .row-sections {
+    flex-direction: column;
+  }
+  .buttons-group button {
+    width: 100%;
+  }
+  .employee-row {
+    grid-template-columns: 1fr;
+  }
+  :host {
+    margin: 10px;
+  }
+}

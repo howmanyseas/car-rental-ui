@@ -1,1 +1,91 @@
-<p>internal-checkout works!</p>
+<h2 class="title">Employee Car Check-Out</h2>
+
+<div class="container">
+  <mat-card class="form-container">
+    <mat-card-content>
+      <form [formGroup]="employeeCheckOutForm">
+        <h3>Employee Info</h3>
+        <mat-divider></mat-divider><br />
+
+        <div class="employee-row">
+          <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Department</mat-label>
+            <input matInput formControlName="department" />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Reason</mat-label>
+            <input matInput formControlName="reason" />
+          </mat-form-field>
+        </div>
+
+        <div class="car-date-row">
+          <div>
+            <h3>Car Info</h3>
+            <mat-divider></mat-divider>
+            <div class="row-fields">
+              <mat-form-field appearance="outline">
+                <mat-label>Car Group</mat-label>
+                <input matInput formControlName="carGroup" />
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>License Plate</mat-label>
+                <input matInput formControlName="licensePlate" />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div>
+            <h3>Date and Time</h3>
+            <mat-divider></mat-divider>
+            <div class="row-fields">
+              <mat-form-field appearance="outline">
+                <mat-label>Date Taken</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="takeDate"
+                  formControlName="dateTaken"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="takeDate"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #takeDate></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Time Taken</mat-label>
+                <input
+                  matInput
+                  [ngxTimepicker]="takeTime"
+                  formControlName="timeTaken"
+                  [format]="24"
+                />
+                <ngx-material-timepicker #takeTime></ngx-material-timepicker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="buttons-group">
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="saveEmployeeForm()"
+          >
+            Save
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
