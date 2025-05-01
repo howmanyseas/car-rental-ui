@@ -30,7 +30,7 @@ app-default-header {
   border-radius: 0;
   background-color: #212121;
   color: white;
-  height: calc(100vh - 64px); 
+  height: calc(100vh - 64px);
   position: fixed;
   top: 64px;
   left: 0;
@@ -59,34 +59,43 @@ app-default-header {
   align-items: center;
   padding: 12px;
   cursor: pointer;
-  transition: background 0.2s;
   justify-content: center;
 }
+
+
+.menu-list li.active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
 
 .side-nav.expanded .menu-list li {
   justify-content: flex-start;
   padding-left: 16px;
 }
 
+
 .side-nav.expanded .menu-list li mat-icon {
   margin-right: 8px;
 }
+
 
 .menu-list li:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
 .menu-list li span {
-  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  white-space: nowrap;
 }
 
 .side-nav.expanded .menu-list li span {
-  display: inline-block;
+  opacity: 1;
 }
 
 mat-sidenav-content {
-  margin-top: 64px; 
-  margin-left: 60px; 
+  margin-top: 64px;
+  margin-left: 60px;
   padding: 20px;
   background-color: #2d2d2d !important;
   height: calc(100vh - 64px);
