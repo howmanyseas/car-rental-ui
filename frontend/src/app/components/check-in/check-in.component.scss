@@ -205,7 +205,12 @@ mat-option {
     max-width: 75%;
   }
 
-
+  .summary {
+    flex: 1;
+    max-width: 25%;
+    height: fit-content;
+    margin-top: 0;
+  }
   .car-date-row,
   .grid-two-columns {
     flex-direction: column;
