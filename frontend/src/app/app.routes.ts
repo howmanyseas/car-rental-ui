@@ -194,7 +194,16 @@ export const routes: Routes = [
             (m) => m.InternalCheckoutComponent
           ),
         title: 'Internal Checkout',
-      }
+      },
+      {
+        path: 'manifest-menu',
+        loadComponent: () =>
+          import('./components/manifest-menu/manifest-menu.component').then(
+            (m) => m.ManifestMenuComponent
+          ),
+        title: 'Manifest Menu',
+      },
+
 
 
     ],

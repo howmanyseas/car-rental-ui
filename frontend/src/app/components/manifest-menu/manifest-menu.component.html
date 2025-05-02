@@ -1,4 +1,28 @@
-<h2 class="title">Upcoming Rentals</h2>
+<!-- manifest.component.html -->
+<h2 class="title">Manifest</h2>
+
+<div class="filter-tabs">
+  <button
+    *ngFor="let type of rentalTypes"
+    (click)="selectRentalType(type)"
+    [class.active]="selectedType === type"
+  >
+    {{ type }}
+  </button>
+</div>
+
+<div class="date-filters">
+  <label>
+    From:
+    <input type="date" [(ngModel)]="filterStartDate" (change)="applyDateFilter()" />
+  </label>
+  <label>
+    To:
+    <input type="date" [(ngModel)]="filterEndDate" (change)="applyDateFilter()" />
+  </label>
+  <button (click)="filterToday()">Today</button>
+  <button (click)="filterTomorrow()">Tomorrow</button>
+</div>
 
 <div class="table-container">
   <input
@@ -112,7 +136,6 @@
     </div>
   </div>
 
-  <!-- Add new rental button -->
   <div class="buttons-container">
     <button mat-raised-button class="new-rental-btn" (click)="gotoNewUpRental()">
       New Rental
