@@ -41,7 +41,11 @@ export class InternalCheckoutComponent {
       licensePlate: [''],
       dateTaken: [''],
       timeTaken: [''],
-      reason: ['']
+      reason: [''],
+      checkoutlocation:[''],
+      checkinlocation:[''],
+
+
     });
   }
 
