@@ -2,6 +2,7 @@
 
 <div class="filter-tabs">
   <button
+    mat-button
     *ngFor="let type of rentalTypes"
     (click)="selectRentalType(type)"
     [class.active]="selectedType === type"
@@ -11,28 +12,44 @@
 </div>
 
 <div class="date-filters">
-  <label>
-    From:
-    <input type="date" [(ngModel)]="filterStartDate" (change)="applyDateFilter()" />
-  </label>
-  <label>
-    To:
-    <input type="date" [(ngModel)]="filterEndDate" (change)="applyDateFilter()" />
-  </label>
-  <button (click)="filterToday()">Today</button>
-  <button (click)="filterTomorrow()">Tomorrow</button>
-  <button (click)="clearDateFilters()">Clear</button>
+  <mat-form-field appearance="outline" class="compact-date">
+    <mat-label>From</mat-label>
+    <input
+      matInput
+      [matDatepicker]="startPicker"
+      [(ngModel)]="filterStartDate"
+      (dateChange)="applyDateFilter()"
+    />
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="startPicker"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #startPicker></mat-datepicker>
+  </mat-form-field>
 
+  <mat-form-field appearance="outline" class="compact-date">
+    <mat-label>To</mat-label>
+    <input
+      matInput
+      [matDatepicker]="endPicker"
+      [(ngModel)]="filterEndDate"
+      (dateChange)="applyDateFilter()"
+    />
+    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+    <mat-datepicker #endPicker></mat-datepicker>
+  </mat-form-field>
+  
+    <mat-icon (click)="clearDateFilters()">clear</mat-icon>
 </div>
 
-<div class="table-container">
-  <input
-    matInput
-    placeholder="Search rentals"
-    (input)="applyFilter($event)"
-    class="search-input"
-  />
+<input
+  matInput
+  placeholder="Search rentals"
+  (input)="applyFilter($event)"
+  class="search-input"
+/>
 
+<div class="table-container">
   <table
     mat-table
     [dataSource]="dataSource"
@@ -57,7 +74,7 @@
     <ng-container matColumnDef="checkOutPrice">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Check Out Price</th>
       <td mat-cell *matCellDef="let element">
-        {{ element.checkOutPrice | currency: "USD":"symbol" }}
+        {{ element.checkOutPrice | currency : "USD" : "symbol" }}
       </td>
     </ng-container>
 
@@ -74,14 +91,14 @@
     <ng-container matColumnDef="checkOut">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Check Out</th>
       <td mat-cell *matCellDef="let element">
-        {{ element.checkOut | date: "dd/MM/yyyy" }}
+        {{ element.checkOut | date : "dd/MM/yyyy" }}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="checkIn">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Check In</th>
       <td mat-cell *matCellDef="let element">
-        {{ element.checkIn | date: "dd/MM/yyyy" }}
+        {{ element.checkIn | date : "dd/MM/yyyy" }}
       </td>
     </ng-container>
 
@@ -108,38 +125,49 @@
   </table>
 
   <div class="mobile-cards" *ngFor="let element of dataSource.filteredData">
-    <div class="card">
-      <div class="card-header">
-        <h3>{{ element.rentalId }} - {{ element.customer }}</h3>
-        <p class="price">
-          {{ element.checkOutPrice | currency: "USD":"symbol" }}
-        </p>
-      </div>
-      <p>Car Group: {{ element.carGroup }}</p>
-      <p>Phone: {{ element.phoneNumber }}</p>
-      <p>Email: {{ element.email }}</p>
-      <p>Check Out: {{ element.checkOut | date: "dd/MM/yyyy" }}</p>
-      <p>Check In: {{ element.checkIn | date: "dd/MM/yyyy" }}</p>
-      <p>
-        <span
-          class="status"
-          [ngClass]="{
-            completed: element.status === 'Completed',
-            active: element.status === 'Active'
-          }"
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title
+          >{{ element.rentalId }} - {{ element.customer }}</mat-card-title
         >
-          {{ element.status }}
-        </span>
-      </p>
-      <button mat-icon-button color="primary" class="edit-btn" (click)="editRental(element)">
-        <mat-icon>edit</mat-icon>
-      </button>
-    </div>
+        <mat-card-subtitle>{{
+          element.checkOutPrice | currency : "USD" : "symbol"
+        }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Car Group: {{ element.carGroup }}</p>
+        <p>Phone: {{ element.phoneNumber }}</p>
+        <p>Email: {{ element.email }}</p>
+        <p>Check Out: {{ element.checkOut | date : "dd/MM/yyyy" }}</p>
+        <p>Check In: {{ element.checkIn | date : "dd/MM/yyyy" }}</p>
+        <p>
+          <span
+            class="status"
+            [ngClass]="{
+              completed: element.status === 'Completed',
+              active: element.status === 'Active'
+            }"
+          >
+            {{ element.status }}
+          </span>
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-icon-button color="primary" (click)="editRental(element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
   </div>
 
-  <div class="buttons-container">
-    <button mat-raised-button class="new-rental-btn" (click)="gotoNewUpRental()">
-      New Rental
+  <div class="buttons-container" *ngIf="getActionButtons().length > 0">
+    <button
+      *ngFor="let action of getActionButtons()"
+      mat-raised-button
+      color="accent"
+      (click)="handleAction(action)"
+    >
+      {{ action }}
     </button>
   </div>
 </div>

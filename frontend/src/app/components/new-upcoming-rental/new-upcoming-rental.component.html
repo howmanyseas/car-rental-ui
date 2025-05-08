@@ -1,10 +1,10 @@
-<h2 class="title">New Upcming Rental </h2>
+<h2 class="title">New Upcoming Rental</h2>
 
 <div class="container">
   <mat-card class="form-container">
     <mat-card-content>
-        <form [formGroup]="rentalForm">
-            <div class="grid-two-columns">
+      <form [formGroup]="rentalForm">
+        <div class="grid-two-columns">
           <div>
             <h3>Customer Info</h3>
             <mat-divider></mat-divider>
@@ -42,30 +42,64 @@
             <div class="row-fields">
               <mat-form-field appearance="outline">
                 <mat-label>Check Out Date</mat-label>
-                <input matInput [matDatepicker]="checkOutDatePicker" formControlName="checkOutDate" />
-                <mat-datepicker-toggle matSuffix [for]="checkOutDatePicker"></mat-datepicker-toggle>
-                <mat-datepicker #checkOutDatePicker [touchUi]="true"></mat-datepicker>
+                <input
+                  matInput
+                  [matDatepicker]="checkOutDatePicker"
+                  formControlName="checkOutDate"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="checkOutDatePicker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker
+                  #checkOutDatePicker
+                  [touchUi]="true"
+                ></mat-datepicker>
               </mat-form-field>
 
               <mat-form-field appearance="outline">
                 <mat-label>Time</mat-label>
-                <input matInput [ngxTimepicker]="checkOutTimePicker" formControlName="checkOutTime" [format]="24" />
-                <ngx-material-timepicker #checkOutTimePicker></ngx-material-timepicker>
+                <input
+                  matInput
+                  [ngxTimepicker]="checkOutTimePicker"
+                  formControlName="checkOutTime"
+                  [format]="24"
+                />
+                <ngx-material-timepicker
+                  #checkOutTimePicker
+                ></ngx-material-timepicker>
               </mat-form-field>
             </div>
 
             <div class="row-fields">
               <mat-form-field appearance="outline">
                 <mat-label>Check In Date</mat-label>
-                <input matInput [matDatepicker]="checkInDatePicker" formControlName="checkInDate" />
-                <mat-datepicker-toggle matSuffix [for]="checkInDatePicker"></mat-datepicker-toggle>
-                <mat-datepicker #checkInDatePicker [touchUi]="true"></mat-datepicker>
+                <input
+                  matInput
+                  [matDatepicker]="checkInDatePicker"
+                  formControlName="checkInDate"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="checkInDatePicker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker
+                  #checkInDatePicker
+                  [touchUi]="true"
+                ></mat-datepicker>
               </mat-form-field>
 
               <mat-form-field appearance="outline">
                 <mat-label>Time</mat-label>
-                <input matInput [ngxTimepicker]="checkInTimePicker" formControlName="checkInTime" [format]="24" />
-                <ngx-material-timepicker #checkInTimePicker></ngx-material-timepicker>
+                <input
+                  matInput
+                  [ngxTimepicker]="checkInTimePicker"
+                  formControlName="checkInTime"
+                  [format]="24"
+                />
+                <ngx-material-timepicker
+                  #checkInTimePicker
+                ></ngx-material-timepicker>
               </mat-form-field>
             </div>
 

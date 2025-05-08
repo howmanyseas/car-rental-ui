@@ -8,14 +8,19 @@ import { CommonModule } from '@angular/common';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatIconRegistry } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 export interface Rental {
   rentalId: string;
@@ -37,10 +42,15 @@ export interface Rental {
     MatPaginatorModule,
     MatSortModule,
     MatInputModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
     MatFormFieldModule,
     MatButtonModule,
     MatIconModule,
-    MatNativeDateModule,],
+    MatNativeDateModule,
+    MatSortModule,
+    MatCardModule,
+    MatButtonToggleModule,],
   templateUrl: './manifest-menu.component.html',
   styleUrl: './manifest-menu.component.scss'
 })
@@ -76,6 +86,12 @@ export class ManifestMenuComponent implements OnInit, AfterViewInit {
     const now = new Date();
     const tomorrow = new Date();
     tomorrow.setDate(now.getDate() + 1);
+    const todayStr = this.formatDate(new Date());
+    this.filterStartDate = todayStr;
+    this.filterEndDate = todayStr;
+    this.applyDateFilter();
+
+
 
     this.allRentals = [
       {
@@ -100,7 +116,30 @@ export class ManifestMenuComponent implements OnInit, AfterViewInit {
         checkIn: tomorrow,
         status: 'Returning',
       },
+      {
+        rentalId: '3',
+        customer: 'Emily Brown',
+        carGroup: 'Ford Focus',
+        phoneNumber: '+355694445566',
+        email: 'emily@example.com',
+        checkOutPrice: 180,
+        checkOut: now,
+        checkIn: tomorrow,
+        status: 'Open',
+      },
+      {
+        rentalId: '4',
+        customer: 'Mark Johnson',
+        carGroup: 'BMW 3 Series',
+        phoneNumber: '+355695556677',
+        email: 'mark@example.com',
+        checkOutPrice: 300,
+        checkOut: new Date(now.setDate(now.getDate() - 5)),
+        checkIn: new Date(now.setDate(now.getDate() - 2)),
+        status: 'Closed',
+      }
     ];
+
 
     this.updateTable();
   }
@@ -114,6 +153,37 @@ export class ManifestMenuComponent implements OnInit, AfterViewInit {
     this.selectedType = type;
     this.updateTable();
   }
+  getActionButtons(): string[] {
+    switch (this.selectedType.toLowerCase()) {
+      case 'upcoming':
+        return ['New Reservation'];
+      case 'open':
+        return ['New Rental', 'Close Rental'];
+      case 'returning':
+        return ['Close Rental'];
+      case 'closed':
+        return [];
+      default:
+        return [];
+    }
+  }
+
+  handleAction(action: string): void {
+    switch (action) {
+      case 'New Reservation':
+        this.router.navigate(['/new-upcoming-rental']);
+        break;
+      case 'New Rental':
+        this.router.navigate(['/check-out']);
+        break;
+      case 'Close Rental':
+        this.router.navigate(['/check-in']);
+        break;
+      default:
+        console.warn('Unhandled action:', action);
+    }
+  }
+
 
   updateTable(): void {
     const filtered = this.allRentals.filter(
@@ -171,8 +241,8 @@ export class ManifestMenuComponent implements OnInit, AfterViewInit {
   clearDateFilters(): void {
     this.filterStartDate = '';
     this.filterEndDate = '';
-    this.updateTable(); 
+    this.updateTable();
   }
-  
+
 }
 
