@@ -168,5 +168,11 @@ export class ManifestMenuComponent implements OnInit, AfterViewInit {
   gotoNewUpRental(): void {
     this.router.navigate(['new-upcoming-rental']);
   }
+  clearDateFilters(): void {
+    this.filterStartDate = '';
+    this.filterEndDate = '';
+    this.updateTable(); 
+  }
+  
 }
 
