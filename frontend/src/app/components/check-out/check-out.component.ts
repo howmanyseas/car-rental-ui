@@ -27,13 +27,13 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { UploadOptionsComponent } from '../upload-options.component';
 
 const moment = _rollupMoment || _moment;
-const MONTH_YEAR_FORMATS = {
+const FULL_DATE_FORMATS = {
   parse: {
-    dateInput: 'MM/YYYY',
+    dateInput: 'DD/MM/YYYY',
   },
   display: {
-    dateInput: 'MM/YYYY',
-    monthYearLabel: 'MMM YYYY',
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'MMMM YYYY',
     dateA11yLabel: 'LL',
     monthYearA11yLabel: 'MMMM YYYY',
   },
@@ -70,7 +70,7 @@ const MONTH_YEAR_FORMATS = {
     },
     {
       provide: MAT_DATE_FORMATS,
-      useValue: MONTH_YEAR_FORMATS
+      useValue: FULL_DATE_FORMATS
     }
   ]
 })
@@ -133,6 +133,7 @@ export class CheckOutComponent implements OnInit {
       phone: [''],
       email: [''],
       street: [''],
+      address2:[''],
       zip: [''],
       country: [''],
       houseNr: [''],
@@ -222,6 +223,18 @@ export class CheckOutComponent implements OnInit {
   }
   detectDevice() {
     this.isMobile = window.innerWidth <= 768;
+  }
+  focusNext(event: Event) {
+    event.preventDefault();
+
+    const target = event.target as HTMLElement;
+    const inputs = Array.from(document.querySelectorAll('input, select, textarea'))
+      .filter(el => !el.hasAttribute('disabled'));
+
+    const index = inputs.indexOf(target);
+    if (index > -1 && index + 1 < inputs.length) {
+      (inputs[index + 1] as HTMLElement).focus();
+    }
   }
   updateDriverDetails() {
     if (this.customerFormGroup.get('driverSameAsRenter')?.value === 'yes') {
