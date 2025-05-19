@@ -70,8 +70,6 @@
   margin-top: 20px;
 }
 
-
-
 :host {
   display: block;
   margin: 30px;
@@ -182,43 +180,43 @@ mat-option {
   min-width: 0;
 }
 
-@media (min-width: 800px) and (max-width: 1500px) {
-  .container {
-    display: flex;
+@media (min-width: 800px) {
+  .container,
+  .grid-two-columns {
+    flex-direction: row !important;
     gap: 20px;
     align-items: flex-start;
   }
-
-
-  .car-date-row,
-  .grid-two-columns {
-    flex-direction: column;
+  .grid-two-columns > div {
+    width: 50%;
+    min-width: 300px;
+  }
+  .row-fields {
+    display: flex;
+    flex-wrap: wrap;
     gap: 15px;
   }
-
-  .row-fields {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
   .row-fields mat-form-field {
-    flex: 1 1 100%;
-    min-width: 100%;
-  }
-
-  .button-group,
-  .buttons-group {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .button-group button,
-  .buttons-group button {
-    width: 100%;
+    flex: 1 1 48%;
+    min-width: 130px;
     margin-bottom: 10px;
   }
+  .button-group,
+  .buttons-group {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    width: auto;
+  }
+  .button-group button,
+  .buttons-group button {
+    width: auto;
+    margin-bottom: 0;
+  }
 }
-@media (max-width: 800px) {
+
+@media (max-width: 600px) {
   .container,
   .form-container,
   .car-date-row,
