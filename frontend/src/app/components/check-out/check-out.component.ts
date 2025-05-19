@@ -133,7 +133,7 @@ export class CheckOutComponent implements OnInit {
       phone: [''],
       email: [''],
       street: [''],
-      address2:[''],
+      address2: [''],
       zip: [''],
       country: [''],
       houseNr: [''],
@@ -292,20 +292,26 @@ export class CheckOutComponent implements OnInit {
     const feeGroup: FormGroup = this.fb.group({
       feeType: [''],
       price: [''],
+      kmCount: [''],
+      airportName: [''],
     });
+
 
     feeGroup.get('feeType')?.valueChanges.subscribe((value: string) => {
       if (value === 'Additional Drivers') {
-        const existingCount = this.additionalDriverForms.length;
-        if (existingCount < 3) {
+        if (this.additionalDriverForms.length < 3) {
           this.addAdditionalDriverForm();
         } else {
           alert('Maximum of 3 additional drivers allowed.');
-          // Optionally reset the selection
           feeGroup.get('feeType')?.reset();
         }
+      } else {
+        // reset extra fields if not selected
+        feeGroup.get('kmCount')?.reset();
+        feeGroup.get('airportName')?.reset();
       }
     });
+
 
     this.additionalFees.push(feeGroup);
   }

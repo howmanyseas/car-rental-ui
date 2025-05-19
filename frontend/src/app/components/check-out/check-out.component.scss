@@ -42,9 +42,6 @@ mat-card {
   background-color: transparent;
   box-shadow: none;
 }
-::ng-deep .mat-mdc-radio-button .mdc-label {
-  color: rgb(219, 218, 218) !important;
-}
 
 h2,
 h3 {
@@ -86,31 +83,9 @@ button[mat-mini-fab] {
   border-radius: 10px;
 }
 
-::ng-deep .mat-step-header {
-  color: white !important;
-  border-radius: 8px;
-}
 
-::ng-deep .mat-step-header.cdk-keyboard-focused,
-::ng-deep .mat-step-header:hover {
-  color: white !important;
-}
 
-::ng-deep .mat-stepper-horizontal-line {
-  border-top-color: #666 !important;
-}
 
-::ng-deep .mat-step-icon-selected,
-::ng-deep .mat-step-icon-state-edit,
-::ng-deep .mat-step-icon-state-done {
-  background-color: #1976d2 !important;
-  color: white !important;
-}
-
-::ng-deep .mat-step-label,
-::ng-deep .mat-step-text-label {
-  color: white !important;
-}
 
 mat-horizontal-stepper {
   background-color: transparent !important;
@@ -120,37 +95,9 @@ mat-form-field {
   flex: 1;
 }
 
-::ng-deep .mat-horizontal-stepper-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
-  max-height: 75vh;
-  height: auto;
-  overflow-y: auto;
-  box-sizing: border-box;
-}
 
-::ng-deep .mat-horizontal-stepper-content::-webkit-scrollbar {
-  width: 6px;
-}
-::ng-deep .mat-horizontal-stepper-content::-webkit-scrollbar-track {
-  background: #333;
-}
-::ng-deep .mat-horizontal-stepper-content::-webkit-scrollbar-thumb {
-  background-color: #666;
-  border-radius: 3px;
-}
-::ng-deep ::-webkit-scrollbar {
-  width: 6px;
-}
-::ng-deep ::-webkit-scrollbar-track {
-  background: #333;
-}
-::ng-deep::-webkit-scrollbar-thumb {
-  background-color: #666;
-  border-radius: 3px;
-}
+
+
 .grid-fields {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -174,42 +121,7 @@ mat-button-toggle-group {
   align-items: center;
 }
 
-::ng-deep .mat-radio-label-content {
-  color: white !important;
-}
-// mat-icon-stepper selected color change
-::ng-deep .mat-step-header .mat-step-icon-selected,
-.mat-step-header .mat-step-icon-state-done,
-.mat-step-header .mat-step-icon-state-edit {
-  background-color: gray !important;
-}
 
-/* For MDC-based Angular Material */
-::ng-deep .mat-mdc-form-field.readonly-field .mdc-notched-outline__leading,
-::ng-deep .mat-mdc-form-field.readonly-field .mdc-notched-outline__notch,
-::ng-deep .mat-mdc-form-field.readonly-field .mdc-notched-outline__trailing {
-  border-color: white !important;
-}
-
-::ng-deep .mat-mdc-form-field-disabled .mdc-notched-outline__leading,
-::ng-deep .mat-mdc-form-field-disabled .mdc-notched-outline__notch,
-::ng-deep .mat-mdc-form-field-disabled .mdc-notched-outline__trailing {
-  border-color: white !important;
-}
-
-/* white color for input fields */
-::ng-deep .mat-mdc-form-field input.mat-mdc-input-element {
-  color: white !important;
-}
-
-::ng-deep .mat-mdc-form-field .mdc-floating-label {
-  color: rgba(255, 255, 255, 0.7) !important;
-}
-
-::ng-deep .mat-mdc-form-field.mat-focused .mdc-floating-label,
-::ng-deep .mat-mdc-form-field .mdc-floating-label--float-above {
-  color: white !important;
-}
 
 .buttons-group button {
   background-color: #008dd2 !important;
@@ -345,3 +257,5 @@ mat-icon {
     width: 100%;
   }
 }
+
+

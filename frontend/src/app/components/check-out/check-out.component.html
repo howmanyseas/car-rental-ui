@@ -29,7 +29,7 @@
                 <mat-label>Price Type</mat-label>
                 <mat-select>
                   <mat-option>Daily</mat-option>
-                  <mat-option>1 to 3 Days</mat-option>
+                  <mat-option>Weekend</mat-option>
                   <mat-option>Weekly</mat-option>
                 </mat-select>
               </mat-form-field>
@@ -171,7 +171,34 @@
                         <mat-option value="Insurance Lv.2"
                           >Insurance Lv.2 (€100)</mat-option
                         >
+                        <mat-option value="KMFee">Additional KM fee</mat-option>
+                        <mat-option value="AirportChange"
+                          >Airport Change Fee (€20)</mat-option
+                        >
                       </mat-select>
+                    </mat-form-field>
+                    <mat-form-field
+                      *ngIf="fee.get('feeType')?.value === 'AirportChange'"
+                      appearance="outline"
+                    >
+                      <mat-label>Which Airport</mat-label>
+                      <mat-select formControlName="airportName">
+                        <mat-option value="Baden-Baden">Baden-Baden</mat-option>
+                        <mat-option value="Memmingen">Memmingen</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field
+                      *ngIf="fee.get('feeType')?.value === 'KMFee'"
+                      appearance="outline"
+                    >
+                      <mat-label>Nr of KM</mat-label>
+                      <input
+                        matInput
+                        type="number"
+                        formControlName="kmCount"
+                        placeholder="e.g. 100"
+                      />
                     </mat-form-field>
 
                     <mat-form-field appearance="outline">
