@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { DamageMarkerComponent } from '../damage-marker/damage-marker.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-check-in',
@@ -35,6 +36,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     MatIconModule,
     MatDialogModule,
     NgxMaterialTimepickerModule,
+    MatStepperModule
   ],
 })
 export class CheckInComponent implements OnInit {
@@ -42,10 +44,10 @@ export class CheckInComponent implements OnInit {
   showAdditionalFees = false;
   actualCheckOutDateControl = new FormControl();
   actualCheckOutTimeControl = new FormControl();
-  
+
   actualCheckInDateControl = new FormControl();
   actualCheckInTimeControl = new FormControl();
-  
+
   checkoutDatetime = new FormControl();
   checkinDatetime = new FormControl();
   summary = {
@@ -54,8 +56,18 @@ export class CheckInComponent implements OnInit {
     extras: 0,
     grossAmount: 0,
   };
+  feeTypePriceMap: { [key: string]: number } = {
+    tax: 50,
+    cleaning: 30,
+    carTank: 40,
+    damage: 25,
+    aiport: 25,
+    delayed: 10,
+  };
+  carInformationFormGroup!: FormGroup;
 
-  constructor(private fb: FormBuilder, private dialog: MatDialog) {}
+
+  constructor(private fb: FormBuilder, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.checkInForm = this.fb.group({
@@ -65,6 +77,10 @@ export class CheckInComponent implements OnInit {
       checkInPrice: [''],
       actualCheckOut: [null],
       actualCheckIn: [null],
+      actualCheckOutDate: [''],        
+      actualCheckOutTime: [''],        
+      actualCheckInDate: [''],         
+      actualCheckInTime: [''],         
       kmOut: [''],
       kmIn: [''],
       fuelOut: [''],
@@ -75,9 +91,26 @@ export class CheckInComponent implements OnInit {
       cleaning: [''],
       damage: [''],
       grossAmount: [''],
-      additionalFees: this.fb.array([]), 
+      mileageExtra: [''],              
+      amountOnHold: [''],             
+      paymentStatus: [''],            
+      additionalFees: this.fb.array([]),
+      fuelExtra: [''],
+
     });
-    
+
+    this.carInformationFormGroup = this.fb.group({
+      mva: [''],
+      carGroup: [''],
+      licensePlate: [''],
+      fuel: [''],
+      carModel: [''],
+      millage: [''],
+      color: [''],
+      status: [''],
+      transmission: [''],
+    });
+
   }
 
   get additionalFees(): FormArray {
@@ -94,7 +127,7 @@ export class CheckInComponent implements OnInit {
       this.checkoutDatetime.setValue(combined);
     }
   }
-  
+
   updateActualCheckIn() {
     const date = this.actualCheckInDateControl.value;
     const time = this.actualCheckInTimeControl.value;
@@ -112,15 +145,43 @@ export class CheckInComponent implements OnInit {
       this.addAdditionalFees();
     }
   }
+  focusNext(event: Event) {
+    event.preventDefault();
+
+    const keyboardEvent = event as KeyboardEvent;
+    const form = keyboardEvent.currentTarget as HTMLElement;
+
+    const inputs = Array.from(
+      form.querySelectorAll('input, select, textarea, button')
+    ) as HTMLElement[];
+
+    const index = inputs.indexOf(keyboardEvent.target as HTMLElement);
+    if (index > -1 && index + 1 < inputs.length) {
+      inputs[index + 1].focus();
+    }
+  }
 
   addAdditionalFees() {
-    this.additionalFees.push(
-      this.fb.group({
-        feeType: [''],
-        price: [''],
-      })
-    );
+    const feeGroup = this.fb.group<{ feeType: FormControl<string | null>, price: FormControl<number | null> }>({
+      feeType: this.fb.control(null),
+      price: this.fb.control(null),
+    });
+
+    const feeTypeControl = feeGroup.get('feeType');
+    const priceControl = feeGroup.get('price');
+
+    feeTypeControl?.valueChanges.subscribe((selectedType) => {
+      if (selectedType && selectedType in this.feeTypePriceMap && !priceControl?.dirty) {
+        priceControl?.setValue(this.feeTypePriceMap[selectedType]);
+      } else {
+        priceControl?.setValue(null);
+      }
+    });
+
+    this.additionalFees.push(feeGroup);
   }
+
+
 
   removeAdditionalFee(index: number) {
     this.additionalFees.removeAt(index);
