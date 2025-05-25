@@ -57,7 +57,6 @@ export class LoginComponent {
     this.isLoading = true; // Show spinner
     this.submitted = true;
 
-    // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     }

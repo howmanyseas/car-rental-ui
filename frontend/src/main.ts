@@ -1,7 +1,7 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideStore } from '@ngrx/store';
 import { authReducer } from './app/store/auth/auth.reducer';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { routes } from './app/app.routes';
 import { importProvidersFrom, isDevMode } from '@angular/core';
@@ -16,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app/app.component';
+import { AuthenticationInterceptor } from './app/components/_common/_interceptor/authentication.interceptor';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -29,7 +30,11 @@ bootstrapApplication(AppComponent, {
       MatIconModule
     ),
     provideHttpClient(withInterceptorsFromDi()),
-    provideRouter(routes),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthenticationInterceptor,
+      multi: true // Allows multiple interceptors
+    },    provideRouter(routes),
     provideEffects(),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideAnimationsAsync(),
