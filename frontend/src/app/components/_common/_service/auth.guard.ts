@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Router, RouterStateSnapshot } from '@angular/router';
 
-import { AuthenticationService } from './_service/authentication.service';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard  {
@@ -10,10 +10,9 @@ export class AuthGuard  {
         private authenticationService: AuthenticationService
     ) {}
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    canActivate(state: RouterStateSnapshot) {
         const user = this.authenticationService.userValue;
         if (user) {
-            // authorised so return true
             return true;
         }
 
