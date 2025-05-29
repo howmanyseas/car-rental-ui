@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environments';
 import { User } from '../_model/user';
@@ -11,6 +11,9 @@ import { User } from '../_model/user';
 export class AuthenticationService {
     private userSubject: BehaviorSubject<User | null>;
     public user: Observable<User | null>;
+    private accessToken: string | null = null;
+    private isRefreshing = false;
+    private refreshTokenSubject = new BehaviorSubject<string | null>(null);
 
     constructor(
         private router: Router,
@@ -26,7 +29,7 @@ export class AuthenticationService {
 
     login(email: string, password: string) {
 
-        return this.http.post<User>(`${environment.apiUrl}/authentication`, { email, password })
+        return this.http.post<User>(`${environment.apiUrl}/authentication/login`, { email, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('userToken', JSON.stringify(user));
@@ -53,15 +56,15 @@ export class AuthenticationService {
         return this.http.get<User[]>(`${environment.apiUrl}/users`);
     }
 
-    getById(id: string) {
-        return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
+    getByEmail(email: string) {
+        return this.http.get<User>(`${environment.apiUrl}/users/${email}`);
     }
 
-    update(id: string, params: any) {
-        return this.http.put(`${environment.apiUrl}/users/${id}`, params)
+    update(email: string, params: any) {
+        return this.http.put(`${environment.apiUrl}/users/${email}`, params)
             .pipe(map(x => {
                 // update stored user if the logged in user updated their own record
-                if (id == this.userValue?.id) {
+                if (email == this.userValue?.email) {
                     // update local storage
                     const user = { ...this.userValue, ...params };
                     localStorage.setItem('user', JSON.stringify(user));
@@ -73,11 +76,48 @@ export class AuthenticationService {
             }));
     }
 
-    delete(id: string) {
-        return this.http.delete(`${environment.apiUrl}/users/${id}`)
+    refreshToken(): Observable<{ accessToken: string } | null> {
+        if (this.isRefreshing) {
+            return this.refreshTokenSubject.asObservable().pipe(
+                map(token => token ? { accessToken: token } : null)
+            );
+        }
+
+        this.isRefreshing = true;
+        return this.http.post<{ accessToken: string }>('/authentication/refresh', {}, { withCredentials: true }).pipe(
+            tap(response => {
+                this.setAccessToken(response.accessToken);
+                this.refreshTokenSubject.next(response.accessToken);
+                this.isRefreshing = false;
+            }),
+            catchError(err => {
+                this.isRefreshing = false;
+                this.logout();
+                return of(null);
+            })
+        );
+    }
+
+    setAccessToken(accessToken: string) {
+        this.accessToken = accessToken;
+    }
+
+    getAccessToken() {
+        const tokenString = localStorage.getItem("userToken")
+        if (tokenString) {
+            // Parse the token if it's in JSON format
+            const tokenObject = JSON.parse(tokenString);
+            return tokenObject.token; // Access the token property
+        } else {
+            return this.accessToken;
+        }
+    }
+
+    delete(email: string) {
+        return this.http.delete(`${environment.apiUrl}/users/${email}`)
             .pipe(map(x => {
                 // auto logout if the logged in user deleted their own record
-                if (id == this.userValue?.id) {
+                if (email == this.userValue?.email) {
                     this.logout();
                 }
                 return x;

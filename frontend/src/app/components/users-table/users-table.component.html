@@ -9,14 +9,14 @@
   />
 
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 desktop-table">
-    <ng-container matColumnDef="fname">
+    <ng-container matColumnDef="firstname">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
-      <td mat-cell *matCellDef="let element">{{ element.fname }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.firstname }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="lname">
+    <ng-container matColumnDef="lastname">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
-      <td mat-cell *matCellDef="let element">{{ element.lname }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.lastname }}</td>
     </ng-container>
 
     <ng-container matColumnDef="email">
@@ -24,9 +24,9 @@
       <td mat-cell *matCellDef="let element">{{ element.email }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="role">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Role</th>
-      <td mat-cell *matCellDef="let element">{{ element.role }}</td>
+    <ng-container matColumnDef="roles">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Roles</th>
+      <td mat-cell *matCellDef="let element">{{ element.roles }}</td>
     </ng-container>
 
     <ng-container matColumnDef="actions">
@@ -45,8 +45,8 @@
   <div class="mobile-cards" *ngFor="let element of dataSource.filteredData">
     <div class="card">
       <div class="card-header">
-        <h3>{{ element.fname }} {{ element.lname }}</h3>
-        <p class="role">{{ element.role }}</p>
+        <h3>{{ element.firstname }} {{ element.lastname }}</h3>
+        <p class="roles">{{ element.roles }}</p>
       </div>
       <p>Email: {{ element.email }}</p>
       <button mat-icon-button color="accent" class="edit-btn" (click)="editUser()">
