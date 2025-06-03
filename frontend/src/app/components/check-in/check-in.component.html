@@ -1,321 +1,245 @@
 <h2 class="title">Check In</h2>
 
 <div class="container">
-  <mat-horizontal-stepper [linear]="true" #stepper headerPosition="bottom">
-    <!-- STEP 1 - CAR INFORMATION -->
-    <mat-step [stepControl]="carInformationFormGroup" label="Car Information">
-      <form [formGroup]="carInformationFormGroup">
-        <mat-card class="form-container">
-          <mat-card-header>
-            <h3 class="title">Car Information</h3>
-          </mat-card-header>
-          <mat-card-content>
-            <mat-divider></mat-divider><br />
-
-            <div class="grid-fields">
-              <mat-form-field appearance="outline" class="white-border">
-                <mat-label>MVA</mat-label>
-                <input matInput formControlName="mva" placeholder="Enter MVA" />
-              </mat-form-field>
-            </div>
-
-            <div class="grid-fields">
-              <mat-form-field appearance="outline" class="readonly-field">
-                <mat-label>Car Group</mat-label>
-                <input matInput formControlName="carGroup" />
-              </mat-form-field>
-
-              <mat-form-field appearance="outline" class="readonly-field">
-                <mat-label>License Plate</mat-label>
-                <input matInput formControlName="licensePlate" />
-              </mat-form-field>
-
-              <mat-form-field appearance="outline" class="readonly-field">
-                <mat-label>Fuel</mat-label>
-                <input matInput formControlName="fuel" />
-              </mat-form-field>
-
-              <mat-form-field appearance="outline" class="readonly-field">
-                <mat-label>Car Model</mat-label>
-                <input matInput formControlName="carModel" />
-              </mat-form-field>
-
-              <mat-form-field appearance="outline" class="readonly-field">
-                <mat-label>Millage</mat-label>
-                <input matInput formControlName="millage" />
-              </mat-form-field>
-
-              <mat-form-field appearance="outline" class="readonly-field">
-                <mat-label>Color</mat-label>
-                <input matInput formControlName="color" />
-              </mat-form-field>
-
-              <mat-form-field appearance="outline" class="readonly-field">
-                <mat-label>Status</mat-label>
-                <input matInput formControlName="status" />
-              </mat-form-field>
-
-              <mat-form-field appearance="outline" class="readonly-field">
-                <mat-label>Transmission</mat-label>
-                <input matInput formControlName="transmission" />
-              </mat-form-field>
-            </div>
-
-            <div class="button-group">
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </form>
-    </mat-step>
-
-    <!-- STEP 2 - CHECK IN -->
-    <mat-step [stepControl]="checkInForm" label="Check In">
-      <form [formGroup]="checkInForm" (keydown.enter)="focusNext($event)">
-        <mat-card class="form-container">
-          <mat-card-content>
-            <!-- Payment & Date -->
-            <div class="car-date-row">
-              <div>
-                <h3>Payment</h3>
-                <mat-divider></mat-divider>
-                <mat-form-field appearance="outline">
-                  <mat-label>Amount on Hold</mat-label>
-                  <input matInput formControlName="amountOnHold" />
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                  <mat-label>Payment Status</mat-label>
-                  <input matInput formControlName="paymentStatus" />
-                </mat-form-field>
-              </div>
-
-              <div>
-                <h3>Date</h3>
-                <mat-divider></mat-divider>
-                <div class="row-fields">
-                  <mat-form-field appearance="outline">
-                    <mat-label>Actual Check Out Date</mat-label>
-                    <input
-                      matInput
-                      [matDatepicker]="checkOutDatePicker"
-                      formControlName="actualCheckOutDate"
-                      (dateChange)="updateActualCheckOut()"
-                    />
-                    <mat-datepicker-toggle
-                      matSuffix
-                      [for]="checkOutDatePicker"
-                    ></mat-datepicker-toggle>
-                    <mat-datepicker
-                      #checkOutDatePicker
-                      [touchUi]="true"
-                    ></mat-datepicker>
-                  </mat-form-field>
-                  <mat-form-field appearance="outline">
-                    <mat-label>Time</mat-label>
-                    <input
-                      matInput
-                      [ngxTimepicker]="checkOutTimePicker"
-                      formControlName="actualCheckOutTime"
-                      [format]="24"
-                      (timeSet)="updateActualCheckOut()"
-                    />
-                    <ngx-material-timepicker
-                      #checkOutTimePicker
-                    ></ngx-material-timepicker>
-                  </mat-form-field>
-                </div>
-
-                <div class="row-fields">
-                  <mat-form-field appearance="outline">
-                    <mat-label>Actual Check In Date</mat-label>
-                    <input
-                      matInput
-                      [matDatepicker]="checkInDatePicker"
-                      formControlName="actualCheckInDate"
-                      (dateChange)="updateActualCheckIn()"
-                    />
-                    <mat-datepicker-toggle
-                      matSuffix
-                      [for]="checkInDatePicker"
-                    ></mat-datepicker-toggle>
-                    <mat-datepicker
-                      #checkInDatePicker
-                      [touchUi]="true"
-                    ></mat-datepicker>
-                  </mat-form-field>
-                  <mat-form-field appearance="outline">
-                    <mat-label>Time</mat-label>
-                    <input
-                      matInput
-                      [ngxTimepicker]="checkInTimePicker"
-                      formControlName="actualCheckInTime"
-                      [format]="24"
-                      (timeSet)="updateActualCheckIn()"
-                    />
-                    <ngx-material-timepicker
-                      #checkInTimePicker
-                    ></ngx-material-timepicker>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <!-- Pricing, Mileage, Fuel -->
-            <div class="grid-two-columns">
-              <div>
-                <h3>Price</h3>
-                <mat-divider></mat-divider>
-                <mat-form-field appearance="outline">
-                  <mat-label>Check Out Price</mat-label>
-                  <input matInput formControlName="checkOutPrice" />
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                  <mat-label>Check In Price</mat-label>
-                  <input matInput formControlName="checkInPrice" />
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                  <mat-label>Net Amount</mat-label>
-                  <input matInput formControlName="netAmount" />
-                </mat-form-field>
-              </div>
-
-              <div>
-                <h3>Mileage</h3>
-                <mat-divider></mat-divider>
-                <mat-form-field appearance="outline">
-                  <mat-label>KM Out</mat-label>
-                  <input matInput formControlName="kmOut" />
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                  <mat-label>KM In</mat-label>
-                  <input matInput formControlName="kmIn" />
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                  <mat-label>Mileage Additional Amount</mat-label>
-                  <input matInput formControlName="mileageExtra" />
-                </mat-form-field>
-              </div>
-
-              <div>
-                <h3>Fuel</h3>
-                <mat-divider></mat-divider>
-                <mat-form-field appearance="outline">
-                  <mat-label>Fuel Out</mat-label>
-                  <input matInput formControlName="fuelOut" />
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                  <mat-label>Fuel In</mat-label>
-                  <input matInput formControlName="fuelIn" />
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                  <mat-label>Fuel Additional Amount</mat-label>
-                  <input matInput formControlName="fuelExtra" />
-                </mat-form-field>
-              </div>
-            </div>
-
-            <!-- Additional Fees -->
-            <div class="button-group">
-              <button
-                mat-raised-button
-                class="bluebutton"
-                (click)="toggleAdditionalFees()"
-              >
-                Add Additional Fees
-              </button>
-              <button
-                mat-raised-button
-                class="bluebutton"
-                (click)="addDamage()"
-              >
-                Add Damage
-              </button>
-            </div>
-
-            <mat-card *ngIf="showAdditionalFees" class="form-container">
-              <h3>Additional Fees</h3>
+  <!-- Stepper Section -->
+  <div class="form-wrapper">
+    <mat-horizontal-stepper [linear]="true" #stepper headerPosition="bottom">
+      <!-- Step 1: Car Information -->
+      <mat-step [stepControl]="carInformationFormGroup" label="Car Information">
+        <form [formGroup]="carInformationFormGroup">
+          <mat-card class="form-container">
+            <mat-card-header>
+              <h3 class="title">Car Information</h3>
+            </mat-card-header>
+            <mat-card-content>
               <mat-divider></mat-divider><br />
-              <mat-card-content>
-                <div formArrayName="additionalFees">
-                  <div
-                    *ngFor="let fee of additionalFees.controls; let i = index"
-                    [formGroupName]="i"
-                    class="fee-row"
-                  >
-                    <mat-form-field appearance="outline">
-                      <mat-label>Additional Fee</mat-label>
-                      <mat-select formControlName="feeType">
-                        <mat-option value="tax">Tax (€50)</mat-option>
-                        <mat-option value="cleaning">Cleaning (€30)</mat-option>
-                        <mat-option value="carTank">Car Tank (€40)</mat-option>
-                        <mat-option value="damage">Damage (€25)</mat-option>
-                        <mat-option value="aiport"
-                          >Airport Change (€25)</mat-option
-                        >
-                        <mat-option value="delayed"
-                          >Delayed CheckIN (€25)</mat-option
-                        >
-                        <mat-option value="other">Other</mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                      <mat-label>Price (€)</mat-label>
-                      <input
-                        matInput
-                        type="number"
-                        formControlName="price"
-                        placeholder="e.g. 50"
-                      />
-                    </mat-form-field>
-                    <button
-                      mat-icon-button
-                      color="warn"
-                      (click)="removeAdditionalFee(i)"
-                    >
-                      <mat-icon>delete</mat-icon>
-                    </button>
-                  </div>
-                  <div class="add-fee-container">
-                    <button
-                      mat-mini-fab
-                      color="primary"
-                      (click)="addAdditionalFees()"
-                    >
-                      <mat-icon>add</mat-icon>
-                    </button>
-                  </div>
-                </div>
-              </mat-card-content>
-            </mat-card>
 
-            <!-- Gross -->
-            <div class="grid-two-columns">
-              <div>
-                <h3>Gross Amount</h3>
-                <mat-divider></mat-divider>
-                <mat-form-field appearance="outline">
-                  <mat-label>Gross Amount</mat-label>
-                  <input matInput formControlName="grossAmount" />
+              <div class="grid-fields">
+                <mat-form-field appearance="outline" class="white-border">
+                  <mat-label>MVA</mat-label>
+                  <input matInput formControlName="mva" placeholder="Enter MVA" />
                 </mat-form-field>
               </div>
-            </div>
 
-            <!-- Buttons -->
-            <div class="buttons-group">
-              <button mat-raised-button matStepperPrevious color="accent">
-                Back
-              </button>
-              <button mat-raised-button color="primary">Save</button>
-              <button mat-raised-button color="primary">Print</button>
-              <button mat-raised-button color="primary">Invoice</button>
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </form>
-    </mat-step>
-  </mat-horizontal-stepper>
+              <div class="grid-fields">
+                <mat-form-field appearance="outline" class="readonly-field">
+                  <mat-label>Car Group</mat-label>
+                  <input matInput formControlName="carGroup" />
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="readonly-field">
+                  <mat-label>License Plate</mat-label>
+                  <input matInput formControlName="licensePlate" />
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="readonly-field">
+                  <mat-label>Fuel</mat-label>
+                  <input matInput formControlName="fuel" />
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="readonly-field">
+                  <mat-label>Car Model</mat-label>
+                  <input matInput formControlName="carModel" />
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="readonly-field">
+                  <mat-label>Millage</mat-label>
+                  <input matInput formControlName="millage" />
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="readonly-field">
+                  <mat-label>Color</mat-label>
+                  <input matInput formControlName="color" />
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="readonly-field">
+                  <mat-label>Status</mat-label>
+                  <input matInput formControlName="status" />
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="readonly-field">
+                  <mat-label>Transmission</mat-label>
+                  <input matInput formControlName="transmission" />
+                </mat-form-field>
+              </div>
 
-  <!-- Summary -->
+              <div class="button-group">
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </form>
+      </mat-step>
+
+      <!-- Step 2: Check In -->
+      <mat-step [stepControl]="checkInForm" label="Check In">
+        <form [formGroup]="checkInForm" (keydown.enter)="focusNext($event)">
+          <mat-card class="form-container">
+            <mat-card-content>
+              <div class="car-date-row">
+                <!-- Payment Section -->
+                <div>
+                  <h3>Payment</h3>
+                  <mat-divider></mat-divider>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Amount on Hold</mat-label>
+                    <input matInput formControlName="amountOnHold" />
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Payment Status</mat-label>
+                    <input matInput formControlName="paymentStatus" />
+                  </mat-form-field>
+                </div>
+
+                <!-- Date Section -->
+                <div>
+                  <h3>Date</h3>
+                  <mat-divider></mat-divider>
+                  <div class="row-fields">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Actual Check Out Date</mat-label>
+                      <input matInput [matDatepicker]="checkOutDatePicker" formControlName="actualCheckOutDate" (dateChange)="updateActualCheckOut()" />
+                      <mat-datepicker-toggle matSuffix [for]="checkOutDatePicker"></mat-datepicker-toggle>
+                      <mat-datepicker #checkOutDatePicker [touchUi]="true"></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Time</mat-label>
+                      <input matInput [ngxTimepicker]="checkOutTimePicker" formControlName="actualCheckOutTime" [format]="24" (timeSet)="updateActualCheckOut()" />
+                      <ngx-material-timepicker #checkOutTimePicker></ngx-material-timepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="row-fields">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Actual Check In Date</mat-label>
+                      <input matInput [matDatepicker]="checkInDatePicker" formControlName="actualCheckInDate" (dateChange)="updateActualCheckIn()" />
+                      <mat-datepicker-toggle matSuffix [for]="checkInDatePicker"></mat-datepicker-toggle>
+                      <mat-datepicker #checkInDatePicker [touchUi]="true"></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Time</mat-label>
+                      <input matInput [ngxTimepicker]="checkInTimePicker" formControlName="actualCheckInTime" [format]="24" (timeSet)="updateActualCheckIn()" />
+                      <ngx-material-timepicker #checkInTimePicker></ngx-material-timepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Pricing + Mileage + Fuel -->
+              <div class="grid-two-columns">
+                <div>
+                  <h3>Price</h3>
+                  <mat-divider></mat-divider>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Check Out Price</mat-label>
+                    <input matInput formControlName="checkOutPrice" />
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Check In Price</mat-label>
+                    <input matInput formControlName="checkInPrice" />
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Net Amount</mat-label>
+                    <input matInput formControlName="netAmount" />
+                  </mat-form-field>
+                </div>
+
+                <div>
+                  <h3>Mileage</h3>
+                  <mat-divider></mat-divider>
+                  <mat-form-field appearance="outline">
+                    <mat-label>KM Out</mat-label>
+                    <input matInput formControlName="kmOut" />
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>KM In</mat-label>
+                    <input matInput formControlName="kmIn" />
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Mileage Additional Amount</mat-label>
+                    <input matInput formControlName="mileageExtra" />
+                  </mat-form-field>
+                </div>
+
+                <div>
+                  <h3>Fuel</h3>
+                  <mat-divider></mat-divider>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Fuel Out</mat-label>
+                    <input matInput formControlName="fuelOut" />
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Fuel In</mat-label>
+                    <input matInput formControlName="fuelIn" />
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Fuel Additional Amount</mat-label>
+                    <input matInput formControlName="fuelExtra" />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <!-- Additional Fees + Damage -->
+              <div class="button-group">
+                <button mat-raised-button class="bluebutton" (click)="toggleAdditionalFees()">Add Additional Fees</button>
+                <button mat-raised-button class="bluebutton" (click)="addDamage()">Add Damage</button>
+              </div>
+
+              <!-- Conditional Additional Fees Section -->
+              <mat-card *ngIf="showAdditionalFees" class="form-container">
+                <h3>Additional Fees</h3>
+                <mat-divider></mat-divider><br />
+                <mat-card-content>
+                  <div formArrayName="additionalFees">
+                    <div *ngFor="let fee of additionalFees.controls; let i = index" [formGroupName]="i" class="fee-row">
+                      <mat-form-field appearance="outline">
+                        <mat-label>Additional Fee</mat-label>
+                        <mat-select formControlName="feeType">
+                          <mat-option value="tax">Tax (€50)</mat-option>
+                          <mat-option value="cleaning">Cleaning (€30)</mat-option>
+                          <mat-option value="carTank">Car Tank (€40)</mat-option>
+                          <mat-option value="damage">Damage (€25)</mat-option>
+                          <mat-option value="aiport">Airport Change (€25)</mat-option>
+                          <mat-option value="delayed">Delayed CheckIN (€25)</mat-option>
+                          <mat-option value="other">Other</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Price (€)</mat-label>
+                        <input matInput type="number" formControlName="price" placeholder="e.g. 50" />
+                      </mat-form-field>
+                      <button mat-icon-button color="warn" (click)="removeAdditionalFee(i)">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                    </div>
+                    <div class="add-fee-container">
+                      <button mat-mini-fab color="primary" (click)="addAdditionalFees()">
+                        <mat-icon>add</mat-icon>
+                      </button>
+                    </div>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+
+              <!-- Gross -->
+              <div class="grid-two-columns">
+                <div>
+                  <h3>Gross Amount</h3>
+                  <mat-divider></mat-divider>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Gross Amount</mat-label>
+                    <input matInput formControlName="grossAmount" />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="buttons-group">
+                <button mat-raised-button matStepperPrevious color="accent">Back</button>
+                <button mat-raised-button color="primary">Save</button>
+                <button mat-raised-button color="primary">Print</button>
+                <button mat-raised-button color="primary">Invoice</button>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </form>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>
+
+  <!-- Summary Card -->
   <mat-card class="summary">
     <mat-card-header>
       <mat-card-title>Live Summary</mat-card-title>

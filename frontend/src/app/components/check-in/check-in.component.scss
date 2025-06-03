@@ -1,205 +1,63 @@
 .container {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  gap: 20px;
-  overflow: hidden !important;
-  padding-bottom: 20px;
-  max-height: 75vh !important;
-}
-.form-container {
-  display: flex;
-  flex: 3;
-  flex-direction: column;
-  max-height: 73vh !important;
-  overflow-y: auto;
-  padding-right: 10px;
-}
-html, body {
   height: 100%;
-  overflow: hidden;
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.to-the-right {
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end;
-}
-mat-step {
-  background-color: #2d2d2d !important; /* or your dark background */
-  color: white !important;
+
+.form-wrapper {
+  flex: 3;
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding-right: 10px; /* space for scrollbar */
 }
 
-mat-card {
-  background-color: transparent;
-  box-shadow: none;
-}
-input {
-  color: white !important;
-}
-c mat-option {
-  color: #5d5d5d;
-}
-mat-hint {
-  color: white !important;
-}
-.grid-fields {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-.grid-two-columns {
-  display: flex;
-  gap: 40px;
-}
-.grid-two-columns > div {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.button-group {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
-}
-.buttons-group {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.summary {
-  flex: 1;
-  height: fit-content;
-  font-family: "Inter";
-  background-color: #8f8f8f;
-}
 
 :host {
   display: block;
   margin: 30px;
   overflow: hidden;
 }
-mat-card {
-  background-color: transparent;
-  box-shadow: none;
-  max-height: 75vh !important;
-  overflow-y: hidden;
+.form-container {
+  display: flex;
+  flex-direction: column;
   padding-right: 10px;
-  box-sizing: border-box;
 }
 
-mat-divider {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
+/* Typography */
 h2,
 h3 {
   color: white;
   font-family: "Inter";
 }
-input {
+
+/* Inputs */
+input,
+.mat-input-element::placeholder,
+.mat-form-field-label,
+.mat-hint {
   color: white !important;
-}
-mat-option {
-  color: #5d5d5d;
-}
-
-::ng-deep .mat-radio-button .mat-radio-label {
-  color: white !important;
-}
-
-.additional-fees {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.mat-icon-button {
-  color: white !important;
-}
-
-.bluebutton {
-  background-color: #008dd2 !important;
-  color: white !important;
-  border-radius: 10px;
-}
-
-.fee-row {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 10px;
-}
-
-.fee-fields {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-}
-
-.fee-select,
-.fee-input {
-  flex: 1;
-}
-
-.delete-btn {
-  background-color: rgba(255, 0, 0, 0.2);
-  border-radius: 5px;
-}
-
-.delete-btn mat-icon {
-  color: white;
-}
-
-.add-fee-container {
-  display: flex;
-  justify-content: flex-start;
-  margin-top: 10px;
-}
-.car-date-row {
-  display: flex;
-  gap: 40px;
-}
-
-.car-date-row > div {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.row-fields {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 15px;
-  justify-content: space-between;
-}
-
-.row-fields mat-form-field {
-  flex: 1;
-  min-width: 0;
-}
-mat-form-field {
-  color: white;
-}
-
-.mat-form-field-label {
-  color: rgba(255, 255, 255, 0.8) !important;
-}
-
-.mat-input-element::placeholder {
-  color: rgba(255, 255, 255, 0.5) !important;
 }
 
 .readonly-field input {
   opacity: 1 !important;
   color: white !important;
 }
+
+.mat-radio-button .mat-radio-label,
+.mat-icon-button {
+  color: white !important;
+}
+.form-container mat-card-content {
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+/* Cards and Stepper */
 mat-card {
   background-color: transparent;
   box-shadow: none;
@@ -212,15 +70,110 @@ mat-card {
 mat-horizontal-stepper {
   background-color: transparent !important;
   flex: 3;
+  max-height: 100%;
+  overflow-y: auto;
 }
 
+mat-step {
+  background-color: #2d2d2d !important;
+  color: white !important;
+  margin-bottom: 20px;
+}
+
+mat-divider {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+mat-option {
+  color: #5d5d5d;
+}
+
+/* Layout Fields */
+.grid-fields,
+.grid-two-columns,
+.row-fields {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.grid-two-columns {
+  gap: 40px;
+}
+
+.grid-two-columns > div,
+.car-date-row > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.row-fields {
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.row-fields mat-form-field {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Buttons */
+.button-group,
+.buttons-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+html, body, :host {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent page scroll */
+}
+
+.bluebutton {
+  background-color: #008dd2 !important;
+  color: white !important;
+  border-radius: 10px;
+}
+
+/* Additional Fees */
+.fee-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.add-fee-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+/* Summary */
+.summary {
+  flex: 1;
+  height: fit-content;
+  font-family: "Inter";
+  background-color: #8f8f8f;
+  position: sticky;
+  top: 30px;
+  align-self: flex-start;
+}
+
+/* Media Queries */
 @media (min-width: 800px) and (max-width: 1500px) {
   .container {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
+    flex-direction: row;
   }
-  .form-container {
+
+  .form-wrapper {
     flex: 3;
     max-width: 75%;
   }
@@ -228,57 +181,29 @@ mat-horizontal-stepper {
   .summary {
     flex: 1;
     max-width: 25%;
-    height: fit-content;
     margin-top: 0;
   }
-  .car-date-row,
-  .grid-two-columns {
+
+  .grid-two-columns,
+  .car-date-row {
     flex-direction: column;
     gap: 15px;
   }
-
-  .row-fields {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .row-fields mat-form-field {
-    flex: 1 1 100%;
-    min-width: 100%;
-  }
-
-  .button-group,
-  .buttons-group {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .button-group button,
-  .buttons-group button {
-    width: 100%;
-    margin-bottom: 10px;
-  }
 }
+.car-date-row {
+  display: flex;
+  gap: 40px;
+}
+
 @media (max-width: 800px) {
   .container,
-  .form-container,
+  .form-wrapper,
   .car-date-row,
   .grid-two-columns {
     padding: 0;
     margin: 0;
-  }
-
-  .car-date-row,
-  .grid-two-columns {
-    width: 100%;
     flex-direction: column;
-    gap: 5px;
-  }
-
-  .car-date-row > div,
-  .grid-two-columns > div {
     width: 100%;
-    margin: 0;
   }
 
   .row-fields,
