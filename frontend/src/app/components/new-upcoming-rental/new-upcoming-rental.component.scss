@@ -121,6 +121,9 @@ mat-option {
   background-color: #008dd2 !important;
   color: white !important;
   border-radius: 10px;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
 }
 
 .fee-row {
@@ -146,7 +149,9 @@ mat-option {
   background-color: rgba(255, 0, 0, 0.2);
   border-radius: 5px;
 }
-
+.full-width-field {
+  width: 100% !important;
+}
 .delete-btn mat-icon {
   color: white;
 }
@@ -170,14 +175,15 @@ mat-option {
 
 .row-fields {
   display: flex;
-  flex-wrap: nowrap;
   gap: 15px;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .row-fields mat-form-field {
-  flex: 1;
-  min-width: 0;
+  flex: 1 1 calc((100% - 30px) / 3);
+  min-width: 220px;
+  box-sizing: border-box;
 }
 
 @media (min-width: 800px) {
@@ -197,8 +203,8 @@ mat-option {
     gap: 15px;
   }
   .row-fields mat-form-field {
-    flex: 1 1 48%;
-    min-width: 130px;
+    flex: 1 1 calc((100% - 30px) / 3);
+    min-width: 220px;
     margin-bottom: 10px;
   }
   .button-group,
@@ -213,6 +219,9 @@ mat-option {
   .buttons-group button {
     width: auto;
     margin-bottom: 0;
+  }
+  .full-width-field {
+    width: 100% !important;
   }
 }
 

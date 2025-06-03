@@ -1,3 +1,18 @@
+html,
+body,
+:host {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+:host {
+  display: block;
+  margin: 30px;
+  overflow: hidden;
+}
+
 .container {
   display: flex;
   flex-direction: row;
@@ -7,35 +22,26 @@
   box-sizing: border-box;
 }
 
-
 .form-wrapper {
   flex: 3;
   height: 100%;
   overflow-y: auto;
   box-sizing: border-box;
-  padding-right: 10px; /* space for scrollbar */
+  padding-right: 10px;
 }
 
-
-:host {
-  display: block;
-  margin: 30px;
-  overflow: hidden;
-}
 .form-container {
   display: flex;
   flex-direction: column;
   padding-right: 10px;
 }
 
-/* Typography */
 h2,
 h3 {
   color: white;
   font-family: "Inter";
 }
 
-/* Inputs */
 input,
 .mat-input-element::placeholder,
 .mat-form-field-label,
@@ -52,12 +58,12 @@ input,
 .mat-icon-button {
   color: white !important;
 }
+
 .form-container mat-card-content {
   max-height: 100%;
   overflow-y: auto;
 }
 
-/* Cards and Stepper */
 mat-card {
   background-color: transparent;
   box-shadow: none;
@@ -88,7 +94,6 @@ mat-option {
   color: #5d5d5d;
 }
 
-/* Layout Fields */
 .grid-fields,
 .grid-two-columns,
 .row-fields {
@@ -119,7 +124,6 @@ mat-option {
   min-width: 0;
 }
 
-/* Buttons */
 .button-group,
 .buttons-group {
   display: flex;
@@ -129,20 +133,12 @@ mat-option {
   justify-content: flex-end;
 }
 
-html, body, :host {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden; /* Prevent page scroll */
-}
-
 .bluebutton {
   background-color: #008dd2 !important;
   color: white !important;
   border-radius: 10px;
 }
 
-/* Additional Fees */
 .fee-row {
   display: flex;
   align-items: center;
@@ -156,7 +152,6 @@ html, body, :host {
   margin-top: 10px;
 }
 
-/* Summary */
 .summary {
   flex: 1;
   height: fit-content;
@@ -167,7 +162,11 @@ html, body, :host {
   align-self: flex-start;
 }
 
-/* Media Queries */
+.car-date-row {
+  display: flex;
+  gap: 40px;
+}
+
 @media (min-width: 800px) and (max-width: 1500px) {
   .container {
     flex-direction: row;
@@ -189,10 +188,6 @@ html, body, :host {
     flex-direction: column;
     gap: 15px;
   }
-}
-.car-date-row {
-  display: flex;
-  gap: 40px;
 }
 
 @media (max-width: 800px) {

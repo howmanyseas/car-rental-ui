@@ -42,7 +42,7 @@ export class NewUpcomingRentalComponent implements OnInit {
   rentalForm!: FormGroup;
   showAdditionalFees = false;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.rentalForm = this.fb.group({
@@ -87,5 +87,9 @@ export class NewUpcomingRentalComponent implements OnInit {
   saveForm(): void {
     console.log('Form Submitted:', this.rentalForm.value);
   }
+
+
+  print(): void {
+    window.print();
+  }
 }
-                                                                              

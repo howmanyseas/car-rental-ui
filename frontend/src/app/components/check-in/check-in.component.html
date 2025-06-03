@@ -1,10 +1,8 @@
 <h2 class="title">Check In</h2>
 
 <div class="container">
-  <!-- Stepper Section -->
   <div class="form-wrapper">
     <mat-horizontal-stepper [linear]="true" #stepper headerPosition="bottom">
-      <!-- Step 1: Car Information -->
       <mat-step [stepControl]="carInformationFormGroup" label="Car Information">
         <form [formGroup]="carInformationFormGroup">
           <mat-card class="form-container">
@@ -64,13 +62,11 @@
         </form>
       </mat-step>
 
-      <!-- Step 2: Check In -->
       <mat-step [stepControl]="checkInForm" label="Check In">
         <form [formGroup]="checkInForm" (keydown.enter)="focusNext($event)">
           <mat-card class="form-container">
             <mat-card-content>
               <div class="car-date-row">
-                <!-- Payment Section -->
                 <div>
                   <h3>Payment</h3>
                   <mat-divider></mat-divider>
@@ -84,7 +80,6 @@
                   </mat-form-field>
                 </div>
 
-                <!-- Date Section -->
                 <div>
                   <h3>Date</h3>
                   <mat-divider></mat-divider>
@@ -117,7 +112,6 @@
                 </div>
               </div>
 
-              <!-- Pricing + Mileage + Fuel -->
               <div class="grid-two-columns">
                 <div>
                   <h3>Price</h3>
@@ -171,13 +165,11 @@
                 </div>
               </div>
 
-              <!-- Additional Fees + Damage -->
               <div class="button-group">
                 <button mat-raised-button class="bluebutton" (click)="toggleAdditionalFees()">Add Additional Fees</button>
                 <button mat-raised-button class="bluebutton" (click)="addDamage()">Add Damage</button>
               </div>
 
-              <!-- Conditional Additional Fees Section -->
               <mat-card *ngIf="showAdditionalFees" class="form-container">
                 <h3>Additional Fees</h3>
                 <mat-divider></mat-divider><br />
@@ -213,7 +205,6 @@
                 </mat-card-content>
               </mat-card>
 
-              <!-- Gross -->
               <div class="grid-two-columns">
                 <div>
                   <h3>Gross Amount</h3>
@@ -225,7 +216,6 @@
                 </div>
               </div>
 
-              <!-- Action Buttons -->
               <div class="buttons-group">
                 <button mat-raised-button matStepperPrevious color="accent">Back</button>
                 <button mat-raised-button color="primary">Save</button>
@@ -239,7 +229,6 @@
     </mat-horizontal-stepper>
   </div>
 
-  <!-- Summary Card -->
   <mat-card class="summary">
     <mat-card-header>
       <mat-card-title>Live Summary</mat-card-title>
