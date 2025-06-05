@@ -36,18 +36,23 @@ export class InternalCheckoutComponent {
     this.employeeCheckOutForm = this.fb.group({
       firstName: [''],
       lastName: [''],
+      driverLicenseNumber: [''],
       department: [''],
+      reason: [''],
+
+      checkoutLocation: [''],
+      checkOutDate: [''],
+      checkOutTime: [''],
+
+      checkInLocation: [''],
+      checkInDate: [''],
+      checkInTime: [''],
+
       carGroup: [''],
       licensePlate: [''],
-      dateTaken: [''],
-      timeTaken: [''],
-      reason: [''],
-      checkoutlocation:[''],
-      checkinlocation:[''],
-
-
     });
   }
+
 
   saveEmployeeForm() {
     console.log('✅ Employee Car Usage:', this.employeeCheckOutForm.value);
