@@ -8,6 +8,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
+
 
 @Component({
   selector: 'app-dash',
@@ -15,16 +18,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./dash.component.scss'],
   standalone: true,
   imports: [
-   
+
     MatGridListModule,
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
     MatCardModule,
+    MatSlideToggleModule
   ],
 })
 export class DashComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   navigateTo(title: string): void {
     if (title === 'Recent Rentals') {
@@ -37,4 +41,20 @@ export class DashComponent {
       this.router.navigate(['/revenue']);
     }
   }
+  onFilterChange(value: string) {
+    console.log('Filter selected:', value);
+    // You can implement logic here to update the cards/data
+  }
+  goToSmDashboard() {
+    this.router.navigate(['/sm-dashboard']); // or whatever your SM route is
+  }
+  toggleDashboard(isSm: boolean) {
+  if (isSm) {
+    this.router.navigate(['/sm-dashboard']);
+  } else {
+    this.router.navigate(['/dashboard']); // or whatever your main dashboard route is
+  }
+}
+
+
 }
