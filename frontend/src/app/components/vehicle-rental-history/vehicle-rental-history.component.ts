@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule, MatTable } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
@@ -10,6 +10,8 @@ import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { VehicleRentalHistoryDataSource, VehicleRentalHistoryItem } from './vehicle-rental-history-datasource';
 import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
+import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 
 @Component({
@@ -27,11 +29,16 @@ import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/fo
     MatButtonModule,
     MatIconModule,
     MatIcon,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatFormField,
+    ReactiveFormsModule,
+    MatInputModule
   ],
 })
-export class VehicleRentalHistoryComponent implements AfterViewInit {
-  constructor(private router: Router) { }
+export class VehicleRentalHistoryComponent implements OnInit, AfterViewInit {
+  form!: FormGroup;
+
+  constructor(private router: Router, private fb: FormBuilder) { }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -40,7 +47,11 @@ export class VehicleRentalHistoryComponent implements AfterViewInit {
   dataSource = new VehicleRentalHistoryDataSource();
 
   displayedColumns = ['name', 'lastName', 'carPlate', 'rentalId', 'checkOut', 'checkIn', 'status', 'view'];
-
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      totalRevenue: [{ value: '€1,200', disabled: true }]
+    });
+  }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -50,5 +61,8 @@ export class VehicleRentalHistoryComponent implements AfterViewInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+  getTotalRevenue() {
+    console.log('Total Revenue Clicked!')
 
+  }
 }

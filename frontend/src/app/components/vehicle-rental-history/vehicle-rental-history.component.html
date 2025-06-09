@@ -7,6 +7,12 @@
     (input)="applyFilter($event)"
     class="search-input"
   />
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Total Revenue</mat-label>
+      <input matInput formControlName="totalRevenue" />
+    </mat-form-field>
+  </form>
 
   <table
     mat-table

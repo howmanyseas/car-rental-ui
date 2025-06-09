@@ -1,7 +1,7 @@
 <h2 class="title">Add New Vehicle</h2>
 
-<form class="edit-vehicle-form">
-  <mat-card class="form-container">
+<form  [formGroup]="NewVehicleForm"class="edit-vehicle-form">
+ <mat-card class="form-container">
     <h2 class="subtitle">Car Information</h2>
 
     <div class="row">
@@ -11,27 +11,20 @@
           <input matInput />
         </mat-form-field>
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Model</mat-label>
-          <input matInput />
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Color</mat-label>
-          <input matInput />
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Fuel</mat-label>
-          <input matInput />
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Millage</mat-label>
-          <input matInput />
-        </mat-form-field>
-      </div>
-
-      <div class="column">
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>MVA</mat-label>
-          <input matInput />
+          <mat-label>Registration Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="registrationDatePicker"
+            formControlName="registrationDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="registrationDatePicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker
+            #registrationDatePicker
+            touchUi="true"
+          ></mat-datepicker>
         </mat-form-field>
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Transmission</mat-label>
@@ -42,13 +35,33 @@
           <input matInput />
         </mat-form-field>
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Fuel Level</mat-label>
+          <mat-label>Status</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </div>
+
+      <div class="column">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>MVA</mat-label>
           <input matInput />
         </mat-form-field>
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>TUV Inspection</mat-label>
+          <mat-label>Year</mat-label>
           <input matInput />
         </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Fuel</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Tire Information</mat-label>
+          <input matInput />
+        </mat-form-field>
+          <mat-form-field appearance="outline" class="full-width">
+          <mat-label>PM Milleage</mat-label>
+          <input matInput />
+        </mat-form-field>
+
       </div>
 
       <div class="column">
@@ -61,11 +74,49 @@
           <input matInput />
         </mat-form-field>
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Equipment</mat-label>
+          <mat-label>Fuel Level</mat-label>
           <input matInput />
         </mat-form-field>
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Status</mat-label>
+          <mat-label>Equipment</mat-label>
+          <input matInput />
+        </mat-form-field>
+              <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Turnback Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="turnbackDatePicker"
+            formControlName="turnbackdate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="turnbackDatePicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker
+            #turnbackDatePicker
+            touchUi="true"
+          ></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="column">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Model</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Color</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Milleage</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>TUV Inspection</mat-label>
+          <input matInput />
+        </mat-form-field>
+          <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Turnback Milleage</mat-label>
           <input matInput />
         </mat-form-field>
       </div>
