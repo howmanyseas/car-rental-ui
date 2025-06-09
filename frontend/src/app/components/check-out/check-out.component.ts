@@ -29,13 +29,13 @@ import { UploadOptionsComponent } from '../upload-options.component';
 const moment = _rollupMoment || _moment;
 const FULL_DATE_FORMATS = {
   parse: {
-    dateInput: 'DD/MM/YYYY',
+    dateInput: 'MM/YY',
   },
   display: {
-    dateInput: 'DD/MM/YYYY',
-    monthYearLabel: 'MMMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY',
+    dateInput: 'MM/YY',
+    monthYearLabel: 'MMMM YY',
+    dateA11yLabel: 'MMMM YY',
+    monthYearA11yLabel: 'MMMM YY',
   },
 };
 @Component({
@@ -190,6 +190,7 @@ export class CheckOutComponent implements OnInit {
       checkoutGrossAmount: [''],
       paymentDate: [''],
       paymentStatus: [''],
+      authorizationCode: [''],
     });
 
     this.detectDevice();

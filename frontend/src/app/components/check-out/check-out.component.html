@@ -167,7 +167,7 @@
                           >Insurance Lv.2 (€100)</mat-option
                         >
                         <mat-option value="KMFee">Additional KM fee</mat-option>
-                        
+
                         <mat-option value="AirportChange"
                           >Airport Change Fee (€20)</mat-option
                         >
@@ -810,8 +810,8 @@
                   matInput
                   [matDatepicker]="expDatePicker"
                   formControlName="expiryDate"
-                  readonly
                 />
+
                 <mat-hint>MM/YYYY</mat-hint>
                 <mat-datepicker-toggle
                   matSuffix
@@ -822,6 +822,8 @@
                   startView="multi-year"
                   (monthSelected)="setMonthAndYear($event, expDatePicker)"
                   panelClass="month-picker"
+                  [startAt]="paymentFormGroup.get('expiryDate')?.value"
+                  [startView]="'multi-year'"
                 ></mat-datepicker>
               </mat-form-field>
 
@@ -861,7 +863,18 @@
 
               <mat-form-field appearance="outline">
                 <mat-label>Payment Status</mat-label>
-                <input matInput formControlName="paymentStatus" />
+                <mat-select formControlName="paymentStatus">
+                  <mat-option value="Paid">Paid</mat-option>
+                  <mat-option value="Pending">Pending</mat-option>
+                  <mat-option value="Failed">Failed</mat-option>
+                  <mat-option value="Refunded">Refunded</mat-option>
+                  <mat-option value="On Hold">On Hold</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Authorization Code</mat-label>
+                <input matInput formControlName="authorizationCode" />
               </mat-form-field>
             </div>
 

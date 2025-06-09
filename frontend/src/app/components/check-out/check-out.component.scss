@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: row;
   gap: 20px;
-  padding-bottom: 20px;
   align-items: flex-start;
 
   overflow: hidden !important;
@@ -12,6 +11,7 @@
 }
 :host {
   margin: 30px;
+  display: block;
 }
 .form-container {
   display: flex;
@@ -33,7 +33,7 @@
 input {
   color: white !important;
 }
-c mat-option {
+mat-option {
   color: #5d5d5d;
 }
 mat-hint {
