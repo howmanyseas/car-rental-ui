@@ -197,6 +197,14 @@ export const routes: Routes = [
           ),
         title: 'Manifest Menu',
       },
+      {
+        path: 'sm-dashboard',
+        loadComponent: () =>
+          import('./components/sm-dashboard/sm-dashboard.component').then(
+            (m) => m.SmDashboardComponent
+          ),
+        title: 'SM Dashboard',
+      },
 
 
 

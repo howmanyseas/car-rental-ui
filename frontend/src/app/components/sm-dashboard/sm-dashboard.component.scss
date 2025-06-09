@@ -1,0 +1,106 @@
+:host {
+  display: block;
+  margin: 30px;
+}
+h2 {
+  color: white;
+  font-family: "Inter";
+}
+.dashboard-title {
+  margin-bottom: 16px;
+  font-size: 1.5rem;
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.stat-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px; 
+}
+
+.stats-row .stat-btn,
+.view-toggle button {
+  background-color: #3a3a3a;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background 0.3s;
+}
+
+.stats-row .stat-btn:hover,
+.view-toggle button:hover {
+  background-color: #646363;
+}
+
+.view-toggle button.active {
+  background-color: #008dd2;
+}
+.view-toggle {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+
+  button {
+    background-color: #3a3a3a;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: background 0.3s;
+  }
+
+  button.active {
+    background-color: #008dd2;
+  }
+}
+
+.date-filters {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.mat-form-field {
+  width: 160px;
+}
+
+.table-container {
+  flex: 1;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: transparent;
+  color: white !important;
+}
+th {
+  background: #242323;
+  color: white;
+  font-weight: bold;
+  font-family: "Inter";
+}
+
+td {
+  padding: 12px;
+  color: white;
+}
+th.mat-header-cell,
+td.mat-cell {
+  text-align: center;
+  padding: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  color: white !important  ;
+}

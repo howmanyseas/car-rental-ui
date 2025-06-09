@@ -4,12 +4,14 @@
   gap: 20px;
   padding-bottom: 20px;
   align-items: flex-start;
-  width: 100%;
-  height: 100%;
+
   overflow: hidden !important;
 }
 .button-group {
   display: inline;
+}
+:host {
+  margin: 30px;
 }
 .form-container {
   display: flex;
@@ -31,8 +33,7 @@
 input {
   color: white !important;
 }
-c
-mat-option {
+c mat-option {
   color: #5d5d5d;
 }
 mat-hint {
@@ -83,10 +84,6 @@ button[mat-mini-fab] {
   border-radius: 10px;
 }
 
-
-
-
-
 mat-horizontal-stepper {
   background-color: transparent !important;
   flex: 3;
@@ -94,9 +91,6 @@ mat-horizontal-stepper {
 mat-form-field {
   flex: 1;
 }
-
-
-
 
 .grid-fields {
   display: grid;
@@ -120,8 +114,6 @@ mat-button-toggle-group {
   gap: 15px;
   align-items: center;
 }
-
-
 
 .buttons-group button {
   background-color: #008dd2 !important;
@@ -179,7 +171,7 @@ mat-icon {
 
 @media (max-width: 768px) {
   :host {
-    margin: 10px;
+    margin: 30px;
   }
   .upload-container {
     justify-content: center;
@@ -257,5 +249,3 @@ mat-icon {
     width: 100%;
   }
 }
-
-
