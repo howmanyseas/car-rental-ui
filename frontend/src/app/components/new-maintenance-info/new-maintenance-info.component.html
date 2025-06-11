@@ -1,0 +1,109 @@
+<h2 class="title">Vehicle Maintenance Information</h2>
+
+<form [formGroup]="NewVehicleForm" class="edit-vehicle-form">
+  <mat-card class="form-container">
+  
+
+    <div class="row">
+      <div class="column">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Car ID</mat-label>
+          <input matInput formControlName="carId" />
+        </mat-form-field>
+      </div>
+
+      <div class="column">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>MVA</mat-label>
+          <input matInput formControlName="mva" />
+        </mat-form-field>
+      </div>
+
+      <div class="column">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Licence Plate</mat-label>
+          <input matInput formControlName="licencePlate" />
+        </mat-form-field>
+      </div>
+
+      <div class="column">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Place of Leave</mat-label>
+          <mat-select formControlName="placeOfLeave">
+            <mat-option value="memmingen">Memmingen Airport</mat-option>
+            <mat-option value="badenbaden">Baden-Baden Airport</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Checkout Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="checkoutDatePicker"
+            formControlName="checkoutDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="checkoutDatePicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #checkoutDatePicker touchUi="true"></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="column">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Check-in Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="checkinDatePicker"
+            formControlName="checkinDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="checkinDatePicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #checkinDatePicker touchUi="true"></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="column">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Days</mat-label>
+          <input matInput [value]="days" disabled />
+        </mat-form-field>
+</div>
+<div class="column">    
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="address" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Reason</mat-label>
+          <input matInput formControlName="reason" />
+        </mat-form-field>
+      </div>
+
+      <div class="column">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Repair Type</mat-label>
+          <input matInput formControlName="repairType" />
+        </mat-form-field>
+      </div>
+    </div>
+
+  </mat-card>
+</form>
+
+<div class="buttons-container">
+  <button mat-button style="color: white" (click)="cancelBtn()">Cancel</button>
+  <button mat-raised-button class="save-btn" (click)="addVehicle()">Save</button>
+</div>

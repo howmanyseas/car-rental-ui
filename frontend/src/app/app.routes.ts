@@ -205,6 +205,15 @@ export const routes: Routes = [
           ),
         title: 'SM Dashboard',
       },
+      {
+        path: 'new-maintenance-info',
+        loadComponent: () =>
+          import('./components/new-maintenance-info/new-maintenance-info.component').then(
+            (m) => m.NewMaintenanceInfoComponent
+          ),
+        title: 'Maintenance Information',
+      },
+
 
 
 

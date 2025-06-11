@@ -1,0 +1,154 @@
+.form-container {
+  padding: 20px;
+  background: transparent;
+  border-radius: 8px;
+}
+
+:host {
+  display: block;
+  margin: 30px;
+}
+
+.row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px; /* Space between rows */
+}
+
+.column {
+  flex: 1 1 calc(20% - 10px); /* Each column takes 50% width, with space between */
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+h2 {
+  color: white;
+  font-family: "Inter";
+}
+
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 20px; /* Space between form fields */
+}
+
+input {
+  color: white !important;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.cancel-btn {
+  color: #ec3838;
+}
+
+.save-btn {
+  background-color: #008dd2 !important;
+  color: white !important;
+}
+
+.damage-history {
+  background-color: transparent;
+  padding: 16px;
+  margin-top: 20px;
+  border: none;
+  width: 40%;
+  box-shadow: none;
+}
+
+mat-card {
+  border: none;
+}
+
+.damage-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.damage-table th,
+.damage-table td {
+  padding: 8px;
+  text-align: left;
+  color: white;
+}
+
+.delete-btn {
+  color: #f44336;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.damage-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.damage-options button {
+  margin-left: 10px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    gap: 20px; /* Add space between rows */
+  }
+
+  .column {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .form-container {
+    padding: 15px;
+  }
+
+  .buttons-container {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .add-damage-btn,
+  .save-btn,
+  .cancel-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.2em;
+  }
+
+  .column {
+    min-width: unset;
+  }
+
+  .add-damage-btn,
+  .save-btn,
+  .cancel-btn {
+    font-size: 1em;
+    padding: 8px;
+  }
+
+  .damage-table th,
+  .damage-table td {
+    font-size: 0.8em;
+    padding: 6px;
+  }
+}
