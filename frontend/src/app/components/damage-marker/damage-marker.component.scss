@@ -1,4 +1,3 @@
-
 .dialog-container {
   width: 500px;
   max-width: 90vw;
@@ -39,9 +38,9 @@ mat-icon {
   color: #4a4a4a;
 }
 .form-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Force 3 equal columns */
   gap: 16px;
-  justify-content: space-between;
   width: 100%;
 }
 
@@ -116,8 +115,7 @@ mat-icon {
   }
 
   .form-row {
-    flex-direction: column;
-    gap: 10px;
+    grid-template-columns: 1fr; /* Stack vertically */
   }
 
   .image-container {
@@ -212,28 +210,6 @@ mat-icon {
   }
 }
 
-.dialog-container .mat-form-field-appearance-outline input.mat-input-element,
-.dialog-container .mat-select-value-text {
-  color: #4a4a4a !important; /* Gray text color */
-}
-
-.dialog-container .mat-form-field-appearance-outline .mat-select-arrow,
-.dialog-container .mat-form-field-appearance-outline .mat-form-field-label {
-  color: #4a4a4a !important;
-}
-
-.dialog-container
-  .mat-form-field-appearance-outline
-  .mat-form-field-outline-start,
-.dialog-container
-  .mat-form-field-appearance-outline
-  .mat-form-field-outline-gap,
-.dialog-container
-  .mat-form-field-appearance-outline
-  .mat-form-field-outline-end {
-  color: rgba(0, 0, 0, 0.3) !important;
-}
-
 .dialog-container
   .mat-form-field-appearance-outline.mat-focused
   .mat-form-field-outline-start,
@@ -250,8 +226,4 @@ mat-icon {
   .mat-form-field-appearance-outline.mat-focused
   .mat-form-field-label {
   color: #008dd2 !important;
-}
-
-::ng-deep .mat-select-panel .mat-option-text {
-  color: #4a4a4a !important;
 }

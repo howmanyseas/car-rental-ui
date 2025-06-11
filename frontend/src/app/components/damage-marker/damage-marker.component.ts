@@ -30,7 +30,7 @@ interface DamageMark {
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
-    UploadOptionsComponent
+    
   ],
 })
 export class DamageMarkerComponent {
@@ -66,6 +66,13 @@ export class DamageMarkerComponent {
 
     this.damageMarks.push({ x, y });
   }
+  uploadedFiles: File[] = [];
+
+  onImageUpload(event: any) {
+    const files: FileList = event.target.files;
+    this.uploadedFiles = Array.from(files);
+    console.log(this.uploadedFiles); // for now
+  }
 
 
   removeMarker(index: number) {
@@ -79,7 +86,7 @@ export class DamageMarkerComponent {
   onMarkerLongPress(index: number) {
     this.longPressTimeout = setTimeout(() => {
       this.removeMarker(index);
-    }, 500); 
+    }, 500);
   }
 
   onMarkerRelease() {

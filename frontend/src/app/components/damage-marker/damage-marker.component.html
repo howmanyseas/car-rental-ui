@@ -2,15 +2,26 @@
   <div class="scrollable-content">
     <div class="title-container">
       <h2 class="title">Add Damage</h2>
-      <app-upload-options class="upload-icon-title"></app-upload-options>
     </div>
 
+    <!-- First Row -->
     <div class="form-row">
       <mat-form-field appearance="outline">
         <mat-label>Car Part</mat-label>
         <mat-select>
           <mat-option value="door">Door</mat-option>
           <mat-option value="bumper">Bumper</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Direction</mat-label>
+        <mat-select>
+          <mat-option value="left">Left</mat-option>
+          <mat-option value="right">Right</mat-option>
+          <mat-option value="up">Up</mat-option>
+          <mat-option value="down">Down</mat-option>
+          <mat-option value="mixed">Mixed</mat-option>
         </mat-select>
       </mat-form-field>
 
@@ -23,6 +34,7 @@
       </mat-form-field>
     </div>
 
+    <!-- Second Row -->
     <div class="form-row">
       <mat-form-field appearance="outline">
         <mat-label>Severity</mat-label>
@@ -39,8 +51,27 @@
           <mat-option value="new">Not Working</mat-option>
         </mat-select>
       </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>License Plate</mat-label>
+        <input matInput placeholder="e.g. AB 123 CD" />
+      </mat-form-field>
     </div>
-  
+    <div class="upload-section" style="width: 100%; margin-bottom: 16px">
+      <label style="font-weight: 500; margin-bottom: 6px; display: block">
+        Upload Fuel/Mileage Image(s)
+      </label>
+      <input
+        type="file"
+        multiple
+        (change)="onImageUpload($event)"
+        accept="image/*"
+        style="margin-bottom: 8px"
+      />
+      <div *ngIf="uploadedFiles.length > 0">
+        <small>{{ uploadedFiles.length }} file(s) selected</small>
+      </div>
+    </div>
     <p class="instructions">
       Tap or click anywhere on the image to mark the damage.<br />
       On mobile/tablet, double-tap to mark.<br />
