@@ -171,6 +171,16 @@
                         <mat-option value="AirportChange"
                           >Airport Change Fee (€20)</mat-option
                         >
+                        <mat-option value="youngDriver"
+                          >Young Driver</mat-option
+                        >
+                        <mat-option value="upgrade">Upsell/Upgrade</mat-option>
+
+                        <mat-option value="latePickup">Late Pickup</mat-option>
+
+                        <mat-option value="winterTire">Winter Tire</mat-option>
+
+                        <mat-option value="noshowFee">No Show Fee</mat-option>
                       </mat-select>
                     </mat-form-field>
                     <mat-form-field
@@ -204,6 +214,23 @@
                         type="number"
                         formControlName="price"
                         placeholder="e.g. 50"
+                      />
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Fee Duration</mat-label>
+                      <mat-select formControlName="feeDuration">
+                        <mat-option value="daily">Daily</mat-option>
+                        <mat-option value="weekly">Weekly</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                      <mat-label>Max Price (€)</mat-label>
+                      <input
+                        matInput
+                        type="number"
+                        formControlName="maxPrice"
+                        placeholder="e.g. 100"
                       />
                     </mat-form-field>
 
@@ -311,6 +338,14 @@
                   [value]="calculateAge(customerFormGroup.get('dob')?.value)"
                   disabled
                 />
+                <button
+                  mat-icon-button
+                  matSuffix
+                  *ngIf="showYoungDriverNotice()"
+                  matTooltip="Young Driver (18–21)"
+                >
+                  <mat-icon color="accent">info</mat-icon>
+                </button>
               </mat-form-field>
 
               <mat-form-field appearance="outline">
@@ -489,6 +524,20 @@
                 <mat-label>Identification nr.</mat-label>
                 <input matInput formControlName="idNumber" />
               </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>ID Expiry Date</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="idExpiryPicker"
+                  formControlName="idExpiry"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="idExpiryPicker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #idExpiryPicker></mat-datepicker>
+                <mat-icon *ngIf="isIdExpired()" color="warn">warning</mat-icon>
+              </mat-form-field>
 
               <div class="upload-container">
                 <app-upload-options *ngIf="isMobile"></app-upload-options>
@@ -517,6 +566,25 @@
               <mat-form-field appearance="outline">
                 <mat-label>Country</mat-label>
                 <input matInput formControlName="licenseCountry" />
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>License Issued Date</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="licenseIssuedPicker"
+                  formControlName="licenseIssued"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="licenseIssuedPicker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #licenseIssuedPicker></mat-datepicker>
+                <mat-icon *ngIf="isLicenseRecent() === 'warning'" color="warn"
+                  >warning</mat-icon
+                >
+                <mat-icon *ngIf="isLicenseRecent() === 'ok'" color="primary"
+                  >check_circle</mat-icon
+                >
               </mat-form-field>
 
               <mat-form-field appearance="outline">
@@ -801,29 +869,23 @@
               </mat-form-field>
 
               <mat-form-field appearance="outline">
-                <mat-label>Name on Card</mat-label>
-                <input matInput formControlName="nameOnCard" />
-              </mat-form-field>
-              <mat-form-field appearance="outline">
-                <mat-label>Expiry Date</mat-label>
+                <mat-label>Card Expiry Date</mat-label>
                 <input
                   matInput
-                  [matDatepicker]="expDatePicker"
+                  [matDatepicker]="expPicker"
                   formControlName="expiryDate"
                 />
-
                 <mat-hint>MM/YYYY</mat-hint>
                 <mat-datepicker-toggle
                   matSuffix
-                  [for]="expDatePicker"
+                  [for]="expPicker"
                 ></mat-datepicker-toggle>
                 <mat-datepicker
-                  #expDatePicker
+                  #expPicker
                   startView="multi-year"
-                  (monthSelected)="setMonthAndYear($event, expDatePicker)"
-                  panelClass="month-picker"
-                  [startAt]="paymentFormGroup.get('expiryDate')?.value"
-                  [startView]="'multi-year'"
+                  (monthSelected)="setMonthAndYear($event, expPicker)"
+                  panelClass="example-month-picker"
+                  [touchUi]="true"
                 ></mat-datepicker>
               </mat-form-field>
 

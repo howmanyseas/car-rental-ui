@@ -71,14 +71,17 @@ export class NewUpcomingRentalComponent implements OnInit {
     }
   }
 
-  addAdditionalFee(): void {
-    const feeGroup: FormGroup = this.fb.group({
-      feeType: new FormControl(''),
-      price: new FormControl(''),
+  addAdditionalFee() {
+    const feeGroup = this.fb.group({
+      feeType: [''],
+      price: [''],
+      feeDuration: [''],  
+      maxPrice: [''],     
     });
 
     this.additionalFees.push(feeGroup);
   }
+
 
   removeAdditionalFee(index: number): void {
     this.additionalFees.removeAt(index);

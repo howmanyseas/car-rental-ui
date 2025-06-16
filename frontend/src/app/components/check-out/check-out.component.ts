@@ -29,13 +29,24 @@ import { UploadOptionsComponent } from '../upload-options.component';
 const moment = _rollupMoment || _moment;
 const FULL_DATE_FORMATS = {
   parse: {
-    dateInput: 'MM/YY',
+    dateInput: 'DD/MM/YYYY',
   },
   display: {
-    dateInput: 'MM/YY',
-    monthYearLabel: 'MMMM YY',
-    dateA11yLabel: 'MMMM YY',
-    monthYearA11yLabel: 'MMMM YY',
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'MM/YYYY',
+  },
+  display: {
+    dateInput: 'MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
   },
 };
 @Component({
@@ -71,8 +82,13 @@ const FULL_DATE_FORMATS = {
     {
       provide: MAT_DATE_FORMATS,
       useValue: FULL_DATE_FORMATS
+    },
+    {
+      provide: MAT_DATE_FORMATS,
+      useValue: MY_FORMATS
     }
   ]
+
 })
 export class CheckOutComponent implements OnInit {
   isMobile = false;
@@ -142,8 +158,10 @@ export class CheckOutComponent implements OnInit {
       companyName: [''],
       idType: [''],
       idNumber: [''],
+      idExpiry: [''],
       licenseNumber: [''],
       licenseCountry: [''],
+      licenseIssued: [''],
       licenseExpiry: [''],
       customerNote: [''],
       driverSameAsRenter: ['yes'],
@@ -184,7 +202,7 @@ export class CheckOutComponent implements OnInit {
       cardType: [''],
       cardNumber: [''],
       nameOnCard: [''],
-      expiryDate: [''],
+      expiryDate: new FormControl(moment()),  // default value
       cvv: [''],
       amountOnHold: [''],
       checkoutGrossAmount: [''],
@@ -295,6 +313,8 @@ export class CheckOutComponent implements OnInit {
       price: [''],
       kmCount: [''],
       airportName: [''],
+      feeDuration: [''],     // New field
+      maxPrice: [''],        // New field
     });
 
 
@@ -307,12 +327,10 @@ export class CheckOutComponent implements OnInit {
           feeGroup.get('feeType')?.reset();
         }
       } else {
-        // reset extra fields if not selected
         feeGroup.get('kmCount')?.reset();
         feeGroup.get('airportName')?.reset();
       }
     });
-
 
     this.additionalFees.push(feeGroup);
   }
@@ -330,6 +348,36 @@ export class CheckOutComponent implements OnInit {
     }
 
     return age;
+  }
+  isIdExpired(): boolean {
+    const expiry = this.customerFormGroup.get('idExpiry')?.value;
+    if (!expiry) return false;
+
+    const today = new Date();
+    return new Date(expiry) < today;
+  }
+
+  isLicenseRecent(): 'warning' | 'ok' | '' {
+    const issued = this.customerFormGroup.get('licenseIssued')?.value;
+
+    if (!issued) return '';
+
+    const issuedDate = new Date(issued);
+    const today = new Date();
+
+    const diffInMonths =
+      (today.getFullYear() - issuedDate.getFullYear()) * 12 +
+      today.getMonth() - issuedDate.getMonth();
+
+    if (diffInMonths < 3) {
+      return 'warning';  // License too recent
+    }
+
+    if (diffInMonths >= 6) {
+      return 'ok';       // License older than 6 months
+    }
+
+    return ''; // Between 3 and 6 months: no icon
   }
 
 
@@ -356,16 +404,61 @@ export class CheckOutComponent implements OnInit {
     this.showDiscount = !this.showDiscount;
   }
 
+  formatExpiry(date: any): string {
+    return date ? moment(date).format('MM/YY') : '';
+  }
 
-  setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {
-    const ctrl = this.paymentFormGroup.get('expiryDate');
-    if (ctrl) {
-      // Create a moment object with only month and year
-      const selectedDate = moment().year(normalizedMonthAndYear.year())
-        .month(normalizedMonthAndYear.month())
-        .date(1); // Set to first of the month
-      ctrl.setValue(selectedDate);
-    }
+setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {
+  const ctrlValue = this.paymentFormGroup.get('expiryDate')?.value ?? moment();
+  ctrlValue.month(normalizedMonthAndYear.month());
+  ctrlValue.year(normalizedMonthAndYear.year());
+  this.paymentFormGroup.get('expiryDate')?.setValue(ctrlValue);
+  datepicker.close();
+}
+
+  get expiryDisplayValue(): string {
+    const val = this.paymentFormGroup.get('expiryDate')?.value;
+    return val ? val : '';
+  }
+
+  get initialExpiryMoment(): Moment {
+    const val = this.paymentFormGroup.get('expiryDate')?.value;
+    return val ? moment(val, 'MM/YY') : moment();
+  }
+  get expiryDateControl(): FormControl {
+    return this.paymentFormGroup.get('expiryDate') as FormControl;
+  }
+
+
+  selectExpiryMonth(normalizedMonth: Moment, datepicker: MatDatepicker<Moment>) {
+    const formatted = normalizedMonth.format('MM/YY');
+    this.paymentFormGroup.get('expiryDate')?.setValue(formatted);
     datepicker.close();
   }
+
+  onManualExpiryInput(event: any) {
+    const inputValue = event.target.value;
+    if (moment(inputValue, 'MM/YY', true).isValid()) {
+      this.paymentFormGroup.get('expiryDate')?.setValue(inputValue);
+    } else {
+      this.paymentFormGroup.get('expiryDate')?.setErrors({ invalidFormat: true });
+    }
+  }
+showYoungDriverNotice(): boolean {
+  const dob = this.customerFormGroup.get('dob')?.value;
+  if (!dob) return false;
+
+  const birthDate = new Date(dob);
+  const today = new Date();
+
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  const dayDiff = today.getDate() - birthDate.getDate();
+  if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+    age--;
+  }
+
+  return age >= 18 && age <= 21;
+}
+
 }
