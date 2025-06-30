@@ -5,10 +5,67 @@
     <mat-step label="Pricing" state="phone">
       <mat-card class="form-container">
         <mat-card-header>
-          <h3 class="title">Pricing</h3>
+          <h3>Dates</h3>
         </mat-card-header>
-
         <mat-card-content>
+          <mat-divider></mat-divider><br />
+          <div class="grid-fields">
+            <mat-form-field appearance="outline">
+              <mat-label>Check Out Date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="checkOutDatePicker"
+                [formControl]="CheckOutDateControl"
+                (dateChange)="updateActualCheckOut()"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="checkOutDatePicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker
+                #checkOutDatePicker
+                [touchUi]="true"
+              ></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Check Out Time</mat-label>
+              <input
+                matInput
+                type="time"
+                [formControl]="CheckOutTimeControl"
+                (change)="updateActualCheckOut()"
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Check In Date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="checkInDatePicker"
+                [formControl]="CheckInDateControl"
+                (dateChange)="updateActualCheckIn()"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="checkInDatePicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker
+                #checkInDatePicker
+                [touchUi]="true"
+              ></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Check In Time</mat-label>
+              <input
+                matInput
+                type="time"
+                [formControl]="CheckInTimeControl"
+                (change)="updateActualCheckIn()"
+              />
+            </mat-form-field>
+          </div>
+          <h3 class="title">Pricing</h3>
+
           <mat-divider></mat-divider><br />
 
           <form
@@ -24,83 +81,6 @@
                   <mat-option>Group B</mat-option>
                 </mat-select>
               </mat-form-field>
-
-              <mat-form-field appearance="outline">
-                <mat-label>Price Type</mat-label>
-                <mat-select>
-                  <mat-option>Daily</mat-option>
-                  <mat-option>Weekend</mat-option>
-                  <mat-option>Weekly</mat-option>
-                </mat-select>
-              </mat-form-field>
-
-              <mat-form-field appearance="outline">
-                <mat-label>Fixed Price (€)</mat-label>
-                <input matInput type="number" />
-              </mat-form-field>
-
-              <mat-form-field appearance="outline">
-                <mat-label>Number of Days/Week</mat-label>
-                <input matInput type="number" />
-              </mat-form-field>
-            </div>
-
-            <h3>Dates</h3>
-            <mat-divider></mat-divider><br />
-            <div class="grid-fields">
-              <mat-form-field appearance="outline">
-                <mat-label>Check Out Date</mat-label>
-                <input
-                  matInput
-                  [matDatepicker]="checkOutDatePicker"
-                  [formControl]="CheckOutDateControl"
-                  (dateChange)="updateActualCheckOut()"
-                />
-                <mat-datepicker-toggle
-                  matSuffix
-                  [for]="checkOutDatePicker"
-                ></mat-datepicker-toggle>
-                <mat-datepicker
-                  #checkOutDatePicker
-                  [touchUi]="true"
-                ></mat-datepicker>
-              </mat-form-field>
-              <mat-form-field appearance="outline">
-                <mat-label>Check Out Time</mat-label>
-                <input
-                  matInput
-                  type="time"
-                  [formControl]="CheckOutTimeControl"
-                  (change)="updateActualCheckOut()"
-                />
-              </mat-form-field>
-
-              <mat-form-field appearance="outline">
-                <mat-label>Check In Date</mat-label>
-                <input
-                  matInput
-                  [matDatepicker]="checkInDatePicker"
-                  [formControl]="CheckInDateControl"
-                  (dateChange)="updateActualCheckIn()"
-                />
-                <mat-datepicker-toggle
-                  matSuffix
-                  [for]="checkInDatePicker"
-                ></mat-datepicker-toggle>
-                <mat-datepicker
-                  #checkInDatePicker
-                  [touchUi]="true"
-                ></mat-datepicker>
-              </mat-form-field>
-              <mat-form-field appearance="outline">
-                <mat-label>Check In Time</mat-label>
-                <input
-                  matInput
-                  type="time"
-                  [formControl]="CheckInTimeControl"
-                  (change)="updateActualCheckIn()"
-                />
-              </mat-form-field>
             </div>
 
             <h3>Price</h3>
@@ -108,11 +88,16 @@
             <div class="grid-fields">
               <mat-form-field appearance="outline">
                 <mat-label>Tax (%)</mat-label>
-                <input matInput type="number" />
+                <input matInput type="number" formControlName="tax" />
               </mat-form-field>
               <mat-form-field appearance="outline">
                 <mat-label>Net Amount (€)</mat-label>
-                <input matInput type="number" placeholder="Auto-calculated" />
+                <input
+                  matInput
+                  type="number"
+                  placeholder="Auto-calculated"
+                  formControlName="netAmount"
+                />
               </mat-form-field>
             </div>
 
@@ -209,19 +194,7 @@
 
                     <mat-form-field appearance="outline">
                       <mat-label>Price (€)</mat-label>
-                      <input
-                        matInput
-                        type="number"
-                        formControlName="price"
-                        placeholder="e.g. 50"
-                      />
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                      <mat-label>Fee Duration</mat-label>
-                      <mat-select formControlName="feeDuration">
-                        <mat-option value="daily">Daily</mat-option>
-                        <mat-option value="weekly">Weekly</mat-option>
-                      </mat-select>
+                      <input matInput formControlName="price" />
                     </mat-form-field>
 
                     <mat-form-field appearance="outline">
@@ -230,7 +203,7 @@
                         matInput
                         type="number"
                         formControlName="maxPrice"
-                        placeholder="e.g. 100"
+                        
                       />
                     </mat-form-field>
 
@@ -281,7 +254,7 @@
             <mat-divider></mat-divider><br />
             <mat-form-field appearance="outline">
               <mat-label>Gross Amount (€)</mat-label>
-              <input matInput type="number" placeholder="Auto-calculated" />
+              <input matInput type="number" placeholder="Auto-calculated" formControlName="grossAmount" />
             </mat-form-field>
           </form>
 
@@ -496,11 +469,6 @@
                   <mat-option>Country 1</mat-option>
                   <mat-option>Country 2</mat-option>
                 </mat-select>
-              </mat-form-field>
-
-              <mat-form-field appearance="outline">
-                <mat-label>House nr.</mat-label>
-                <input matInput formControlName="houseNr" />
               </mat-form-field>
 
               <mat-form-field appearance="outline">
@@ -864,18 +832,13 @@
               </mat-form-field>
 
               <mat-form-field appearance="outline">
-                <mat-label>Card Number</mat-label>
-                <input matInput formControlName="cardNumber" />
-              </mat-form-field>
-
-              <mat-form-field appearance="outline">
                 <mat-label>Card Expiry Date</mat-label>
                 <input
                   matInput
+                  [formControl]="expiryDateControl"
                   [matDatepicker]="expPicker"
-                  formControlName="expiryDate"
+                  (click)="expPicker.open()"
                 />
-                <mat-hint>MM/YYYY</mat-hint>
                 <mat-datepicker-toggle
                   matSuffix
                   [for]="expPicker"
@@ -883,10 +846,12 @@
                 <mat-datepicker
                   #expPicker
                   startView="multi-year"
-                  (monthSelected)="setMonthAndYear($event, expPicker)"
+                  (monthSelected)="selectExpiryMonth($event, expPicker)"
+                  [startAt]="initialExpiryMoment"
                   panelClass="example-month-picker"
                   [touchUi]="true"
                 ></mat-datepicker>
+                <mat-hint>MM/YYYY</mat-hint>
               </mat-form-field>
 
               <mat-form-field appearance="outline">

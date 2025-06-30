@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, FormControl, FormsModule } from '@angular/forms';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -38,17 +38,7 @@ const FULL_DATE_FORMATS = {
     monthYearA11yLabel: 'MMMM YYYY',
   },
 };
-export const MY_FORMATS = {
-  parse: {
-    dateInput: 'MM/YYYY',
-  },
-  display: {
-    dateInput: 'MM/YYYY',
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY',
-  },
-};
+
 @Component({
   selector: 'app-check-out',
   standalone: true,
@@ -66,6 +56,7 @@ export const MY_FORMATS = {
     MatNativeDateModule,
     MatSelect,
     MatOption,
+    FormsModule,
     MatRadioModule,
     MatIcon,
     MatButtonToggleModule,
@@ -81,13 +72,10 @@ export const MY_FORMATS = {
     },
     {
       provide: MAT_DATE_FORMATS,
-      useValue: FULL_DATE_FORMATS
-    },
-    {
-      provide: MAT_DATE_FORMATS,
-      useValue: MY_FORMATS
+      useValue: FULL_DATE_FORMATS // This is for full-date pickers
     }
   ]
+
 
 })
 export class CheckOutComponent implements OnInit {
@@ -128,9 +116,9 @@ export class CheckOutComponent implements OnInit {
       duration: [''],
       checkOutDate: [''],
       checkInDate: [''],
-      tax: [''],
-      netAmount: [''],
-      grossAmount: [''],
+      tax: new FormControl({ value: '', disabled: true }),
+      netAmount: new FormControl({ value: '', disabled: true }),
+      grossAmount: new FormControl({ value: '', disabled: true }),
       additionalFees: this.fb.array([]),
       discountPercentage: [''],
       discountReason: [''],
@@ -202,7 +190,7 @@ export class CheckOutComponent implements OnInit {
       cardType: [''],
       cardNumber: [''],
       nameOnCard: [''],
-      expiryDate: new FormControl(moment()),  // default value
+      expiryDate: new FormControl(null), // Full date: 2025-08-01
       cvv: [''],
       amountOnHold: [''],
       checkoutGrossAmount: [''],
@@ -310,11 +298,11 @@ export class CheckOutComponent implements OnInit {
   addAdditionalFee() {
     const feeGroup: FormGroup = this.fb.group({
       feeType: [''],
-      price: [''],
+      price: new FormControl({ value: '', disabled: true }),
       kmCount: [''],
       airportName: [''],
       feeDuration: [''],     // New field
-      maxPrice: [''],        // New field
+      maxPrice: new FormControl({ value: '', disabled: true }),        // New field
     });
 
 
@@ -403,62 +391,42 @@ export class CheckOutComponent implements OnInit {
   toggleDiscount() {
     this.showDiscount = !this.showDiscount;
   }
-
-  formatExpiry(date: any): string {
-    return date ? moment(date).format('MM/YY') : '';
-  }
-
-setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {
-  const ctrlValue = this.paymentFormGroup.get('expiryDate')?.value ?? moment();
-  ctrlValue.month(normalizedMonthAndYear.month());
-  ctrlValue.year(normalizedMonthAndYear.year());
-  this.paymentFormGroup.get('expiryDate')?.setValue(ctrlValue);
-  datepicker.close();
-}
-
-  get expiryDisplayValue(): string {
-    const val = this.paymentFormGroup.get('expiryDate')?.value;
-    return val ? val : '';
-  }
-
-  get initialExpiryMoment(): Moment {
-    const val = this.paymentFormGroup.get('expiryDate')?.value;
-    return val ? moment(val, 'MM/YY') : moment();
-  }
   get expiryDateControl(): FormControl {
     return this.paymentFormGroup.get('expiryDate') as FormControl;
   }
 
+  get initialExpiryMoment(): Moment {
+    const val = this.expiryDateControl.value;
+    return val ? moment(val) : moment();
+  }
 
-  selectExpiryMonth(normalizedMonth: Moment, datepicker: MatDatepicker<Moment>) {
-    const formatted = normalizedMonth.format('MM/YY');
-    this.paymentFormGroup.get('expiryDate')?.setValue(formatted);
+  selectExpiryMonth(month: Moment, datepicker: MatDatepicker<Moment>) {
+    const date = month.startOf('month').toDate(); // e.g. 2025-08-01
+    this.expiryDateControl.setValue(date);
     datepicker.close();
   }
 
-  onManualExpiryInput(event: any) {
-    const inputValue = event.target.value;
-    if (moment(inputValue, 'MM/YY', true).isValid()) {
-      this.paymentFormGroup.get('expiryDate')?.setValue(inputValue);
-    } else {
-      this.paymentFormGroup.get('expiryDate')?.setErrors({ invalidFormat: true });
+  preventTyping(event: Event) {
+    event.preventDefault();
+  }
+
+
+
+  showYoungDriverNotice(): boolean {
+    const dob = this.customerFormGroup.get('dob')?.value;
+    if (!dob) return false;
+
+    const birthDate = new Date(dob);
+    const today = new Date();
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    const dayDiff = today.getDate() - birthDate.getDate();
+    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+      age--;
     }
+
+    return age >= 18 && age <= 21;
   }
-showYoungDriverNotice(): boolean {
-  const dob = this.customerFormGroup.get('dob')?.value;
-  if (!dob) return false;
-
-  const birthDate = new Date(dob);
-  const today = new Date();
-
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const monthDiff = today.getMonth() - birthDate.getMonth();
-  const dayDiff = today.getDate() - birthDate.getDate();
-  if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
-    age--;
-  }
-
-  return age >= 18 && age <= 21;
-}
 
 }
