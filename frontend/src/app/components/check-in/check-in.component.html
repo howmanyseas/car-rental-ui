@@ -15,7 +15,11 @@
               <div class="grid-fields">
                 <mat-form-field appearance="outline" class="white-border">
                   <mat-label>MVA</mat-label>
-                  <input matInput formControlName="mva" placeholder="Enter MVA" />
+                  <input
+                    matInput
+                    formControlName="mva"
+                    placeholder="Enter MVA"
+                  />
                 </mat-form-field>
               </div>
 
@@ -86,27 +90,65 @@
                   <div class="row-fields">
                     <mat-form-field appearance="outline">
                       <mat-label>Actual Check Out Date</mat-label>
-                      <input matInput [matDatepicker]="checkOutDatePicker" formControlName="actualCheckOutDate" (dateChange)="updateActualCheckOut()" />
-                      <mat-datepicker-toggle matSuffix [for]="checkOutDatePicker"></mat-datepicker-toggle>
-                      <mat-datepicker #checkOutDatePicker [touchUi]="true"></mat-datepicker>
+                      <input
+                        matInput
+                        [matDatepicker]="checkOutDatePicker"
+                        formControlName="actualCheckOutDate"
+                        (dateChange)="updateActualCheckOut()"
+                      />
+                      <mat-datepicker-toggle
+                        matSuffix
+                        [for]="checkOutDatePicker"
+                      ></mat-datepicker-toggle>
+                      <mat-datepicker
+                        #checkOutDatePicker
+                        [touchUi]="true"
+                      ></mat-datepicker>
                     </mat-form-field>
                     <mat-form-field appearance="outline">
                       <mat-label>Time</mat-label>
-                      <input matInput [ngxTimepicker]="checkOutTimePicker" formControlName="actualCheckOutTime" [format]="24" (timeSet)="updateActualCheckOut()" />
-                      <ngx-material-timepicker #checkOutTimePicker></ngx-material-timepicker>
+                      <input
+                        matInput
+                        [ngxTimepicker]="checkOutTimePicker"
+                        formControlName="actualCheckOutTime"
+                        [format]="24"
+                        (timeSet)="updateActualCheckOut()"
+                      />
+                      <ngx-material-timepicker
+                        #checkOutTimePicker
+                      ></ngx-material-timepicker>
                     </mat-form-field>
                   </div>
                   <div class="row-fields">
                     <mat-form-field appearance="outline">
                       <mat-label>Actual Check In Date</mat-label>
-                      <input matInput [matDatepicker]="checkInDatePicker" formControlName="actualCheckInDate" (dateChange)="updateActualCheckIn()" />
-                      <mat-datepicker-toggle matSuffix [for]="checkInDatePicker"></mat-datepicker-toggle>
-                      <mat-datepicker #checkInDatePicker [touchUi]="true"></mat-datepicker>
+                      <input
+                        matInput
+                        [matDatepicker]="checkInDatePicker"
+                        formControlName="actualCheckInDate"
+                        (dateChange)="updateActualCheckIn()"
+                      />
+                      <mat-datepicker-toggle
+                        matSuffix
+                        [for]="checkInDatePicker"
+                      ></mat-datepicker-toggle>
+                      <mat-datepicker
+                        #checkInDatePicker
+                        [touchUi]="true"
+                      ></mat-datepicker>
                     </mat-form-field>
                     <mat-form-field appearance="outline">
                       <mat-label>Time</mat-label>
-                      <input matInput [ngxTimepicker]="checkInTimePicker" formControlName="actualCheckInTime" [format]="24" (timeSet)="updateActualCheckIn()" />
-                      <ngx-material-timepicker #checkInTimePicker></ngx-material-timepicker>
+                      <input
+                        matInput
+                        [ngxTimepicker]="checkInTimePicker"
+                        formControlName="actualCheckInTime"
+                        [format]="24"
+                        (timeSet)="updateActualCheckIn()"
+                      />
+                      <ngx-material-timepicker
+                        #checkInTimePicker
+                      ></ngx-material-timepicker>
                     </mat-form-field>
                   </div>
                 </div>
@@ -166,8 +208,20 @@
               </div>
 
               <div class="button-group">
-                <button mat-raised-button class="bluebutton" (click)="toggleAdditionalFees()">Add Additional Fees</button>
-                <button mat-raised-button class="bluebutton" (click)="addDamage()">Add Damage</button>
+                <button
+                  mat-raised-button
+                  class="bluebutton"
+                  (click)="toggleAdditionalFees()"
+                >
+                  Add Additional Fees
+                </button>
+                <button
+                  mat-raised-button
+                  class="bluebutton"
+                  (click)="addDamage()"
+                >
+                  Add Damage
+                </button>
               </div>
 
               <mat-card *ngIf="showAdditionalFees" class="form-container">
@@ -175,29 +229,54 @@
                 <mat-divider></mat-divider><br />
                 <mat-card-content>
                   <div formArrayName="additionalFees">
-                    <div *ngFor="let fee of additionalFees.controls; let i = index" [formGroupName]="i" class="fee-row">
+                    <div
+                      *ngFor="let fee of additionalFees.controls; let i = index"
+                      [formGroupName]="i"
+                      class="fee-row"
+                    >
                       <mat-form-field appearance="outline">
                         <mat-label>Additional Fee</mat-label>
                         <mat-select formControlName="feeType">
                           <mat-option value="tax">Tax (€50)</mat-option>
-                          <mat-option value="cleaning">Cleaning (€30)</mat-option>
-                          <mat-option value="carTank">Car Tank (€40)</mat-option>
+                          <mat-option value="cleaning"
+                            >Cleaning (€30)</mat-option
+                          >
+                          <mat-option value="carTank"
+                            >Car Tank (€40)</mat-option
+                          >
                           <mat-option value="damage">Damage (€25)</mat-option>
-                          <mat-option value="aiport">Airport Change (€25)</mat-option>
-                          <mat-option value="delayed">Delayed CheckIN (€25)</mat-option>
+                          <mat-option value="aiport"
+                            >Airport Change (€25)</mat-option
+                          >
+                          <mat-option value="delayed"
+                            >Delayed CheckIN (€25)</mat-option
+                          >
                           <mat-option value="other">Other</mat-option>
                         </mat-select>
                       </mat-form-field>
                       <mat-form-field appearance="outline">
                         <mat-label>Price (€)</mat-label>
-                        <input matInput type="number" formControlName="price" placeholder="e.g. 50" />
+                        <input
+                          matInput
+                          type="number"
+                          formControlName="price"
+                          placeholder="e.g. 50"
+                        />
                       </mat-form-field>
-                      <button mat-icon-button color="warn" (click)="removeAdditionalFee(i)">
+                      <button
+                        mat-icon-button
+                        color="warn"
+                        (click)="removeAdditionalFee(i)"
+                      >
                         <mat-icon>delete</mat-icon>
                       </button>
                     </div>
                     <div class="add-fee-container">
-                      <button mat-mini-fab color="primary" (click)="addAdditionalFees()">
+                      <button
+                        mat-mini-fab
+                        color="primary"
+                        (click)="addAdditionalFees()"
+                      >
                         <mat-icon>add</mat-icon>
                       </button>
                     </div>
@@ -216,11 +295,11 @@
                 </div>
               </div>
 
-              <div class="buttons-group">
-                <button mat-raised-button matStepperPrevious color="accent">Back</button>
-                <button mat-raised-button color="primary">Save</button>
-                <button mat-raised-button color="primary">Print</button>
-                <button mat-raised-button color="primary">Invoice</button>
+              <div class="button-group">
+                <button mat-button matStepperPrevious> Back</button>
+                <button mat-raised-button class="buttons-end">Save</button>
+                <button mat-raised-button class="buttons-end">Print</button>
+                <button mat-raised-button class="buttons-end">Invoice</button>
               </div>
             </mat-card-content>
           </mat-card>

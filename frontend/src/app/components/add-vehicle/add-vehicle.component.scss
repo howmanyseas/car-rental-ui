@@ -1,7 +1,8 @@
 .form-container {
   padding: 20px;
   background: transparent;
-  border-radius: 8px;
+  border-radius: 10px;
+
 }
 :host {
   display: block;
@@ -132,7 +133,8 @@ mat-card {
 
 .save-btn {
   color: white !important;
-  background-color: #008dd2 !important;
+  background: var(--button-1);
+  border-radius: 10px;
 }
 @media (max-width: 768px) {
   .row {

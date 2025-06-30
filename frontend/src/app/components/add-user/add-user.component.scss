@@ -26,8 +26,14 @@ input {
   margin-top: 30px;
 }
 mat-card {
+  border-radius: 10px;
   background: transparent;
-  box-shadow: none;
+}
+.save-btn {
+  background-color: var(--button-1) !important;
+  color: white !important;
+  font-family: "Inter";
+  border-radius: 10px;
 }
 :host {
   display: block;
@@ -83,9 +89,9 @@ button {
   .title {
     font-size: 1.2em;
   }
-:host{
-  margin: 10px;
-}
+  :host {
+    margin: 10px;
+  }
   .grid-two-columns {
     gap: 10px;
   }

@@ -5,7 +5,9 @@
   max-width: 100%;
   overflow-x: auto;
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 10px;
+  background: var(--color-gradient-opaque);
+  border: 1px solid white;
 }
 :host {
   display: block;
@@ -25,7 +27,6 @@ table {
 }
 
 th {
-  background: #242323;
   color: white;
   font-weight: bold;
   font-family: "Inter";
@@ -75,8 +76,8 @@ button {
   padding: 10px;
   margin-bottom: 20px;
   border-radius: 5px;
-  border: 1px solid #444;
-  background-color: #1e1e1e;
+  border: 1px solid #ffffff;
+  background-color: #000000;
   color: white;
   display: block;
 }
@@ -89,11 +90,11 @@ button {
 }
 .new-user-btn {
   margin-top: 20px;
-  background-color: #008dd2 !important;
+  background-color: var(--button-1) !important;
   color: white !important;
   font-weight: bold;
   font-family: "Inter";
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .mobile-cards {

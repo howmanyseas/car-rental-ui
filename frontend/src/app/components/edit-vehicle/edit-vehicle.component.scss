@@ -1,14 +1,14 @@
 .form-container {
-  padding: 10px;
+  padding: 20px;
   background: transparent;
-  border-radius: 8px;
+  border-radius: 10px;
+
   max-height: 80vh;
   overflow-y: hidden !important;
 }
 :host {
   display: block;
   margin: 30px;
-  
 }
 
 .row {
@@ -46,7 +46,7 @@ table {
 
 th,
 td {
-  border: 1px 1px 0px 1px solid #cccccc94;
+  border: 1px 1px 0px 1px solid white;
   padding: 8px;
   text-align: left;
   color: white;
@@ -60,18 +60,9 @@ td {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
 }
-::ng-deep ::-webkit-scrollbar {
-  width: 6px;
-}
-::ng-deep ::-webkit-scrollbar-track {
-  background: #333;
-}
-::ng-deep::-webkit-scrollbar-thumb {
-  background-color: #666;
-  border-radius: 3px;
-}
+
 mat-form-field {
   width: 100%;
   margin: 0px;
@@ -89,7 +80,7 @@ input {
   width: auto;
   margin-top: 10px;
   color: white !important;
-  background-color: #5c6bc0 !important;
+  background: var(--button-2) !important;
   border-radius: 10px;
   margin-left: 10px;
 }
@@ -121,7 +112,7 @@ mat-card {
 }
 
 .delete-btn {
-  color: #f44336;
+  color: #fa1100;
 
   cursor: pointer;
   font-size: 18px;
@@ -140,7 +131,8 @@ mat-card {
 
 .save-btn {
   color: white !important;
-  background-color: #008dd2 !important;
+  background: var(--button-1) !important;
+  border-radius: 10px;
 }
 
 @media (max-width: 768px) {

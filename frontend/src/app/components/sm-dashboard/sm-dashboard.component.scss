@@ -25,7 +25,7 @@ h2 {
 
 .stats-row .stat-btn,
 .view-toggle button {
-  background-color: #3a3a3a;
+  background: var(--color-gradient-opaque);
   border: none;
   padding: 8px 16px;
   border-radius: 6px;
@@ -78,12 +78,15 @@ h2 {
 .table-container {
   flex: 1;
   overflow: auto;
+  background: var(--color-gradient-opaque);
+  border-radius: 10px;
+  border: white 1px solid;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  background-color: transparent;
+  background: transparent;
   color: white !important;
 }
 th {

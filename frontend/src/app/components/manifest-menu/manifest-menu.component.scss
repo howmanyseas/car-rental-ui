@@ -28,7 +28,7 @@ h2.title {
     transition: background-color 0.3s ease;
 
     &.active {
-      background-color: #008dd2;
+      background-color: var(--button-1);
     }
 
     &:hover {
@@ -59,10 +59,10 @@ h2.title {
   }
 
   button {
-    background: #008dd2;
-    color: white;
+    background-color: var(--button-1) !important;
+    color: white !important;
     padding: 6px 12px;
-    border-radius: 6px;
+    border-radius: 10px;
     cursor: pointer;
     border: none;
   }
@@ -144,8 +144,9 @@ mat-icon {
 }
 
 .new-rental-btn {
-  background-color: #008dd2;
-  color: white;
+  background-color: var(--button-1) !important;
+  color: white !important;
+  border-radius: 10px;
 }
 
 .mobile-cards {

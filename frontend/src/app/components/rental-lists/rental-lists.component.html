@@ -1,12 +1,12 @@
 <h2 class="title">Open Rentals</h2>
-
-<div class="table-container">
   <input
     matInput
     placeholder="Search rentals"
     (input)="applyFilter($event)"
     class="search-input"
   />
+<div class="table-container">
+
 
   <table
     mat-table
@@ -106,9 +106,10 @@
     </div>
   </div>
 
+
+</div>
   <div class="buttons-container">
     <button mat-raised-button class="new-rental-btn" (click)="gotoCheckOut()">
       New Rental
     </button>
   </div>
-</div>

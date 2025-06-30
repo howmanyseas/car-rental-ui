@@ -50,8 +50,14 @@
               [matDatepicker]="checkOutDatePicker"
               formControlName="checkOutDate"
             />
-            <mat-datepicker-toggle matSuffix [for]="checkOutDatePicker"></mat-datepicker-toggle>
-            <mat-datepicker #checkOutDatePicker [touchUi]="true"></mat-datepicker>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="checkOutDatePicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker
+              #checkOutDatePicker
+              [touchUi]="true"
+            ></mat-datepicker>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
@@ -62,7 +68,9 @@
               formControlName="checkOutTime"
               [format]="24"
             />
-            <ngx-material-timepicker #checkOutTimePicker></ngx-material-timepicker>
+            <ngx-material-timepicker
+              #checkOutTimePicker
+            ></ngx-material-timepicker>
           </mat-form-field>
         </div>
 
@@ -79,8 +87,14 @@
               [matDatepicker]="checkInDatePicker"
               formControlName="checkInDate"
             />
-            <mat-datepicker-toggle matSuffix [for]="checkInDatePicker"></mat-datepicker-toggle>
-            <mat-datepicker #checkInDatePicker [touchUi]="true"></mat-datepicker>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="checkInDatePicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker
+              #checkInDatePicker
+              [touchUi]="true"
+            ></mat-datepicker>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
@@ -91,7 +105,9 @@
               formControlName="checkInTime"
               [format]="24"
             />
-            <ngx-material-timepicker #checkInTimePicker></ngx-material-timepicker>
+            <ngx-material-timepicker
+              #checkInTimePicker
+            ></ngx-material-timepicker>
           </mat-form-field>
         </div>
 
@@ -114,7 +130,11 @@
         </div>
 
         <div class="buttons-group">
-          <button mat-raised-button color="primary" (click)="saveEmployeeForm()">
+          <button
+            mat-raised-button
+            class="buttons1"
+            (click)="saveEmployeeForm()"
+          >
             Save
           </button>
         </div>

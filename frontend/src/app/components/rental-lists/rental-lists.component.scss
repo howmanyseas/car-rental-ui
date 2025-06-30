@@ -3,6 +3,9 @@
   overflow-x: auto;
   padding: 16px;
   border-radius: 8px;
+  background: var(--color-gradient-opaque);
+  border: 1px solid white;
+  border-radius: 10px;
 }
 
 h2.title {
@@ -52,12 +55,11 @@ td {
   padding: 10px;
   margin-bottom: 20px;
   border-radius: 5px;
-  border: 1px solid #444;
-  background-color: #1e1e1e;
+  border: 1px solid white;
+  background-color: transparent;
   color: white;
   display: block;
 }
-
 
 .status {
   padding: 5px 10px;
@@ -65,13 +67,14 @@ td {
 }
 
 .completed {
-  background-color: green;
+  background-color: #00ffae;
+  color: black;
   border-radius: 10px;
   padding: 5px 10px;
 }
 
 .active {
-  background-color: yellow;
+  background-color: #ffcc00;
   color: black;
   border-radius: 10px;
   padding: 5px 10px;
@@ -80,8 +83,9 @@ td {
 .new-rental-btn {
   margin-top: 20px;
   float: right;
-  background-color: #008dd2;
-  color: white;
+  background-color: var(--button-1) !important;
+  color: white !important;
+  border-radius: 10px;
 }
 
 .new-rental-btn-container {

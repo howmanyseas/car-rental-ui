@@ -28,13 +28,14 @@
   flex: 1;
   height: fit-content;
   font-family: "Inter";
-  background-color: #8f8f8f;
+  background: var(--color-gradient-opaque);
+  color: white;
 }
 input {
   color: white !important;
 }
 mat-option {
-  color: #5d5d5d;
+  color: var(--color-gradient-end);
 }
 mat-hint {
   color: white !important;
@@ -79,7 +80,7 @@ button[mat-mini-fab] {
 }
 
 .buttons {
-  background-color: #008dd2 !important;
+  background-color: var(--button-2) !important;
   color: white !important;
   border-radius: 10px;
 }
@@ -116,7 +117,7 @@ mat-button-toggle-group {
 }
 
 .buttons-group button {
-  background-color: #008dd2 !important;
+  background-color: var(--color-gradient-mid) !important;
   color: white !important;
   border-radius: 10px;
 }

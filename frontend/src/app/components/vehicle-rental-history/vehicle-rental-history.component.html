@@ -1,19 +1,17 @@
 <h2 class="title">Vehicle Rental History</h2>
-
+<input
+  matInput
+  placeholder="Search rentals"
+  (input)="applyFilter($event)"
+  class="search-input"
+/>
+<form [formGroup]="form">
+  <mat-form-field appearance="outline">
+    <mat-label>Total Revenue</mat-label>
+    <input matInput formControlName="totalRevenue" />
+  </mat-form-field>
+</form>
 <div class="table-container">
-  <input
-    matInput
-    placeholder="Search rentals"
-    (input)="applyFilter($event)"
-    class="search-input"
-  />
-  <form [formGroup]="form">
-    <mat-form-field appearance="outline">
-      <mat-label>Total Revenue</mat-label>
-      <input matInput formControlName="totalRevenue" />
-    </mat-form-field>
-  </form>
-
   <table
     mat-table
     [dataSource]="dataSource"

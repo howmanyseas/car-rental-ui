@@ -14,7 +14,9 @@ h2.title {
   max-width: 100%;
   overflow-x: auto;
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 10px;
+  background: var(--color-gradient-opaque);
+  border: 1px solid white;
 }
 
 table {
@@ -30,7 +32,7 @@ table {
   margin-bottom: 20px;
   border-radius: 5px;
   border: 1px solid #444;
-  background-color: #1e1e1e;
+  background-color: #000000;
   color: white;
   display: block;
 }
@@ -58,9 +60,16 @@ button {
   font-weight: bold;
   text-transform: none;
 }
+.button1 {
+  background-color: var(--button-1) !important;
+  color: white !important;
+  border-radius: 10px;
+  font-weight: bold;
+  text-transform: none;
+}
 
 .mat-icon {
-  color: #ffca28;
+  color: var(--color-gradient-mid);
 }
 
 .mat-elevation-z8 {
@@ -81,7 +90,7 @@ button {
   }
 
   .card {
-    background-color: #2d2d2d;
+    background: transparent;
     margin: 10px 0;
     padding: 15px;
     border-radius: 8px;

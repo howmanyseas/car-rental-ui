@@ -3,13 +3,26 @@
   margin: 30px;
 }
 
-h2, h3 {
+h2,
+h3 {
   color: white;
   font-family: "Inter";
 }
 
-
-
+.form-container {
+  background: transparent;
+  border-radius: 10px;
+}
+.save-btn {
+  background: var(--button-1) !important;
+  color: white !important;
+  border-radius: 10px;
+}
+.download-btn {
+  background: var(--button-1) !important;
+  color: white !important;
+  border-radius: 10px;
+}
 .mobile-title {
   font-size: 24px;
   display: none;
@@ -27,8 +40,6 @@ h2, h3 {
 
 .form-container {
   padding: 20px;
-  background: #333;
-  border-radius: 8px;
 }
 
 .section-title {

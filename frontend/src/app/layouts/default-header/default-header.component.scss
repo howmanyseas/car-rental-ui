@@ -6,7 +6,8 @@ body {
 }
 
 .custom-toolbar {
-  background-color: #212121;
+  background-color: #000000;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -18,7 +19,8 @@ body {
   align-items: center;
   gap: 10px;
   .company-logo {
-    height: 40px;
+    margin-left: 30px;
+    height: 20px;
   }
 }
 
@@ -51,11 +53,14 @@ body {
   display: flex;
   align-items: center;
 }
-
+mat-icon {
+  color: white !important;
+}
 .right-icons {
   display: flex;
   align-items: center;
   gap: 12px;
+  color: white !important;
 }
 
 @media (max-width: 768px) {
