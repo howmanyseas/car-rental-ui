@@ -3,6 +3,8 @@
   max-width: 90vw;
   max-height: 80vh;
   border-radius: 10px !important;
+  background: var(--color-gradient-opaque);
+  background-color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,8 +25,14 @@
   overflow-y: auto;
   padding: 10px;
   box-sizing: border-box;
+  background-color: black;
+  color: white;
+  background: var(--color-gradient-opaque);
 }
-
+.mat-dialog {
+  background-color: black !important;
+  background: var(--color-gradient-opaque) !important;
+}
 .scrollable-content {
   max-height: calc(80vh - 120px);
   overflow-y: auto;
@@ -43,17 +51,22 @@ mat-icon {
   gap: 16px;
   width: 100%;
 }
-
+p,
+h2 {
+  color: white !important;
+  font-family: "Inter";
+}
 .add-btn {
   color: white !important;
-  background-color: #008dd2 !important;
+  background-color: var(--button-1) !important;
+  border-radius: 10px !important;
   margin-top: 10px;
 }
 
 .instructions {
   font-size: 14px;
   font-style: italic;
-  color: gray;
+  color: rgb(255, 255, 255);
   text-align: center;
   margin: 8px 0;
 }
@@ -75,7 +88,7 @@ mat-icon {
 .marker {
   width: 12px;
   height: 12px;
-  background-color: red;
+  background-color: var(--button-2);
   border-radius: 50%;
   position: absolute;
   transform: translate(-50%, -50%);
@@ -101,7 +114,6 @@ mat-icon {
   border: none;
 }
 
-/* Responsive Styling */
 @media (max-width: 850px) {
   .dialog-container {
     width: 80%;
@@ -115,7 +127,7 @@ mat-icon {
   }
 
   .form-row {
-    grid-template-columns: 1fr; /* Stack vertically */
+    grid-template-columns: 1fr;
   }
 
   .image-container {
@@ -208,22 +220,4 @@ mat-icon {
     font-size: 0.9em;
     margin-top: 5px;
   }
-}
-
-.dialog-container
-  .mat-form-field-appearance-outline.mat-focused
-  .mat-form-field-outline-start,
-.dialog-container
-  .mat-form-field-appearance-outline.mat-focused
-  .mat-form-field-outline-gap,
-.dialog-container
-  .mat-form-field-appearance-outline.mat-focused
-  .mat-form-field-outline-end {
-  color: #008dd2 !important;
-}
-
-.dialog-container
-  .mat-form-field-appearance-outline.mat-focused
-  .mat-form-field-label {
-  color: #008dd2 !important;
 }

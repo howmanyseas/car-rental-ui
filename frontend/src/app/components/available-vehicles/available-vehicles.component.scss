@@ -16,7 +16,9 @@ h2.title {
 .table-container {
   width: 100%;
   overflow-x: auto;
-  border-radius: 8px;
+  border-radius: 10px;
+  background: var(--color-gradient-opaque);
+  border: 1px solid white;
   box-sizing: border-box;
   padding: 16px;
   box-sizing: border-box;
@@ -66,8 +68,8 @@ td {
   padding: 10px;
   margin-bottom: 20px;
   border-radius: 5px;
-  border: 1px solid #444;
-  background-color: #1e1e1e;
+  border: 1px solid #ffffff;
+  background-color: #000000;
   color: white;
   display: block;
 }

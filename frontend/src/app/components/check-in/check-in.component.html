@@ -87,38 +87,24 @@
                 <div>
                   <h3>Date</h3>
                   <mat-divider></mat-divider>
-                  <div class="row-fields">
-                    <mat-form-field appearance="outline">
-                      <mat-label>Actual Check Out Date</mat-label>
-                      <input
-                        matInput
-                        [matDatepicker]="checkOutDatePicker"
-                        formControlName="actualCheckOutDate"
-                        (dateChange)="updateActualCheckOut()"
-                      />
-                      <mat-datepicker-toggle
-                        matSuffix
-                        [for]="checkOutDatePicker"
-                      ></mat-datepicker-toggle>
-                      <mat-datepicker
-                        #checkOutDatePicker
-                        [touchUi]="true"
-                      ></mat-datepicker>
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                      <mat-label>Time</mat-label>
-                      <input
-                        matInput
-                        [ngxTimepicker]="checkOutTimePicker"
-                        formControlName="actualCheckOutTime"
-                        [format]="24"
-                        (timeSet)="updateActualCheckOut()"
-                      />
-                      <ngx-material-timepicker
-                        #checkOutTimePicker
-                      ></ngx-material-timepicker>
-                    </mat-form-field>
-                  </div>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Actual Check Out Date</mat-label>
+                    <input
+                      matInput
+                      [matDatepicker]="checkOutDatePicker"
+                      formControlName="actualCheckOutDate"
+                      (dateChange)="updateActualCheckOut()"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="checkOutDatePicker"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker
+                      #checkOutDatePicker
+                      [touchUi]="true"
+                    ></mat-datepicker>
+                  </mat-form-field>
+
                   <div class="row-fields">
                     <mat-form-field appearance="outline">
                       <mat-label>Actual Check In Date</mat-label>
@@ -137,20 +123,35 @@
                         [touchUi]="true"
                       ></mat-datepicker>
                     </mat-form-field>
-                    <mat-form-field appearance="outline">
-                      <mat-label>Time</mat-label>
-                      <input
-                        matInput
-                        [ngxTimepicker]="checkInTimePicker"
-                        formControlName="actualCheckInTime"
-                        [format]="24"
-                        (timeSet)="updateActualCheckIn()"
-                      />
-                      <ngx-material-timepicker
-                        #checkInTimePicker
-                      ></ngx-material-timepicker>
-                    </mat-form-field>
                   </div>
+                </div>
+                <div>
+                  <h3>Time</h3>
+                  <mat-divider></mat-divider>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Time</mat-label>
+                    <input
+                      matInput
+                      type="time"
+                      formControlName="actualCheckOutTime"
+                      (timeSet)="updateActualCheckOut()"
+                    />
+                    <ngx-material-timepicker
+                      #checkOutTimePicker
+                    ></ngx-material-timepicker>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Time</mat-label>
+                    <input
+                      matInput
+                      type="time"
+                      formControlName="actualCheckInTime"
+                      (timeSet)="updateActualCheckIn()"
+                    />
+                    <ngx-material-timepicker
+                      #checkInTimePicker
+                    ></ngx-material-timepicker>
+                  </mat-form-field>
                 </div>
               </div>
 
@@ -296,7 +297,7 @@
               </div>
 
               <div class="button-group">
-                <button mat-button matStepperPrevious> Back</button>
+                <button mat-button matStepperPrevious>Back</button>
                 <button mat-raised-button class="buttons-end">Save</button>
                 <button mat-raised-button class="buttons-end">Print</button>
                 <button mat-raised-button class="buttons-end">Invoice</button>

@@ -73,6 +73,7 @@ h2.title {
   overflow-x: auto;
   padding: 16px;
   border-radius: 8px;
+  background: var(--color-gradient-opaque);
 }
 
 .search-input {
@@ -82,8 +83,8 @@ h2.title {
   padding: 10px;
   margin-bottom: 20px;
   border-radius: 5px;
-  border: 1px solid #444;
-  background-color: #1e1e1e;
+  border: 1px solid #ffffff;
+  background-color: #000000;
   color: white;
   display: block;
 }
@@ -125,7 +126,8 @@ mat-icon {
 }
 
 .returning {
-  background-color: orange;
+  background-color: var(--yellow);
+  color: black;
 }
 
 .closed {
@@ -133,7 +135,8 @@ mat-icon {
 }
 
 .open {
-  background-color: green;
+  background-color: var(--green);
+  color: black;
 }
 
 .buttons-container {

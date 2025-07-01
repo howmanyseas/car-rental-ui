@@ -160,7 +160,8 @@
     </mat-card>
   </div>
 
-  <div class="buttons-container" *ngIf="getActionButtons().length > 0">
+ 
+  </div> <div class="buttons-container" *ngIf="getActionButtons().length > 0">
     <button
       *ngFor="let action of getActionButtons()"
       mat-raised-button
@@ -169,5 +170,4 @@
     >
       {{ action }}
     </button>
-  </div>
 </div>
