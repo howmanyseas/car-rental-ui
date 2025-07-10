@@ -10,6 +10,8 @@
     [opened]="true"
     class="side-nav"
     [class.expanded]="isExpanded"
+    (mouseenter)="isExpanded = true"
+    (mouseleave)="isExpanded = false"
   >
     <div class="menu-container">
       <ul class="menu-list">
