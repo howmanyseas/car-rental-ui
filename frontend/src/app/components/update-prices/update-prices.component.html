@@ -9,31 +9,46 @@
             <div>
               <mat-divider></mat-divider>
               <div class="row-fields">
-                <mat-form-field appearance="outline">
+
+                 <mat-form-field appearance="outline">
                   <mat-label>Fee Name</mat-label>
-                  <input matInput />
+                  <mat-select formControlName="additionalFee">
+                    <mat-optgroup *ngFor="let group of feeGroups" [label]="group.name">
+                      <mat-option *ngFor="let fee of group.options" [value]="fee.value">
+                        {{ fee.viewValue }}
+                      </mat-option>
+                    </mat-optgroup>
+                  </mat-select>
                 </mat-form-field>
+
                 <mat-form-field appearance="outline">
                   <mat-label>Fee Type</mat-label>
-                  <input matInput />
+                  <mat-select formControlName="additionalFeeType">
+                    <mat-option value="oneTime">One-Time</mat-option>
+                    <mat-option value="daily">Daily</mat-option>
+                    <mat-option value="weekly">Weekly</mat-option>
+                    <mat-option value="weekend">Weekend</mat-option>
+                  </mat-select>
                 </mat-form-field>
+
                 <mat-form-field appearance="outline">
                   <mat-label>Change From</mat-label>
-                  <input matInput />
+                  <input matInput formControlName="additionalFeeFrom" />
                 </mat-form-field>
+
                 <mat-form-field appearance="outline">
                   <mat-label>Change To</mat-label>
-                  <input matInput />
+                  <input matInput formControlName="additionalFeeTo" />
                 </mat-form-field>
+
               </div>
             </div>
           </div>
         </div>
+
         <div class="button-group">
           <button mat-raised-button class="buttons1">Save</button>
-          <button mat-raised-button class="nobgbutton" (click)="goback()">
-            Cancel
-          </button>
+          <button mat-raised-button class="nobgbutton" (click)="goback()">Cancel</button>
         </div>
       </form>
     </mat-card-content>

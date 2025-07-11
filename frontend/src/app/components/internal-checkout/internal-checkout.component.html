@@ -1,4 +1,4 @@
-<h2 class="title">Employee Car Check-Out</h2>
+<h2 class="title">Internal Checkout</h2>
 
 <div class="container">
   <mat-card class="form-container">
@@ -109,6 +109,49 @@
               #checkInTimePicker
             ></ngx-material-timepicker>
           </mat-form-field>
+        </div>
+
+        <div class="car-date-row">
+          <div>
+            <h3>Expected Return</h3>
+            <mat-divider></mat-divider>
+            <div class="employee-row">
+              <mat-form-field appearance="outline">
+                <mat-label>Expected Return Location</mat-label
+                ><input matInput formControlName="expectedLocation" />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Expected Return Date</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="expectedDatePicker"
+                  formControlName="expectedDate"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="expectedDatePicker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker
+                  #expectedDatePicker
+                  [touchUi]="true"
+                ></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Expected Return Time</mat-label>
+                <input
+                  matInput
+                  [ngxTimepicker]="expectedTimePicker"
+                  formControlName="expectedTime"
+                  [format]="24"
+                />
+                <ngx-material-timepicker
+                  #expectedTimePicker
+                ></ngx-material-timepicker>
+              </mat-form-field>
+            </div>
+          </div>
         </div>
 
         <div class="car-date-row">

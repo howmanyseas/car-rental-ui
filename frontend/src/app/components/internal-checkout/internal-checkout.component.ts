@@ -44,6 +44,10 @@ export class InternalCheckoutComponent {
       checkOutDate: [''],
       checkOutTime: [''],
 
+      expectedLocation: [''],
+      expectedDate: [''],
+      expectedTime: [''],
+      
       checkInLocation: [''],
       checkInDate: [''],
       checkInTime: [''],

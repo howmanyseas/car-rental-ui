@@ -4,7 +4,7 @@ import {
   ReactiveFormsModule,
   FormBuilder,
   FormGroup,
-  FormControl,  
+  FormControl,
 } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -43,7 +43,24 @@ import { Router } from '@angular/router';
 })
 export class UpdatePricesComponent implements OnInit {
   updatePricesForm!: FormGroup;
-
+  // Data for grouped select
+  feeGroups = [
+    {
+      name: 'Car Group',
+      options: [
+        { value: 'groupA', viewValue: 'Group A' },
+        { value: 'groupB', viewValue: 'Group B' },
+      ]
+    },
+    {
+      name: 'Additional Fees',
+      options: [
+        { value: 'insurance', viewValue: 'Insurance' },
+        { value: 'crossBorder', viewValue: 'Cross Border' },
+        { value: 'babySeat', viewValue: 'Baby Seat' },
+      ]
+    }
+  ];
   checkOutVisible = false;
   checkInVisible = false;
 
@@ -58,26 +75,16 @@ export class UpdatePricesComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.updatePricesForm = this.fb.group({
-      carGroup: new FormControl(''),
-      priceType: new FormControl(''),
-      changeFrom: new FormControl(''),
-      changeTo: new FormControl(''),
-      taxFrom: new FormControl(''),
-      taxTo: new FormControl(''),
       additionalFee: new FormControl(''),
       additionalFeeType: new FormControl(''),
       additionalFeeFrom: new FormControl(''),
       additionalFeeTo: new FormControl(''),
-      discount: new FormControl(''),
-      discountType: new FormControl(''),
-      discountFrom: new FormControl(''),
-      discountTo: new FormControl(''),
-      
-        });
+      // ...other form controls
+    });
   }
 
   goback() {
