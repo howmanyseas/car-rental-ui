@@ -53,7 +53,7 @@ export class InternalCheckoutComponent {
       checkInTime: [''],
 
       carGroup: [''],
-      licensePlate: [''],
+      rentalnr: [''],
     });
   }
 

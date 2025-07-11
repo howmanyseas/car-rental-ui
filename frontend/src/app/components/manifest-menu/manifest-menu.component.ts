@@ -231,8 +231,8 @@ export class ManifestMenuComponent implements OnInit, AfterViewInit {
     return date.toISOString().substring(0, 10);
   }
 
-  editRental(rental: Rental): void {
-    console.log('Edit rental:', rental);
+  editRental(): void {
+    this.router.navigate(['check-out']);
   }
 
   gotoNewUpRental(): void {

@@ -38,8 +38,8 @@
     <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
     <mat-datepicker #endPicker></mat-datepicker>
   </mat-form-field>
-  
-    <mat-icon (click)="clearDateFilters()">clear</mat-icon>
+
+  <mat-icon (click)="clearDateFilters()">clear</mat-icon>
 </div>
 
 <input
@@ -114,7 +114,7 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let element">
-        <button mat-icon-button color="primary" (click)="editRental(element)">
+        <button mat-icon-button color="primary" (click)="editRental()">
           <mat-icon>edit</mat-icon>
         </button>
       </td>
@@ -153,21 +153,20 @@
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-icon-button color="primary" (click)="editRental(element)">
+        <button mat-icon-button color="primary" (click)="editRental()">
           <mat-icon>edit</mat-icon>
         </button>
       </mat-card-actions>
     </mat-card>
   </div>
-
- 
-  </div> <div class="buttons-container" *ngIf="getActionButtons().length > 0">
-    <button
-      *ngFor="let action of getActionButtons()"
-      mat-raised-button
-      class="new-rental-btn"
-      (click)="handleAction(action)"
-    >
-      {{ action }}
-    </button>
+</div>
+<div class="buttons-container" *ngIf="getActionButtons().length > 0">
+  <button
+    *ngFor="let action of getActionButtons()"
+    mat-raised-button
+    class="new-rental-btn"
+    (click)="handleAction(action)"
+  >
+    {{ action }}
+  </button>
 </div>
