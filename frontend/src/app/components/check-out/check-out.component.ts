@@ -269,6 +269,10 @@ export class CheckOutComponent implements OnInit {
     }
   }
 
+  calculateNetAmount() {
+    
+  }
+
   get additionalFees(): FormArray {
     return this.pricingFormGroup.get('additionalFees') as FormArray;
   }
