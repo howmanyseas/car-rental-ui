@@ -79,8 +79,10 @@ const FULL_DATE_FORMATS = {
 
 })
 export class CheckOutComponent implements OnInit {
+  driverStepVisible = false;
   isMobile = false;
   pricingFormGroup!: FormGroup;
+  driverFormGroup!: FormGroup;
   customerFormGroup!: FormGroup;
   feeGroup: FormGroup = new FormGroup({});
   carInformationFormGroup!: FormGroup;
@@ -170,9 +172,16 @@ export class CheckOutComponent implements OnInit {
         licenseExpiry: [''],
       })
     });
-    this.customerFormGroup.get('driverSameAsRenter')?.valueChanges.subscribe(() => {
-      this.updateDriverDetails();
+    this.customerFormGroup.get('driverSameAsRenter')?.valueChanges.subscribe(value => {
+      if (value === 'no') {
+        this.driverStepVisible = true;
+        this.driverFormGroup.reset(); // clear previous values
+      } else {
+        this.driverStepVisible = false;
+        this.driverFormGroup.reset(); // optional: clear when hidden
+      }
     });
+
 
     this.carInformationFormGroup = this.fb.group({
       mva: [''],
@@ -197,6 +206,21 @@ export class CheckOutComponent implements OnInit {
       paymentDate: [''],
       paymentStatus: [''],
       authorizationCode: [''],
+    });
+    this.driverFormGroup = this.fb.group({
+      isSameAsRenter: ['yes'],
+      academicTitle: [''],
+      firstName: [''],
+      lastName: [''],
+      dob: [''],
+      phone: [''],
+      email: [''],
+      street: [''],
+      address2: [''],
+      zip: [''],
+      country: [''],
+      houseNr: [''],
+      city: ['']
     });
 
     this.detectDevice();
