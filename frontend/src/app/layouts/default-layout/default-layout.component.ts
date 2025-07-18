@@ -30,19 +30,18 @@ export class DefaultLayoutComponent {
   isExpanded = false;
 
   menuItems = [
-    { label: 'Dashboard', icon: 'dashboard', route: '/dashboard' },
-    { label: 'Cars', icon: 'directions_car', route: '/vehicles' },
-    { label: 'Check Out', route: '/check-out', icon: 'call_missed_outgoing' },
-    { label: 'Check In', route: '/check-in', icon: 'check_circle_outline' },
     { label: 'Manifest', route: '/manifest-menu', icon: 'schedule' },
-    { label: 'Users', route: '/users-table', icon: 'group' },
-    { label: 'Update Prices', route: '/update-prices', icon: 'attach_money' },
+    { label: 'Dashboard', icon: 'dashboard', route: '/dashboard' },
+    { label: 'Check Out', route: '/check-out', icon: 'call_missed_outgoing' },
     {
       label: 'Internal Check Out',
       route: '/internal-checkout',
       icon: 'call_made',
     },
-
+    { label: 'Check In', route: '/check-in', icon: 'check_circle_outline' },
+    { label: 'Cars', icon: 'directions_car', route: '/vehicles' },
+    { label: 'Users', route: '/users-table', icon: 'group' },
+    { label: 'Update Prices', route: '/update-prices', icon: 'attach_money' },
     { label: 'Help', route: '/help-page', icon: 'help_outline' },
   ];
   @ViewChild('sidenav', { static: true }) sidenav!: MatSidenav;

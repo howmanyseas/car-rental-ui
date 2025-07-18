@@ -80,6 +80,7 @@ const FULL_DATE_FORMATS = {
 })
 export class CheckOutComponent implements OnInit {
   driverStepVisible = false;
+  carGroup!:FormGroup;
   isMobile = false;
   pricingFormGroup!: FormGroup;
   driverFormGroup!: FormGroup;
@@ -129,6 +130,10 @@ export class CheckOutComponent implements OnInit {
     this.feeGroup = this.fb.group({
       feeType: [''],
       price: [''],
+    });
+    this.carGroup = this.fb.group({
+      grA: [''],
+      grB: [''],
     });
 
     this.customerFormGroup = this.fb.group({
