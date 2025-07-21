@@ -126,9 +126,19 @@ mat-button-toggle-group {
   display: flex;
   gap: 10px;
   margin-top: 20px;
+  justify-content: flex-start;
+}
+.buttons-gr {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
   justify-content: flex-end;
 }
-
+.buttons-gr button {
+  background-color: var(--color-gradient-mid) !important;
+  color: white !important;
+  border-radius: 10px;
+}
 mat-icon {
   color: white;
   width: auto;
