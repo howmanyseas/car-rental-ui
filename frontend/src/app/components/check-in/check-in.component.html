@@ -24,7 +24,11 @@
               <div class="grid-fields">
                 <mat-form-field appearance="outline" class="readonly-field">
                   <mat-label>Customer Name</mat-label>
-                  <input matInput type="number" formControlName="customername" />
+                  <input
+                    matInput
+                    type="number"
+                    formControlName="customername"
+                  />
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="readonly-field">
                   <mat-label>Customer Last Name</mat-label>
@@ -84,12 +88,10 @@
           <mat-card class="form-container">
             <mat-card-content>
               <div class="car-date-row">
-             
-
                 <div>
                   <h3>Date</h3>
                   <mat-divider></mat-divider>
-                  <mat-form-field appearance="outline">
+                  <mat-form-field appearance="outline" class="readonly-field">
                     <mat-label>Actual Check Out Date</mat-label>
                     <input
                       matInput
@@ -108,7 +110,7 @@
                   </mat-form-field>
 
                   <div class="row-fields">
-                    <mat-form-field appearance="outline">
+                    <mat-form-field appearance="outline" class="readonly-field">
                       <mat-label>Actual Check In Date</mat-label>
                       <input
                         matInput
@@ -130,7 +132,7 @@
                 <div>
                   <h3>Time</h3>
                   <mat-divider></mat-divider>
-                  <mat-form-field appearance="outline">
+                  <mat-form-field appearance="outline" class="readonly-field">
                     <mat-label>Time</mat-label>
                     <input
                       matInput
@@ -142,7 +144,7 @@
                       #checkOutTimePicker
                     ></ngx-material-timepicker>
                   </mat-form-field>
-                  <mat-form-field appearance="outline">
+                  <mat-form-field appearance="outline" class="readonly-field">
                     <mat-label>Time</mat-label>
                     <input
                       matInput
@@ -161,15 +163,15 @@
                 <div>
                   <h3>Price</h3>
                   <mat-divider></mat-divider>
-                  <mat-form-field appearance="outline">
+                  <mat-form-field appearance="outline" class="readonly-field">
                     <mat-label>Check Out Price</mat-label>
                     <input matInput formControlName="checkOutPrice" />
                   </mat-form-field>
-                  <mat-form-field appearance="outline">
+                  <mat-form-field appearance="outline" class="readonly-field">
                     <mat-label>Check In Price</mat-label>
                     <input matInput formControlName="checkInPrice" />
                   </mat-form-field>
-                  <mat-form-field appearance="outline">
+                  <mat-form-field appearance="outline" class="readonly-field">
                     <mat-label>Net Amount</mat-label>
                     <input matInput formControlName="netAmount" />
                   </mat-form-field>
@@ -178,15 +180,15 @@
                 <div>
                   <h3>Mileage</h3>
                   <mat-divider></mat-divider>
-                  <mat-form-field appearance="outline">
+                  <mat-form-field appearance="outline" class="readonly-field">
                     <mat-label>KM Out</mat-label>
                     <input matInput formControlName="kmOut" />
                   </mat-form-field>
-                  <mat-form-field appearance="outline">
+                  <mat-form-field appearance="outline" class="readonly-field">
                     <mat-label>KM In</mat-label>
                     <input matInput formControlName="kmIn" />
                   </mat-form-field>
-                  <mat-form-field appearance="outline">
+                  <mat-form-field appearance="outline" class="readonly-field">
                     <mat-label>Mileage Additional Amount</mat-label>
                     <input matInput formControlName="mileageExtra" />
                   </mat-form-field>
@@ -195,15 +197,15 @@
                 <div>
                   <h3>Fuel</h3>
                   <mat-divider></mat-divider>
-                  <mat-form-field appearance="outline">
+                  <mat-form-field appearance="outline" class="readonly-field">
                     <mat-label>Fuel Out</mat-label>
                     <input matInput formControlName="fuelOut" />
                   </mat-form-field>
-                  <mat-form-field appearance="outline">
+                  <mat-form-field appearance="outline" class="readonly-field">
                     <mat-label>Fuel In</mat-label>
                     <input matInput formControlName="fuelIn" />
                   </mat-form-field>
-                  <mat-form-field appearance="outline">
+                  <mat-form-field appearance="outline" class="readonly-field">
                     <mat-label>Fuel Additional Amount</mat-label>
                     <input matInput formControlName="fuelExtra" />
                   </mat-form-field>
@@ -237,7 +239,10 @@
                       [formGroupName]="i"
                       class="fee-row"
                     >
-                      <mat-form-field appearance="outline">
+                      <mat-form-field
+                        appearance="outline"
+                        class="readonly-field"
+                      >
                         <mat-label>Additional Fee</mat-label>
                         <mat-select formControlName="feeType">
                           <mat-option value="tax">Tax (€50)</mat-option>
@@ -257,7 +262,10 @@
                           <mat-option value="other">Other</mat-option>
                         </mat-select>
                       </mat-form-field>
-                      <mat-form-field appearance="outline">
+                      <mat-form-field
+                        appearance="outline"
+                        class="readonly-field"
+                      >
                         <mat-label>Price (€)</mat-label>
                         <input
                           matInput
@@ -291,7 +299,7 @@
                 <div>
                   <h3>Gross Amount</h3>
                   <mat-divider></mat-divider>
-                  <mat-form-field appearance="outline">
+                  <mat-form-field appearance="outline" class="readonly-field">
                     <mat-label>Gross Amount</mat-label>
                     <input matInput formControlName="grossAmount" />
                   </mat-form-field>

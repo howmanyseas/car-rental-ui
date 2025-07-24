@@ -108,6 +108,21 @@ textarea::placeholder {
 .mat-mdc-form-field-disabled .mdc-notched-outline__trailing {
   border-color: white !important;
 }
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: white;
+  border-color: white;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  color: white;
+  border-color: white;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-start,
+.mat-form-field-appearance-outline .mat-form-field-outline-gap,
+.mat-form-field-appearance-outline .mat-form-field-outline-end {
+  border-color: white;
+}
 
 .mat-horizontal-stepper-content {
   display: flex;

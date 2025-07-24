@@ -10,7 +10,7 @@
         <mat-card-content>
           <mat-divider></mat-divider><br />
           <div class="grid-fields">
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="readonly-field">
               <mat-label>Check Out Date</mat-label>
               <input
                 matInput
@@ -27,7 +27,7 @@
                 [touchUi]="true"
               ></mat-datepicker>
             </mat-form-field>
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="readonly-field">
               <mat-label>Check Out Time</mat-label>
               <input
                 matInput
@@ -37,7 +37,7 @@
               />
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="readonly-field">
               <mat-label>Check In Date</mat-label>
               <input
                 matInput
@@ -54,7 +54,7 @@
                 [touchUi]="true"
               ></mat-datepicker>
             </mat-form-field>
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="readonly-field">
               <mat-label>Check In Time</mat-label>
               <input
                 matInput
@@ -73,7 +73,7 @@
             (keydown.enter)="focusNext($event)"
           >
             <div class="grid-fields">
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Car Group</mat-label>
                 <mat-select formControlName="carGroup">
                   <mat-option value="grA">Group A</mat-option>
@@ -111,7 +111,7 @@
                     [formGroupName]="i"
                     class="fee-row"
                   >
-                    <mat-form-field appearance="outline">
+                    <mat-form-field appearance="outline" class="readonly-field">
                       <mat-label>Additional Fee</mat-label>
                       <mat-select formControlName="feeType">
                         <mat-option value="Additional Drivers"
@@ -173,12 +173,12 @@
                       />
                     </mat-form-field>
 
-                    <mat-form-field appearance="outline">
+                    <mat-form-field appearance="outline" class="readonly-field">
                       <mat-label>Price (€)</mat-label>
                       <input matInput formControlName="price" />
                     </mat-form-field>
 
-                    <mat-form-field appearance="outline">
+                    <mat-form-field appearance="outline" class="readonly-field">
                       <mat-label>Max Price (€)</mat-label>
                       <input
                         matInput
@@ -212,13 +212,13 @@
               <mat-divider></mat-divider><br />
               <mat-card-content>
                 <div class="grid-fields">
-                  <mat-form-field appearance="outline">
+                  <mat-form-field appearance="outline" class="readonly-field">
                     <mat-label>Discount (%)</mat-label><input matInput />
                   </mat-form-field>
-                  <mat-form-field appearance="outline">
+                  <mat-form-field appearance="outline" class="readonly-field">
                     <mat-label>Reason</mat-label><input matInput />
                   </mat-form-field>
-                  <mat-form-field appearance="outline">
+                  <mat-form-field appearance="outline" class="readonly-field">
                     <mat-label>Applied By</mat-label>
                     <mat-select>
                       <mat-option>Employee 1</mat-option>
@@ -233,11 +233,11 @@
             <h3>Total Price</h3>
             <mat-divider></mat-divider><br />
             <div class="grid-fields">
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Tax (%)</mat-label>
                 <input matInput type="number" formControlName="tax" />
               </mat-form-field>
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Net Amount (€)</mat-label>
                 <input
                   matInput
@@ -246,7 +246,7 @@
                   formControlName="netAmount"
                 />
               </mat-form-field>
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Gross Amount (€)</mat-label>
                 <input
                   matInput
@@ -276,22 +276,22 @@
             <h4>Customer Details</h4>
             <mat-divider></mat-divider><br />
             <div class="grid-fields">
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Academic Title</mat-label>
                 <input matInput formControlName="academicTitle" />
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>First Name</mat-label>
                 <input matInput formControlName="firstName" />
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Last Name</mat-label>
                 <input matInput formControlName="lastName" />
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Date of Birth</mat-label>
                 <input
                   matInput
@@ -304,7 +304,7 @@
                 ></mat-datepicker-toggle>
                 <mat-datepicker #dobPicker></mat-datepicker>
               </mat-form-field>
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Age</mat-label>
                 <input
                   matInput
@@ -321,12 +321,12 @@
                 </button>
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Phone nr.</mat-label>
                 <input matInput formControlName="phone" />
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Email</mat-label>
                 <input matInput type="email" formControlName="email" />
               </mat-form-field>
@@ -351,21 +351,21 @@
             <h4>Address</h4>
             <mat-divider></mat-divider><br />
             <div class="grid-fields">
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Street</mat-label>
                 <input matInput formControlName="street" />
               </mat-form-field>
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Address 2</mat-label>
                 <input matInput formControlName="address2" />
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>ZIP</mat-label>
                 <input matInput formControlName="zip" />
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Country</mat-label>
                 <mat-select formControlName="country">
                   <mat-option>Country 1</mat-option>
@@ -373,12 +373,12 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>House nr.</mat-label>
                 <input matInput formControlName="houseNr" />
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>City</mat-label>
                 <input matInput formControlName="city" />
               </mat-form-field>
@@ -404,21 +404,21 @@
                 customerFormGroup.get('sameBillingAddress')?.value === 'no'
               "
             >
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Company Name</mat-label>
                 <input matInput formControlName="companyName" />
               </mat-form-field>
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Street</mat-label>
                 <input matInput formControlName="street" />
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>ZIP</mat-label>
                 <input matInput formControlName="zip" />
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Country</mat-label>
                 <mat-select formControlName="country">
                   <mat-option>Country 1</mat-option>
@@ -426,7 +426,7 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>City</mat-label>
                 <input matInput formControlName="city" />
               </mat-form-field>
@@ -435,7 +435,7 @@
             <h4>Identification Information</h4>
             <mat-divider></mat-divider><br />
             <div class="grid-fields">
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Identification Type</mat-label>
                 <mat-select>
                   <mat-option>ID Type 1</mat-option>
@@ -443,11 +443,11 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Identification nr.</mat-label>
                 <input matInput formControlName="idNumber" />
               </mat-form-field>
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>ID Expiry Date</mat-label>
                 <input
                   matInput
@@ -481,16 +481,16 @@
             <h4>License Information</h4>
             <mat-divider></mat-divider><br />
             <div class="grid-fields">
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Driver's License nr.</mat-label>
                 <input matInput formControlName="licenseNumber" />
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Country</mat-label>
                 <input matInput formControlName="licenseCountry" />
               </mat-form-field>
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>License Issued Date</mat-label>
                 <input
                   matInput
@@ -510,7 +510,7 @@
                 >
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Date of Expiry</mat-label>
                 <input
                   matInput
@@ -568,19 +568,19 @@
               <h4 class="title">Driver Information</h4>
               <mat-divider></mat-divider><br />
               <div class="grid-fields">
-                <mat-form-field appearance="outline"
+                <mat-form-field appearance="outline" class="readonly-field"
                   ><mat-label>Academic Title</mat-label
                   ><input matInput formControlName="academicTitle"
                 /></mat-form-field>
-                <mat-form-field appearance="outline"
+                <mat-form-field appearance="outline" class="readonly-field"
                   ><mat-label>First Name</mat-label
                   ><input matInput formControlName="firstName"
                 /></mat-form-field>
-                <mat-form-field appearance="outline"
+                <mat-form-field appearance="outline" class="readonly-field"
                   ><mat-label>Last Name</mat-label
                   ><input matInput formControlName="lastName"
                 /></mat-form-field>
-                <mat-form-field appearance="outline"
+                <mat-form-field appearance="outline" class="readonly-field"
                   ><mat-label>Date of Birth</mat-label
                   ><input
                     matInput
@@ -591,11 +591,11 @@
                   ></mat-datepicker-toggle
                   ><mat-datepicker #driverDob></mat-datepicker
                 ></mat-form-field>
-                <mat-form-field appearance="outline"
+                <mat-form-field appearance="outline" class="readonly-field"
                   ><mat-label>Phone nr.</mat-label
                   ><input matInput formControlName="phone"
                 /></mat-form-field>
-                <mat-form-field appearance="outline"
+                <mat-form-field appearance="outline" class="readonly-field"
                   ><mat-label>Email</mat-label
                   ><input matInput formControlName="email"
                 /></mat-form-field>
@@ -603,27 +603,27 @@
               <h4>Address</h4>
               <mat-divider></mat-divider><br />
               <div class="grid-fields">
-                <mat-form-field appearance="outline"
+                <mat-form-field appearance="outline" class="readonly-field"
                   ><mat-label>Street</mat-label
                   ><input matInput formControlName="street"
                 /></mat-form-field>
-                <mat-form-field appearance="outline"
+                <mat-form-field appearance="outline" class="readonly-field"
                   ><mat-label>Address 2</mat-label
                   ><input matInput formControlName="address2"
                 /></mat-form-field>
-                <mat-form-field appearance="outline"
+                <mat-form-field appearance="outline" class="readonly-field"
                   ><mat-label>ZIP</mat-label
                   ><input matInput formControlName="zip"
                 /></mat-form-field>
-                <mat-form-field appearance="outline"
+                <mat-form-field appearance="outline" class="readonly-field"
                   ><mat-label>Country</mat-label
                   ><input matInput formControlName="country"
                 /></mat-form-field>
-                <mat-form-field appearance="outline"
+                <mat-form-field appearance="outline" class="readonly-field"
                   ><mat-label>House nr.</mat-label
                   ><input matInput formControlName="houseNr"
                 /></mat-form-field>
-                <mat-form-field appearance="outline"
+                <mat-form-field appearance="outline" class="readonly-field"
                   ><mat-label>City</mat-label
                   ><input matInput formControlName="city"
                 /></mat-form-field>
@@ -651,22 +651,22 @@
               <h4>Driver Details</h4>
               <mat-divider></mat-divider><br />
               <div class="grid-fields">
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="readonly-field">
                   <mat-label>Academic Title</mat-label>
                   <input matInput formControlName="academicTitle" />
                 </mat-form-field>
 
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="readonly-field">
                   <mat-label>First Name</mat-label>
                   <input matInput formControlName="firstName" />
                 </mat-form-field>
 
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="readonly-field">
                   <mat-label>Last Name</mat-label>
                   <input matInput formControlName="lastName" />
                 </mat-form-field>
 
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="readonly-field">
                   <mat-label>Date of Birth</mat-label>
                   <input
                     matInput
@@ -680,12 +680,12 @@
                   <mat-datepicker #dobPicker></mat-datepicker>
                 </mat-form-field>
 
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="readonly-field">
                   <mat-label>Phone nr.</mat-label>
                   <input matInput formControlName="phone" />
                 </mat-form-field>
 
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="readonly-field">
                   <mat-label>Age</mat-label>
                   <input
                     matInput
@@ -702,7 +702,7 @@
               <h4>Identification Information</h4>
               <mat-divider></mat-divider><br />
               <div class="grid-fields">
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="readonly-field">
                   <mat-label>Identification Type</mat-label>
                   <mat-select formControlName="idType">
                     <mat-option>ID Type 1</mat-option>
@@ -710,7 +710,7 @@
                   </mat-select>
                 </mat-form-field>
 
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="readonly-field">
                   <mat-label>Identification nr.</mat-label>
                   <input matInput formControlName="idNumber" />
                 </mat-form-field>
@@ -734,17 +734,17 @@
               <h4>License Information</h4>
               <mat-divider></mat-divider><br />
               <div class="grid-fields">
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="readonly-field">
                   <mat-label>Driver's License nr.</mat-label>
                   <input matInput formControlName="licenseNumber" />
                 </mat-form-field>
 
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="readonly-field">
                   <mat-label>Country</mat-label>
                   <input matInput formControlName="licenseCountry" />
                 </mat-form-field>
 
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="readonly-field">
                   <mat-label>Date of Expiry</mat-label>
                   <input
                     matInput
@@ -795,7 +795,7 @@
             <mat-divider></mat-divider><br />
 
             <div class="grid-fields">
-              <mat-form-field appearance="outline" class="white-border">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>MVA</mat-label>
                 <input matInput formControlName="mva" placeholder="Enter MVA" />
               </mat-form-field>
@@ -864,12 +864,12 @@
             <mat-divider></mat-divider><br />
 
             <div class="grid-fields">
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Card Type</mat-label>
                 <input matInput formControlName="cardType" />
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Card Expiry Date</mat-label>
                 <input
                   matInput
@@ -892,7 +892,7 @@
                 <mat-hint>MM/YYYY</mat-hint>
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>CVV</mat-label>
                 <input matInput formControlName="cvv" />
               </mat-form-field>
@@ -900,11 +900,11 @@
             <h4>Payment Amount</h4>
             <mat-divider></mat-divider><br />
             <div class="grid-fields">
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Amount on Hold</mat-label>
                 <input matInput formControlName="amountOnHold" />
               </mat-form-field>
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Check Out Gross Amount</mat-label>
                 <input matInput formControlName="checkoutGrossAmount" />
               </mat-form-field>
@@ -912,7 +912,7 @@
             <h4>More Information</h4>
             <mat-divider></mat-divider><br />
             <div class="grid-fields">
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Payment Date</mat-label>
                 <input
                   matInput
@@ -926,7 +926,7 @@
                 <mat-datepicker #paymentDatePicker></mat-datepicker>
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Payment Status</mat-label>
                 <mat-select formControlName="paymentStatus">
                   <mat-option value="Paid">Paid</mat-option>
@@ -937,7 +937,7 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Authorization Code</mat-label>
                 <input matInput formControlName="authorizationCode" />
               </mat-form-field>
