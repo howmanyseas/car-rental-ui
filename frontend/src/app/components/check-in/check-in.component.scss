@@ -1,17 +1,11 @@
-html,
-body,
-:host {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
+
 
 :host {
   display: block;
-  margin: 30px;
+  margin: 20px;
   overflow: hidden;
 }
+
 
 .container {
   display: flex;
@@ -48,7 +42,6 @@ input,
 .mat-hint {
   color: white !important;
 }
-
 
 .mat-radio-button .mat-radio-label,
 .mat-icon-button {
@@ -93,11 +86,15 @@ mat-option {
 .grid-fields,
 .grid-two-columns,
 .row-fields {
-  display: flex;
+ display: flex;
+  flex-wrap: wrap;
   gap: 15px;
-  margin-bottom: 20px;
 }
-
+.grid-fields mat-form-field {
+  flex: 1 1 300px; 
+  min-width: 0;
+  box-sizing: border-box;
+}
 .grid-two-columns {
   gap: 40px;
 }

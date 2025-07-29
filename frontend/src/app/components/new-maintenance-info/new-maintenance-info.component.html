@@ -1,26 +1,24 @@
-    <h2 class="title">Vehicle Maintenance Information</h2>
+<h2 class="title">Vehicle Maintenance Information</h2>
 
 <form [formGroup]="NewVehicleForm" class="edit-vehicle-form">
   <mat-card class="form-container">
-  
-
     <div class="row">
       <div class="column">
-        <mat-form-field appearance="outline" class="full-width">
+        <mat-form-field class="gray-bg" appearance="fill">
           <mat-label>Car ID</mat-label>
           <input matInput formControlName="carId" />
         </mat-form-field>
       </div>
 
       <div class="column">
-        <mat-form-field appearance="outline" class="full-width">
+        <mat-form-field class="gray-bg" appearance="fill">
           <mat-label>MVA</mat-label>
           <input matInput formControlName="mva" />
         </mat-form-field>
       </div>
 
       <div class="column">
-        <mat-form-field appearance="outline" class="full-width">
+        <mat-form-field class="gray-bg" appearance="fill">
           <mat-label>Licence Plate</mat-label>
           <input matInput formControlName="licencePlate" />
         </mat-form-field>
@@ -71,12 +69,12 @@
       </div>
 
       <div class="column">
-        <mat-form-field appearance="outline" class="full-width">
+                <mat-form-field class="gray-bg" appearance="fill">
           <mat-label>Days</mat-label>
           <input matInput [value]="days" disabled />
         </mat-form-field>
-</div>
-<div class="column">    
+      </div>
+      <div class="column">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Address</mat-label>
           <input matInput formControlName="address" />
@@ -99,11 +97,12 @@
         </mat-form-field>
       </div>
     </div>
-
   </mat-card>
 </form>
 
 <div class="buttons-container">
   <button mat-button style="color: white" (click)="cancelBtn()">Cancel</button>
-  <button mat-raised-button class="save-btn" (click)="addVehicle()">Save</button>
+  <button mat-raised-button class="save-btn" (click)="addVehicle()">
+    Save
+  </button>
 </div>

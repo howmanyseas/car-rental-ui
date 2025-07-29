@@ -44,7 +44,9 @@ body {
   margin: 0;
   overflow: hidden;
 }
-
+mat-form-field.gray-bg .mat-mdc-text-field-wrapper {
+  background-color: rgb(70, 70, 70) !important;
+}
 .mat-mdc-select-value,
 .mat-mdc-option,
 .mat-step-label,
