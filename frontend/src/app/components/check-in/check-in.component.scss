@@ -1,11 +1,8 @@
-
-
 :host {
   display: block;
   margin: 20px;
   overflow: hidden;
 }
-
 
 .container {
   display: flex;
@@ -28,6 +25,30 @@
   display: flex;
   flex-direction: column;
   padding-right: 10px;
+}
+
+.form-section-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.form-section-col {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row-3-fields {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.row-3-fields mat-form-field {
+  flex: 1 1 30%;
+  min-width: 100px;
 }
 
 h2,
@@ -70,7 +91,7 @@ mat-horizontal-stepper {
 }
 
 mat-step {
-  background-color: #2d2d2d !important;
+  background-color: transparent !important;
   color: white !important;
   margin-bottom: 20px;
 }
@@ -86,12 +107,12 @@ mat-option {
 .grid-fields,
 .grid-two-columns,
 .row-fields {
- display: flex;
+  display: flex;
   flex-wrap: wrap;
   gap: 15px;
 }
 .grid-fields mat-form-field {
-  flex: 1 1 300px; 
+  flex: 1 1 300px;
   min-width: 0;
   box-sizing: border-box;
 }
@@ -112,9 +133,10 @@ mat-option {
   justify-content: space-between;
 }
 
-.row-fields mat-form-field {
-  flex: 1;
-  min-width: 0;
+.buttons-group button {
+  background-color: var(--color-gradient-mid) !important;
+  color: white !important;
+  border-radius: 10px;
 }
 
 .button-group,
@@ -165,28 +187,14 @@ mat-option {
   display: flex;
   gap: 40px;
 }
-
-@media (min-width: 800px) and (max-width: 1500px) {
-  .container {
-    flex-direction: row;
-  }
-
-  .form-wrapper {
-    flex: 3;
-    max-width: 75%;
-  }
-
-  .summary {
-    flex: 1;
-    max-width: 25%;
-    margin-top: 0;
-  }
-
-  .grid-two-columns,
-  .car-date-row {
-    flex-direction: column;
-    gap: 15px;
-  }
+.row-4-fields {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.row-4-fields mat-form-field {
+  flex: 1 1 24%;
+  min-width: 100px;
 }
 
 @media (max-width: 800px) {
@@ -233,5 +241,20 @@ mat-option {
 
   .summary {
     display: none;
+  }
+  .form-section-row,
+  .row-3-fields {
+    flex-direction: column;
+  }
+
+  .form-section-col,
+  .row-3-fields mat-form-field {
+    flex: 1 1 100%;
+  }
+  .row-4-fields {
+    flex-direction: column;
+  }
+  .row-4-fields mat-form-field {
+    flex: 1 1 100%;
   }
 }

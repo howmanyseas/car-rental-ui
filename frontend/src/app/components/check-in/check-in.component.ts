@@ -7,20 +7,53 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { DamageMarkerComponent } from '../damage-marker/damage-marker.component';
-import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { MatStepperModule } from '@angular/material/stepper';
+import {
+  MatNativeDateModule,
+  MatOption,
+  DateAdapter,
+  MAT_DATE_LOCALE,
+  MAT_DATE_FORMATS
+} from '@angular/material/core';
 
+import { default as _rollupMoment, Moment } from 'moment';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import * as _moment from 'moment';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+
+const moment = _rollupMoment || _moment;
+const FULL_DATE_FORMATS = {
+  parse: {
+    dateInput: 'DD/MM/YYYY',
+  },
+  display: {
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 @Component({
   selector: 'app-check-in',
   templateUrl: './check-in.component.html',
   styleUrls: ['./check-in.component.scss'],
   standalone: true,
+  providers: [
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE]
+    },
+    {
+      provide: MAT_DATE_FORMATS,
+      useValue: FULL_DATE_FORMATS // This is for full-date pickers
+    }
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -36,7 +69,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatIconModule,
     MatDialogModule,
     NgxMaterialTimepickerModule,
-    MatStepperModule
+    MatStepperModule,
   ],
 })
 export class CheckInComponent implements OnInit {
@@ -73,12 +106,13 @@ export class CheckInComponent implements OnInit {
     this.checkInForm = this.fb.group({
       rentalNumber: [''],
       rentalnr: [''],
+      mva: [''],
       checkOutPrice: new FormControl({ value: '', disabled: true }),
       checkInPrice: [''],
 
       actualCheckOutDate: new FormControl({ value: null, disabled: true }),
       actualCheckOutTime: new FormControl({ value: null, disabled: true }),
-      actualCheckInDate: [''],
+      actualCheckInDate: [null],
       actualCheckInTime: [''],
       kmOut: new FormControl({ value: ' ', disabled: true }),
       kmIn: [''],
@@ -146,6 +180,34 @@ export class CheckInComponent implements OnInit {
       this.addAdditionalFees();
     }
   }
+  parseDate(day: string, month: string, year: string): Date | null {
+    const dd = parseInt(day, 10);
+    const mm = parseInt(month, 10) - 1;
+    const yyyy = parseInt(year, 10);
+
+    const date = new Date(yyyy, mm, dd);
+    return date && date.getDate() === dd && date.getMonth() === mm && date.getFullYear() === yyyy
+      ? date
+      : null;
+  }
+
+  onFlexibleDateInput(event: any, controlName: string): void {
+    const raw = event.target.value.replace(/\D/g, '');
+    if (raw.length === 8) {
+      const day = raw.substring(0, 2);
+      const month = raw.substring(2, 4);
+      const year = raw.substring(4, 8);
+
+      const parsedDate = this.parseDate(day, month, year);
+      if (parsedDate) {
+        this.checkInForm.get(controlName)?.setValue(parsedDate);
+      }
+    }
+  }
+
+
+
+
   focusNext(event: Event) {
     event.preventDefault();
 
