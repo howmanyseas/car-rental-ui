@@ -1,16 +1,16 @@
 :root {
   --color-bg: #000000;
 
-  --color-gradient-start: #00bfce;
-  --color-gradient-mid: #3e96cc;
-  --color-gradient-end: #db058f;
+  --color-gradient-start: #2fa0cc;
+  --color-gradient-mid: #3e93cc;
+  --color-gradient-end: #a933a3;
 
-  --color-gradient: linear-gradient(to bottom, #00bfce, #3e96cc, #db058f);
+  --color-gradient: linear-gradient(-11deg, #a933a3, #6076BF, #2fa0cc);
   --color-gradient-opaque: linear-gradient(
-    to bottom,
-    rgba(0, 191, 206, 0.2),
+    -11deg,
+    rgba(161, 59, 166, 0.2),
     rgba(62, 150, 204, 0.2),
-    rgba(219, 5, 143, 0.2)
+    rgba(47, 160, 204, 0.2)
   );
 
   --button-1: #3e96cc;
