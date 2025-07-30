@@ -36,17 +36,15 @@ export class SmDashboardComponent implements OnInit {
     { label: 'Owned', value: Math.floor(Math.random() * 20) },
     { label: 'Unavailable', value: Math.floor(Math.random() * 20) },
     { label: 'On Rent', value: Math.floor(Math.random() * 20), route: '/rental-lists' },
-    { label: 'Closed Rentals', value: Math.floor(Math.random() * 20), },
+    { label: 'Closed Rentals', value: Math.floor(Math.random() * 20) },
     { label: 'Overdue', value: Math.floor(Math.random() * 20) },
     { label: 'Idle', value: Math.floor(Math.random() * 20) },
-    { label: 'Out of Service', value: Math.floor(Math.random() * 20) },
-
+    { label: 'Out of Service', value: Math.floor(Math.random() * 20) }
   ];
 
-  viewModes: ('week' | 'day')[] = ['week', 'day'];
-  viewMode: 'week' | 'day' = 'week';
-  weeks = ['Week 1', 'Week 2', 'Week 3', 'Week 4'];
-  selectedWeek = this.weeks[0];
+  viewModes: ('week')[] = ['week'];
+  viewMode: 'week' = 'week';
+
   selectedDate = new Date();
 
   categories = ['On Hand', 'Due In', 'Res D/I', 'Stn-Inv', 'Veh-Rsvd', 'Available'];
@@ -62,13 +60,8 @@ export class SmDashboardComponent implements OnInit {
     }
   }
 
-  setViewMode(mode: 'week' | 'day'): void {
+  setViewMode(mode: 'week'): void {
     this.viewMode = mode;
-    this.generateTableData();
-  }
-
-  onWeekSelect(week: string): void {
-    this.selectedWeek = week;
     this.generateTableData();
   }
 
@@ -86,21 +79,11 @@ export class SmDashboardComponent implements OnInit {
     });
   }
 
-  private getStartOfWeek(d: Date): Date {
-    const date = new Date(d);
-    const day = date.getDay();
-    const diff = date.getDate() - day + (day === 0 ? -6 : 1);
-    return new Date(date.setDate(diff));
-  }
-
   get displayedDays(): string[] {
-    if (this.viewMode === 'day') {
-      return [this.selectedDate.toLocaleDateString('en-US', { weekday: 'short' })];
-    }
-    const start = this.getStartOfWeek(this.selectedDate);
+    const start = this.selectedDate;
     return Array.from({ length: 7 }).map((_, i) =>
       new Date(start.getTime() + i * 86400000)
-        .toLocaleDateString('en-US', { weekday: 'short' })
+        .toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
     );
   }
 
