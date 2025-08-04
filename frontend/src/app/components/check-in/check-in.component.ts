@@ -134,6 +134,7 @@ export class CheckInComponent implements OnInit {
 
     this.carInformationFormGroup = this.fb.group({
       rentalnr: [''],
+      mva: [''],
       carGroup: new FormControl({ value: '', disabled: true }),
       licensePlate: new FormControl({ value: '', disabled: true }),
       fuel: new FormControl({ value: '', disabled: true }),

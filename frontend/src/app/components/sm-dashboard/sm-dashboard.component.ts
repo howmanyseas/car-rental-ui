@@ -10,7 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 
 interface Stat { label: string; value: number; route?: string; }
-interface Row { category: string;[key: string]: any; }
+interface Row { category: string; [key: string]: any; }
 
 @Component({
   selector: 'app-sm-dashboard',
