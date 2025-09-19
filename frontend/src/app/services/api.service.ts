@@ -11,8 +11,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  // Placeholder function (when backend is ready)
-  getCars(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/cars`);
+  getVehicles() {
+    return this.http.get(`${this.apiUrl}/Vehicle`);
   }
 }
