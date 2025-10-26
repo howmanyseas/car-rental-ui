@@ -48,8 +48,8 @@ export class UpdatePricesComponent implements OnInit {
     {
       name: 'Car Group',
       options: [
-        { value: 'groupA', viewValue: 'Group A' },
-        { value: 'groupB', viewValue: 'Group B' },
+        { value: 'groupA', viewValue: 'IDMR' },
+        { value: 'groupB', viewValue: 'CDMR' },
       ]
     },
     {
@@ -57,7 +57,7 @@ export class UpdatePricesComponent implements OnInit {
       options: [
         { value: 'insurance', viewValue: 'Insurance' },
         { value: 'crossBorder', viewValue: 'Cross Border' },
-        { value: 'babySeat', viewValue: 'Baby Seat' },
+        { value: 'childSeat', viewValue: 'Child Seat' },
       ]
     }
   ];

@@ -76,13 +76,22 @@
               <mat-form-field appearance="outline" class="readonly-field">
                 <mat-label>Car Group</mat-label>
                 <mat-select formControlName="carGroup">
-                  <mat-option value="grA">Group A</mat-option>
-                  <mat-option value="grB">Group B</mat-option>
+                  <mat-option value="IDMR">IDMR</mat-option>
+                  <mat-option value="CDMR">CDMR</mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
 
             <div class="button-group">
+              <button
+                mat-raised-button
+                color="primary"
+                class="buttons"
+                type="button"
+                (click)="calculatePrice()"
+              >
+                Calculate Price
+              </button>
               <button
                 mat-raised-button
                 type="button"
