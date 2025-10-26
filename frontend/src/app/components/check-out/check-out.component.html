@@ -221,15 +221,17 @@
               <mat-divider></mat-divider><br />
               <mat-card-content>
                 <div class="grid-fields">
-                  <mat-form-field appearance="outline" class="readonly-field">
-                    <mat-label>Discount (%)</mat-label><input matInput />
+                  <mat-form-field appearance="outline">
+                    <mat-label>Discount (%)</mat-label>
+                    <input matInput formControlName="discountPercentage" />
                   </mat-form-field>
                   <mat-form-field appearance="outline" class="readonly-field">
-                    <mat-label>Reason</mat-label><input matInput />
+                    <mat-label>Reason</mat-label>
+                    <input matInput formControlName="discountReason" />
                   </mat-form-field>
                   <mat-form-field appearance="outline" class="readonly-field">
                     <mat-label>Applied By</mat-label>
-                    <mat-select>
+                    <mat-select formControlName="discountAppliedBy">
                       <mat-option>Employee 1</mat-option>
                       <mat-option>Employee 2</mat-option>
                       <mat-option>Employee 3</mat-option>

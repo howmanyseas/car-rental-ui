@@ -4,10 +4,26 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environments';
 
+export interface AdditionalFee {
+  name: string;
+  amount: string;
+  amountMax: string;
+}
+
+export interface Discount {
+  percentage: string;
+  reason?: string;
+  user: string;
+}
+
 export interface PriceRequest {
-  carGroupName: string;
   checkOutDate: string;
   expectedCheckInDate: string;
+  carGroupName: string;
+  targetSalePrice?: string;
+  grossListSalePrice?: string;
+  additionalFees?: AdditionalFee[];
+  discount?: Discount;
 }
 
 export interface PriceResponse {

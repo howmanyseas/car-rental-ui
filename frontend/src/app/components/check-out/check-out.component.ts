@@ -25,7 +25,7 @@ import * as _moment from 'moment';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 import { UploadOptionsComponent } from '../upload-options.component';
-import { PriceService, PriceRequest } from '../_common/_service/price.service';
+import { PriceService, PriceRequest, AdditionalFee, Discount } from '../_common/_service/price.service';
 
 const moment = _rollupMoment || _moment;
 const FULL_DATE_FORMATS = {
@@ -481,10 +481,29 @@ export class CheckOutComponent implements OnInit {
     checkInDateTime.setHours(+ciHour);
     checkInDateTime.setMinutes(+ciMin);
 
+    // Build additionalFees array from pricingFormGroup
+    const additionalFees: AdditionalFee[] = this.additionalFees.controls.map(fee => ({
+      name: fee.get('feeType')?.value || '',
+      amount: fee.get('price')?.value || '',
+      amountMax: fee.get('maxPrice')?.value || ''
+    }));
+
+    let discount: Discount | undefined = undefined;
+    if (this.showDiscount) {
+      discount = {
+        percentage: this.pricingFormGroup.get('discountPercentage')?.value || '',
+        reason: this.pricingFormGroup.get('discountReason')?.value || '',
+        user: this.pricingFormGroup.get('discountAppliedBy')?.value || ''
+      };
+      console.log('Discount:', JSON.stringify(discount));
+    }
+
     const payload: PriceRequest = {
       carGroupName: carGroup,
       checkOutDate: checkOutDateTime.toISOString(),
-      expectedCheckInDate: checkInDateTime.toISOString()
+      expectedCheckInDate: checkInDateTime.toISOString(),
+      additionalFees: additionalFees.length > 0 ? additionalFees : undefined,
+      discount: discount
     };
 
     console.log('Price Request:', JSON.stringify(payload));
