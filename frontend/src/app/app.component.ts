@@ -15,13 +15,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss'],
   imports: [
     RouterOutlet,
-    MatSidenavModule, 
+    MatSidenavModule,
     MatListModule,
-    
-]
+
+  ],
+
 })
 export class AppComponent {
   title = 'frontend';
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
 }

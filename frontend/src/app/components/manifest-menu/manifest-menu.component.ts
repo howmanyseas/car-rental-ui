@@ -5,20 +5,19 @@ import {
   ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+
+// Angular Material imports
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
-
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatIconRegistry } from '@angular/material/icon';
-import { FormsModule } from '@angular/forms';
-import { RouterModule, Router } from '@angular/router';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
@@ -26,6 +25,8 @@ export interface Rental {
   rentalId: string;
   customer: string;
   carGroup: string;
+  carModel: string;
+  carLicense: string;
   phoneNumber: string;
   email: string;
   checkOutPrice: number;
@@ -33,9 +34,12 @@ export interface Rental {
   checkIn: Date;
   status: string;
 }
+
 @Component({
   selector: 'app-manifest-menu',
-  imports: [CommonModule,
+  standalone: true,
+  imports: [
+    CommonModule,
     FormsModule,
     RouterModule,
     MatTableModule,
@@ -47,24 +51,25 @@ export interface Rental {
     MatFormFieldModule,
     MatButtonModule,
     MatIconModule,
-    MatNativeDateModule,
-    MatSortModule,
     MatCardModule,
-    MatButtonToggleModule,],
+    MatButtonToggleModule,
+  ],
   templateUrl: './manifest-menu.component.html',
-  styleUrl: './manifest-menu.component.scss'
+  styleUrls: ['./manifest-menu.component.scss'],
 })
 export class ManifestMenuComponent implements OnInit, AfterViewInit {
-  rentalTypes = ['Upcoming', 'Open', 'Closed', 'Returning'];
+  rentalTypes = ['Upcoming', 'Returning', 'On Rent', 'Closed'];
   selectedType: string = 'Upcoming';
 
   displayedColumns: string[] = [
     'rentalId',
     'customer',
     'carGroup',
+    'carModel',
+    'carLicense',
     'checkOutPrice',
-    'phonenr',
-    'emailadr',
+    'phoneNumber',
+    'email',
     'checkOut',
     'checkIn',
     'status',
@@ -74,30 +79,27 @@ export class ManifestMenuComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<Rental>();
   allRentals: Rental[] = [];
 
-  filterStartDate: string = '';
-  filterEndDate: string = '';
+  filterStartDate: Date | null = null;
+  filterEndDate: Date | null = null;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     const now = new Date();
     const tomorrow = new Date();
     tomorrow.setDate(now.getDate() + 1);
-    const todayStr = this.formatDate(new Date());
-    this.filterStartDate = todayStr;
-    this.filterEndDate = todayStr;
-    this.applyDateFilter();
 
-
-
+    // Initialize with sample data
     this.allRentals = [
       {
         rentalId: '1',
         customer: 'John Doe',
-        carGroup: 'Toyota Yaris',
+        carGroup: 'A',
+        carModel: 'Toyota Corolla',
+        carLicense: 'ABC123',
         phoneNumber: '+355692223344',
         email: 'john@example.com',
         checkOutPrice: 150,
@@ -108,7 +110,9 @@ export class ManifestMenuComponent implements OnInit, AfterViewInit {
       {
         rentalId: '2',
         customer: 'Jane Smith',
-        carGroup: 'Honda Civic',
+        carGroup: 'B',
+        carModel: 'Honda Civic',
+        carLicense: 'DEF456',
         phoneNumber: '+355693334455',
         email: 'jane@example.com',
         checkOutPrice: 200,
@@ -119,27 +123,30 @@ export class ManifestMenuComponent implements OnInit, AfterViewInit {
       {
         rentalId: '3',
         customer: 'Emily Brown',
-        carGroup: 'Ford Focus',
+        carGroup: 'C',
+        carModel: 'Ford Focus',
+        carLicense: 'GHI789',
         phoneNumber: '+355694445566',
         email: 'emily@example.com',
         checkOutPrice: 180,
         checkOut: now,
         checkIn: tomorrow,
-        status: 'Open',
+        status: 'On Rent',
       },
       {
         rentalId: '4',
         customer: 'Mark Johnson',
-        carGroup: 'BMW 3 Series',
+        carGroup: 'D',
+        carModel: 'BMW 3 Series',
+        carLicense: 'JKL012',
         phoneNumber: '+355695556677',
         email: 'mark@example.com',
         checkOutPrice: 300,
-        checkOut: new Date(now.setDate(now.getDate() - 5)),
-        checkIn: new Date(now.setDate(now.getDate() - 2)),
+        checkOut: now,
+        checkIn: tomorrow,
         status: 'Closed',
-      }
+      },
     ];
-
 
     this.updateTable();
   }
@@ -147,18 +154,31 @@ export class ManifestMenuComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+
+    // Include all columns in filtering
+    this.dataSource.filterPredicate = (data: Rental, filter: string) => {
+      const normalized = filter.trim().toLowerCase();
+      return (
+        data.customer.toLowerCase().includes(normalized) ||
+        data.carModel.toLowerCase().includes(normalized) ||
+        data.carLicense.toLowerCase().includes(normalized) ||
+        data.phoneNumber.toLowerCase().includes(normalized) ||
+        data.email.toLowerCase().includes(normalized)
+      );
+    };
   }
 
   selectRentalType(type: string): void {
     this.selectedType = type;
     this.updateTable();
   }
+
   getActionButtons(): string[] {
     switch (this.selectedType.toLowerCase()) {
       case 'upcoming':
         return ['New Reservation'];
-      case 'open':
-        return ['New Rental', 'Close Rental'];
+      case 'on rent':
+        return [ 'Close Rental'];
       case 'returning':
         return ['Close Rental'];
       case 'closed':
@@ -184,65 +204,55 @@ export class ManifestMenuComponent implements OnInit, AfterViewInit {
     }
   }
 
-
   updateTable(): void {
-    const filtered = this.allRentals.filter(
+    let filtered = this.allRentals.filter(
       (r) => r.status.toLowerCase() === this.selectedType.toLowerCase()
     );
-    this.dataSource.data = filtered;
-    this.applyDateFilter();
-  }
 
-  applyFilter(event: Event): void {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  applyDateFilter(): void {
-    let start = this.filterStartDate ? new Date(this.filterStartDate) : null;
-    let end = this.filterEndDate ? new Date(this.filterEndDate) : null;
-
-    this.dataSource.data = this.allRentals
-      .filter((r) => r.status.toLowerCase() === this.selectedType.toLowerCase())
-      .filter((r) => {
-        const out = new Date(r.checkOut);
-        if (start && out < start) return false;
-        if (end && out > end) return false;
+    if (this.filterStartDate || this.filterEndDate) {
+      filtered = filtered.filter((rental) => {
+        const outDate = new Date(rental.checkOut);
+        if (this.filterStartDate && outDate < this.filterStartDate) return false;
+        if (this.filterEndDate && outDate > this.filterEndDate) return false;
         return true;
       });
-  }
+    }
 
-  filterToday(): void {
-    const today = new Date();
-    this.filterStartDate = this.formatDate(today);
-    this.filterEndDate = this.formatDate(today);
-    this.applyDateFilter();
+    this.dataSource.data = filtered;
   }
+applyTextFilter(event: Event): void {
+  const value = (event.target as HTMLInputElement).value;
+  this.dataSource.filter = value.trim().toLowerCase();
+}
 
-  filterTomorrow(): void {
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    this.filterStartDate = this.formatDate(tomorrow);
-    this.filterEndDate = this.formatDate(tomorrow);
-    this.applyDateFilter();
-  }
+applyDateFilter(): void {
+  const start = this.filterStartDate ? new Date(this.filterStartDate) : null;
+  const end = this.filterEndDate ? new Date(this.filterEndDate) : null;
 
-  formatDate(date: Date): string {
-    return date.toISOString().substring(0, 10);
-  }
+  this.dataSource.data = this.allRentals
+    .filter((r) => r.status.toLowerCase() === this.selectedType.toLowerCase())
+    .filter((r) => {
+      const out = new Date(r.checkOut);
+      if (start && out < start) return false;
+      if (end && out > end) return false;
+      return true;
+    });
+}
 
-  editRental(): void {
-    this.router.navigate(['check-out']);
-  }
 
-  gotoNewUpRental(): void {
-    this.router.navigate(['new-upcoming-rental']);
-  }
   clearDateFilters(): void {
-    this.filterStartDate = '';
-    this.filterEndDate = '';
+    this.filterStartDate = null;
+    this.filterEndDate = null;
     this.updateTable();
   }
 
+  editRental(): void {
+    this.router.navigate(['/check-out']);
+  }
+printTable(): void {
+  window.print();
 }
-
+  trackByType(index: number, type: string): string {
+    return type;
+  }
+}
