@@ -9,12 +9,17 @@
             <div>
               <mat-divider></mat-divider>
               <div class="row-fields">
-
-                 <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline">
                   <mat-label>Fee Name</mat-label>
                   <mat-select formControlName="additionalFee">
-                    <mat-optgroup *ngFor="let group of feeGroups" [label]="group.name">
-                      <mat-option *ngFor="let fee of group.options" [value]="fee.value">
+                    <mat-optgroup
+                      *ngFor="let group of feeGroups"
+                      [label]="group.name"
+                    >
+                      <mat-option
+                        *ngFor="let fee of group.options"
+                        [value]="fee.value"
+                      >
                         {{ fee.viewValue }}
                       </mat-option>
                     </mat-optgroup>
@@ -24,10 +29,9 @@
                 <mat-form-field appearance="outline">
                   <mat-label>Fee Type</mat-label>
                   <mat-select formControlName="additionalFeeType">
-                    <mat-option value="oneTime">One-Time</mat-option>
-                    <mat-option value="daily">Daily</mat-option>
-                    <mat-option value="weekly">Weekly</mat-option>
-                    <mat-option value="weekend">Weekend</mat-option>
+                    <mat-option value="Daily">Daily</mat-option>
+                    <mat-option value="Weekly">Weekly</mat-option>
+                    <mat-option value="Weekend">Weekend</mat-option>
                   </mat-select>
                 </mat-form-field>
 
@@ -40,15 +44,16 @@
                   <mat-label>Change To</mat-label>
                   <input matInput formControlName="additionalFeeTo" />
                 </mat-form-field>
-
               </div>
             </div>
           </div>
         </div>
 
         <div class="button-group">
-          <button mat-raised-button class="buttons1">Save</button>
-          <button mat-raised-button class="nobgbutton" (click)="goback()">Cancel</button>
+          <button mat-raised-button class="buttons1" (click)="onSave()">Save</button>
+          <button mat-raised-button class="nobgbutton" (click)="goback()">
+            Cancel
+          </button>
         </div>
       </form>
     </mat-card-content>

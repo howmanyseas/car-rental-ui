@@ -19,6 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
+import { FeeService } from '../../services/fee.service';
 
 @Component({
   selector: 'app-update-prices',
@@ -45,21 +46,8 @@ export class UpdatePricesComponent implements OnInit {
   updatePricesForm!: FormGroup;
   // Data for grouped select
   feeGroups = [
-    {
-      name: 'Car Group',
-      options: [
-        { value: 'groupA', viewValue: 'IDMR' },
-        { value: 'groupB', viewValue: 'CDMR' },
-      ]
-    },
-    {
-      name: 'Additional Fees',
-      options: [
-        { value: 'insurance', viewValue: 'Insurance' },
-        { value: 'crossBorder', viewValue: 'Cross Border' },
-        { value: 'childSeat', viewValue: 'Child Seat' },
-      ]
-    }
+    { name: 'Car Group', options: [] as { value: string; viewValue: string; category: 'CarGroup' | 'Additional'; interval: 'Daily' | 'Weekly' | 'Weekend' }[] },
+    { name: 'Additional Fees', options: [] as { value: string; viewValue: string; category: 'CarGroup' | 'Additional'; interval: 'Daily' | 'Weekly' | 'Weekend' }[] }
   ];
   checkOutVisible = false;
   checkInVisible = false;
@@ -72,22 +60,80 @@ export class UpdatePricesComponent implements OnInit {
     this.checkInVisible = !this.checkInVisible;
   }
 
-  constructor(
-    private fb: FormBuilder,
-    private router: Router
-  ) { }
+  allFees: any[] = []; // raw from API
+
+
+  constructor(private fb: FormBuilder, private router: Router, private feeService: FeeService) { }
+
+
 
   ngOnInit() {
     this.updatePricesForm = this.fb.group({
-      additionalFee: new FormControl(''),
-      additionalFeeType: new FormControl(''),
+      additionalFee: new FormControl(''),      // will hold the fee "name"
+      additionalFeeType: new FormControl(''),  // Daily/Weekly/Weekend
       additionalFeeFrom: new FormControl(''),
       additionalFeeTo: new FormControl(''),
-      // ...other form controls
+      maxAmount: new FormControl('')
+    });
+
+    this.feeService.getAllFees().subscribe(res => {
+      if (!res.isSuccess || !res.data) return;
+
+      this.allFees = res.data;
+
+      // Split into groups by category and map to select options
+      const carGroup = res.data.filter(f => f.categoryEnum === 'CarGroup');
+      const additional = res.data.filter(f => f.categoryEnum === 'Additional');
+
+      this.feeGroups[0].options = carGroup.map(f => ({
+        value: f.name, viewValue: f.name, category: 'CarGroup', interval: f.interval
+      }));
+      this.feeGroups[1].options = additional.map(f => ({
+        value: f.name, viewValue: f.name, category: 'Additional', interval: f.interval
+      }));
     });
   }
 
   goback() {
     this.router.navigate(['/user-profile']);
   }
+  onSave() {
+  const feeName = this.updatePricesForm.value.additionalFee;      // string
+  const interval = this.updatePricesForm.value.additionalFeeType; // 'Daily'|'Weekly'|'Weekend'
+  const changeFrom = this.updatePricesForm.value.additionalFeeFrom;
+  const changeTo = this.updatePricesForm.value.additionalFeeTo;
+  const maxAmount = this.updatePricesForm.value.maxAmount ?? '0';
+
+  // Find the selected fee in the loaded list so we know its Category and (true) Interval
+  const matched = this.allFees.find(f => f.name === feeName && f.interval === interval);
+  if (!matched) {
+    alert('Selected fee does not exist with that interval. Pick one from the list.');
+    return;
+  }
+
+  const payload = [{
+    name: feeName,
+    category: matched.categoryEnum,  // 'Additional' or 'CarGroup'
+    interval: matched.interval,      // 'Daily' | 'Weekly' | 'Weekend'
+    changeFrom: String(changeFrom ?? ''), // backend parses decimal, send as string
+    changeTo: String(changeTo ?? ''),
+    maxAmount: String(maxAmount ?? '')
+  }];
+
+  this.feeService.updateFees(payload).subscribe({
+    next: (res) => {
+      if (res.isSuccess) {
+        alert('Fees updated successfully!');
+      } else {
+        alert(res.errors ?? 'Update failed.');
+      }
+    },
+    error: (err) => {
+      // Common pitfalls: 401 (no token), 403 (missing permission), 400 (bad payload)
+      console.error(err);
+      alert(err?.error?.message ?? 'Request failed.');
+    }
+  });
+}
+
 }
