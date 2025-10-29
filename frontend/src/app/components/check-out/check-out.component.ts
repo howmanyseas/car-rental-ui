@@ -23,6 +23,8 @@ import { default as _rollupMoment, Moment } from 'moment';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import * as _moment from 'moment';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { UploadOptionsComponent } from '../upload-options.component';
 import { PriceService, PriceRequest, AdditionalFee, Discount } from '../_common/_service/price.service';
@@ -61,7 +63,8 @@ const FULL_DATE_FORMATS = {
     MatRadioModule,
     MatIcon,
     MatButtonToggleModule,
-    UploadOptionsComponent
+    UploadOptionsComponent,
+    MatSnackBarModule
   ],
   templateUrl: './check-out.component.html',
   styleUrls: ['./check-out.component.scss'],
@@ -110,7 +113,7 @@ export class CheckOutComponent implements OnInit {
     grossAmount: 0,
   };
 
-  constructor(private fb: FormBuilder, private priceService: PriceService) { }
+  constructor(private fb: FormBuilder, private priceService: PriceService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.pricingFormGroup = this.fb.group({
@@ -207,7 +210,7 @@ export class CheckOutComponent implements OnInit {
       nameOnCard: [''],
       expiryDate: new FormControl(null), // Full date: 2025-08-01
       cvv: [''],
-      amountOnHold: [''],
+      amountOnHold: [300],
       checkoutGrossAmount: [''],
       paymentDate: [''],
       paymentStatus: [''],
@@ -520,5 +523,14 @@ export class CheckOutComponent implements OnInit {
       }
     });
   }
+  save() {
+  // your save logic (e.g. form submission, API call, etc.)
+  this.snackBar.open('Saved successfully!', 'Close', {
+    duration: 3000,       // auto close after 3s
+    verticalPosition: 'top',
+    horizontalPosition: 'center'
+  });
+}
+
 
 }
