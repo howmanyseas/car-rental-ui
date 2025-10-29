@@ -1,0 +1,120 @@
+:host {
+  display: block;
+  margin: 30px;
+}
+body {
+  overflow-x: hidden;
+}
+
+h2.title {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 30px;
+  font-family: "Inter";
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 10px;
+  background: var(--color-gradient-opaque);
+  border: 1px solid white;
+  box-sizing: border-box;
+  padding: 16px;
+  box-sizing: border-box;
+}
+mat-form-field {
+  width: 100%;
+  max-width: 100%;
+}
+
+table {
+  min-width: 100%;
+  background: transparent;
+  border-collapse: collapse;
+  table-layout: auto;
+  color: white;
+}
+
+th {
+  background: #242323;
+  color: white;
+  font-weight: bold;
+  font-family: "Inter";
+}
+
+td {
+  padding: 12px;
+  color: white;
+}
+
+.active {
+  background-color: yellow;
+  color: #242323;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+.mat-elevation-z8 {
+  box-shadow: none;
+}
+
+.mobile-cards {
+  display: none;
+}
+.search-input {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ffffff;
+  background-color: #000000;
+  color: white;
+  display: block;
+}
+
+.status {
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 0.85em;
+  border-radius: 10px;
+  white-space: nowrap; /* Prevents line break */
+}
+
+@media (max-width: 730px) {
+  .desktop-table {
+    display: none;
+  }
+  :host {
+    margin: 10px;
+  }
+  .mobile-cards {
+    display: block;
+  }
+
+  .card {
+    background-color: #2d2d2d;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    color: white;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .edit-btn {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .car-id {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: lightgray;
+  }
+}
