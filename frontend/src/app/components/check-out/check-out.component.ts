@@ -25,6 +25,7 @@ import * as _moment from 'moment';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 import { UploadOptionsComponent } from '../upload-options.component';
+import { PriceService, PriceRequest, AdditionalFee, Discount } from '../_common/_service/price.service';
 
 const moment = _rollupMoment || _moment;
 const FULL_DATE_FORMATS = {
@@ -109,7 +110,7 @@ export class CheckOutComponent implements OnInit {
     grossAmount: 0,
   };
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private priceService: PriceService) { }
 
   ngOnInit() {
     this.pricingFormGroup = this.fb.group({
@@ -190,7 +191,7 @@ export class CheckOutComponent implements OnInit {
 
     this.carInformationFormGroup = this.fb.group({
       mva: [''],
-      carGroup: [{ value: 'Group A', disabled: true }],
+      carGroup: [{ value: 'IDMR', disabled: true }],
       licensePlate: [{ value: 'AB123CD', disabled: true }],
       fuel: [{ value: 'Diesel', disabled: true }],
       carModel: [{ value: 'Toyota Corolla', disabled: true }],
@@ -456,6 +457,68 @@ export class CheckOutComponent implements OnInit {
     }
 
     return age >= 18 && age <= 21;
+  }
+
+  calculatePrice() {
+    const checkOutDate = this.CheckOutDateControl.value;
+    const checkOutTime = this.CheckOutTimeControl.value;
+    const checkInDate = this.CheckInDateControl.value;
+    const checkInTime = this.CheckInTimeControl.value;
+    const carGroup = this.pricingFormGroup.get('carGroup')?.value;
+
+    if (!checkOutDate || !checkOutTime || !checkInDate || !checkInTime || !carGroup) {
+      alert('Please fill out all date and car group fields before calculating price.');
+      return;
+    }
+
+    const checkOutDateTime = new Date(checkOutDate);
+    const [coHour, coMin] = checkOutTime.split(':');
+    checkOutDateTime.setHours(+coHour);
+    checkOutDateTime.setMinutes(+coMin);
+
+    const checkInDateTime = new Date(checkInDate);
+    const [ciHour, ciMin] = checkInTime.split(':');
+    checkInDateTime.setHours(+ciHour);
+    checkInDateTime.setMinutes(+ciMin);
+
+    // Build additionalFees array from pricingFormGroup
+    const additionalFees: AdditionalFee[] = this.additionalFees.controls.map(fee => ({
+      name: fee.get('feeType')?.value || '',
+      amount: fee.get('price')?.value || '',
+      amountMax: fee.get('maxPrice')?.value || ''
+    }));
+
+    let discount: Discount | undefined = undefined;
+    if (this.showDiscount) {
+      discount = {
+        percentage: this.pricingFormGroup.get('discountPercentage')?.value || '',
+        reason: this.pricingFormGroup.get('discountReason')?.value || '',
+        user: this.pricingFormGroup.get('discountAppliedBy')?.value || ''
+      };
+      console.log('Discount:', JSON.stringify(discount));
+    }
+
+    const payload: PriceRequest = {
+      carGroupName: carGroup,
+      checkOutDate: checkOutDateTime.toISOString(),
+      expectedCheckInDate: checkInDateTime.toISOString(),
+      additionalFees: additionalFees.length > 0 ? additionalFees : undefined,
+      discount: discount
+    };
+
+    console.log('Price Request:', JSON.stringify(payload));
+    this.priceService.calculatePrice(payload).subscribe({
+      next: (data) => {
+        this.pricingFormGroup.patchValue({
+          netAmount: data.netPrice,
+          grossAmount: data.grossPrice,
+          tax: data.taxRate * 100
+        });
+      },
+      error: (error) => {
+        alert('Error calculating price: ' + error.message);
+      }
+    });
   }
 
 }

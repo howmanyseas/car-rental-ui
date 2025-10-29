@@ -46,8 +46,21 @@ export class UpdatePricesComponent implements OnInit {
   updatePricesForm!: FormGroup;
   // Data for grouped select
   feeGroups = [
-    { name: 'Car Group', options: [] as { value: string; viewValue: string; category: 'CarGroup' | 'Additional'; interval: 'Daily' | 'Weekly' | 'Weekend' }[] },
-    { name: 'Additional Fees', options: [] as { value: string; viewValue: string; category: 'CarGroup' | 'Additional'; interval: 'Daily' | 'Weekly' | 'Weekend' }[] }
+    {
+      name: 'Car Group',
+      options: [
+        { value: 'groupA', viewValue: 'IDMR' },
+        { value: 'groupB', viewValue: 'CDMR' },
+      ]
+    },
+    {
+      name: 'Additional Fees',
+      options: [
+        { value: 'insurance', viewValue: 'Insurance' },
+        { value: 'crossBorder', viewValue: 'Cross Border' },
+        { value: 'childSeat', viewValue: 'Child Seat' },
+      ]
+    }
   ];
   checkOutVisible = false;
   checkInVisible = false;
