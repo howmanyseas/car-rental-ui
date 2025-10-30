@@ -20,6 +20,7 @@ import {
   MAT_DATE_LOCALE,
   MAT_DATE_FORMATS
 } from '@angular/material/core';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { default as _rollupMoment, Moment } from 'moment';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
@@ -70,6 +71,7 @@ const FULL_DATE_FORMATS = {
     MatDialogModule,
     NgxMaterialTimepickerModule,
     MatStepperModule,
+    MatSnackBarModule
   ],
 })
 export class CheckInComponent implements OnInit {
@@ -100,7 +102,7 @@ export class CheckInComponent implements OnInit {
   carInformationFormGroup!: FormGroup;
 
 
-  constructor(private fb: FormBuilder, private dialog: MatDialog) { }
+  constructor(private fb: FormBuilder, private dialog: MatDialog, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.checkInForm = this.fb.group({
@@ -264,4 +266,32 @@ export class CheckInComponent implements OnInit {
       }
     });
   }
+  save() {
+    // TODO: add  save logic
+
+    this.snackBar.open('Check-in saved successfully!', 'Close', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: ['snackbar-success']
+    });
+  }
+generateInvoice() {
+  const rentalId = this.summary.rentalId || '0000001';
+  const fileName = `invoice_${rentalId}.pdf`;
+
+  const pdfUrl = `https://vibes-mobility.com/invoices/${fileName}`;
+
+  // Open the PDF link in a new tab
+  window.open(pdfUrl, '_blank');
+
+  // Show notification
+  this.snackBar.open('Invoice generated successfully!', 'Open', {
+    duration: 4000,
+    horizontalPosition: 'center',
+    verticalPosition: 'top',
+    panelClass: ['snackbar-success']
+  });
+}
+
 }
