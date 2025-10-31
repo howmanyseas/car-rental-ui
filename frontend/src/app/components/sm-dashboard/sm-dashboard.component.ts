@@ -10,7 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 
 interface Stat { label: string; value: number; route?: string; }
-interface Row { category: string; [key: string]: any; }
+interface Row { category: string;[key: string]: any; }
 
 @Component({
   selector: 'app-sm-dashboard',
@@ -90,4 +90,26 @@ export class SmDashboardComponent implements OnInit {
   get displayedColumns(): string[] {
     return ['category', ...this.displayedDays];
   }
+  onCellClick(category: string, day: string): void {
+    if (!this.isClickable(category)) return;
+
+    const dateObj = new Date(day);
+    const formattedDate = dateObj.getFullYear() + '-' +
+      String(dateObj.getMonth() + 1).padStart(2, '0') + '-' +
+      String(dateObj.getDate()).padStart(2, '0');
+
+    // turn "On Hand" → "on-hand"
+    const type = category.toLowerCase().replace(' ', '-');
+
+    this.router.navigate(['/car-status'], {
+      queryParams: { type, date: formattedDate },
+    });
+  }
+
+  isClickable(category: string): boolean {
+    return ['On Hand', 'Due In'].includes(category);
+  }
+
+
+
 }

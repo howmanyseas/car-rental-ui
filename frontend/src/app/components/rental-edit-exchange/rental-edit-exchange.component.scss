@@ -1,0 +1,283 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: flex-start;
+
+  overflow: hidden !important;
+}
+.button-group {
+  display: inline;
+}
+p{
+    color: white;
+    font-family: "Inter";
+}
+:host {
+  margin: 30px;
+  display: block;
+}
+.form-container {
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+}
+.grid-fields,
+.single-field-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.summary {
+  flex: 1;
+  height: fit-content;
+  font-family: "Inter";
+  background: var(--color-gradient-opaque);
+  color: white;
+}
+input {
+  color: white !important;
+}
+mat-option {
+  color: var(--color-gradient-end);
+}
+mat-hint {
+  color: white !important;
+}
+mat-card {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+h2,
+h3 {
+  color: white;
+  font-family: "Inter";
+}
+mat-step {
+  background-color: transparent;
+}
+
+.inline-field {
+  width: 200px;
+  display: inline-block;
+}
+
+.button-group {
+  margin: 20px 0;
+  gap: 10px;
+  display: flex;
+}
+.fee-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.fee-row mat-form-field {
+  flex: 1;
+}
+
+button[mat-mini-fab] {
+  margin-top: 10px;
+}
+
+.buttons {
+  background-color: var(--button-2) !important;
+  color: white !important;
+  border-radius: 10px;
+}
+
+mat-horizontal-stepper {
+  background-color: transparent !important;
+  flex: 3;
+}
+mat-form-field {
+  flex: 1;
+}
+
+.grid-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 15px;
+}
+.colorwhite {
+  color: white;
+}
+h4 {
+  color: white;
+  margin-top: 20px;
+  font-family: "Inter";
+}
+mat-button-toggle-group {
+  max-height: 40px;
+}
+.radio-group {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.buttons-group button {
+  background-color: var(--color-gradient-mid) !important;
+  color: white !important;
+  border-radius: 10px;
+}
+
+.buttons-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: flex-start;
+}
+.buttons-gr {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: flex-end;
+}
+.buttons-gr button {
+  background-color: var(--color-gradient-mid) !important;
+  color: white !important;
+  border-radius: 10px;
+}
+mat-icon {
+  color: white;
+  width: auto;
+  height: auto;
+}
+.upload-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 10px;
+  }
+
+  .form-container,
+  .summary {
+    width: 100%;
+  }
+
+  .grid-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .button-group,
+  .buttons-group {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .summary {
+    display: none;
+  }
+  .button-group button,
+  .buttons-group button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  :host {
+    margin: 30px;
+  }
+  .upload-container {
+    justify-content: center;
+  }
+
+  .upload-button {
+    font-size: 0.9em;
+    padding: 5px 10px;
+  }
+  .container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .form-container {
+    margin: 0px;
+  }
+
+  h2,
+  h3,
+  h4 {
+    font-size: 1.4em;
+  }
+
+  .button-group button,
+  .buttons-group button {
+    font-size: 0.9em;
+  }
+
+  .fee-row {
+    flex-direction: column;
+  }
+
+  .fee-row mat-form-field {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  h2,
+  h3,
+  h4 {
+    font-size: 1.2em;
+  }
+  mat-horizontal-stepper {
+    margin: 0px;
+  }
+  .form-container {
+    margin: 0px;
+  }
+  :host {
+    margin: 10px;
+  }
+  .grid-fields {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .button-group,
+  .buttons-group {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .button-group button,
+  .buttons-group button {
+    font-size: 0.8em;
+  }
+
+  .summary {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+.grid-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.form-container {
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.buttons-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}

@@ -6,17 +6,13 @@
       <mat-step [stepControl]="carInformationFormGroup" label="Car Information">
         <form [formGroup]="carInformationFormGroup">
           <mat-card class="form-container">
-           
             <mat-card-content>
               <h3 class="title">Rental Information</h3>
               <mat-divider></mat-divider><br />
 
-              <div
-                class="grid-fields
-            "
-              >
+              <div class="grid-fields">
                 <mat-form-field appearance="outline" class="readonly-field">
-                  <mat-label>Rental Number</mat-label>
+                  <mat-label>Rental Agreement Number</mat-label>
                   <input matInput formControlName="rentalnr" />
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="readonly-field">
@@ -53,31 +49,10 @@
                   <mat-label>License Plate</mat-label>
                   <input matInput formControlName="licensePlate" />
                 </mat-form-field>
-                <mat-form-field class="gray-bg" appearance="fill">
-                  <mat-label>Fuel</mat-label>
-                  <input matInput formControlName="fuel" />
-                </mat-form-field>
+
                 <mat-form-field class="gray-bg" appearance="fill">
                   <mat-label>Car Model</mat-label>
                   <input matInput formControlName="carModel" />
-                </mat-form-field>
-                <mat-form-field class="gray-bg" appearance="fill">
-                  <mat-label>Millage</mat-label>
-                  <input matInput formControlName="millage" />
-                </mat-form-field>
-              </div>
-              <div class="grid-fields">
-                <mat-form-field class="gray-bg" appearance="fill">
-                  <mat-label>Color</mat-label>
-                  <input matInput formControlName="color" />
-                </mat-form-field>
-                <mat-form-field class="gray-bg" appearance="fill">
-                  <mat-label>Status</mat-label>
-                  <input matInput formControlName="status" />
-                </mat-form-field>
-                <mat-form-field class="gray-bg" appearance="fill">
-                  <mat-label>Transmission</mat-label>
-                  <input matInput formControlName="transmission" />
                 </mat-form-field>
               </div>
 
@@ -190,7 +165,14 @@
                         />
                       </mat-form-field>
                     </div>
-                  </div>
+                                  
+                  </div> <button
+                  mat-raised-button
+                  class="side-btns"
+                  (click)="addDamage()"
+                >
+                  Add Damage
+                </button>
 
                   <h3>Mileage</h3>
                   <mat-divider></mat-divider>
@@ -225,18 +207,11 @@
                       <input matInput formControlName="fuelExtra" />
                     </mat-form-field>
                   </div>
+        
 
                   <h3>Pricing</h3>
                   <mat-divider></mat-divider>
                   <div class="row-4-fields">
-                    <mat-form-field class="gray-bg" appearance="fill">
-                      <mat-label>Check Out Price</mat-label>
-                      <input matInput formControlName="checkOutPrice" />
-                    </mat-form-field>
-                    <mat-form-field appearance="fill" class="gray-bg">
-                      <mat-label>Check In Price</mat-label>
-                      <input matInput formControlName="checkInPrice" />
-                    </mat-form-field>
                     <mat-form-field appearance="fill" class="gray-bg">
                       <mat-label>Net Amount</mat-label>
                       <input matInput formControlName="netAmount" />
@@ -251,9 +226,24 @@
 
               <div class="buttons-group">
                 <button mat-button matStepperPrevious>Back</button>
-                <button mat-raised-button class="buttons-end">Save</button>
-                <button mat-raised-button class="buttons-end">Print</button>
-                <button mat-raised-button class="buttons-end">Invoice</button>
+           
+                <button
+                  mat-raised-button
+                  class="buttons-end"
+                  color="primary"
+                  (click)="save()"
+                >
+                  Save & Print
+                </button>
+
+                <button
+                  mat-raised-button
+                  class="buttons-end"
+                  color="accent"
+                  (click)="generateInvoice()"
+                >
+                  Invoice
+                </button>
               </div>
             </mat-card-content>
           </mat-card>

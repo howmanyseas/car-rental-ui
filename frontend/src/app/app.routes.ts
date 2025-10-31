@@ -213,6 +213,21 @@ export const routes: Routes = [
           ),
         title: 'Maintenance Information',
       },
+      {
+        path: 'car-status',
+        loadComponent: () =>
+          import('./components/car-status/car-status.component').then(
+            (m) => m.CarStatusComponent
+          ),
+        title: 'Car Status',
+      },
+      {
+        path: 'rental-edit-exchange', loadComponent: () =>
+          import('./components/rental-edit-exchange/rental-edit-exchange.component').then(
+            (m) => m.RentalEditExchangeComponent
+          ),
+        title: 'Rental Edit Exchange',
+      },
 
 
 

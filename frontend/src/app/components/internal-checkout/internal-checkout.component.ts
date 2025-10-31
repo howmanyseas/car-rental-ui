@@ -25,35 +25,39 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     NgxMaterialTimepickerModule,
   ],
   templateUrl: './internal-checkout.component.html',
-  styleUrl: './internal-checkout.component.scss'
+styleUrls: ['./internal-checkout.component.scss']
 })
 export class InternalCheckoutComponent {
   employeeCheckOutForm!: FormGroup;
 
   constructor(private fb: FormBuilder) { }
 
-  ngOnInit(): void {
+ ngOnInit(): void {
     this.employeeCheckOutForm = this.fb.group({
       firstName: [''],
       lastName: [''],
       driverLicenseNumber: [''],
       department: [''],
       reason: [''],
-
       checkoutLocation: [''],
       checkOutDate: [''],
       checkOutTime: [''],
-
       expectedLocation: [''],
       expectedDate: [''],
       expectedTime: [''],
-      
       checkInLocation: [''],
       checkInDate: [''],
       checkInTime: [''],
-
       carGroup: [''],
       rentalnr: [''],
+      licensePlate: [''],
+      fuel: [''],
+      carModel: [''],
+      millage: [''],
+      color: [''],
+      status: [''],
+      transmission: [''],
+      mva: [''],
     });
   }
 

@@ -14,6 +14,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDivider } from '@angular/material/divider';
 import { MatDatepicker, MatDatepickerToggle } from '@angular/material/datepicker';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-vehicle-registration',
@@ -28,24 +29,32 @@ import { MatDatepicker, MatDatepickerToggle } from '@angular/material/datepicker
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatDividerModule,          
+    MatDividerModule,
     MatCardModule,
-    MatDatepickerModule,       
-    MatNativeDateModule,       
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatToolbarModule,
-    MatDivider,                
-    MatDatepicker,             
-    MatDatepickerToggle        
+    MatDivider,
+    MatDatepicker,
+    MatDatepickerToggle,
+    MatSnackBarModule
   ]
 })
 export class VehicleRegistrationComponent {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private snackBar: MatSnackBar) { }
 
-  save() {
-    console.log("Vehicle Registration Saved");
-    // Add backend API call or other save logic here
-  }
+save() {
+  // TODO: add your save logic (API call, printing, etc.)
+
+  this.snackBar.open('Check-in saved successfully!', 'Close', {
+    duration: 3000,
+    horizontalPosition: 'center',
+    verticalPosition: 'top',
+    panelClass: ['snackbar-success']
+  });
+}
+
 
   download() {
     console.log("Download button clicked");

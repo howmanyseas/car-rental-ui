@@ -6,7 +6,7 @@ body {
   overflow-x: hidden;
 }
 
-h2.title, h3 {
+h2.title {
   color: white;
   font-size: 24px;
   margin-bottom: 30px;
@@ -23,18 +23,11 @@ h2.title, h3 {
   padding: 16px;
   box-sizing: border-box;
 }
-.toggle-container {
-  background-color: var(--color-gradient-opaque);
-}
 mat-form-field {
   width: 100%;
   max-width: 100%;
 }
-mat-card {
-  background-color: transparent;
-  border: 1.5px solid rgba(255, 255, 255, 0.563);
-  padding: 20px;
-}
+
 table {
   min-width: 100%;
   background: transparent;

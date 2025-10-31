@@ -1,4 +1,4 @@
-<h2 class="title">Internal Checkout</h2>
+<h2 class="title">Internal Movement</h2>
 
 <div class="container">
   <mat-card class="form-container">
@@ -34,7 +34,7 @@
           </mat-form-field>
         </div>
 
-        <h3>Location</h3>
+        <h3>Date and Time</h3>
         <mat-divider></mat-divider><br />
 
         <div class="employee-row">
@@ -73,81 +73,80 @@
             ></ngx-material-timepicker>
           </mat-form-field>
         </div>
-
         <div class="employee-row">
           <mat-form-field appearance="outline" class="readonly-field">
-            <mat-label>Check In Location</mat-label>
-            <input matInput formControlName="checkInLocation" />
+            <mat-label>Expected Return Location</mat-label
+            ><input matInput formControlName="expectedLocation" />
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="readonly-field">
-            <mat-label>Check In Date</mat-label>
+            <mat-label>Expected Return Date</mat-label>
             <input
               matInput
-              [matDatepicker]="checkInDatePicker"
-              formControlName="checkInDate"
+              [matDatepicker]="expectedDatePicker"
+              formControlName="expectedDate"
             />
             <mat-datepicker-toggle
               matSuffix
-              [for]="checkInDatePicker"
+              [for]="expectedDatePicker"
             ></mat-datepicker-toggle>
             <mat-datepicker
-              #checkInDatePicker
+              #expectedDatePicker
               [touchUi]="true"
             ></mat-datepicker>
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="readonly-field">
-            <mat-label>Check In Time</mat-label>
+            <mat-label>Expected Return Time</mat-label>
             <input
               matInput
-              [ngxTimepicker]="checkInTimePicker"
-              formControlName="checkInTime"
+              [ngxTimepicker]="expectedTimePicker"
+              formControlName="expectedTime"
               [format]="24"
             />
             <ngx-material-timepicker
-              #checkInTimePicker
+              #expectedTimePicker
             ></ngx-material-timepicker>
           </mat-form-field>
         </div>
 
         <div class="car-date-row">
           <div>
-            <h3>Expected Return</h3>
+            <h3>Return</h3>
             <mat-divider></mat-divider>
             <div class="employee-row">
               <mat-form-field appearance="outline" class="readonly-field">
-                <mat-label>Expected Return Location</mat-label
-                ><input matInput formControlName="expectedLocation" />
+                <mat-label>Check In Location</mat-label>
+                <input matInput formControlName="checkInLocation" />
               </mat-form-field>
 
               <mat-form-field appearance="outline" class="readonly-field">
-                <mat-label>Expected Return Date</mat-label>
+                <mat-label>Check In Date</mat-label>
                 <input
                   matInput
-                  [matDatepicker]="expectedDatePicker"
-                  formControlName="expectedDate"
+                  [matDatepicker]="checkInDatePicker"
+                  formControlName="checkInDate"
                 />
                 <mat-datepicker-toggle
                   matSuffix
-                  [for]="expectedDatePicker"
+                  [for]="checkInDatePicker"
                 ></mat-datepicker-toggle>
                 <mat-datepicker
-                  #expectedDatePicker
+                  #checkInDatePicker
                   [touchUi]="true"
                 ></mat-datepicker>
               </mat-form-field>
 
               <mat-form-field appearance="outline" class="readonly-field">
-                <mat-label>Expected Return Time</mat-label>
+                <mat-label>Check In Time</mat-label>
                 <input
                   matInput
-                  [ngxTimepicker]="expectedTimePicker"
-                  formControlName="expectedTime"
+                  [ngxTimepicker]="checkInTimePicker"
+                  formControlName="checkInTime"
                   [format]="24"
                 />
                 <ngx-material-timepicker
-                  #expectedTimePicker
+                  #checkInTimePicker
                 ></ngx-material-timepicker>
               </mat-form-field>
             </div>
@@ -159,14 +158,53 @@
             <h3>Car Info</h3>
             <mat-divider></mat-divider>
             <div class="row-fields">
+              <mat-form-field class="gray-bg" appearance="fill">
+                <mat-label>Rental Agreement Number</mat-label>
+                <input matInput formControlName="rentalnr" />
+              </mat-form-field>
               <mat-form-field appearance="outline" class="readonly-field">
+                <mat-label>MVA</mat-label>
+                <input matInput formControlName="mva" />
+              </mat-form-field>
+            </div>
+            <div class="row-fields">
+              <mat-form-field class="gray-bg" appearance="fill">
                 <mat-label>Car Group</mat-label>
                 <input matInput formControlName="carGroup" />
               </mat-form-field>
+              <mat-form-field class="gray-bg" appearance="fill">
+                <mat-label>License Plate</mat-label>
+                <input matInput formControlName="licensePlate" />
+              </mat-form-field>
 
-              <mat-form-field appearance="outline" class="readonly-field">
-                <mat-label>Rental Number</mat-label>
-                <input matInput formControlName="rentalnr" />
+              <mat-form-field class="gray-bg" appearance="fill">
+                <mat-label>Fuel</mat-label>
+                <input matInput formControlName="fuel" />
+              </mat-form-field>
+
+              <mat-form-field class="gray-bg" appearance="fill">
+                <mat-label>Car Model</mat-label>
+                <input matInput formControlName="carModel" />
+              </mat-form-field>
+
+              <mat-form-field class="gray-bg" appearance="fill">
+                <mat-label>Millage</mat-label>
+                <input matInput formControlName="millage" />
+              </mat-form-field>
+
+              <mat-form-field class="gray-bg" appearance="fill">
+                <mat-label>Color</mat-label>
+                <input matInput formControlName="color" />
+              </mat-form-field>
+
+              <mat-form-field class="gray-bg" appearance="fill">
+                <mat-label>Status</mat-label>
+                <input matInput formControlName="status" />
+              </mat-form-field>
+
+              <mat-form-field class="gray-bg" appearance="fill">
+                <mat-label>Transmission</mat-label>
+                <input matInput formControlName="transmission" />
               </mat-form-field>
             </div>
           </div>

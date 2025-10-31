@@ -11,6 +11,10 @@ import { MatDatepickerModule, MatDatepicker } from '@angular/material/datepicker
 import { MatSelect } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatIcon } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import {
   MatNativeDateModule,
@@ -41,10 +45,11 @@ const FULL_DATE_FORMATS = {
     monthYearA11yLabel: 'MMMM YYYY',
   },
 };
-
 @Component({
-  selector: 'app-check-out',
+  selector: 'app-rental-edit-exchange',
   standalone: true,
+  templateUrl: './rental-edit-exchange.component.html',
+  styleUrls: ['./rental-edit-exchange.component.scss'],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -54,21 +59,18 @@ const FULL_DATE_FORMATS = {
     MatButtonModule,
     NgxMaterialTimepickerModule,
     MatCardModule,
-    MatDivider,
+    MatDividerModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelect,
+    MatSelectModule,
     MatOption,
     FormsModule,
     MatRadioModule,
-    MatIcon,
+    MatIconModule,
     MatButtonToggleModule,
     UploadOptionsComponent,
     MatSnackBarModule
-  ],
-  templateUrl: './check-out.component.html',
-  styleUrls: ['./check-out.component.scss'],
-  providers: [
+  ], providers: [
     {
       provide: DateAdapter,
       useClass: MomentDateAdapter,
@@ -79,12 +81,10 @@ const FULL_DATE_FORMATS = {
       useValue: FULL_DATE_FORMATS // This is for full-date pickers
     }
   ]
-
-
 })
-export class CheckOutComponent implements OnInit {
+export class RentalEditExchangeComponent implements OnInit {
   driverStepVisible = false;
-  carGroup!:FormGroup;
+  carGroup!: FormGroup;
   isMobile = false;
   pricingFormGroup!: FormGroup;
   driverFormGroup!: FormGroup;
@@ -100,10 +100,15 @@ export class CheckOutComponent implements OnInit {
   checkinDatetime = new FormControl();
   selectedFile: File | null = null;
   additionalDriverForms: FormGroup[] = [];
+  inspectionForm!: FormGroup;
 
   showAdditionalFees = false;
   showDiscount = false;
-
+  searchForm!: FormGroup;
+  currentCarForm!: FormGroup;
+  newCarForm!: FormGroup;
+  showExchangeForm = false;
+  carLeftLot: 'yes' | 'no' | null = null;
   summary = {
     rentalId: '0000001',
     firstName: 'HHHHH',
@@ -139,7 +144,40 @@ export class CheckOutComponent implements OnInit {
       grA: [''],
       grB: [''],
     });
+    this.searchForm = this.fb.group({
+      rentalNumber: [''],
+      mva: ['']
+    });
+    this.inspectionForm = this.fb.group({
+      kmIn: [''],
+      purchaseFuel: [''],
+      fuelIn: [''],
+      adjustments: [''],
+      damages: [''],
+      accident: [''],
+      other: [''],
+      reason: [''],
+      amount: [''],
+      oneWay: ['no'],
+      misc: [''],
+      miscFee: ['']
+    });
 
+    this.currentCarForm = this.fb.group({
+      mva: [''],
+      plate: [''],
+      model: [''],
+      status: [''],
+      mileage: ['']
+    });
+
+    this.newCarForm = this.fb.group({
+      mva: [''],
+      model: [''],
+      plate: [''],
+      mileage: [''],
+      color: ['']
+    });
     this.customerFormGroup = this.fb.group({
       academicTitle: [''],
       firstName: [''],
@@ -203,7 +241,25 @@ export class CheckOutComponent implements OnInit {
       status: [{ value: 'Available', disabled: true }],
       transmission: [{ value: 'Manual', disabled: true }],
     });
+    this.currentCarForm = this.fb.group({
+      mva: [''],
+      plate: [''],
+      model: [''],
+      status: [''],
+      mileage: [''],
+      checkOut: ['']
+    });
 
+    this.newCarForm = this.fb.group({
+      mva: [''],
+      year: [''],
+      model: [''],
+      color: [''],
+      mileage: [''],
+      fuel: [''],
+      plate: [''],
+      status: ['']
+    });
     this.paymentFormGroup = this.fb.group({
       cardType: [''],
       cardNumber: [''],
@@ -524,13 +580,71 @@ export class CheckOutComponent implements OnInit {
     });
   }
   save() {
-  // your save logic (e.g. form submission, API call, etc.)
-  this.snackBar.open('Saved successfully!', 'Close', {
-    duration: 3000,       // auto close after 3s
-    verticalPosition: 'top',
-    horizontalPosition: 'center'
-  });
-}
+    // your save logic (e.g. form submission, API call, etc.)
+    this.snackBar.open('Saved successfully!', 'Close', {
+      duration: 3000,       // auto close after 3s
+      verticalPosition: 'top',
+      horizontalPosition: 'center'
+    });
+  }
+
+  fetchRental() {
+    const { rentalNumber, mva } = this.searchForm.value;
+    if (!rentalNumber && !mva) {
+      this.snackBar.open('Please enter either Rental Agreement Nr or MVA.', 'Close', { duration: 3000 });
+      return;
+    }
+
+    // Simulated fetch – replace with  backend call
+    const mockRental = {
+      pricing: { carGroup: 'IDMR', netAmount: 400, grossAmount: 480, tax: 20 },
+      customer: { firstName: 'John', lastName: 'Doe', phone: '+35560000000' },
+      car: { mva: 'MVA123', model: 'Toyota Corolla', plate: 'AA123BB', status: 'Checked Out', mileage: '25000' }
+    };
+
+    // Prefill forms
+    this.pricingFormGroup.patchValue(mockRental.pricing);
+    this.customerFormGroup.patchValue(mockRental.customer);
+    this.carInformationFormGroup.patchValue(mockRental.car);
+    this.currentCarForm.patchValue(mockRental.car);
+
+    this.snackBar.open('Rental loaded successfully!', 'Close', {
+      duration: 3000,
+      verticalPosition: 'top',
+      horizontalPosition: 'center'
+    });
+  }
+
+  openExchangeForm() {
+    this.showExchangeForm = true;
+  }
+
+  setCarLeftLot(answer: 'yes' | 'no') {
+    this.carLeftLot = answer;
+  }
+
+  submitExchange() {
+    const payload = {
+      carLeftLot: this.carLeftLot,
+      currentCar: this.currentCarForm.value,
+      newCar: this.newCarForm.value,
+      inspection: this.carLeftLot === 'yes' ? this.inspectionForm.value : null
+    };
+
+    console.log('Exchange submitted:', payload);
+
+    this.snackBar.open('Exchange completed successfully!', 'Close', {
+      duration: 3000,
+      verticalPosition: 'top',
+      horizontalPosition: 'center'
+    });
+
+    this.showExchangeForm = false;
+    this.carLeftLot = null;
+    this.currentCarForm.reset();
+    this.newCarForm.reset();
+    this.inspectionForm.reset();
+  }
 
 
 }
