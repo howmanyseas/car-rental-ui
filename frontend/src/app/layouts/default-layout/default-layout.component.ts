@@ -38,6 +38,7 @@ export class DefaultLayoutComponent {
       route: '/internal-checkout',
       icon: 'call_made',
     },
+    {label:'Display Rental', route: '/rental-edit-exchange', icon:'edit'},
     { label: 'Check In', route: '/check-in', icon: 'check_circle_outline' },
     { label: 'Cars', icon: 'directions_car', route: '/vehicles' },
     { label: 'Users', route: '/users-table', icon: 'group' },
