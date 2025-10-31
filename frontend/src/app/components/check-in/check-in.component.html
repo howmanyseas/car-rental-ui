@@ -165,7 +165,14 @@
                         />
                       </mat-form-field>
                     </div>
-                  </div>
+                                  
+                  </div> <button
+                  mat-raised-button
+                  class="side-btns"
+                  (click)="addDamage()"
+                >
+                  Add Damage
+                </button>
 
                   <h3>Mileage</h3>
                   <mat-divider></mat-divider>
@@ -200,6 +207,7 @@
                       <input matInput formControlName="fuelExtra" />
                     </mat-form-field>
                   </div>
+        
 
                   <h3>Pricing</h3>
                   <mat-divider></mat-divider>
@@ -218,6 +226,7 @@
 
               <div class="buttons-group">
                 <button mat-button matStepperPrevious>Back</button>
+           
                 <button
                   mat-raised-button
                   class="buttons-end"
@@ -227,9 +236,14 @@
                   Save & Print
                 </button>
 
-<button mat-raised-button class="buttons-end" color="accent" (click)="generateInvoice()">
-  Invoice
-</button>
+                <button
+                  mat-raised-button
+                  class="buttons-end"
+                  color="accent"
+                  (click)="generateInvoice()"
+                >
+                  Invoice
+                </button>
               </div>
             </mat-card-content>
           </mat-card>
