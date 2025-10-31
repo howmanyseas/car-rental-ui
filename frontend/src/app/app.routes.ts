@@ -221,7 +221,14 @@ export const routes: Routes = [
           ),
         title: 'Car Status',
       },
-      
+      {
+        path: 'rental-edit-exchange', loadComponent: () =>
+          import('./components/rental-edit-exchange/rental-edit-exchange.component').then(
+            (m) => m.RentalEditExchangeComponent
+          ),
+        title: 'Rental Edit Exchange',
+      },
+
 
 
 
